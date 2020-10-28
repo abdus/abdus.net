@@ -1,0 +1,70 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Today I Learned (General)</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><span class="btn btn-extra-small">1 Mins</span></strong></p><div class=content><h3 id=16-june-2020>16 June, 2020</h3><h4 id=seppuku>Seppuku</h4><p>A Japanese ritual performed by high command when they loose a battle
+where there were most likely to win. The person who is supposed to perform this
+ritual, would kill himself with a dagger by cutting a part of abdomen
+horizentally so that some of the organ comes out of his belly. This is also
+known as <strong>Harakiri</strong>(belly cutting).</p><p>Initially this was reserved for Samurai, but adopted by other people when time
+passed on.</p><p>The reason behind doing this ritual is, to <strong>restore honor</strong>.</p></div></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

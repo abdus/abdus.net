@@ -1,0 +1,118 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Enum</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">2 June, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><blockquote><p><code>enum</code> is a type that can be any one of several variants.</p></blockquote><h2 id=enum-example>Enum Example</h2><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>enum</span> <span class=nc>IPAddrKind</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>V4</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>V6</span><span class=p>,</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=enum-values>Enum Values</h2><p>Enum values can be accessed using <code>::</code> which is useful. Reason is, each value inside that given enum is of same type. For example:</p><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>enum</span> <span class=nc>IPAddrKind</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>V4</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=n>V6</span><span class=p>,</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>version_four</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>IPAddrKind</span>::<span class=n>V4</span><span class=p>;</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>version_six</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>IPAddrKind</span>::<span class=n>V6</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w>    </span><span class=c1>// following are valid
+</span><span class=c1></span><span class=w>    </span><span class=n>route</span><span class=p>(</span><span class=n>IPAddrKind</span>::<span class=n>V4</span><span class=p>);</span><span class=w>
+</span><span class=w>    </span><span class=n>route</span><span class=p>(</span><span class=n>IPAddrKind</span>::<span class=n>V6</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=c1>// `ip_kind` would accept both `V4` and `v6`
+</span><span class=c1></span><span class=k>fn</span> <span class=nf>route</span><span class=p>(</span><span class=n>ip_kind</span>: <span class=nc>IPAddrKind</span><span class=p>)</span><span class=w> </span>-&gt; <span class=kt>bool</span> <span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=kc>true</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=attaching-data>Attaching data</h2><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>enum</span> <span class=nc>IPAddrKind</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>V4</span><span class=p>(</span><span class=nb>String</span><span class=p>),</span><span class=w>
+</span><span class=w>    </span><span class=n>V6</span><span class=p>(</span><span class=nb>String</span><span class=p>),</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>home</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>IPAddrKind</span>::<span class=n>V4</span><span class=p>(</span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;127.0.0.1&#34;</span><span class=p>));</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>loopback</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>IPAddrKind</span>::<span class=n>V6</span><span class=p>(</span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;::1&#34;</span><span class=p>));</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p>An enum could hold any kind of data; be it a <code>struct</code>, integers, string, or even another enum etc etc. For example:</p><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>struct</span> <span class=nc>IPv4Addr</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>addr</span>: <span class=nb>String</span><span class=p>,</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>struct</span> <span class=nc>IPv6Addr</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>addr</span>: <span class=nb>String</span><span class=p>,</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>enum</span> <span class=nc>IPAddr</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>V4</span><span class=p>(</span><span class=n>IPv4Addr</span><span class=p>),</span><span class=w>
+</span><span class=w>    </span><span class=n>V6</span><span class=p>(</span><span class=n>IPv6Addr</span><span class=p>),</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><blockquote><p>The advantage of defining <code>enum</code> over <code>struct</code> is that all data that it would be holding, will be under a same namespace. This would make passing them as function argument easier.</p></blockquote><h2 id=the-option-enum>The <code>Option</code> enum</h2><p>Rust does not have <code>null</code>, because they believe that it would probably bring some unintentional errors to the code.</p><p>Rust handles the concept of whether a value is present or absent in a diiferent way. <code>Option</code> enum is a predefined enum which have two variants: <code>Some</code> and <code>None</code>. <code>Some</code> can hold any kind of data. And <code>None</code> would hold nothing, obviously.</p><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>enum</span> <span class=nb>Option</span><span class=o>&lt;</span><span class=n>T</span><span class=o>&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=nb>Some</span><span class=p>(</span><span class=n>T</span><span class=p>),</span><span class=w>
+</span><span class=w>    </span><span class=nb>None</span><span class=p>,</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p>The <code>&lt;T></code> syntax is a generic type parameter. This means the <code>Some</code> variant of <code>Option</code> can hold one piece of data of any type.</p><p>enum <code>Option</code> is included in prelude. One does not have to explicitly bring it in scope. Even the variants of <code>Option</code> are directly available for use.</p><p>Example:</p><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=kd>let</span><span class=w> </span><span class=n>some_number</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>Some</span><span class=p>(</span><span class=mi>5</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=kd>let</span><span class=w> </span><span class=n>some_str</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>Some</span><span class=p>(</span><span class=s>&#34;Hello&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=kd>let</span><span class=w> </span><span class=n>absent_number</span>: <span class=nb>Option</span><span class=o>&lt;</span><span class=kt>i32</span><span class=o>&gt;</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>None</span><span class=p>;</span><span class=w>
+</span></code></pre></div><p>It is important to mention data type when using <code>None</code>. Compiler can&rsquo;t extract the type from <code>None</code> variant to assign it to <code>Some</code>.</p><p>Note that the <code>Option&lt;T></code> and <code>T</code>(where <code>T</code> holds a value of any type) are not same. That&rsquo;s because, let&rsquo;s say, we stored a <code>i32</code> value in <code>T</code> and assigned it to a variable. Now what compiler unserstands is <code>i32</code> is a premitive data type, whereas <code>Option&lt;i32></code> is of type <code>Option</code>. Doing any operation between <code>i32</code> and <code>Option&lt;i32></code> would result in an error.</p><p>This prevents programmer from making errors by assuming a value is not null when it actually is. In order to perform any ops with <code>Option&lt;i32></code>, one must convert it to type <code>i32</code>. There are utility methods like <code>is_some</code>, <code>is_none</code>, <code>clone</code> are available under <code>Option</code> enum which could be used to carry out conversions.</p></div><a class="btn btn-small" href=https://abdus.net/tags/enum>#enum</a></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

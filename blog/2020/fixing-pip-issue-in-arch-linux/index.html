@@ -1,0 +1,38 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Fixing PIP Issue in Arch Linux</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">1 April, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/linux>linux</a>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><p>Recently, I was upgrading Arch Linux on my laptop. And I encountered something
+unusual with <code>pip</code> and its libraries. Everything related to pip(and pip itself)
+can not be upgraded in anyways!</p><p>The problem wasn&rsquo;t new to me. I knew what I am doing wrong. I was using pip to
+install package on system-level. So, obviously, pacman was not owning it.
+So, the easiest solution for me was to delete files that are not owned by
+pacman and blocking the upgrade process. And I did! I was quite sure about this,
+because a while ago, I faced a similar issue for installing npm packages
+on system level using sudo.</p><p>Phew! Successfully installed upgrades!!</p><p>But, the issue was not completely gone! The other day, I needed python for
+running some scripts(with external dependency libraries).
+So, I needed to use pip to install package.</p><p>Now, because I deleted some files(or probably all of them) from
+<code>/usr/lib/python3.8/site-packages</code> directory during the upgrade process,
+I was getting an error saying that, package <code>six</code> not found.</p><p>I tried reinstalling pip, did not work. Removed pip and installed again,
+did not work either. I was little bit worried by now .. lol.
+Because, I don&rsquo;t really know much about python world. Neither searching google
+was quite helpful. I mean, I literally knew what was wrong,
+and yet I couldn&rsquo;t do anything.</p><h2 id=reinstalling-everything-worked>Reinstalling Everything Worked!</h2><p>Yeah! It. Just. Worked!! Now, finally I can use <code>pip</code> instead of <code>pip2</code> .. haha</p><p>To do a full system reinstall, one do it like this on Arch Linux:
+<code>pacman -Qnq | sudo pacman -S -</code>. It is safe! No worries about that.</p><h2 id=points-to-remember>Points to Remember</h2><ol><li>Don&rsquo;t use <code>sudo</code> to install packages with anything other than pacman.</li><li>Store pip packages in user&rsquo;s directory instead of any system-level
+locations(like <code>/usr/lib</code> etc)</li><li>Always use <code>pip</code> with the <code>--user</code> flag.
+Example: <code>pip install &lt;package_name> --user</code></li><li><code>lostfiles</code> in AUR is an useful application for filtering packages not owned
+by pacman.</li></ol><p>Good Day!!</p></div><a class="btn btn-small" href=https://abdus.net/tags/pip>#pip</a>
+<a class="btn btn-small" href=https://abdus.net/tags/arch-linux>#arch-linux</a>
+<a class="btn btn-small" href=https://abdus.net/tags/pacman>#pacman</a>
+<a class="btn btn-small" href=https://abdus.net/tags/python>#python</a></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

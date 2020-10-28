@@ -1,0 +1,82 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Cargo</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">19 April, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><p>Cargo is the Rust package manager and build tool. It&rsquo;s used to initialize, build and manage dependencies of a project.</p><h2 id=1-cargo-new-project_name>1. <code>cargo new PROJECT_NAME</code></h2><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>$ cargo new cargo-example
+Created binary <span class=o>(</span>application<span class=o>)</span> <span class=sb>`</span>cargo-example<span class=sb>`</span> package
+</code></pre></div><p>To initialize a project, one needs to run <code>cargo new</code> followed by the <code>project_name</code>. Cargo will create a directory <code>project_name</code>, add <code>.gitignore</code>, <code>src/main.rs</code> and <code>Cargo.toml</code>.</p><p>The <code>src/main.rs</code> is the entry-point to the project. Rust expects project related codes to live inside <code>src</code> directory, leaving top-level directory for config files, readme etc. This makes project more organized.</p><p><code>Cargo.toml</code> is the package file. This file stores everything needed for the project to build. The <code>[package]</code> section of the file stores the general package informaton. And <code>[dependencies]</code> section stores information dependency information.</p><h2 id=2-cargo-build>2. <code>cargo build</code></h2><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>$ cargo new cargo-example
+Compiling cargo-example v0.1.0 <span class=o>(</span>/home/crow/Dev/rust/sources/cargo-example<span class=o>)</span>
+Finished dev <span class=o>[</span>unoptimized + debuginfo<span class=o>]</span> target<span class=o>(</span>s<span class=o>)</span> in 0.41s
+</code></pre></div><p><code>cargo build</code> generates an unoptimized build(along with debug info) out of the source code. Generated binary should be inside the <code>target</code> directory inside <code>example-project</code> To run the binary, one needs to call it like this: <code>./target/debug/cargo-example</code>, inside a terminal in project root.</p><h2 id=3-cargo-run>3. <code>cargo run</code></h2><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>$ curgo run
+    Finished dev <span class=o>[</span>unoptimized + debuginfo<span class=o>]</span> target<span class=o>(</span>s<span class=o>)</span> in 0.01s
+     Running <span class=sb>`</span>target/debug/cargo-example<span class=sb>`</span>
+Hello, world!
+</code></pre></div><p><code>run</code> subcommand of <code>cargo</code> runs a compiled binary. Or if the binary is not available, it compiles source to binary and then run the resultant binary.</p><h2 id=3-cargo-check>3. <code>cargo check</code></h2><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>$ cargo check
+    Checking cargo-example v0.1.0 <span class=o>(</span>/home/crow/Dev/rust/sources/cargo-example<span class=o>)</span>
+    Finished dev <span class=o>[</span>unoptimized + debuginfo<span class=o>]</span> target<span class=o>(</span>s<span class=o>)</span> in 0.13s
+</code></pre></div><p><code>check</code> checks the source if it&rsquo;s compilable. This command does not compile the source into a binary.</p><h2 id=4-cargo-build---release>4. <code>cargo build --release</code></h2><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>$ cargo build --release
+Compiling cargo-example v0.1.0 <span class=o>(</span>/home/crow/Dev/rust/sources/cargo-example<span class=o>)</span>
+Finished release <span class=o>[</span>optimized<span class=o>]</span> target<span class=o>(</span>s<span class=o>)</span> in 0.29s
+</code></pre></div><p>The <code>--release</code> flag compiles to an optimized binary suitable to use in production.</p><h2 id=cargolock><code>Cargo.lock</code></h2><p>This is a lockfile created and managed by Cargo to track exact version of dependencies. This file should not be edited manually.</p></div></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

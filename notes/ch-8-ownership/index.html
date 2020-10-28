@@ -1,0 +1,122 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Ownership</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">26 April, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
+<span class="btn btn-extra-small">3 Mins</span></strong></p><div class=content><h2 id=ownership-rules>Ownership Rules</h2><ul><li>Each value in Rust has a variable that is called its <strong>Owner</strong>.</li><li>There can only be one owner at a time.</li><li>When the owner goes out of scope, the value will be dropped.</li></ul><p>Type <code>String</code> can be mutated, but string literals can not. Reason behind: literals are stored in stack during compile-time, which makes it impossible to grow an string during runtime. Type <code>String</code> can be mutated because, it&rsquo;s stored in heap.</p><blockquote><p>Rust has no Garbage Collector. It takes a different approach to release unused memory. Whenever a variable goes out of scope, the memory which was occupied by variable, would be returned.</p></blockquote><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;hello&#34;</span><span class=p>);</span><span class=w> </span><span class=c1>// s is valid from this point forward
+</span><span class=c1></span><span class=w>
+</span><span class=w>  </span><span class=c1>// do stuff with s
+</span><span class=c1></span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=c1>// this scope is now over, and s is no
+</span><span class=c1>// longer valid
+</span></code></pre></div><p>There is a special function called <code>drop</code> which Rust calls internally to release unused memory space.</p><h2 id=variables-and-their-values>Variables and their Values</h2><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=kd>let</span><span class=w> </span><span class=n>a</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=mi>10</span><span class=p>;</span><span class=w> </span><span class=c1>// initial declaration
+</span><span class=c1></span><span class=kd>let</span><span class=w> </span><span class=n>b</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>a</span><span class=p>;</span><span class=w>  </span><span class=c1>// value of `a` was copied to `b` as a
+</span><span class=c1></span><span class=w>            </span><span class=c1>// new variable
+</span></code></pre></div><blockquote><p>In Rust, primitive values are always stored in Stack. Heap is for Compound variables.</p></blockquote><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=kd>let</span><span class=w> </span><span class=n>s1</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;hello&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=kd>let</span><span class=w> </span><span class=n>s2</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>s1</span><span class=p>;</span><span class=w>    </span><span class=c1>// pointer to `s1`&#39;s object. `s1` destroyed
+</span></code></pre></div><p>An object is made up of three parts: 1. <strong>Pointer</strong> to the memory location where object is stored 2. <strong>Length</strong> 3. <strong>Capacity</strong></p><p><strong>s1(stored in Stack)</strong> and <strong>hello(stored in heap)</strong></p><p><img src=https://doc.rust-lang.org/book/img/trpl04-01.svg alt></p><p>On assigning <code>s1</code> to a new variable, it will point to the same heap location. Because, when a <code>s1</code> is assigned to <code>s2</code>, all three parts(ptr, len, capacity) were copied.</p><p><strong>s2(stored in Stack):</strong></p><p><img src=https://doc.rust-lang.org/book/img/trpl04-02.svg alt></p><p>Now, when <code>s1</code> and <code>s2</code> would go out of the scope, compiler would try to free the same memory twice, which is known as <strong>Double Free Error</strong>. This would lead to <strong>memory corruption</strong>, and ultimately security vulnerabilities.</p><p>Here, <strong>Rust&rsquo;s memory safety</strong> rules comes into play. Compiler makes previous variable(<code>s1</code>, in this case) invalid, copying everything to <code>s2</code>. Accessing <code>s1</code> after declaring <code>s2</code> would result into error.</p><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>error<span class=o>[</span>E0382<span class=o>]</span>: use of moved value: <span class=sb>`</span>s1<span class=sb>`</span>
+</code></pre></div><h2 id=move>Move</h2><p>The process of creating a new variable and invalidating previous one is known as <strong>Move</strong>. (Somewhat similar to a <em>Shallow Copy</em> in other languages). This method copies stack-data to a new location.</p><h2 id=copy>Copy</h2><p>Deep Copy means copying a variable to a new location, completely. This copying incudes Stack data(ptr, length, capacity) along with heap data(Type <code>String</code> and similar)</p><p>In order to deep copy an object, one could use <code>clone()</code> method.</p><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=kd>let</span><span class=w> </span><span class=n>s1</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;Hello&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=kd>let</span><span class=w> </span><span class=n>s2</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>s1</span><span class=p>.</span><span class=n>clone</span><span class=p>();</span><span class=w>
+</span></code></pre></div><h2 id=ownership-and-functions>Ownership and Functions</h2><p>Ownership in function works in a similar way as variables. Passing a value to function would eiter move or copy.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;Hello, World&#34;</span><span class=p>);</span><span class=w> </span><span class=c1>// `s` came into scope
+</span><span class=c1></span><span class=w>
+</span><span class=w>  </span><span class=n>make_move</span><span class=p>(</span><span class=n>s</span><span class=p>);</span><span class=w> </span><span class=c1>// `s` out of scope as it&#39;s moved to `make_move` function
+</span><span class=c1></span><span class=w>
+</span><span class=w>  </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;value of x is {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>x</span><span class=p>);</span><span class=w> </span><span class=c1>// error[E0382]: borrow of moved value: `s`
+</span><span class=c1></span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>x</span>: <span class=kt>u32</span> <span class=o>=</span><span class=w> </span><span class=mi>123</span><span class=p>;</span><span class=w> </span><span class=c1>// `x` came into scope
+</span><span class=c1></span><span class=w>
+</span><span class=w>  </span><span class=n>make_copy</span><span class=p>(</span><span class=n>x</span><span class=p>);</span><span class=w> </span><span class=c1>// `x` moves to `make_copy`. but since `x` is of type u32, it can still be used
+</span><span class=c1></span><span class=w>
+</span><span class=w>  </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;value of x is {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>x</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=c1>// changes ownership of parameter
+</span><span class=c1></span><span class=k>fn</span> <span class=nf>make_move</span><span class=p>(</span><span class=n>some_str</span>: <span class=nb>String</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;value of some_str is {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>some_str</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=c1>// does not changes ownership of parameter
+</span><span class=c1></span><span class=k>fn</span> <span class=nf>make_copy</span><span class=p>(</span><span class=n>some_int</span>: <span class=kt>u32</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;value of some_int is {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>some_int</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><blockquote><p>Returning value from a function would also transfar the value. (Example Below)</p></blockquote><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s1</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>give_ownership</span><span class=p>();</span><span class=w>  </span><span class=c1>// came into scope
+</span><span class=c1></span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s2</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;Hello World&#34;</span><span class=p>);</span><span class=w> </span><span class=c1>// came into scope
+</span><span class=c1></span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s3</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>take_and_give_back</span><span class=p>(</span><span class=n>s2</span><span class=p>);</span><span class=w> </span><span class=c1>// came into scope. `s2` moved into `take_and_give_back` which in turn ruturned it to `s3`
+</span><span class=c1></span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=c1>// all variables goes out of scope.
+</span><span class=c1>// `s1` dropped
+</span><span class=c1>// nothing happens to `s2` as it was moved previously
+</span><span class=c1>// `s3` dropped
+</span><span class=c1></span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>give_ownership</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nb>String</span> <span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;Hello, world&#34;</span><span class=p>)</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>take_and_give_back</span><span class=p>(</span><span class=kt>str</span>: <span class=nb>String</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nb>String</span> <span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kt>str</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><blockquote><p>The ownership of a variable follows the same pattern every time: assigning a value to another variable moves it. When a variable that includes data on the heap goes out of scope, the value will be cleaned up by drop unless the data has been moved to be owned by another variable.</p></blockquote></div><a class="btn btn-small" href=https://abdus.net/tags/ownership>#ownership</a></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

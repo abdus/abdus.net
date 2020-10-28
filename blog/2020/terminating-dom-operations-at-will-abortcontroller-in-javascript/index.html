@@ -1,0 +1,117 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Terminating DOM Operations at will: 'AbortController' in JavaScript</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">26 July, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/javascript>javascript</a>
+<span class="btn btn-extra-small">3 Mins</span></strong></p><div class=content><h2 id=intro>Intro</h2><p><strong>AbortController</strong> is an interface which provides a way for terminating one or
+more web request as and when desired.</p><p>This generally means that a request can be terminated by a user whenever needed,
+irrespective of whether the operation is finished or not.
+<code>AbortSignal</code> can be implemented in any web platform API which uses
+<a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise><code>Promise</code></a>.</p><h2 id=the-api>The API</h2><p>AbortController provides a few things for users to implement it effectively in
+code. At the time of writing this, the constructor would return an instance which
+contains a method <code>AbortController.abort()</code> and a property
+<code>AbortController.signal</code>(read-only).</p><ul><li><code>AbortController.signal</code> - Returns a <code>AbortSignal</code> instance</li><li><code>AbortController.abort()</code> - Aborts a DOM Request</li></ul><h3 id=abortsignal>AbortSignal</h3><p><code>AbortController.signal</code> returns an instance of type <code>AbortSignal</code> which
+represents the current state of the AbortController instance.
+It has a read-only property <code>AbortSignal.aborted</code>. Type of property <code>aborted</code>
+is <code>Boolean</code>.</p><p><code>AbortSignal</code> is also responsible for communicating with DOM as an Event Listener
+can be attached to it.</p><h2 id=using-abortcontroller>Using AbortController</h2><p>To use AbortController in a <code>Promise</code>, one must adhere to a few rules.
+<a href=https://dom.spec.whatwg.org/#abortcontroller-api-integration>Source</a></p><ul><li>Function should accept <code>AbortSignal</code> through a <code>signal</code> property. For example:<div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kd>function</span> <span class=nx>abortThis</span><span class=p>(</span><span class=nx>arg1</span><span class=p>,</span> <span class=p>{</span> <span class=nx>signal</span> <span class=p>})</span> <span class=p>{</span>
+  <span class=k>return</span> <span class=k>new</span> <span class=nb>Promise</span><span class=p>((</span><span class=nx>resolve</span><span class=p>,</span> <span class=nx>reject</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=c1>// function body
+</span><span class=c1></span>  <span class=p>})</span>
+<span class=p>}</span>
+</code></pre></div></li><li>When method <code>aborted()</code> is called, <strong>reject the Promise</strong> with a
+<code>DOMException</code> <code>AbortError</code><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=k>throw</span> <span class=k>new</span> <span class=nx>DOMException</span><span class=p>(</span><span class=s1>&#39;aborted by user&#39;</span><span class=p>,</span> <span class=s1>&#39;ABORT_ERR&#39;</span><span class=p>);</span>
+</code></pre></div></li><li>Abort immediately if the <code>aborted</code> flag on <code>AbortSignal</code> is set to <code>true</code>.</li></ul><h2 id=browser-support>Browser Support</h2><p>Despite being a relatively new API, browser support for AbortController is
+quite awesome! All major browser <em>fully</em> supports it. Following is a chart
+from <em>Can I Use</em>.</p><script src=https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js></script><div class=ciu_embed data-feature=abortcontroller data-periods=future_1,current,past_1,past_2 data-accessible-colours=false><p>Data on support for the abortcontroller feature across the major
+browsers</p></div><h2 id=examples>Examples</h2><p>Following are a few examples of <code>AbortController</code> API. First one is using <code>fetch</code>
+API. On the second example, I will try to implement it in a <code>Promise</code>.</p><h3 id=using-fetch-api>Using Fetch API</h3><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kr>const</span> <span class=nx>controller</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>AbortController</span><span class=p>();</span>
+<span class=kr>const</span> <span class=nx>signal</span> <span class=o>=</span> <span class=nx>controller</span><span class=p>.</span><span class=nx>signal</span><span class=p>;</span>
+
+<span class=c1>// fetch a URL
+</span><span class=c1></span><span class=nx>fetch</span><span class=p>(</span><span class=s1>&#39;https://jsonplaceholder.typicode.com/todos/1&#39;</span><span class=p>,</span> <span class=p>{</span> <span class=nx>signal</span> <span class=p>})</span>
+  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>raw</span> <span class=p>=&gt;</span> <span class=nx>raw</span><span class=p>.</span><span class=nx>ok</span> <span class=o>&amp;&amp;</span> <span class=nx>raw</span><span class=p>.</span><span class=nx>json</span><span class=p>())</span>
+  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>)</span>
+  <span class=p>.</span><span class=k>catch</span><span class=p>(</span><span class=nx>e</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>message</span><span class=p>));</span>
+
+<span class=c1>// driver code
+</span><span class=c1></span><span class=nx>setTimeout</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+  <span class=c1>// abort network request if it takes
+</span><span class=c1></span>  <span class=c1>// more than a second
+</span><span class=c1></span>  <span class=nx>controller</span><span class=p>.</span><span class=nx>abort</span><span class=p>();</span>
+<span class=p>},</span> <span class=mi>500</span><span class=p>);</span>
+</code></pre></div><p>The above code allows a network request to run for <code>500ms</code>. If data has been
+fetched within that period, it would return JSON representation of the response.
+Otherwise, it would abort the request.</p><h3 id=implementing-using-promise>Implementing using Promise</h3><p>In this section, I will try to implement <code>AbortController</code> for a function which
+returns Promise. Should be quite easy and straightforward. <a href=https://gist.github.com/abdus/90ec5cab55f55e44b18835276bdc66b2>Here is a Gist</a> for the same.</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=cm>/* this function would return a Promise
+</span><span class=cm> * which would resolve with value `hello`
+</span><span class=cm> * after 4s
+</span><span class=cm> */</span>
+<span class=kd>function</span> <span class=nx>abortTask</span><span class=p>({</span> <span class=nx>signal</span> <span class=p>})</span> <span class=p>{</span>
+  <span class=k>return</span> <span class=k>new</span> <span class=nb>Promise</span><span class=p>((</span><span class=nx>resolve</span><span class=p>,</span> <span class=nx>reject</span><span class=p>)</span> <span class=p>=&gt;</span> <span class=p>{</span>
+    <span class=c1>// 1. check if it&#39;s already aborted
+</span><span class=c1></span>    <span class=k>if</span> <span class=p>(</span><span class=nx>signal</span> <span class=o>&amp;&amp;</span> <span class=nx>signal</span><span class=p>.</span><span class=nx>aborted</span><span class=p>)</span> <span class=p>{</span>
+      <span class=k>return</span> <span class=nx>reject</span><span class=p>(</span><span class=k>new</span> <span class=nx>DOMException</span><span class=p>(</span><span class=s1>&#39;`signal` is in `aborted` state&#39;</span><span class=p>,</span> <span class=s1>&#39;ABORT_ERR&#39;</span><span class=p>));</span>
+    <span class=p>}</span>
+
+    <span class=c1>// wait for 4s
+</span><span class=c1></span>    <span class=nx>setTimeout</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=nx>resolve</span><span class=p>(</span><span class=s2>&#34;hello&#34;</span><span class=p>),</span> <span class=mi>4000</span><span class=p>);</span>
+
+    <span class=c1>// 2. add a listener to `signal` to check its state
+</span><span class=c1></span>    <span class=nx>signal</span> <span class=o>&amp;&amp;</span> <span class=nx>signal</span><span class=p>.</span><span class=nx>addEventListener</span><span class=p>(</span><span class=s1>&#39;abort&#39;</span><span class=p>,</span> <span class=p>()</span> <span class=p>=&gt;</span> <span class=p>{</span>
+      <span class=c1>// reject promise when signal.aborted changes to `true`
+</span><span class=c1></span>      <span class=k>return</span> <span class=nx>reject</span><span class=p>(</span><span class=k>new</span> <span class=nx>DOMException</span><span class=p>(</span><span class=s1>&#39;aborted by user&#39;</span><span class=p>,</span> <span class=s1>&#39;ABORT_ERR&#39;</span><span class=p>));</span>
+    <span class=p>})</span>
+  <span class=p>})</span>
+<span class=p>}</span>
+
+
+
+<span class=cm>/* DRIVER CODE */</span>
+<span class=kd>let</span> <span class=nx>signal</span><span class=p>;</span>   <span class=c1>// just so that I could re-use it
+</span><span class=c1></span>
+
+<span class=c1>// when `signal.aborted` is `false`
+</span><span class=c1></span><span class=kr>const</span> <span class=nx>abortController_1</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>AbortController</span><span class=p>();</span>
+<span class=nx>signal</span> <span class=o>=</span> <span class=nx>abortController_1</span><span class=p>.</span><span class=nx>signal</span><span class=p>;</span>
+
+<span class=nx>abortTask</span><span class=p>({</span> <span class=nx>signal</span> <span class=p>})</span>
+  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>t</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>t</span><span class=p>))</span> <span class=c1>// hello
+</span><span class=c1></span>  <span class=p>.</span><span class=k>catch</span><span class=p>(</span><span class=nx>e</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>error</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>message</span><span class=p>))</span>
+
+
+<span class=c1>// when `signal.aborted` is `true`
+</span><span class=c1></span><span class=kr>const</span> <span class=nx>abortController_2</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>AbortController</span><span class=p>();</span>
+<span class=nx>signal</span> <span class=o>=</span> <span class=nx>abortController_2</span><span class=p>.</span><span class=nx>signal</span><span class=p>;</span>
+
+<span class=nx>abortController_2</span><span class=p>.</span><span class=nx>abort</span><span class=p>();</span>
+
+<span class=nx>abortTask</span><span class=p>({</span> <span class=nx>signal</span> <span class=p>})</span>
+  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>t</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>t</span><span class=p>))</span>
+  <span class=p>.</span><span class=k>catch</span><span class=p>(</span><span class=nx>e</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>error</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>message</span><span class=p>))</span> <span class=c1>// err
+</span><span class=c1></span>
+
+<span class=c1>// when user calls AbortController.abort()
+</span><span class=c1></span><span class=kr>const</span> <span class=nx>abortController_3</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>AbortController</span><span class=p>();</span>
+<span class=nx>signal</span> <span class=o>=</span> <span class=nx>abortController_3</span><span class=p>.</span><span class=nx>signal</span><span class=p>;</span>
+
+<span class=c1>// abort task in 2s
+</span><span class=c1></span><span class=nx>setTimeout</span><span class=p>(()</span> <span class=p>=&gt;</span> <span class=nx>abortController_3</span><span class=p>.</span><span class=nx>abort</span><span class=p>(),</span> <span class=mi>2000</span><span class=p>);</span>
+
+<span class=nx>abortTask</span><span class=p>({</span> <span class=nx>signal</span> <span class=p>})</span>
+  <span class=p>.</span><span class=nx>then</span><span class=p>(</span><span class=nx>t</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>log</span><span class=p>(</span><span class=nx>t</span><span class=p>))</span>
+  <span class=p>.</span><span class=k>catch</span><span class=p>(</span><span class=nx>e</span> <span class=p>=&gt;</span> <span class=nx>console</span><span class=p>.</span><span class=nx>error</span><span class=p>(</span><span class=nx>e</span><span class=p>.</span><span class=nx>message</span><span class=p>))</span> <span class=c1>// err
+</span></code></pre></div></div><a class="btn btn-small" href=https://abdus.net/tags/js>#js</a>
+<a class="btn btn-small" href=https://abdus.net/tags/javascript>#javascript</a>
+<a class="btn btn-small" href=https://abdus.net/tags/dom>#dom</a></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

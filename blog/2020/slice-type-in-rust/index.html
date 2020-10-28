@@ -1,0 +1,77 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Slice Type in Rust</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">30 June, 2020</small>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><p>In Rust, there is a concept of borrowing and taking ownership. This is a concept
+not many languages implement.</p><h2 id=ownership-and-borrowing>Ownership and Borrowing</h2><p>In a Rust program, any given value is owned by a variable. For instance, if we
+declare <code>let a = 30;</code>, value <code>30</code> would be owned by variable <code>a</code>.</p><p>Following is a program to illustrate it:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=c1>// won&#39;t compile
+</span><span class=c1></span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>some_string</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;hello world&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=hl><span class=w>    </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Length {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>str_length</span><span class=p>(</span><span class=n>some_string</span><span class=p>));</span><span class=w>
+</span></span><span class=hl><span class=w>    </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;string is &#39;{}&#39;&#34;</span><span class=p>,</span><span class=w> </span><span class=n>some_string</span><span class=p>);</span><span class=w>
+</span></span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>str_length</span><span class=p>(</span><span class=n>s</span>: <span class=nb>String</span><span class=p>)</span><span class=w> </span>-&gt; <span class=kt>usize</span> <span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>s</span><span class=p>.</span><span class=n>len</span><span class=p>()</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h3 id=taking-ownership>Taking Ownership</h3><p>Look at the highlighted codeblock. I am passing the variable <code>some_string</code> to
+function <code>str_length()</code> which accepts parameter as value. When the function gets
+called, the value of <code>some_string</code> <strong>moves</strong> to function <code>str_length</code>, making the
+variable unusable after the function
+call(here: <code>println!("string is '{}'", some_string);</code>).
+This is called <strong>taking ownership</strong>.</p><h3 id=borrowing>Borrowing</h3><p>On the other hand: if I pass argument <code>some_string</code> to <code>str_length</code> by reference,
+the ownership would be retained by <code>some_string</code>. A modified version of
+<code>str_length</code> signature would look like:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>fn</span> <span class=nf>str_length</span><span class=p>(</span><span class=n>s</span>: <span class=kp>&amp;</span><span class=nb>String</span><span class=p>)</span><span class=w>
+</span></code></pre></div><p>This is known as <strong>Borrowing</strong>. It is not quite as simple as it looks like.
+There are certains rules which needs to be followed while borrowing a value. For
+instance: a variable can be mutated only once at a given scope.</p><h2 id=the-slice-type>The Slice Type</h2><p>A <code>slice</code> is reference to a <strong>contiguous sequence</strong> of elements in a collection.
+It does not take ownership(since it just <em>references</em> a sequence).</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=c1>// slice of a string
+</span><span class=c1></span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s1</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;hello, Rust&#34;</span><span class=p>);</span><span class=w>
+</span><span class=hl><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>sliced_str</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=o>&amp;</span><span class=n>s1</span><span class=p>[</span><span class=mi>0</span><span class=p>..</span><span class=mi>5</span><span class=p>];</span><span class=w>  </span><span class=c1>// hello
+</span></span><span class=c1></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p>A good thing about slice is that it accepts type <code>String</code> as well as itself
+(i.e. <code>str</code> type), unlike <code>String</code>(which does not accept <code>str</code>).</p><blockquote><p>In Rust, <code>..</code> is called as range syntax.</p></blockquote><p>An example would demonstrate it better:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=n>str1</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;hello, Rust&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w>    </span><span class=n>print_str</span><span class=p>(</span><span class=o>&amp;</span><span class=n>str1</span><span class=p>[</span><span class=mi>2</span><span class=p>..</span><span class=mi>4</span><span class=p>]);</span><span class=w> </span><span class=c1>// ll
+</span><span class=c1></span><span class=w>    </span><span class=n>print_str</span><span class=p>(</span><span class=o>&amp;</span><span class=n>str1</span><span class=p>);</span><span class=w>       </span><span class=c1>// hello, Rust
+</span><span class=c1></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>print_str</span><span class=p>(</span><span class=n>s</span>: <span class=kp>&amp;</span><span class=kt>str</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;{}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>s</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h3 id=slice-varients>Slice Varients</h3><p>Slice comes with quite a few varients, which fits different use cases. Here I am
+listing a few:</p><p><strong>Referencing from the start of a Collection:</strong> when referencing from the very
+first element in a collection(i.e. 0), one could ommit it. Example: <code>&s[..4]</code>.</p><p>Likewise, when <strong>referencing upto the last element of a collection</strong>, can be
+omitted. <code>&s[3..]</code>.</p><p>Similarly, when <strong>referencing the whole collection(i.e. from start to end)</strong>,
+one can ommit ranges in range syntax. Example: <code>&s[..]</code></p><h3 id=real-world-example>Real-World Example</h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;Hello, world&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>word</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>get_first_word</span><span class=p>(</span><span class=o>&amp;</span><span class=n>s</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w>  </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;First word is &#39;{}&#39;&#34;</span><span class=p>,</span><span class=w> </span><span class=n>word</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>get_first_word</span><span class=p>(</span><span class=n>s</span>: <span class=kp>&amp;</span><span class=kt>str</span><span class=p>)</span><span class=w> </span>-&gt; <span class=kp>&amp;</span><span class=kt>str</span> <span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>str_bytes</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>s</span><span class=p>.</span><span class=n>as_bytes</span><span class=p>();</span><span class=w>
+</span><span class=w>
+</span><span class=w>  </span><span class=k>for</span><span class=w> </span><span class=p>(</span><span class=n>i</span><span class=p>,</span><span class=w> </span><span class=o>&amp;</span><span class=n>item</span><span class=p>)</span><span class=w> </span><span class=k>in</span><span class=w> </span><span class=n>str_bytes</span><span class=p>.</span><span class=n>iter</span><span class=p>().</span><span class=n>enumerate</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>if</span><span class=w> </span><span class=n>item</span><span class=w> </span><span class=o>==</span><span class=w> </span><span class=sc>b&#39; &#39;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=hl><span class=w>      </span><span class=k>return</span><span class=w> </span><span class=o>&amp;</span><span class=n>s</span><span class=p>[</span><span class=mi>0</span><span class=p>..</span><span class=n>i</span><span class=p>];</span><span class=w>
+</span></span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w>  </span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w>  </span><span class=k>return</span><span class=w> </span><span class=o>&amp;</span><span class=n>s</span><span class=p>[..];</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div></div></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

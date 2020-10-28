@@ -1,0 +1,40 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Using Github Profile Readme as 'Twitter-like' Feed</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">20 August, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/misc>misc</a>
+<span class="btn btn-extra-small">3 Mins</span></strong></p><div class=content><p><img src=https://dev-to-uploads.s3.amazonaws.com/i/lk63wznpuwhi5mzcgtkh.png alt="github profile readme"></p><p>I had this weird idea of using GitHub profile README as Twitter-like(well,
+Mastodon TBH) feed! There was no specific reason for doing so. I roughly
+thought it would boost my Mastodon profile(which is quite new at the moment)
+reach.</p><p>Another reason was to see how far I could go with limited tools (as Github
+ReadMe does not support JavaScript yet).</p><h2 id=generating-those-cards>Generating those Cards</h2><p>There was only one thing to figure out. How to create beautiful status cards
+with limited CSS! I knew I could use SVG and make whatever I want. But not
+all browser supports every feature of SVG yet. So, generating and
+storing SVG codes as images may not always work.</p><p>Since GitHub has introduced workflows(better be late than never), I chose to
+render SVG on a webpage and convert them to PNG, all in Server-side.</p><p>This way, I am assured that SVG would be rendered in the latest browser and
+converted PNG. But how do I do it?</p><p>There is a package called <a href=https://github.com/puppeteer/puppeteer>Puppeteer</a> in the NPM registry. This library gives
+the user a way to control Chromium/Firefox browser programmatically. This,
+by default, runs browser in headless mode. So, the user would be able to run it
+without a Desktop Environment.</p><h2 id=getting-toots-from-mastodon>Getting &lsquo;Toots&rsquo; from Mastodon</h2><p>If you don&rsquo;t know about Mastodon, you can think of it as Open-Source Twitter!
+<a href=https://joinmastodon.org/>Read more about Mastodon</a>.</p><p>Mastodon have an API to fetch public toots of any profile without using an
+API key. The response is in JSON, so parsing it was quite simple.</p><blockquote><p>Biggest surprise: If I add a Middot (·) somewhere inside SVG, loading image
+won&rsquo;t work! It throws an encoding error.</p></blockquote><h2 id=installing-font>Installing Font</h2><p>After pushing the initial version to GitHub, I noticed that the font I was
+using locally was not available in Github Workflows environment. So, I had to
+install them manually. Although I could simply add a font CDN using <code>style</code>
+tag within SVG, why not do it the Linux' way? :P</p><p>Installing font through command-line as just three simple steps.</p><ul><li>download font as a zip archive</li><li>extract font files to <code>~/.fonts</code> using <code>unzip</code></li><li>run <code>fc-cache -f -v</code> to manually update the font cache</li></ul><h2 id=writing-workflow-steps>Writing Workflow Steps</h2><p>I set-up the workflow to run in two events. First is, when I push something to
+the repository. And second is, on every hour (using a Cronjob). This way, I won&rsquo;t
+have to worry about updating ReadMe manually when I post a new toot.</p><ul><li>Setting up Node and NPM was done by an action called <a href=https://github.com/actions/setup-node><code>setup-node</code></a>.</li><li>Installing required font was done by a custom bash <a href=https://github.com/abdus/abdus/blob/57372e8c9321a3c0d1141098483a0c2a648315a6/.github/workflows/publish.yml#L21-L26>script I wrote</a>.</li><li>Finally, the <a href=https://github.com/abdus/abdus/blob/master/index.mjs>image creation script</a> was run using Node, commit the changes, and push them back to GitHub.</li></ul><p>And the work is done here!</p><h2 id=conslusion>Conslusion</h2><p>Sure, this thing was just for fun. But I learnt quite a few new things.</p><ul><li>I can&rsquo;t use Middot(or similar characters) within an SVG tag. Now I know
+what to look for when there&rsquo;s an encoding issue.</li><li>I understand how <code>action/checkout</code> works. This will help me write better
+workflows in future.</li><li>I learnt about some SVG tags. For example, <code>switch</code> and <code>foreignObject</code>.</li></ul><p>If you liked this, I would be happy if you <strong>star 🌟 <a href=https://github.com/abdus/abdus>this repository</a></strong>.
+You can follow me on Mastodon. My handle is <strong>@abdus@linuxrocks.online</strong>.</p><p><em>Also published in <a href=https://dev.to/abdus/using-github-profile-readme-as-twitter-like-feed-25k4>dev.to</a></em></p></div><a class="btn btn-small" href=https://abdus.net/tags/github>#github</a>
+<a class="btn btn-small" href=https://abdus.net/tags/mastodon>#mastodon</a></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

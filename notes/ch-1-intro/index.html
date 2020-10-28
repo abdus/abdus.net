@@ -1,0 +1,73 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Intro to Rust</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">19 April, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
+<span class="btn btn-extra-small">1 Mins</span></strong></p><div class=content><blockquote><p>Rust is a statically typed language backed by Mozilla. Rust have no built-in garbage-collection mechanism, yet it gives the maximum possible security to memory leaks.</p></blockquote><h2 id=1-the-fn-keyword>1. The <code>fn</code> Keyword</h2><p><code>fn</code> is a reserved keyword in Rust. It&rsquo;s used for declaring a function.</p><h2 id=2-the-main-function>2. The <code>main()</code> function</h2><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p><code>main()</code> function is the entry point of any Rust program. Execution of codes start from here. <code>main()</code> function nerither accepts parameter, nor returns anything.</p><h2 id=3-the-println-macro>3. The <code>println!</code> macro</h2><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;string&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p><code>println!()</code> macro is used to print a line to the console. Note the exclamation mark(!) at the end. This is what separates macros from regular functions.</p><h2 id=_ahead-of-time_-compilation><em>Ahead of Time</em> Compilation</h2><p>Rust is an <em>ahead-of-time</em> compiled language. This means, any user having a binary of Rust source-code, could run it even without having the Rust envirnment installed.</p><h2 id=rustfmt><code>rustfmt</code></h2><p><code>rustfmt</code> is a standardized Rust formatter. This formatter uses a predefined sets of rules to format source in order to maintain code consistency.</p><h2 id=example-codes>Example Codes</h2><ol><li><code>sources/hello-world.rs</code></li></ol></div></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

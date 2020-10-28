@@ -1,0 +1,111 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">NeoMutt: the Command Line Email Client</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">20 October, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/tools>tools</a>
+<span class="btn btn-extra-small">6 Mins</span></strong></p><div class=content><p>Mutt is a command-line email client which can connect to IMAP/POP3 and SMTP
+protocols as well as read emails from local directories.</p><p><img src=https://i.ibb.co/rFj4XY0/pipes.png alt=https://i.ibb.co/rFj4XY0/pipes.png></p><p>So, how do I stumbled upon it? I am trying to optimize my workflow. Having to
+click around a GUI-based email client isn&rsquo;t my thing. So, I look for
+alternatives.</p><p>Why Mutt? because Mutt features a keybinding which is similar to Vim. This
+means, a single set of shortcuts would work pretty much everywhere.
+Although I am using NeoMutt, things are pretty much the same in both.</p><blockquote><p>All mail clients suck. This one just sucks less.</p></blockquote><p>Here I am going to document how I set-up Mutt from Scratch!</p><h2 id=install>Install</h2><p>Mutt and NeoMutt are available in official repositories of most of the Linux
+distribution. I am using Arch Linux, so I just needed to run
+<code>sudo pacman -Syu neomutt</code>. You don&rsquo;t need to install additional packages to
+get Mutt working.</p><p>One more thing, I am using NeoMutt to get access to some extra features Mutt
+does not provide by default. There are not many differences in UI and
+functionalities.</p><h2 id=config-files>Config files</h2><p>Neomutt stores system-wide config inside <code>XDG_CONFIG_DIR</code>(which is essentially
+<code>/etc/xdg/neomutt</code>). For per-user configs, Neomutt uses one of the following
+locations:</p><ul><li><code>~/.muttrc</code></li><li><code>~/.mutt/muttrc</code></li><li><code>~/.config/mutt/muttrc</code></li><li><code>~/.neomuttrc</code></li><li><code>~/.neomutt/neomuttrc</code></li><li><code>~/.config/neomutt/muttrc</code></li></ul><p>A Mutt config file generally includes a couple of sections. Let&rsquo;s start with
+the essential ones.</p><h3 id=the-user-configs>The &lsquo;user&rsquo; configs</h3><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>set</span> <span class=nv>realname</span> <span class=o>=</span> <span class=s1>&#39;YOUR NAME&#39;</span>
+<span class=nb>set</span> <span class=nv>from</span> <span class=o>=</span> <span class=s1>&#39;YOUR EMAIL&#39;</span>
+<span class=nb>set</span> <span class=nv>use_from</span> <span class=o>=</span> yes
+<span class=nb>set</span> <span class=nv>signature</span> <span class=o>=</span> <span class=s2>&#34;~/.mutt/signature&#34;</span>
+</code></pre></div><p>First three fields are pretty much self-explanatory. The <code>signature</code> is a text
+file which contains my email signature and will be appended to emails I compose.</p><p>This <code>signature</code> field can store commands as well. For example: setting it to
+<code>set signature = "fortune |"</code> would print a random* message as my signature.
+Notice that pipe character(<code>|</code>) at the end. This tells Mutt that the value is
+a command, and not a file path.</p><hr><p>* for this to work, a package called <code>fortune-mod</code> is needed to be installed</p><hr><h3 id=imap-config>IMAP config</h3><p>IMAP/POP3 protocol is used to read remote mailboxes. The primary difference
+between IMAP and POP3 is: POP3 stores emails locally and delete them from
+server. IMAP is just the opposite. Following is how to configure IMAP:</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>set</span> <span class=nv>imap_user</span> <span class=o>=</span> <span class=s1>&#39;EMAIL ADDRESS&#39;</span>
+<span class=nb>set</span> <span class=nv>imap_authenticators</span><span class=o>=</span><span class=s2>&#34;oauthbearer&#34;</span>
+<span class=nb>set</span> <span class=nv>imap_keepalive</span> <span class=o>=</span> <span class=m>300</span>
+<span class=nb>set</span> <span class=nv>mail_check</span> <span class=o>=</span> <span class=m>120</span>
+<span class=nb>unset</span> imap_passive  <span class=c1># open a new IMAP connection automatically</span>
+<span class=nb>set</span> <span class=nv>imap_oauth_refresh_command</span><span class=o>=</span><span class=s2>&#34;OAUTH_HANDLER_COMMAND&#34;</span>
+</code></pre></div><p>Again, there are not many things to explain in this section (except for that
+<code>imap_oauth_refresh_command</code>). Since Gmail(GSuite) discourages creating <strong>an app
+passwords</strong> and allowing <strong>less secure apps</strong>, I am using a method called
+<strong>OAuth2</strong> to authenticate my address. More information on how to connect to
+Gmail with OAuth2 is <a href=https://github.com/google/gmail-oauth2-tools/wiki/OAuth2DotPyRunThrough>available here</a></p><p>If you are using password-based authentication, you can mention a field called
+<code>imap_password</code> and put your password as its value. Otherwise, leave it blank.
+Mutt would as you for a password every time you try to log in.</p><p>FYI, IMAP stands for Internet Message Access Protocol and POP3 stands for
+Post Office Protocol.</p><h3 id=smtp-config>SMTP config</h3><p>Simple Mail Transfer Protocol, a.k.a SMTP, is the protocol used for sending
+emails. (yes, we have two different protocols for sending and accessing email).</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>set</span> <span class=nv>smtp_url</span> <span class=o>=</span> <span class=s2>&#34;smtp://SMTP_URL:587&#34;</span>
+<span class=nb>set</span> <span class=nv>ssl_starttls</span> <span class=o>=</span> yes
+<span class=nb>set</span> <span class=nv>ssl_force_tls</span> <span class=o>=</span> yes
+<span class=nb>set</span> <span class=nv>smtp_authenticators</span><span class=o>=</span><span class=s2>&#34;oauthbearer&#34;</span>
+<span class=nb>set</span> <span class=nv>smtp_oauth_refresh_command</span><span class=o>=</span><span class=s2>&#34;OAUTH_HANDLER_COMMAND&#34;</span>
+</code></pre></div><p>Here, <code>ssl_force_tls</code> and <code>ssl_force_tls</code> are responsible for enforceing a TLS
+connection as it&rsquo;s more secure.</p><h3 id=sidebar>Sidebar</h3><p>I have a sidebar for accessing all my GMail folders easily. You don&rsquo;t have to
+enable one if you don&rsquo;t want to. Just skip the following config block.</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>set</span> sidebar_visible
+<span class=nb>set</span> <span class=nv>sidebar_format</span> <span class=o>=</span> <span class=s2>&#34;%B%?F? [%F]?%* %?N?%N/?%S&#34;</span>
+<span class=nb>set</span> mail_check_stats
+<span class=nb>bind</span> index,pager B sidebar-toggle-visible
+</code></pre></div><p>Setting <code>sidebar_visible</code> would render the sidebar window(or whatever you call
+it).</p><p><code>mail_check_stats</code> basically fetches email stats (example: read/unread etc).</p><h3 id=remote-folders>Remote Folders</h3><p>Note that <code>mail_check_stats</code>. This is extremely important if you are enabling
+sidebar or want to access remote folders within Mutt. I wasted a couple of hours
+to find out why Mutt was unable to find my remote folders :/
+Remote mailboxes can be controlled using <code>mailboxes</code> as well.</p><p>And the last line is a keybinding responsible for toggling view of the sidebar.</p><h2 id=signature>Signature</h2><p>With Mutt, you can define a custom signature which would be appended to all new
+emails. To add a new signature, open config and add a new line:
+<code>set signature = "~/.mutt/signature"</code>. Here, <code>.mutt/signature</code> is the file I am
+using to store my plaintext signature which looks something like this:</p><div class=highlight><pre class=chroma><code class=language-txt data-lang=txt>Regards,
+Abdus
+
+public key: https://abdus.xyz/keys
+fingerprint: C8FF EB39 66E3 7BA3 DFD8
+</code></pre></div><p>Of course, it could be any arbitrary text file(as long as the file is readable by
+current user)</p><h2 id=colors>Colors</h2><p>Mutt comes with a dull colorscheme. That&rsquo;s not even a colorscheme, just white
+text on a black background. Luckily, the user can modify it to their liking.</p><p>I would recommend choosing a pre-written colorscheme for your Mutt. Or if you
+choose to write your own, feel free to read up documentations on Mutt website :)
+<a href=https://github.com/neomutt/neomutt/issues/340>See this link</a>.</p><p>Sidenote: Colors could be directly added into <code>muttrc</code>, but it is a good
+practice to keep colorscheme config in a separate file and then import them into
+<code>muttrc</code>.</p><p>If you ask me for colorscheme suggestions, I would gladly suggest Dracula and
+Gruvbox. They are two best colorscheme for Mutt(or for anything, in general) out
+there.</p><ul><li><a href=https://www.sthu.org/code/codesnippets/mutt-gruvbox.html>Gruvbox</a></li><li><a href=https://github.com/dracula/mutt>Dracula</a></li></ul><h2 id=keybindings>Keybindings</h2><p>I think keybinding is what makes a command-line application great! Mutt, out of
+the box, features a Vim-like keybinding which already gives us a reason to
+like Mutt. <code>hjkl</code> is <code>&lt;3</code>!</p><p>Apart from default keybindings, the user could add custom bindings as they like.
+It&rsquo;s very simple to add a new key-binding. <code>bind</code> is the keyword used to define
+a new binding.</p><pre><code class=language-muttrc data-lang=muttrc># keybinding for toggling sidebar. honestly, this is the only
+# custom binding I have right now.
+bind index,pager B sidebar-toggle-visible
+</code></pre><p>It&rsquo;s possible to define keybindings right inside <code>muttrc</code>. But you should move
+them to a separate file when they grow bigger.</p><h2 id=rendering-html-emails>Rendering HTML Emails</h2><p>By default, mutt is not capable of showing HTML emails. It is a plaintext email
+client. So, rendering HTML emails won&rsquo;t make much sense.</p><p>However, HTML emails can be rendered using third-party clients, for example:
+<code>lynx</code>, <code>links</code> or any other software which renders HTML. A browser would also
+work.</p><p>To configure mutt to show HTML emails, create a file called <code>.mailcap</code> in home
+directory with following lines in it:</p><pre><code class=language-mailcap data-lang=mailcap># brave is my default web-browser
+text/html;                      brave %s; nametemplate=%s.html;
+# links is a command-line web-browser
+text/html;                      links -dump %s; nametemplate=%s.html; copiousoutput
+</code></pre><p>Then, in <code>muttrc</code>, add this line: <code>auto_view text/html</code>. Now, Mutt will
+use <code>.mailcap</code> file to render HTML attachments using appropriate programs.</p><h2 id=composing-an-email>Composing an Email</h2><p>To compose an email, press <code>m</code>. Fill-up <code>To:</code> address, <code>Subject:</code> line and other
+necessary pieces of information. Once you do it, Mutt will drop you in the
+editor you&rsquo;ve chosen to write the email. If you have set a signature before,
+you will see it here.</p><p>When done writing the mail, save and exit from the editor. Mut will allow you to
+do final changes/adjustments. In this window, press <code>y</code> to send the email.</p><p>To change the default editor for composing an email, add/change this line in <code>muttrc</code>:
+<code>set editor=whatever</code>.</p><h2 id=encryptingsigning-messages>Encrypting/Signing Messages</h2><p>Signing emails with a public key comes built into Mutt. There&rsquo;s not much set
+up to be done, except for you need a pair of PGP keys
+(I won&rsquo;t cover how to generate a PGP key-pair. Google it up).</p><p>Once you are done composing email, press <code>P</code>(essentially stands for PGP). You
+will see available PGP actions at the bottom of the window. Just use whatever you
+need.</p><p>That&rsquo;s it!</p></div><a class="btn btn-small" href=https://abdus.net/tags/mutt>#mutt</a>
+<a class="btn btn-small" href=https://abdus.net/tags/email>#email</a></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

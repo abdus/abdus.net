@@ -1,0 +1,181 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Package Management</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">9 June, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
+<span class="btn btn-extra-small">4 Mins</span></strong></p><div class=content><p>Package management comes into play when a project gets bigger and bigger.
+Dividing codes into multiple files and grouping them make a project more
+maintainable.</p><p>A package can contain multiple binary crate and optionally one library crate.</p><p>Additionally, a package can help encapsulate codes that are not meant for
+others to see. It can also enable scoping.</p><p>Rust&rsquo;s Module System:</p><ul><li>Packages: Cargo feature that let user build, test and share crates</li><li>Crates: A tree of modules that produces a library or executable</li><li>Modules and <code>use</code>: Let user contron the organization, scope and encapsulation.</li><li>Paths: A way of naming an item, such as <code>struct</code>, function or module</li></ul><h2 id=understanding-cargo-new-project-name>Understanding <code>cargo new project-name</code></h2><p>When user runs <code>cargo new project-name</code>, Cargo generates a couple of files
+inside <code>project-name</code> directory. They are: config.toml and <code>src/main.rs</code>.</p><p><code>config.toml</code> is the configuration file. This file contains dependancies and
+other project related informations.</p><p><code>src/main.rs</code> is the entry point for the Rust compiler. One does not have to
+mention entry point in config file, as Rust treats <code>main.rs</code> as entry point
+by convention. Similarly, <code>src/lib.rs</code> means the project contains a library
+crate with the same name as package. There can be any number of binaries
+inside <code>bin/</code> directory.</p><h2 id=the-mod>The <code>mod</code></h2><p><code>mod</code> token stands for module. It can be used to declare a module. A module
+can host multiple modules nested inside it. Other than modules, it can
+hold <code>struct</code>, functions etc.</p><p>An example:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>mod</span> <span class=nn>front_of_the_house</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>mod</span> <span class=nn>hosting</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=k>fn</span> <span class=nf>add_to_wishlist</span><span class=p>()</span><span class=w> </span><span class=p>{};</span><span class=w>
+</span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=paths>Paths</h2><p>Rust find the codes we want to use by path. A path can be relative or absolute.
+Absolute path starts with crate name or literal <code>crate</code>.</p><p>A relative path, on the other hand, starts from the current module and uses
+<code>self</code>, <code>super</code> or an indetifier in current module.</p><p>Both absolute and relative paths are followed by one or more indetifier
+separated by <code>::</code>.</p><p>Example:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>pub</span><span class=w> </span><span class=k>fn</span> <span class=nf>call_them</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=c1>// absolute path
+</span><span class=c1></span><span class=w>    </span><span class=k>crate</span>::<span class=n>front_of_the_house</span>::<span class=n>hosting</span>::<span class=n>add_to_wishlist</span><span class=p>();</span><span class=w>
+</span><span class=w>
+</span><span class=w>    </span><span class=c1>// relative path
+</span><span class=c1></span><span class=w>    </span><span class=n>front_of_the_house</span>::<span class=n>hosting</span>::<span class=n>add_to_wishlist</span><span class=p>();</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=exposing-paths-using-pub>Exposing Paths using <code>pub</code></h2><p>By default, a path is always private. In order to make it public, <code>pub</code> keyword
+must be prepend.</p><p>Example:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>mod</span> <span class=nn>front_of_the_house</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>mod</span> <span class=nn>hosting</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=k>fn</span> <span class=nf>add_to_wishlist</span><span class=p>()</span><span class=w> </span><span class=p>{};</span><span class=w>
+</span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=relative-path-using-super>Relative path using <code>super</code></h2><p><code>super</code> keyword is similar to UNIX <code>..</code> operator. It refers to parent module.</p><h2 id=making-enum-and-struct-public>Making <code>enum</code> and <code>struct</code> public</h2><p>Prepeding <code>pub</code> keyword to a <code>struct</code> or <code>enum</code> would make it public.
+However, an extra step would require for making <code>struct</code> field public.
+One need to prepend <code>pub</code> keyword to any field that are supposed to be public.</p><p>Example:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>mod</span> <span class=nn>back_of_house</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>pub</span><span class=w> </span><span class=k>struct</span> <span class=nc>Breakfast</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=k>pub</span><span class=w> </span><span class=n>toast</span>: <span class=nb>String</span><span class=p>,</span><span class=w>
+</span><span class=w>        </span><span class=n>seasonal_fruit</span>: <span class=nb>String</span><span class=p>,</span><span class=w>
+</span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w>    </span><span class=k>impl</span><span class=w> </span><span class=n>Breakfast</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=k>pub</span><span class=w> </span><span class=k>fn</span> <span class=nf>summer</span><span class=p>(</span><span class=n>toast</span>: <span class=kp>&amp;</span><span class=kt>str</span><span class=p>)</span><span class=w> </span>-&gt; <span class=nc>Breakfast</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>            </span><span class=n>Breakfast</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>                </span><span class=n>toast</span>: <span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=n>toast</span><span class=p>),</span><span class=w>
+</span><span class=w>                </span><span class=n>seasonal_fruit</span>: <span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;peaches&#34;</span><span class=p>),</span><span class=w>
+</span><span class=w>            </span><span class=p>}</span><span class=w>
+</span><span class=w>        </span><span class=p>}</span><span class=w>
+</span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>pub</span><span class=w> </span><span class=k>fn</span> <span class=nf>eat_at_restaurant</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=kd>let</span><span class=w> </span><span class=k>mut</span><span class=w> </span><span class=n>meal</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>back_of_house</span>::<span class=n>Breakfast</span>::<span class=n>summer</span><span class=p>(</span><span class=s>&#34;Rye&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w>    </span><span class=n>meal</span><span class=p>.</span><span class=n>toast</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;Wheat&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>    </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;I&#39;d like {} toast please&#34;</span><span class=p>,</span><span class=w> </span><span class=n>meal</span><span class=p>.</span><span class=n>toast</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=the-use-keyword>The <code>use</code> Keyword</h2><p><code>use</code> keyword brings function, <code>struct</code> etc into the scope where it is being
+called from. Example:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>mod</span> <span class=nn>front_of_house</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=k>pub</span><span class=w> </span><span class=k>mod</span> <span class=nn>hosting</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=k>pub</span><span class=w> </span><span class=k>fn</span> <span class=nf>add_to_waitlist</span><span class=p>()</span><span class=w> </span><span class=p>{}</span><span class=w>
+</span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>front_of_the_house</span>::<span class=n>hosting</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=n>hosting</span>::<span class=n>add_to_waitlist</span><span class=p>();</span><span class=w>   </span><span class=c1>// this will refer to module `front_of_the_house`
+</span></code></pre></div><p>It is wise to call parent(or a location) which clearly explains where the said
+variable is defined, instead of just the associated function.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>front_of_the_house</span>::<span class=n>hosting</span>::<span class=n>add_to_waitlist</span><span class=p>;</span><span class=w> </span><span class=c1>// not good
+</span><span class=c1></span><span class=k>use</span><span class=w> </span><span class=n>front_of_the_house</span>::<span class=n>hosting</span><span class=p>;</span><span class=w> </span><span class=c1>// good. now we know where it is defined
+</span></code></pre></div><p>Apart from that, bringing same two or more types with same name into scope
+requires to call their parent modules.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>fmt</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>function1</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>fmt</span>::<span class=nb>Result</span><span class=w> </span><span class=p>{}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>function2</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>io</span>::<span class=n>IoResult</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{}</span><span class=w>
+</span></code></pre></div><h2 id=the-as-keyword>The <code>as</code> keyword</h2><p><code>as</code> keyword can rename a module so that things does not conflict with each
+other.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>fmt</span>::<span class=nb>Result</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span>::<span class=nb>Result</span><span class=w> </span><span class=k>as</span><span class=w> </span><span class=n>IoResult</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>function1</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nb>Result</span> <span class=p>{}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>function2</span><span class=p>()</span><span class=w> </span>-&gt; <span class=nc>IoResult</span><span class=o>&lt;</span><span class=p>()</span><span class=o>&gt;</span><span class=w> </span><span class=p>{}</span><span class=w>
+</span></code></pre></div><h2 id=re-exporting-an-imported-name>Re-exporting an imported name</h2><p>When bringing in a name into scope using <code>use</code>, the name is private to current
+scope. This name could be re-exported for external codes to call it.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>pub</span><span class=w> </span><span class=k>use</span><span class=w> </span><span class=k>crate</span>::<span class=n>front_of_the_house</span>::<span class=n>hosting</span><span class=p>;</span><span class=w>
+</span></code></pre></div><p>In above example, anything that is attached to <code>hosting</code> that is public,
+would become available for external codes to call.</p><h2 id=using-external-packages>Using external packages</h2><p>In order to use an external crate from crates.io, one needs to define it in
+<code>Cargo.toml</code> file. When building the project, <code>cargo</code> automatically downloads
+all mentioned crates from <code>Cargo.toml</code> and adds them to project.</p><div class=highlight><pre class=chroma><code class=language-toml data-lang=toml><span class=err>//</span> <span class=nx>Cargo</span><span class=p>.</span><span class=nx>toml</span>
+<span class=p>[</span><span class=nx>dependencies</span><span class=p>]</span>
+<span class=nx>rand</span> <span class=p>=</span> <span class=s2>&#34;0.5.5&#34;</span>
+</code></pre></div><p>Calling <code>rand</code> in code:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>rand</span>::<span class=n>Rng</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>number</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>rand</span>::<span class=n>thread_rng</span><span class=p>().</span><span class=n>gen_range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>101</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=using-nested-paths>Using nested paths</h2><p>Different varient of <code>use</code> keyword can be used to reduce <code>use</code> list.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=c1>// SAME PREFIX
+</span><span class=c1></span><span class=w>
+</span><span class=w></span><span class=c1>// this ...
+</span><span class=c1></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>cmp</span>::<span class=n>Ordering</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=c1>// can be written as ...
+</span><span class=c1></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=p>{</span><span class=n>cmp</span>::<span class=n>Ordering</span><span class=p>,</span><span class=w> </span><span class=n>io</span><span class=p>};</span><span class=w>
+</span><span class=w>
+</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=c1>// ELIMINATE COMMON PART
+</span><span class=c1></span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span>::<span class=n>Write</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=c1>// to
+</span><span class=c1></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span>::<span class=p>{</span><span class=bp>self</span><span class=p>,</span><span class=w> </span><span class=n>Write</span><span class=p>};</span><span class=w>
+</span></code></pre></div><h2 id=glob-operator->Glob Operator (<code>*</code>)</h2><p>Glob operator bring every public names into scope.
+Example: <code>use std::collections::*;</code></p></div><a class="btn btn-small" href=https://abdus.net/tags/package>#package</a></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

@@ -1,0 +1,136 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Guessing Game</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">20 April, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
+<span class="btn btn-extra-small">3 Mins</span></strong></p><div class=content><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>rand</span>::<span class=n>Rng</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>cmp</span>::<span class=n>Ordering</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span><span class=p>;</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Guess the Number!!&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w>    </span><span class=k>loop</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>        </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Please input your guess&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=k>mut</span><span class=w> </span><span class=n>guess</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>new</span><span class=p>();</span><span class=w>
+</span><span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=n>secret_number</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>rand</span>::<span class=n>thread_rng</span><span class=p>().</span><span class=n>gen_range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>200</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w>        </span><span class=n>io</span>::<span class=n>stdin</span><span class=p>()</span><span class=w>
+</span><span class=w>            </span><span class=p>.</span><span class=n>read_line</span><span class=p>(</span><span class=o>&amp;</span><span class=k>mut</span><span class=w> </span><span class=n>guess</span><span class=p>)</span><span class=w>
+</span><span class=w>            </span><span class=p>.</span><span class=n>expect</span><span class=p>(</span><span class=s>&#34;Faild to Read Line&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w>        </span><span class=kd>let</span><span class=w> </span><span class=n>guess</span>: <span class=kt>u32</span> <span class=o>=</span><span class=w> </span><span class=k>match</span><span class=w> </span><span class=n>guess</span><span class=p>.</span><span class=n>trim</span><span class=p>().</span><span class=n>parse</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>            </span><span class=nb>Ok</span><span class=p>(</span><span class=n>num</span><span class=p>)</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>num</span><span class=p>,</span><span class=w>
+</span><span class=w>            </span><span class=nb>Err</span><span class=p>(</span><span class=n>_</span><span class=p>)</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>                </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Invalid Input.&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>                </span><span class=k>continue</span><span class=p>;</span><span class=w>
+</span><span class=w>            </span><span class=p>}</span><span class=w>
+</span><span class=w>        </span><span class=p>};</span><span class=w>
+</span><span class=w>
+</span><span class=w>        </span><span class=k>match</span><span class=w> </span><span class=n>guess</span><span class=p>.</span><span class=n>cmp</span><span class=p>(</span><span class=o>&amp;</span><span class=n>secret_number</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>            </span><span class=n>Ordering</span>::<span class=n>Less</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Too Small!&#34;</span><span class=p>),</span><span class=w>
+</span><span class=w>            </span><span class=n>Ordering</span>::<span class=n>Greater</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Too Big!&#34;</span><span class=p>),</span><span class=w>
+</span><span class=w>            </span><span class=n>Ordering</span>::<span class=n>Equal</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>                </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;You win!&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>                </span><span class=k>break</span><span class=p>;</span><span class=w>
+</span><span class=w>            </span><span class=p>}</span><span class=w>
+</span><span class=w>        </span><span class=p>}</span><span class=w>
+</span><span class=w>    </span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><h2 id=explanation>Explanation</h2><h3 id=the-use-statement>The <code>use</code> statement</h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>use</span><span class=w> </span><span class=n>rand</span>::<span class=n>Rng</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>cmp</span>::<span class=n>Ordering</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=k>use</span><span class=w> </span><span class=n>std</span>::<span class=n>io</span><span class=p>;</span><span class=w>
+</span></code></pre></div><p>Rust only brings a few types into global scope, by default. The rest of the types a program needs, should be brought to scope by using the <code>use</code> keyword.</p><p>Here, <code>rand</code> is an external package, <code>Ordering</code> is an <code>enum</code> for comparing two variables of same type. <code>Ordering</code> provides <code>Ordering:Less</code>, <code>Ordering:Greater</code> and <code>Ordering:Equal</code>. <code>io</code> provides methods required for input and output.</p><h3 id=loop>Loop</h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>loop</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p><code>loop</code> is keyword for creating infinite loops. In the above program, it allows user to keep-on guessing until they make the correct choice.</p><h3 id=let-mut-and-stringnew><code>let</code>, <code>mut</code> and <code>String::new()</code></h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=kd>let</span><span class=w> </span><span class=k>mut</span><span class=w> </span><span class=n>guess</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>new</span><span class=p>();</span><span class=w>
+</span></code></pre></div><p><code>let</code> is a keyword for <strong>defining variables</strong> and assign a value to it. By default, Rust variables are immutable. They can&rsquo;t be changed once declared. The <code>mut</code> keyword is used for <strong>mutating a variable</strong> so that it could be modified in a later stage.</p><p>The <code>String::new()</code> creates an empty value of type <code>string</code>. The <strong><code>new()</code> after <code>::</code> is known as an associated function</strong> of the type <code>String</code>.</p><blockquote><p>An associated function is implemented on a type, rather than on a particular instance of a Type. Some languages call this a static method.</p></blockquote><h3 id=getting-a-random-number>Getting a Random Number</h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=kd>let</span><span class=w> </span><span class=n>secret_number</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>rand</span>::<span class=n>thread_rng</span><span class=p>().</span><span class=n>gen_range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>200</span><span class=p>);</span><span class=w>
+</span></code></pre></div><p>Here, a random number is generated using an external package called <code>rand</code>. It is first imported using <code>use rand::Rng;</code>. <code>rand::thread_rng</code> is the perticular generator used in this example. This generator is local to the current thread and seeded by the Operating System.</p><p>Method <code>gen_range()</code> generates a random number between two given parameter.</p><h3 id=adding-an-external-package>Adding an external package</h3><p>In order to add an external package, one needs add the package name and version number in <code>Cargo.toml</code> file. Cargo follows the specifications set by <code>SemVer</code>.
+match guess.cmp(&secret_number) {
+Ordering::Less => println!(&ldquo;Too Small!"),
+Ordering::Greater => println!(&ldquo;Too Big!"),
+Ordering::Equal => {
+println!(&ldquo;You win!");
+break;
+}
+}</p><h3 id=getting-input-from-stdin>Getting input from <code>stdin</code></h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=n>io</span>::<span class=n>stdin</span><span class=p>()</span><span class=w>
+</span><span class=w>  </span><span class=p>.</span><span class=n>read_line</span><span class=p>(</span><span class=o>&amp;</span><span class=k>mut</span><span class=w> </span><span class=n>guess</span><span class=p>)</span><span class=w>
+</span><span class=w>  </span><span class=p>.</span><span class=n>expect</span><span class=p>(</span><span class=s>&#34;Faild to Read Line&#34;</span><span class=p>);</span><span class=w>
+</span></code></pre></div><p><code>read_line()</code> method gets a string from <code>stdin</code>. The <code>expect()</code> method is used to handle possible errors.</p><h3 id=mutating-parameters>Mutating Parameters</h3><p>By default, parameters in Rust does not mutate. If the mutation is needed, it has to be done using <code>mut</code> keyword. For rxample, <code>someFn(&mut someVar)</code>. Here, <code>someVar</code> is passed by reference.</p><h3 id=variable-shadowing-and-error-handling>Variable Shadowing and Error Handling</h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=kd>let</span><span class=w> </span><span class=n>guess</span>: <span class=kt>u32</span> <span class=o>=</span><span class=w> </span><span class=k>match</span><span class=w> </span><span class=n>guess</span><span class=p>.</span><span class=n>trim</span><span class=p>().</span><span class=n>parse</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=nb>Ok</span><span class=p>(</span><span class=n>num</span><span class=p>)</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>num</span><span class=p>,</span><span class=w>
+</span><span class=w>  </span><span class=nb>Err</span><span class=p>(</span><span class=n>_</span><span class=p>)</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Invalid Input.&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>    </span><span class=k>continue</span><span class=p>;</span><span class=w>
+</span><span class=w>  </span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=p>};</span><span class=w>
+</span></code></pre></div><p>Variable Shadowing is <strong>the process of redeclaring a already defined variable with a new type</strong>. This is a unique thing allowed in Rust! Shadowing helps a programmer to save-up memory space by reusing a variable.</p><p><strong><code>u32</code></strong> (unsigned 32 bit Integer) is the data type the string is to be converted to.</p><p><code>trim()</code> method (of type String) on <code>guess</code> variable removes extra characters like newline, trailing space etc from a String.</p><p><code>parse()</code> method tries to parse a number from given string. It could result in either of two values: <code>Ok</code> and <code>Err</code>.</p><p><code>match</code> is a keyword which is used to compare the value of <code>parse()</code> method with a given <code>enum</code>. So, if the <code>parse()</code> method returns <code>Ok</code>, <code>Ok(num) => num,</code> block would be executed. Otherwise, <code>Err(_) => { println!("Invalid Input."); continue; }</code> block would be executed.</p><h3 id=less-greater-equal><code>Less</code>, <code>Greater</code>, <code>Equal</code></h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>match</span><span class=w> </span><span class=n>guess</span><span class=p>.</span><span class=n>cmp</span><span class=p>(</span><span class=o>&amp;</span><span class=n>secret_number</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=n>Ordering</span>::<span class=n>Less</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Too Small!&#34;</span><span class=p>),</span><span class=w>
+</span><span class=w>  </span><span class=n>Ordering</span>::<span class=n>Greater</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;Too Big!&#34;</span><span class=p>),</span><span class=w>
+</span><span class=w>  </span><span class=n>Ordering</span>::<span class=n>Equal</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>    </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;You win!&#34;</span><span class=p>);</span><span class=w>
+</span><span class=w>    </span><span class=k>break</span><span class=p>;</span><span class=w>
+</span><span class=w>  </span><span class=p>}</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p><code>Ordering</code> is provided by <code>std::cmp::Ordering</code>. It is used to compare the results of two number. This is used along with <code>.cmp()</code> method which returns an <code>enum</code>.</p></div><a class="btn btn-small" href=https://abdus.net/tags/game>#game</a></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

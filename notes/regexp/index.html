@@ -1,0 +1,73 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Regular Expression</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">28 August, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/misc>misc</a>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><p>A regular expression is a <strong>group of characters or symbols</strong> which is used
+to find a <strong>specific pattern in a text</strong>.</p><p><img src=https://raw.githubusercontent.com/ziishaned/learn-regex/master/img/regexp-en.png alt=regex></p><ul><li>a string literal is the simplest possible regular expression. <code>"str"</code> would
+match <em><strong>str(<code>s</code> followed by <code>t</code>, followed by <code>r</code>)</strong></em>.</li><li>regular expression are generally <strong>case sensitive</strong></li></ul><h2 id=meta-characters>Meta Characters</h2><ul><li>special characters. does not mean anything on their own.</li><li>some meta character have different meaning when written inside square bracket</li></ul><table><thead><tr><th style=text-align:left>meta char</th><th style=text-align:left>desc</th></tr></thead><tbody><tr><td style=text-align:left><code>.</code></td><td style=text-align:left>match any single character except for linebreak</td></tr><tr><td style=text-align:left><code>[]</code></td><td style=text-align:left>char class. matches any char contained between the brackets</td></tr><tr><td style=text-align:left><code>[^ ]</code></td><td style=text-align:left>negated char class. matches any character <em>NOT</em> contained between the brackets</td></tr><tr><td style=text-align:left><code>*</code></td><td style=text-align:left>matches 0 or more repetitions of the preceeding symbol</td></tr><tr><td style=text-align:left><code>+</code></td><td style=text-align:left>match one or more repetitions of preceeding symbol</td></tr><tr><td style=text-align:left><code>?</code></td><td style=text-align:left>makes the preceeding symbol optional</td></tr><tr><td style=text-align:left><code>{n,m}</code></td><td style=text-align:left>match at least <code>n</code> but not more than <code>m</code> repetitions of preceeding symbol</td></tr><tr><td style=text-align:left><code>(abc)</code></td><td style=text-align:left>char group</td></tr><tr><td style=text-align:left><code>|</code></td><td style=text-align:left>alteration. matches either the chars before or the chars after the symbol</td></tr><tr><td style=text-align:left><code>\</code></td><td style=text-align:left>escapes character</td></tr><tr><td style=text-align:left><code>^</code></td><td style=text-align:left>beginning of the input</td></tr><tr><td style=text-align:left><code>$</code></td><td style=text-align:left>end of the input</td></tr></tbody></table><h3 id=things-to-remember>Things to Remember</h3><p>set <strong>character range</strong> by using <strong>hyphen</strong> inside character class.
+Example: <code>/[a-z0-9]/</code>.</p><p>a <strong>period inside a char set</strong> means a literal period</p><p><strong>the <code>*</code> (star) with a <code>.</code> (dot)</strong> can be used to <strong>match any string of
+characters</strong>. Example: <code>.*</code></p><p>braces(also called <strong>quantifiers</strong>) are used to specify the <strong>number of times</strong>
+a character or a group of character <strong>can be repeated</strong>.
+Examples:</p><ul><li><code>[0-9]{3}</code> - matches <em><strong>exactly 3 digits</strong></em>.</li><li><code>[a-z]{2,}</code> - matches <em><strong>between 2 and unlimited</strong></em> times</li><li><code>[A-Z]{2, 5}</code> - matches between <em><strong>3 and 5 times</strong></em></li></ul></div></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

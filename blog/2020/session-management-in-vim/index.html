@@ -1,0 +1,107 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Session Management in Vim</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">26 October, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/tools>tools</a>
+<span class="btn btn-extra-small">5 Mins</span></strong></p><div class=content><p>If you ask me about the most underrated feature in Vim, my answer would be
+&lsquo;Session Management&rsquo; straightaway! Just like any other &ldquo;modern&rdquo; editors, Vim
+does support sessions.</p><p><img src=https://i.ibb.co/HYtd6Bf/pipes.png alt=pipes></p><h2 id=what-is-a-session>What is a Session</h2><p>Before I go in-depth, let me explain what exactly is a Session in Vim. Simply
+put(from <code>:help session</code>): A Session keeps the Views for all windows, plus the global settings.</p><p>An example of session could be: If I have opened a project and worked for an
+hour, and then closed it. My Vim session would be one hour long.</p><p>Sessions in Vim are not persistent by default. One has to make it persistent.
+Most people do not know about it because they probably have never felt the
+need for it.</p><p>I was one of those people who didn&rsquo;t feel the need for storing sessions, until
+recently. And I am not ashamed of it. It just happens&mldr; mostly because, we
+don&rsquo;t need it <em>yet</em>.</p><h2 id=importance-of-session>Importance of Session</h2><p>To answer the question &lsquo;How a persistent Session is Useful&rsquo;, let&rsquo;s find out what
+we lack without it.</p><ol><li><strong>Time</strong>. Yes! Imagine, you are working on a project, and for some reason,
+you closed Vim. So when you open it again, you gotta recreate those perfectly
+sized windows, open files of reconfigure options etc.</li><li><strong>Context</strong>. It&rsquo;s not easy to remember which file you were editing, the last
+time you have worked on a project.</li></ol><p>Now, what if I say that you could boot into Vim without losing any of the
+previous windows, tabs etc? not even the cursor location. That would be
+great, is not it?</p><p>That&rsquo;s where persistent session comes into action. It enables Vim to load
+the last session, much like what we see in editors like Visual Studio Code.</p><h2 id=storing-sessions>Storing Sessions</h2><p>There are multiple techniques one may use to handle Sessions. I will, however,
+talk about the one I use.</p><p>First, I let Vim look for any existing session files. If one exists for the
+current session, Vim would update it automatically when I close Vim. The Reason
+I don&rsquo;t let Vim save Sessions for which no session file exists, because that
+makes me counter-productive. For example, I needed to edit a config file, say,
+<code>.vimrc</code> from my <code>$HOME</code> directory. Had I enabled auto-create session file, a
+new session file for <code>$HOME</code> directory will be created, which I obviously don&rsquo;t
+want. That session does not make any sense.</p><p>So, if a session file is not created automatically, how do I create it then?
+Well, it&rsquo;s really simple. I defined a command for creating new Sessions, called
+<code>SessCreate</code> using <a href=http://vimdoc.sourceforge.net/htmldoc/usr_41.html>Vim Language</a>.
+Now, I can simply call this command from inside Vim whenever I need it.</p><p>Let me show you how I did it.</p><h3 id=snippet>Snippet</h3><div class=highlight><pre class=chroma><code class=language-vim data-lang=vim><span class=nx>fu</span><span class=p>!</span> <span class=nx>SessionCreate</span><span class=p>()</span><span class=err>
+</span><span class=err></span>  <span class=k>if</span> <span class=p>!</span><span class=nx>isdirectory</span><span class=p>(</span><span class=nx>expand</span><span class=p>(</span><span class=s2>&#34;~/.vim/sessions&#34;</span><span class=p>))</span><span class=err>
+</span><span class=err></span>    <span class=nx>execute</span> <span class=s2>&#34;call mkdir(expand(&#39;~/.vim/sessions&#39;, &#39;p&#39;))&#34;</span><span class=err>
+</span><span class=err></span>  <span class=k>endif</span><span class=err>
+</span><span class=err></span>  <span class=nx>execute</span> <span class=s1>&#39;mksession ~/.vim/sessions/&#39;</span> . <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=err>
+</span><span class=err></span><span class=k>endfunction</span><span class=err>
+</span><span class=err>
+</span><span class=err></span><span class=nx>command</span> <span class=nx>SessCreate</span> <span class=nx>call</span> <span class=nx>SessionCreate</span><span class=p>()</span><span class=err>
+</span></code></pre></div><h3 id=explanation>Explanation:</h3><div class=highlight><pre class=chroma><code class=language-vim data-lang=vim><span class=k>if</span> <span class=p>!</span><span class=nx>isdirectory</span><span class=p>(</span><span class=nx>expand</span><span class=p>(</span><span class=s2>&#34;~/.vim/sessions&#34;</span><span class=p>))</span><span class=err>
+</span><span class=err></span>  <span class=nx>execute</span> <span class=s2>&#34;call mkdir(expand(&#39;~/.vim/sessions&#39;, &#39;p&#39;))&#34;</span><span class=err>
+</span><span class=err></span><span class=k>endif</span><span class=err>
+</span></code></pre></div><p>Check if a directory <code>$HOME/.vim.sessions</code> exist. If not, create it with
+<code>execute "call mkdir(expand('~/.vim/sessions', 'p'))"</code>. This is the directory
+where sessions are stored. An alternate location for storing session is the
+project directory itself. But that is not something I want to use, as not
+everyone uses Vim. So, this would be an added bloat for them.</p><p><code>call</code> in Vim Script is uses to call a function. <code>mkdir()</code> is used to create a
+new directory. <code>p</code> is a flag that can be passed to <code>mkdir()</code> so that it creates
+parent directories as and when necessary. Lastly, <code>expand()</code> is used to expand
+any Shell expandables. Here, it converts <code>~</code> to <code>/home/username</code>.</p><div class=highlight><pre class=chroma><code class=language-vim data-lang=vim><span class=nx>execute</span> <span class=s1>&#39;mksession ~/.vim/sessions/&#39;</span> . <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=err>
+</span></code></pre></div><p><code>mksession</code> is a built-in command for creating session from current Vim state.
+It saves the created session in <code>~/.vim/sessions/DIR_NAME.vim</code>. Here, the
+<code>DIR_NAME</code> is the working directory where Vim is opened. So, session for
+<code>~/Projects/github/awesome-vim</code> would be saved into
+<code>~/.vim/sessions/awesome-vim.vim</code>.</p><h3 id=saving-a-session-in-existing-session-file>Saving a Session in Existing Session File</h3><p>Now, it&rsquo;s time for some automation. Check out the following code snippet:</p><div class=highlight><pre class=chroma><code class=language-vim data-lang=vim><span class=nx>fu</span><span class=p>!</span> <span class=nx>SessionSave</span><span class=p>()</span><span class=err>
+</span><span class=err></span>  <span class=k>if</span> <span class=nx>filewritable</span><span class=p>(</span><span class=nx>expand</span><span class=p>(</span><span class=s1>&#39;~/.vim/sessions/&#39;</span> . <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=p>))</span><span class=err>
+</span><span class=err></span>    <span class=nx>execute</span> <span class=s1>&#39;mksession! ~/.vim/sessions/&#39;</span> . <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=err>
+</span><span class=err></span>  <span class=k>endif</span><span class=err>
+</span><span class=err></span><span class=k>endfunction</span><span class=err>
+</span></code></pre></div><p>This function checks whether the existing session file is writable. And save
+latest session if true. That&rsquo;s it. The exclamation mark(<code>!</code>) is for overwriting
+previous session.</p><h3 id=restoring-a-session>Restoring a Session</h3><p>Finally, when I open Vim again, I want saved buffer(if any) to be restored.
+Following function is responsible for this:</p><div class=highlight><pre class=chroma><code class=language-vim data-lang=vim><span class=nx>fu</span><span class=p>!</span> <span class=nx>SessionRestore</span><span class=p>()</span><span class=err>
+</span><span class=err></span>  <span class=k>let</span> <span class=nx>l</span>:<span class=nx>session_file</span> <span class=p>=</span> <span class=s1>&#39;~/.vim/sessions/&#39;</span> . <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=err>
+</span><span class=err></span>  <span class=k>if</span> <span class=nx>filereadable</span><span class=p>(</span><span class=nx>expand</span><span class=p>(</span><span class=nx>session_file</span><span class=p>))</span><span class=err>
+</span><span class=err></span>    <span class=nx>echo</span> <span class=nx>session_file</span><span class=err>
+</span><span class=err></span>    <span class=nx>execute</span> <span class=s1>&#39;source ~/.vim/sessions/&#39;</span> .  <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=err>
+</span><span class=err>
+</span><span class=err></span>    <span class=k>if</span> <span class=nx>bufexists</span><span class=p>(</span><span class=m>1</span><span class=p>)</span><span class=err>
+</span><span class=err></span>      <span class=nx>for</span> <span class=nx>l</span> <span class=nx>in</span> <span class=nx>range</span><span class=p>(</span><span class=m>1</span><span class=p>,</span> <span class=nx>bufnr</span><span class=p>(</span><span class=s1>&#39;$&#39;</span><span class=p>))</span><span class=err>
+</span><span class=err></span>        <span class=k>if</span> <span class=nx>bufwinnr</span><span class=p>(</span><span class=nx>l</span><span class=p>)</span> <span class=p>==</span> <span class=m>-1</span><span class=err>
+</span><span class=err></span>          <span class=nx>exec</span> <span class=s1>&#39;sbuffer &#39;</span> . <span class=nx>l</span><span class=err>
+</span><span class=err></span>        <span class=k>endif</span><span class=err>
+</span><span class=err></span>      <span class=nx>endfor</span><span class=err>
+</span><span class=err></span>    <span class=k>endif</span><span class=err>
+</span><span class=err></span>  <span class=k>endif</span><span class=err>
+</span><span class=err></span><span class=k>endfunction</span><span class=err>
+</span></code></pre></div><p>Let me explain what it does exactly.</p><div class=highlight><pre class=chroma><code class=language-vim data-lang=vim><span class=k>let</span> <span class=nx>l</span>:<span class=nx>session_file</span> <span class=p>=</span> <span class=s1>&#39;~/.vim/sessions/&#39;</span> . <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=err>
+</span><span class=err></span><span class=k>if</span> <span class=nx>filereadable</span><span class=p>(</span><span class=nx>expand</span><span class=p>(</span><span class=nx>session_file</span><span class=p>))</span><span class=err>
+</span><span class=err></span>  <span class=nx>echo</span> <span class=nx>session_file</span><span class=err>
+</span><span class=err></span>  <span class=nx>execute</span> <span class=s1>&#39;source ~/.vim/sessions/&#39;</span> .  <span class=nx>split</span><span class=p>(</span><span class=nx>getcwd</span><span class=p>(),</span> <span class=s1>&#39;/&#39;</span><span class=p>)</span>[<span class=m>-1</span>] . <span class=s1>&#39;.vim&#39;</span><span class=err>
+</span><span class=err></span><span class=k>endif</span><span class=err>
+</span></code></pre></div><p>First, check if the file is readable. There&rsquo;s no point in sourcing it if Vim
+can&rsquo;t access it. Then simply source it to Vim. That&rsquo;s it.</p><div class=highlight><pre class=chroma><code class=language-vim data-lang=vim><span class=k>if</span> <span class=nx>bufexists</span><span class=p>(</span><span class=m>1</span><span class=p>)</span><span class=err>
+</span><span class=err></span>  <span class=nx>for</span> <span class=nx>l</span> <span class=nx>in</span> <span class=nx>range</span><span class=p>(</span><span class=m>1</span><span class=p>,</span> <span class=nx>bufnr</span><span class=p>(</span><span class=s1>&#39;$&#39;</span><span class=p>))</span><span class=err>
+</span><span class=err></span>    <span class=k>if</span> <span class=nx>bufwinnr</span><span class=p>(</span><span class=nx>l</span><span class=p>)</span> <span class=p>==</span> <span class=m>-1</span><span class=err>
+</span><span class=err></span>      <span class=nx>exec</span> <span class=s1>&#39;sbuffer &#39;</span> . <span class=nx>l</span><span class=err>
+</span><span class=err></span>    <span class=k>endif</span><span class=err>
+</span><span class=err></span>  <span class=nx>endfor</span><span class=err>
+</span><span class=err></span><span class=k>endif</span><span class=err>
+</span></code></pre></div><p><code>bufexists()</code> function checks if any
+<a href=https://vim.fandom.com/wiki/Buffers>buffer</a> exists. <code>bufnr()</code> returns all
+available buffers. &mldr;and so on. Read more about them using <code>:help FUNC_NAME</code>
+in Vim.</p><p>So, that&rsquo;s it. Persistent Sessions makes our life dramatically easier when using
+Vim (or NeoVim, GVim whatever flavour you use).</p><p>P.S.: I am a new Vim user. I am open to suggesstions. Feel free to suggest
+anything that would make use Vim in a more productive way!!</p></div><a class="btn btn-small" href=https://abdus.net/tags/vim>#vim</a>
+<a class="btn btn-small" href=https://abdus.net/tags/neovim>#neovim</a>
+<a class="btn btn-small" href=https://abdus.net/tags/editor>#editor</a></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

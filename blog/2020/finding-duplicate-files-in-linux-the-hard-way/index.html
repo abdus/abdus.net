@@ -1,0 +1,102 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Finding Duplicate Files in Linux - The Hard Way</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">11 July, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/linux>linux</a>
+<span class="btn btn-extra-small">5 Mins</span></strong></p><div class=content><p>Duplicate files, in Layman&rsquo;s term, are the files which are exactly a copy of
+one another. For example, if we have two files <em>biz</em> A and B; A would be a
+duplicate of B if it has the same content as file B.</p><p>Duplicates are generally unavoidable. No matter what you do, you would always
+end up getting a few of them. Going through the whole file system and finding
+them one by one is a tedious job. And no sane person would ever think of doing
+that manually when the file count is literally in thousands.</p><p>Filtering them out and removing is quite easy though. All you need to do is
+install some tools like <a href=https://rdfind.pauldreik.se/><code>rdfind</code></a>, <a href=https://www.pixelbeat.org/fslint/><code>fslint</code></a> etc. Run a few commands, and
+duplicates would vanish. <a href=https://www.tecmint.com/find-and-delete-duplicate-files-in-linux/>Here is a guide</a> to help you out.</p><p>If that&rsquo;s what you are here for, you won&rsquo;t have to read any further. Download
+any one of those tools and get your job done. This post emphasizes on how to
+<strong>build one such tool</strong> for your use :)</p><h2 id=1-comparing-file-content>1. Comparing File Content</h2><p>The first way is to compare the contents of one file with all available files in
+that directory. So, if you have like 10 files: choose a random file and read its
+content. Store its content in a variable. Loop through rest of the files and
+compare their contents with the one you have stored in a variable. If matches,
+delete that file. If not, move on.</p><p>A simple code example would help better in understanding (for simplicity, I am
+ignoring directories):</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/bash
+</span><span class=cp></span>
+<span class=c1># program to find a duplicate</span>
+<span class=c1># public key file</span>
+
+<span class=k>for</span> f in <span class=sb>`</span>ls -p <span class=p>|</span> grep -v /<span class=sb>`</span>      <span class=c1># filter files</span>
+<span class=k>do</span>
+  <span class=nv>f_CONTENT</span><span class=o>=</span><span class=sb>`</span>cat <span class=s2>&#34;</span><span class=nv>$f</span><span class=s2>&#34;</span><span class=sb>`</span><span class=p>;</span>
+  <span class=k>for</span> g in <span class=sb>`</span>ls -p <span class=p>|</span> grep -v /<span class=sb>`</span>
+  <span class=k>do</span>
+    <span class=nv>g_CONTENT</span><span class=o>=</span><span class=sb>`</span>cat <span class=s2>&#34;</span><span class=nv>$g</span><span class=s2>&#34;</span><span class=sb>`</span>
+    <span class=k>if</span> <span class=o>[[</span> <span class=nv>$f_CONTENT</span> <span class=o>==</span> <span class=nv>$g_CONTENT</span> <span class=o>&amp;&amp;</span> <span class=nv>$f</span> !<span class=o>=</span> <span class=nv>$g</span> <span class=o>]]</span><span class=p>;</span> <span class=k>then</span>
+      <span class=c1># duplicate</span>
+      <span class=nb>echo</span> <span class=s2>&#34;DUPLICATE: </span><span class=nv>$f</span><span class=s2> === </span><span class=nv>$g</span><span class=s2>&#34;</span><span class=p>;</span>
+    <span class=k>fi</span>
+  <span class=k>done</span>
+<span class=k>done</span>
+</code></pre></div><p>As you might have already understood how resource hungry this program would be.
+I mean, it is not. But compared to other possible ways, it&rsquo;s a resource-hungry
+process.</p><p>This program would have a time <strong>complexity of O(n^2)</strong>. Not ideal.</p><h3 id=limitations>Limitations</h3><p>So, here&rsquo;s a summary of why I think this approach is bad:</p><ul><li>Takes up more resources than it should</li><li>Have a complexity of O(n^2)</li></ul><h2 id=2-using-hashing-technique>2. Using Hashing Technique</h2><p>My second option is to use file-hash. This method would be quite similar to
+the previous one, except that instead of storing file content, I would be
+storing the hash value of that content :)</p><p>If you are wondering what a hash is; well, it is a unique string of alphanumeric
+characters generated from a given object.</p><p>For a given object(like ASCII characters, binary files etc), the generated hash
+would always be the same. Change a character(even space), and it would differ.</p><p>Generation of hash is done by using algorithms. You feed an algorithm
+with data, and it calculates the hash value of that data. There are
+so many hashing algorithms that are available out there. A few among them are
+SHA, BlowFish, MD5 etc which are quite popular.</p><p>One more unique thing about hash is, it is irreversible. You can&rsquo;t extract the
+content from which the hash was generated.</p><blockquote><p>Note that, this method won&rsquo;t give much better result over the previous method as hashing is a slow process and it <em>does</em> consume a lot of resources.</p></blockquote><p>In Linux, there are tools for generating a hash of any given files. In most of the
+distributions, they are pre-installed.</p><p>Following is a Bash Script which would implement whatever I said so far.</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/bash
+</span><span class=cp></span>
+<span class=c1># find duplicate using hashing technique</span>
+<span class=k>for</span> f in <span class=sb>`</span>ls -p <span class=p>|</span> grep -v /<span class=sb>`</span>
+<span class=k>do</span>
+  <span class=nv>f_sha</span><span class=o>=</span><span class=sb>`</span>sha1sum <span class=s2>&#34;</span><span class=nv>$f</span><span class=s2>&#34;</span> <span class=p>|</span> awk <span class=s1>&#39;{ print $1 }&#39;</span><span class=sb>`</span><span class=p>;</span>
+  <span class=k>for</span> g in <span class=sb>`</span>ls -p <span class=p>|</span> grep -v /<span class=sb>`</span>
+  <span class=k>do</span>
+    <span class=nv>g_sha</span><span class=o>=</span><span class=sb>`</span>sha1sum <span class=s2>&#34;</span><span class=nv>$g</span><span class=s2>&#34;</span> <span class=p>|</span> awk <span class=s1>&#39;{ print $1 }&#39;</span><span class=sb>`</span>
+
+    <span class=k>if</span> <span class=o>[[</span> <span class=nv>$f_sha</span> <span class=o>==</span> <span class=nv>$g_sha</span> <span class=o>&amp;&amp;</span> <span class=nv>$f</span> !<span class=o>=</span> <span class=nv>$g</span> <span class=o>]]</span><span class=p>;</span> <span class=k>then</span>
+      <span class=c1># duplicate</span>
+      <span class=nb>echo</span> <span class=s2>&#34;SAME: </span><span class=nv>$f</span><span class=s2> === </span><span class=nv>$g</span><span class=s2>&#34;</span><span class=p>;</span>
+    <span class=k>fi</span>
+  <span class=k>done</span>
+<span class=k>done</span>
+</code></pre></div><p>As you can see, it does not make any huge difference. Worse, it adds an extra
+step of calculating SHA1SUM of each file.</p><h2 id=3-maps-or-hashmaps>3. Maps (or HashMaps)</h2><p>Or Dictionary, Object, Associative array, HashTable &mldr; whatever you call them.
+Hashmaps are a collection of pairs of key-value stored inside a variable. One
+prominent benefit of the hashtable is that <strong>complexity of searching an element is O(1)</strong>. Read more about hash-table on <a href=https://en.wikipedia.org/wiki/Hash_table>Wikipedia</a>.</p><p>What does this mean? I could <strong>reduce the time complexity of my code to O(n)</strong>.</p><h2 id=combining-everything->Combining Everything &mldr;</h2><p>Since I can combine the hashing technique(mentioned in the previous method) with
+HashTable, the program would be more efficient and simple. I won&rsquo;t have to use
+two <code>for</code> loops. This would also reduce time complexity.</p><p>I am not using file content as key in hashtable. I could have stored either
+a file name or file content as a key. But neither of then would work.</p><ul><li>Two files would never have the same name under a single context.</li><li>File content could be of any type, ranging from ASCII to Multimedia etc.
+This does not make it ideal for using as Key.</li><li>Just imagine, what if the file size is huge.. HUGE? like 2 or 3 GB! Or more!
+it would increase the space needed by the program to run, ultimately increasing
+the resource consumption.</li></ul><p>So, I will be using SHA1SUM(generated using <code>sha1sum</code> tool) as key. For value,
+I would just set it to <code>true</code> since it does not matter what value it
+holds.</p><p>Since v4.0, Bash provides a native way of creating HashTables. I won&rsquo;t have to
+look for another language to write this small program.</p><p>Enough explaining, here is the code:</p><div class=highlight><pre class=chroma><code class=language-bash data-lang=bash><span class=cp>#!/bin/bash
+</span><span class=cp></span>
+<span class=nb>declare</span> -A checksums   <span class=c1># `checksums` is a hash-table</span>
+
+<span class=k>for</span> f in <span class=sb>`</span>ls -pS <span class=p>|</span> grep -v /<span class=sb>`</span>
+<span class=k>do</span>
+  <span class=nv>file_hash</span><span class=o>=</span><span class=sb>`</span>sha1sum <span class=s2>&#34;</span><span class=nv>$f</span><span class=s2>&#34;</span> <span class=p>|</span> awk <span class=s1>&#39;{ print $1 }&#39;</span><span class=sb>`</span>
+  <span class=k>if</span> <span class=o>[[</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>checksums</span><span class=p>[</span><span class=nv>$file_hash</span><span class=p>]</span><span class=si>}</span><span class=s2>&#34;</span> <span class=o>==</span> <span class=nb>true</span> <span class=o>]]</span><span class=p>;</span> <span class=k>then</span>
+    <span class=nb>echo</span> <span class=s2>&#34;DUP: </span><span class=nv>$f</span><span class=s2>&#34;</span>
+  <span class=k>else</span>
+    checksums<span class=o>[</span><span class=nv>$file_hash</span><span class=o>]=</span>true<span class=p>;</span>
+  <span class=k>fi</span>
+<span class=k>done</span>
+</code></pre></div><h2 id=conclusion>Conclusion</h2><p>There is no point in reinventing the wheel. There are so many popular tools for
+finding and removing duplicates from the file system. Use any one of them.</p><p>I am learning algorithms. So, I thought of explaining some stuff which would help
+me understand it better. Hence, this article.</p></div><a class="btn btn-small" href=https://abdus.net/tags/algorithms>#algorithms</a>
+<a class="btn btn-small" href=https://abdus.net/tags/bash>#bash</a></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

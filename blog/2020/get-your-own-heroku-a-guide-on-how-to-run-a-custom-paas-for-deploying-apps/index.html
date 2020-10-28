@@ -1,0 +1,83 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Get Your Own Heroku - a Guide on How to Run a Custom 'PaaS' for deploying Apps</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">26 April, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/cloud>cloud</a>
+<span class="btn btn-extra-small">5 Mins</span></strong></p><div class=content><p>Heroku is a fantastic platform for Node.js developers. It made deployment
+of Node.js apps super easier. But obviously. it have so many limitations on
+free-tier, which makes it less ideal for deploying certain kind of projects,
+like a telegram bot etc.</p><h2 id=the-idea>The Idea</h2><p>I was having a pretty similar issue. I needed to host a bot. Initially, it was
+in Heroku, but due to the fact that every apps on Heroku free tier goes for
+sleep after inactivity of around 30 minutes. This, generally, is not a problem
+for websites, but bots won&rsquo;t work. There is always a delay on bot response.</p><p>First, I thought I would build my own Heroku-like platform. But it&rsquo;s not really
+easy. So, I went off with an open-source &lsquo;Platform as a Service&rsquo; software.</p><p>Likely, there are many such open-sourced products available. One of them is
+<strong><a href=https://github.com/caprover/caprover>CapRover</a></strong>.</p><h3 id=features>Features</h3><ol><li>Docker-based deployment. Each of the deployed app would have their own
+isolated space.</li><li>Support for <code>Dockerfile</code>. A <code>Dockerfile</code> would maximize the possibilities of
+what you could do with the deployments.</li></ol><h2 id=prerequisites>Prerequisites</h2><p>Nothing much required, really! All you need is:</p><ul><li>A VPS to host CapRover. Preferably DigitalOcean
+It should also have a Linux OS installed. Ubuntu is preferred.</li><li>Basic Linux Shell Skills for installing required applications.</li><li>A Domain Name</li></ul><h3 id=initial-server-setup>Initial Server Setup</h3><p>If you are using Digital Ocean, first you need to create a droplet. Digital
+Ocean have a nice guide on <a href=https://www.digitalocean.com/docs/droplets/how-to/create/>how-to setup a droplet</a>.</p><p>Once you are done creating a Droplet, it&rsquo;s time to update the system.
+To do that, you need to access your droplet using SSH.
+<a href=https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/>This tutorial</a>
+would help you do that.</p><p>After connecting to droplet via SSH, update and upgrade the system using
+<code>sudo apt update && sudo apt upgrade</code>. Note that, these commands are for Ubuntu.</p><p>We also need a couple of other software in order to get our CapRover
+server up and running. We will be installing them one by one.</p><h4 id=docker>Docker</h4><p>CapRover is built on top of Docker. So, it&rsquo;s an essential essential software.
+To install docker, checkout the official <a href=https://docs.docker.com/engine/install/ubuntu/>Docker documentation for Ubuntu</a>.</p><blockquote><p>You may need to add the current user to <code>docker</code> group. To do so,
+run <code>sudo usermod -aG docker &lt;user_name></code>. Otherwise, you will get a docker error.</p></blockquote><h4 id=nodejs-and-npm>Node.js and NPM</h4><p>Yeah, these Node thing is everywhere these days :/ But anyways, it should be
+relatively easier to install. Note that, by default Ubuntu repository have
+<code>node v8.x.x</code>. We need at least <code>v10.x.x</code>. So to install
+<code>node v13.x.x</code> via NodeSource:</p><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>curl -sL https://deb.nodesource.com/setup_13.x <span class=p>|</span> sudo -E bash -
+</code></pre></div><p>Then run <code>apt-get install</code> command.</p><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>sudo apt-get install -y nodejs
+</code></pre></div><p>To confirm that you have Node installed, run <code>node -v</code> from terminal.</p><h4 id=npm>NPM</h4><p>It&rsquo;s possible that NPM was installed along with Node.js. You can verify that
+using <code>npm -v</code>. In case it is not installed, install it from Ubuntu repository
+using <code>sudo apt install npm</code>.</p><p>By default, NPM needs <code>sudo</code> to install global packages, which is not
+recommended. To change this behavior, change <code>prefix</code> in NPM config.
+Run <code>npm config set prefix dir_name</code>(replace <code>dir_name</code>
+with a directory name where you want to have npm packages).
+You also, need to add <code>dir_name/bin</code> to your PATH variable.</p><h3 id=domain-setup>Domain Setup</h3><p>By now, you should have a static IP address assigned to your Digital Ocean
+droplet. If you have a domain name purchased, you need to point it to your
+server IP address using A record. For example: you want
+<code>captain.yourdomain.com</code> as your app host. You need to setup two
+different a records.</p><div class=highlight><pre class=chroma><code class=language-txt data-lang=txt>cap              A         3.23.76.12
+*.captain        A         3.23.76.12
+</code></pre></div><p>At this point, your server is ready to host CapRover. You may additionally need
+to allow some ports in order to make CapRover work.
+You can allow them using <code>ufw</code> command in Ubuntu.</p><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>ufw allow 80,443,3000,996,7946,4789,2377/tcp<span class=p>;</span> ufw allow 7946,4789,2377/udp<span class=p>;</span>
+</code></pre></div><p>Note that, this command must run in root shell.</p><h2 id=install-caprover-and-caprover-cli>Install CapRover and CapRover CLI</h2><p>Thanks to the devloper of CapRover, it&rsquo;s super easy to install.
+All we need is to run one command, sit back and watch it installing.</p><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover
+</code></pre></div><p>Once the CapRover installation is done, visit <code>cap.domainname.com:3000</code> to
+verify if CapRover is working. We also need to install CapRover CLI in order
+to manage deployment, sertup server etc. To install CapRover from NPM,
+run <code>npm i -g caprover</code>. Once installed, run <code>caprover serversetup</code>,
+and follow the interactive command prompt.</p><p>At this point, you have a CapRover instance running successfully. Check this
+guide for various
+<a href=https://caprover.com/docs/deployment-methods.html>deployment methods</a>.</p><blockquote><p>Before deploying a project, make sure to create an <code>app</code> using the Web GUI.
+Otherwise, you won&rsquo;t be able to deploy.</p></blockquote><p>For more information about CapRover and it&rsquo;s configurations,
+check out its <strong><a href=https://caprover.com/docs>official docs</a></strong>.</p><h2 id=conclusions>Conclusions</h2><p>Having a self-managed PaaS could be very handy.
+Following are a few reasons I choose to go with a self-managed PaaS
+for hosting apps.</p><ol><li>I would be saving money.
+Generally, if I go for Heroku non-free tier, I would be paying a lot
+of money compared to what I pay now.</li><li>Shared Resources.
+Server resources won&rsquo;t get wasted because each and every app would be
+able to access resources from the same resource pool. So, let&rsquo;s say,
+I have 2 GB of RAM. And I need only 1 GB to host XYZ webapp.
+Now, I can use the remaining amount of RAM to spin-up a
+new instance ABC webapp.</li><li>Support for [insert techstack name]
+Since, CapRover uses docker to deploy a new instance, I can basically
+run apps built using any back-end technologies.
+And write how to deploy it using a Dockerfile. I have so much
+flexibility now.</li></ol><p>The only downside I could think of is, I have to look after the server.
+This is won&rsquo;t be a big deal, thanks to AWS ❤️</p></div><a class="btn btn-small" href=https://abdus.net/tags/paas>#paas</a>
+<a class="btn btn-small" href=https://abdus.net/tags/heroku>#heroku</a>
+<a class="btn btn-small" href=https://abdus.net/tags/node.js>#node.js</a>
+<a class="btn btn-small" href=https://abdus.net/tags/vps>#vps</a>
+<a class="btn btn-small" href=https://abdus.net/tags/custom%20platform>#custom platform</a></div></main></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>

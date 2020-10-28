@@ -1,0 +1,126 @@
+<!doctype html><html><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><script src=https://kit.fontawesome.com/66c0687ece.js crossorigin=anonymous></script><meta name=viewport content="width=device-width,initial-scale=1"><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="fas fa-bars"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Vector in Rust</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">12 August, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><p>Vector:</p><ul><li>stores value of <strong>same type</strong></li><li>stores values <strong>next to each other in heap</strong></li><li>can store values <strong>dynamically</strong></li></ul><h3 id=creating-a-vector>creating a Vector</h3><p>when using <em>associate function</em> <code>::new()</code>, one must use <strong>type annotation</strong>
+so that compiler have info about what kind of values to be stored in there</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=c1>// empty vector
+</span><span class=c1></span><span class=kd>let</span><span class=w> </span><span class=n>v1</span>: <span class=nb>Vec</span><span class=o>&lt;</span><span class=kt>i32</span><span class=o>&gt;</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>Vec</span>::<span class=n>new</span><span class=p>();</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=c1>// vecor with some initial values
+</span><span class=c1></span><span class=kd>let</span><span class=w> </span><span class=n>v2</span>: <span class=nc>vec</span><span class=o>!</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>2</span><span class=p>,</span><span class=w> </span><span class=mi>3</span><span class=p>];</span><span class=w>
+</span></code></pre></div><h3 id=updating-a-vector>updating a vector</h3><p>Vector provide methods for running operations on any of its instances.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=kd>let</span><span class=w> </span><span class=k>mut</span><span class=w> </span><span class=n>v</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>Vec</span>::<span class=n>new</span><span class=p>();</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=c1>// add new values
+</span><span class=c1></span><span class=n>v</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=mi>5</span><span class=p>);</span><span class=w>
+</span><span class=w></span><span class=n>v</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=mi>10</span><span class=p>);</span><span class=w>
+</span></code></pre></div><blockquote><p>when a vector is dropped, all its content would vanish as well</p></blockquote><h3 id=accessing-values>accessing values</h3><p>vectors are <strong>indexed by number, starting at 0</strong></p><p>there are two ways to access a vactor element. first way is similar to
+accessing array elements. second option is, using vector-specific methods</p><ol><li><p>accessing using <code>&</code> and <code>[]</code></p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=kd>let</span><span class=w> </span><span class=n>v</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>vec</span><span class=o>!</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>2</span><span class=p>,</span><span class=w> </span><span class=mi>3</span><span class=p>];</span><span class=w>
+</span><span class=hl><span class=w></span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;first element: {}&#34;</span><span class=p>,</span><span class=w> </span><span class=o>&amp;</span><span class=n>v</span><span class=p>[</span><span class=mi>0</span><span class=p>]);</span><span class=w>
+</span></span><span class=w>
+</span><span class=w></span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;{}&#34;</span><span class=p>,</span><span class=w> </span><span class=o>&amp;</span><span class=n>v</span><span class=p>[</span><span class=mi>1000</span><span class=p>]);</span><span class=w> </span><span class=c1>// panics
+</span></code></pre></div><p>This methods is quite straightforward. but it would <em><em>create panic</em></em> when
+the index is out of bound.</p></li><li><p>using <code>.get()</code></p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=kd>let</span><span class=w> </span><span class=n>v</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>vec</span><span class=o>!</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>2</span><span class=p>,</span><span class=w> </span><span class=mi>4</span><span class=p>];</span><span class=w>
+</span><span class=w>
+</span><span class=hl><span class=w></span><span class=k>match</span><span class=w> </span><span class=n>v</span><span class=p>.</span><span class=n>get</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span><span class=w> </span><span class=p>{</span><span class=w>
+</span></span><span class=w>  </span><span class=nb>Some</span><span class=p>(</span><span class=n>third</span><span class=p>)</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;third element is: {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>third</span><span class=p>),</span><span class=w>
+</span><span class=w>  </span><span class=nb>None</span><span class=w> </span><span class=o>=&gt;</span><span class=w> </span><span class=n>println</span><span class=p>(</span><span class=s>&#34;no third element present&#34;</span><span class=p>),</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p><code>.get()</code> returns enum <code>Option&lt;T></code> which have two variants: <code>Some&lt;T></code> and
+<code>None</code>.</p></li></ol><p>while <strong>holding a reference</strong> to an item, new items <strong>cannot be added</strong>.
+check out the following code for example:</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=c1>// won&#39;t compile
+</span><span class=c1></span><span class=kd>let</span><span class=w> </span><span class=k>mut</span><span class=w> </span><span class=n>v</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>vec</span><span class=o>!</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>2</span><span class=p>,</span><span class=w> </span><span class=mi>3</span><span class=p>,</span><span class=w> </span><span class=mi>4</span><span class=p>,</span><span class=w> </span><span class=mi>5</span><span class=p>];</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=kd>let</span><span class=w> </span><span class=n>first</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=o>&amp;</span><span class=n>v</span><span class=p>[</span><span class=mi>0</span><span class=p>];</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=n>v</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=mi>6</span><span class=p>);</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;The first element is: {}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>first</span><span class=p>);</span><span class=w>
+</span></code></pre></div><p>this is because of Rust&rsquo;s borrowing rules. When holding a reference to an
+element, pointer would <strong>point to an specific memory location</strong>. if new item gets
+added, the length of Vector would expand making it <strong>not able to fit</strong> in current
+memory sequence at times. if that happens, the whole vector would be <strong>relocated</strong>
+to an <strong>available continous memory location</strong>. This, in turn, would make the
+<strong>reference to previously allocated memory invalid</strong>. Hence Rust does not allow it.</p><h3 id=iterating--mutating-a-vector>iterating & mutating a vector</h3><p>one could iterate over a vector using <code>for</code> loop.</p><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=kd>let</span><span class=w> </span><span class=n>v</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>vec</span><span class=o>!</span><span class=p>[</span><span class=mi>1</span><span class=p>,</span><span class=w> </span><span class=mi>2</span><span class=p>,</span><span class=w> </span><span class=mi>4</span><span class=p>,</span><span class=w> </span><span class=mi>5</span><span class=p>];</span><span class=w>
+</span><span class=w></span><span class=k>for</span><span class=w> </span><span class=n>i</span><span class=w> </span><span class=k>in</span><span class=w> </span><span class=o>&amp;</span><span class=k>mut</span><span class=w> </span><span class=n>v</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=c1>// prints the value of `i`
+</span><span class=c1></span><span class=w>  </span><span class=n>println</span><span class=o>!</span><span class=p>(</span><span class=s>&#34;{}&#34;</span><span class=p>,</span><span class=w> </span><span class=n>i</span><span class=p>);</span><span class=w> 
+</span><span class=w>
+</span><span class=w>  </span><span class=c1>// modify `i`
+</span><span class=c1></span><span class=w>  </span><span class=o>*</span><span class=n>i</span><span class=w> </span><span class=o>+=</span><span class=w> </span><span class=mi>10</span><span class=p>;</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span></code></pre></div><p><code>*</code> is known as <strong>dereference operator</strong>. <code>&</code> returns reference to the element.
+so, in order to edit that element, we must get its true value.</p><h3 id=using-enum-to-store-multiple-types>using enum to store multiple types</h3><div class=highlight><pre class=chroma><code class=language-rust data-lang=rust><span class=k>enum</span> <span class=nc>SpreadsheetCell</span><span class=w> </span><span class=p>{</span><span class=w>
+</span><span class=w>  </span><span class=n>Int</span><span class=p>(</span><span class=kt>i32</span><span class=p>),</span><span class=w>
+</span><span class=w>  </span><span class=n>Float</span><span class=p>(</span><span class=kt>f64</span><span class=p>),</span><span class=w>
+</span><span class=w>  </span><span class=n>Text</span><span class=p>(</span><span class=nb>String</span><span class=p>),</span><span class=w>
+</span><span class=w></span><span class=p>}</span><span class=w>
+</span><span class=w>
+</span><span class=w></span><span class=kd>let</span><span class=w> </span><span class=n>row</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=n>vec</span><span class=o>!</span><span class=p>[</span><span class=w>
+</span><span class=w>  </span><span class=n>SpreadsheetCell</span>::<span class=n>Int</span><span class=p>(</span><span class=mi>3</span><span class=p>),</span><span class=w>
+</span><span class=w>  </span><span class=n>SpreadsheetCell</span>::<span class=n>Text</span><span class=p>(</span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;blue&#34;</span><span class=p>)),</span><span class=w>
+</span><span class=w>  </span><span class=n>SpreadsheetCell</span>::<span class=n>Float</span><span class=p>(</span><span class=mf>10.12</span><span class=p>),</span><span class=w>
+</span><span class=w></span><span class=p>];</span><span class=w>
+</span></code></pre></div></div><a class="btn btn-small" href=https://abdus.net/tags/vector>#vector</a>
+<a class="btn btn-small" href=https://abdus.net/tags/collection>#collection</a></div></main><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a> &#183;
+<a href=/notes/>My Dev Notes</a> &#183;
+<a href=/hire-me/>Hire Me</a> &#183;
+<a href=/keys/>Cryptographic Keys</a> &#183;
+<a href=mailto:contact@abdus.net>contact@abdus.net</a></footer></body></html>
