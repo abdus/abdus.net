@@ -1,0 +1,30 @@
+<nav class="max-width-60rem margin-auto top-nav">
+  <a href="/">Abdus</a>
+  <div class="icon" id="nav-handler">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="nav-items">
+    {{ $page_url := .Permalink | relURL }}
+    <!--i-->
+    {{ range $index, $element := .Site.Menus.main }}
+    <!--i-->
+    {{ if eq $page_url ($element.URL | relURL) }}
+    <a href="{{ $element.URL }}" class="active">
+      <span class="num">{{ printf "%02d" (add $index 1) }}</span>
+      <span class="name">{{ $element.Name }}</span>
+    </a>
+    {{ else }}
+    <a href="{{ $element.URL }}">
+      <span class="num">{{ printf "%02d" (add $index 1) }}</span>
+      <span class="name">{{ $element.Name }}</span>
+    </a>
+    {{ end }} {{ end }}
+  </div>
+</nav>
+
+<script>
+  const handler = document.querySelector("#nav-handler");
+  const nav = document.querySelector(".nav-items");
+
+  handler.onclick = () => nav.classList.toggle("show");
+</script>

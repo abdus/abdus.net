@@ -1,0 +1,147 @@
+{{ define "main" }}
+<main class="homepage max-width-60rem margin-auto">
+  <header>
+    <div>
+      <h1 class="font-eczar">{{ .Title }}</h1>
+      <p>{{ .Params.description | safeHTML }}</p>
+    </div>
+  </header>
+
+  <section class="social">
+    {{ with .Site.Data.personal.social }}
+    <!--.-->
+    {{ range . }}
+    <a
+      href="{{ .url }}"
+      target="_blank"
+      rel="noopener noreferer"
+      class="social-icon"
+    >
+      <i class="{{ .fa }}"></i>
+    </a>
+    {{ end }}
+    <!--.-->
+    {{ end }}
+  </section>
+
+  <section class="experience grid grid-2 grid-sm-1">
+    <div class="title-card">
+      <h3 class="font-eczar">EXPERIENCE</h3>
+      <p>
+        Fresh out of the College(which I hardly attended). I am mostly a
+        self-taught Developer, with around 2 months of experience as an Intern
+        in a Start-Up
+      </p>
+      <p>
+        <a href="#" class="btn">LinkedIn</a>
+      </p>
+    </div>
+    <div class="content-card">
+      <h3 class="font-eczar">Front-End Developer</h3>
+      <strong class="color-accent font-weight-700">MaiModo</strong>
+      <small class="color-accent">August 2020 - September 2020</small>
+    </div>
+  </section>
+
+  <section class="projects grid grid-2 grid-sm-1">
+    <div class="title-card">
+      <h3 class="font-eczar">PROJECTS</h3>
+      <p>
+        I have built a few projects which are worth showing to my (future)
+        employer. Here, I am listing a few of them. Rest can be found on my
+        GitHub profile.
+      </p>
+      <p>
+        <a href="#" class="btn">GitHub</a>
+      </p>
+    </div>
+    <div class="content-card card">
+      <h3 class="font-eczar color-accent">Chat App</h3>
+      <p>
+        A real-time chat application built using NodeJS, JavaScript, MongoDB and
+        Express
+      </p>
+      <p>
+        <a class="btn btn-small" href="#">SourceCode</a>
+        <a class="btn btn-small" href="#">LiveDemo</a>
+      </p>
+    </div>
+    <div class="content-card card">
+      <h3 class="font-eczar color-accent">Movie Wiki</h3>
+      <p>
+        A simple web-app built using ReactJS for searching movie's information
+        using API.
+      </p>
+      <p>
+        <a class="btn btn-small" href="#">SourceCode</a>
+        <a class="btn btn-small" href="#">LiveDemo</a>
+      </p>
+    </div>
+    <div class="content-card card">
+      <h3 class="font-eczar color-accent">dotfiles</h3>
+      <p>A collection of all the dotfiles I use on a daily basis.</p>
+      <p>
+        <a class="btn btn-small" href="#">SourceCode</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="writings grid grid-2 grid-sm-1">
+    <div class="title-card">
+      <h3 class="font-eczar">WRITINGS</h3>
+      <p>
+        Like almost every other developer, I do share whatever I learn in my
+        Blog. I also have a section for sharing my daily learnings.
+      </p>
+      <p>
+        <a href="/posts" class="btn">Blog</a>
+        <a href="/notes" class="btn">Notes</a>
+      </p>
+    </div>
+    <div class="content-card">
+      <div>
+        {{ range first 4 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
+        <p>
+          <strong
+            ><a class="color-accent" href="{{ .Permalink | absURL }}"
+              >{{ .Title }}</a
+            ></strong
+          >
+          <br />
+          <small>{{ .Date.Format "2 January, 2006" }}</small>
+        </p>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="recommendations grid grid-2 grid-sm-1">
+    <div class="title-card">
+      <h3 class="font-eczar">Recommendations</h3>
+      <p>
+        I have worked with these people in the past. Here's what they think
+        about me and my work. All of these testimonials are coming from my
+        LinkedIn profile.
+      </p>
+      <p>
+        <a class="btn" href="https://linkedin.com/in/thisisabdus">LinkedIn</a>
+      </p>
+    </div>
+    {{ with .Site.Data.personal.testimonials }}
+    <!--.-->
+    {{ range . }}
+    <div class="content-card card">
+      <div class="color-accent">{{ .content }}</div>
+      <div class="flex-grow-1"></div>
+      <div class="name-image color-accent">
+        <strong class="font-eczar">{{ .name }}</strong>
+        <br />
+        <small class="btn btn-small">{{ .designation }}</small>
+      </div>
+    </div>
+    {{ end }}
+    <!--.-->
+    {{ end }}
+  </section>
+</main>
+{{ end }}

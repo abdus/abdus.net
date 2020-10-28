@@ -1,0 +1,67 @@
+baseURL = "https://abdus.net"
+languageCode = "en-us"
+title = "Abdus"
+
+theme = "bronn"             # theme name
+disableKinds = []           # disable stuffs
+enableGitInfo = true        # valuable git information
+enableEmoji = true          # enables emoji support in content files
+
+[params]
+  title = "Abdus"
+  mainSections = ["posts"]
+
+[menu]
+
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/self/"
+    weight = 10
+
+
+  [[menu.main]]
+    identifier = "hire-me"
+    name = "hire me"
+    url = "/hire/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "blog"
+    url = "/posts/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "notes"
+    name = "notes"
+    url = "/notes/"
+    weight = 10
+
+[markup]
+[markup.tableOfContents]
+endLevel = 6
+ordered = false
+startLevel = 1
+
+[markup.highlight]
+codeFences = true
+guessSyntax = false
+hl_Lines = ''
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = false
+noClasses = false
+tabWidth = 2
+
+
+[permalinks]
+pages = "/:filename"
+posts = "/blog/:year/:title/"
+notes = "/notes/:filename"

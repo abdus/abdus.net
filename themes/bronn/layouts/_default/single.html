@@ -1,0 +1,111 @@
+{{ define "main" }}
+
+<main class="max-width-60rem margin-auto single-layout">
+  <h1 class="font-eczar title color-accent">{{ .Title }}</h1>
+
+  <div class="max-width-45rem margin-auto">
+    <p class="color-accent meta">
+      <strong>
+        {{ with .Date }}
+        <small class="btn btn-extra-small"
+          >{{ .Format "2 January, 2006" }}</small
+        >
+        {{ end }}
+        <!--.-->
+        {{ range .Params.categories }}
+        <a
+          class="btn btn-extra-small"
+          href='{{ printf "/categories/%s" . | absURL }}'
+          >{{ . }}</a
+        >
+        {{ end }}
+        <!--.-->
+        {{ if not (eq .Section "pages") }}
+        <span class="btn btn-extra-small">{{ .ReadingTime }} Mins</span>
+        {{ end }}
+      </strong>
+    </p>
+    <!--.-->
+    <div class="content">{{ .Content }}</div>
+    {{ range .Params.tags }}
+    <a class="btn btn-small" href='{{ printf "/tags/%s" . | absURL }}'
+      >#{{ . }}</a
+    >
+    {{ end }}
+  </div>
+</main>
+
+{{ if eq .Section "notes" }}
+<script type="module">
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script>
+
+<style>
+  .single-layout em,
+  .single-layout strong,
+  .section-conten del {
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+  }
+
+  blockquote {
+    background-color: #fff;
+    padding: 0.3rem;
+    margin: 2rem 0;
+  }
+</style>
+
+{{ end }}
+
+<!--.-->
+{{ end }}
