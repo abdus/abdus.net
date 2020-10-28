@@ -239,12 +239,8 @@ footer {
 footer a {
   color: inherit;
   opacity: 0.8;
+  padding: 0.2rem 0.6rem;
   text-decoration: none;
-  margin: 0.8rem;
-}
-
-footer a:first-child {
-  margin-left: 0;
 }
 
 @media (max-width: 700px) {
