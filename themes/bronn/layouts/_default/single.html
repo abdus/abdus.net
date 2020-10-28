@@ -35,6 +35,9 @@
   </div>
 </main>
 
+{{ partial "json-ld.html" . }}
+
+<!--.-->
 {{ if eq .Section "notes" }}
 <script type="module">
   import { annotate } from "https://unpkg.com/rough-notation?module";
