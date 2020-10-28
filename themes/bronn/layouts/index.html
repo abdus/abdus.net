@@ -55,43 +55,32 @@
         <a href="#" class="btn">GitHub</a>
       </p>
     </div>
+
+    {{ with .Site.Data.personal.projects }} {{ range . }}
     <div class="content-card card">
-      <h3 class="font-eczar color-accent">Chat App</h3>
+      <h3 class="font-eczar color-accent">{{ .name }}</h3>
+      <p>{{ .description | safeHTML }}</p>
       <p>
-        A real-time chat application built using NodeJS, JavaScript, MongoDB and
-        Express
-      </p>
-      <p>
-        <a class="btn btn-small" href="#">SourceCode</a>
-        <a class="btn btn-small" href="#">LiveDemo</a>
+        {{ with .source }}
+        <a class="btn btn-small" href="{{ . | absURL }}">SourceCode</a>
+        {{ end }}
+        <!--.-->
+        {{ with .demo }}
+        <a class="btn btn-small" href="{{ .demo | absURL }}">LiveDemo</a>
+        {{ end }}
       </p>
     </div>
-    <div class="content-card card">
-      <h3 class="font-eczar color-accent">Movie Wiki</h3>
-      <p>
-        A simple web-app built using ReactJS for searching movie's information
-        using API.
-      </p>
-      <p>
-        <a class="btn btn-small" href="#">SourceCode</a>
-        <a class="btn btn-small" href="#">LiveDemo</a>
-      </p>
-    </div>
-    <div class="content-card card">
-      <h3 class="font-eczar color-accent">dotfiles</h3>
-      <p>A collection of all the dotfiles I use on a daily basis.</p>
-      <p>
-        <a class="btn btn-small" href="#">SourceCode</a>
-      </p>
-    </div>
+    {{ end }}
+    <!--.-->
+    {{ end }}
   </section>
 
   <section class="writings grid grid-2 grid-sm-1">
     <div class="title-card">
       <h3 class="font-eczar">WRITINGS</h3>
       <p>
-        Like almost every other developer, I do share whatever I learn in my
-        Blog. I also have a section for sharing my daily learnings.
+        I share what I learn in my blogs. Recently, I have started taking notes
+        while learning new things. You will find them in 'notes' section.
       </p>
       <p>
         <a href="/posts" class="btn">Blog</a>

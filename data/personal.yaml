@@ -37,3 +37,25 @@ social:
   - url: https://linkedin.com/in/thisisabdus
     name: LinkedIn
     fa: 'fab fa-linkedin-in'
+
+
+projects:
+  - name: Chat App
+    demo: # demo url
+    source: https://github.com/abdus/chat-app
+    description: |
+        A real-time chat application built using NodeJS, JavaScript, MongoDB and
+        Express
+
+  - name: Movie Wiki
+    demo:
+    source: https://github.com/abdus/movie-wiki
+    description: |
+        A simple web-app built using ReactJS for searching movie's information
+        using API.
+
+  - name: dotfiles
+    demo:
+    source: https://github.com/abdus/dotfiles
+    description: |
+        A collection of all the dotfiles I use on a daily basis.
