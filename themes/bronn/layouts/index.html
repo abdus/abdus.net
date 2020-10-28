@@ -33,7 +33,12 @@
         in a Start-Up
       </p>
       <p>
-        <a href="#" class="btn">LinkedIn</a>
+        <a
+          href="https://linkedin.com/in/thisisabdus"
+          target="_blank"
+          class="btn"
+          >LinkedIn</a
+        >
       </p>
     </div>
     <div class="content-card">
@@ -52,7 +57,9 @@
         GitHub profile.
       </p>
       <p>
-        <a href="#" class="btn">GitHub</a>
+        <a href="https://github.com/abdus" target="_blank" class="btn"
+          >GitHub</a
+        >
       </p>
     </div>
 
@@ -89,6 +96,7 @@
     </div>
     <div class="content-card">
       <div>
+        <!-- prettier-ignore -->
         {{ range first 4 (where site.RegularPages "Type" "in" site.Params.mainSections) }}
         <p>
           <strong
@@ -113,7 +121,12 @@
         LinkedIn profile.
       </p>
       <p>
-        <a class="btn" href="https://linkedin.com/in/thisisabdus">LinkedIn</a>
+        <a
+          class="btn"
+          target="_blank"
+          href="https://linkedin.com/in/thisisabdus"
+          >LinkedIn</a
+        >
       </p>
     </div>
     {{ with .Site.Data.personal.testimonials }}
