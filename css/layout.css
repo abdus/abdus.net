@@ -106,7 +106,8 @@ nav.top-nav .icon {
   }
 }
 
-.btn {
+.btn,
+.pagination .page-item a {
   /*TODO*/
   color: #fff;
   background: #5465ff;
@@ -115,6 +116,7 @@ nav.top-nav .icon {
   font-weight: bold;
   text-decoration: none;
   margin: 0.2rem 0;
+  border: 2px solid #5465ff;
 }
 
 .btn-small {
@@ -122,9 +124,41 @@ nav.top-nav .icon {
   padding: 0.4rem 0.7rem;
 }
 
-.btn-extra-small {
+.btn-extra-small,
+.pagination .page-item a {
   font-size: 0.7em;
   padding: 0.3rem 0.6rem;
+}
+
+.pagination {
+  text-align: center;
+  padding: 0;
+}
+
+.pagination li {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0 0;
+}
+
+.pagination .page-item a {
+  color: #fff;
+}
+
+.pagination li.disabled {
+  opacity: 0.3;
+}
+
+.pagination li:first-child,
+.pagination li:last-child,
+.pagination li:nth-child(2),
+.pagination li:nth-last-child(2) {
+  display: none;
+}
+
+.pagination .active a {
+  background: #fff;
+  color: #5465ff;
+  border: 2px solid #5465ff;
 }
 
 .font-eczar {
