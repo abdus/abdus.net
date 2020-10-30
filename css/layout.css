@@ -180,7 +180,7 @@ pre {
   padding: 1.5rem;
   border-radius: 0.4rem;
   overflow-x: auto;
-  color: #5465ff;
+  /*color: #5465ff;*/
   box-shadow: 0px 41px 148px rgba(84, 101, 255, 0.05),
     0px 18.9555px 68.4249px rgba(84, 101, 255, 0.0370838),
     0px 10.8459px 39.1512px rgba(84, 101, 255, 0.031339),
