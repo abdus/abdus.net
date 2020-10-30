@@ -1,0 +1,67 @@
+<aside id="comments">
+  <h2 class="font-eczar color-accent margin-0">Discussion</h2>
+  <div class="error">
+    As of now, comment system does not work. I am building my own commenting
+    system which may take some time to finish :)
+    <br />
+    <br />
+    Real Devs™ Code in Production!
+  </div>
+  <form id="comment-form">
+    <div>
+      <label>
+        <small>Name (optional)</small>
+        <input type="text" placeholder="Jon Snow" />
+      </label>
+      <label>
+        <small>Email (optional)</small>
+        <input type="text" placeholder="jon@google.com" />
+      </label>
+      <label>
+        <small>Website (optionsl)</small>
+        <input type="text" placeholder="www.example.com" />
+      </label>
+    </div>
+    <div>
+      <label>
+        <small>Comment</small>
+        <textarea placeholder="Start Typing..." rows="5"></textarea>
+      </label>
+    </div>
+    <input class="btn" type="submit" value="Comment" />
+  </form>
+
+  <div id="comments-listing">
+    <div class="comment card">
+      <h3 class="font-eczar author">
+        <span class="color-accent">The Unknown</span>
+        <span class="date">on 22 January, 2020</span>
+      </h3>
+      <div class="content">
+        Ipsum saepe praesentium laborum cumque illo quos. Illo rem laborum nulla
+        rerum placeat, in Repudiandae in velit quia distinctio voluptatem Porro
+        tempore architecto eius earum eos. Esse voluptate nesciunt nostrum.
+
+        <br />
+        <br />
+
+        <div class="comment card">
+          <h3 class="font-eczar author">
+            <span class="color-accent">The Unknown</span>
+            <span class="date">on 22 January, 2020</span>
+          </h3>
+          <div class="content">
+            Ipsum saepe praesentium laborum cumque illo quos. Illo rem laborum
+            nulla rerum placeat, in Repudiandae in velit quia distinctio
+            voluptatem Porro tempore architecto eius earum eos. Esse voluptate
+            nesciunt nostrum.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const form = document.querySelector("#comment-form");
+</script>
