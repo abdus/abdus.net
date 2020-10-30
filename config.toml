@@ -6,6 +6,7 @@ theme = "bronn"             # theme name
 disableKinds = []           # disable stuffs
 enableGitInfo = true        # valuable git information
 enableEmoji = true          # enables emoji support in content files
+Paginate = 8
 
 [params]
   title = "Abdus"

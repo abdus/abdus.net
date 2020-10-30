@@ -3,7 +3,7 @@
 <main class="list-layout max-width-60rem margin-auto">
   <h1 class="accent-color font-eczar text-center color-accent">{{ .Title }}</h1>
   <section class="max-width-45rem margin-auto">
-    {{ range .Pages }}
+    {{ range (.Paginate .Pages).Pages }}
     <a href="{{ .Permalink | absURL }}" class="card">
       <h3 class="font-eczar color-accent margin-0">{{ .Title }}</h3>
       <div class="content" style="color: #183446">
@@ -30,6 +30,8 @@
       </p>
     </a>
     {{ end }}
+    <!--.-->
+    {{ template "_internal/pagination.html" . }}
   </section>
 </main>
 <!-- -->
