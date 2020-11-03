@@ -10,7 +10,7 @@ anyways.
 I learnt most of the things I know on my own. I don't have a degree in Computer
 Science, but I do have one in Computer Applications.
 
-Desperately trying to fill this page up with random things :/
+[ _Desperately trying to fill this page up with random things :/_ ]
 
 I am a Linux geek. I have been using [Arch Linux](https://archlinux.org) since
 almost 2 years++. Here, I have my [dotfiles](https://github.com/abdus/dotfiles)
@@ -21,7 +21,7 @@ Profile](https://github.com/abdus).
 
 Contact Info You may Need:
 
-- contact@abdus.net
+- abdus@abdus.net
 - [LinkedIn Profile](https://linkedin.com/in/thisisabdus)
 
 

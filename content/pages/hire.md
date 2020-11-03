@@ -3,8 +3,8 @@ title: "Hire Me"
 ---
 
 I am available for work Feel free to send me a mail at
-[contact@abdus.net](mailto:contact@abdus.net). You can find an online copy of my
-resume at [resume.abdus.net](resume.abdus.net).
+[abdus@abdus.net](mailto:abdus@abdus.net). You can find an online copy of my
+resume at ~~[resume.abdus.net](https://resume.abdus.net)~~.
 
 Relevant Information:
 
@@ -13,6 +13,38 @@ Relevant Information:
   even before 2017, but that was not really full-time.
 - **Projects:** Everything on [GitHub](https://github.com/abdus)
 - **LinkedIn:** [here](https://linkedin.com/in/thisisabdus)
+
+Technologies I use:
+
+- FrontEnd
+  - [JavaScript](https://github.com/search?l=JavaScript&o=desc&q=user%3Aabdus&s=updated&type=Repositories) -
+    This is my primary computer language. I use it everyday.
+  - [React](https://abdus.com/projects/#react) - UI framework I like to use.
+  - [CSS](https://github.com/search?l=CSS&o=desc&q=user%3Aabdus&s=updated&type=Repositories) -
+    I am good at it.
+  - [HTML](https://github.com/search?l=HTML&o=desc&q=user%3Aabdus&s=updated&type=Repositories) -
+    A bit better than CSS.
+  - [Pug.js](https://pugjs.org/) - JavaScript template
+    engine I prefer to use.
+  - [Handlebars](https://handlebarsjs.com/) - Another JavaScript template engine
+  - [Bootstrap](https://getbootstrap.com) - A FrontEnd developer is incomplete
+    without this awesome library.
+- BackEnd
+  - [Node.js](https://nodejs.org) - Server-Side runtime for JavaScript, and
+    something I heavily rely upon.
+  - [Express](https://expressjs.com) - Preferred backEnd framework
+  - [Passport](https://passportjs.org) - Auth Library
+  - [SQL](#) - Language that database speaks
+- Database
+  - [MongoDB](https://mongodb.org) - NoSQL Database
+  - [PostgreSQL](https://postgresql.com) - I am still learning.
+- Others
+  - [Git](https://git-scm.org) - Version Control. I have worked with SVN
+    previously
+  - [GNU](https://www.gnu.org/)/[Linux](https://www.linux.org/) - Don't ask me
+    to work on Windows or Mac, please. I can consider \*BSD for some time :)
+    - [Arch Linux](https://archlinux.org) - Primary OS
+    - [Ubuntu Linux](https://ubuntu.com) - On Servers
 
 If you need anything else, just ask me :)
 
