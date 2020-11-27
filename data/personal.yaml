@@ -26,17 +26,17 @@ testimonials:
 
 
 social:
-  - url: https://linuxrocks.online/@abdus
-    name: Mastodon
-    fa: 'fab fa-mastodon'
+  - url: https://t.co/cloud_dev
+    name: Telegram
+    icon: 'telegram'
 
   - url: https://github.com/abdus
-    name: LinkedIn
-    fa: 'fab fa-github'
+    name: GitHub
+    icon: 'github'
 
   - url: https://linkedin.com/in/thisisabdus
     name: LinkedIn
-    fa: 'fab fa-linkedin-in'
+    icon: 'linkedin'
 
 
 projects:

@@ -1,5 +1,7 @@
 ---
 title: "Hire Me"
+meta:
+  description: 
 ---
 
 I am available for work Feel free to send me a mail at
