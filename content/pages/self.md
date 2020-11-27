@@ -2,27 +2,27 @@
 title: "About Me"
 ---
 
-Hey there, I am Abdus. I am a full-stack developer.
+### Intro
 
-Don't really know what to write about myself. I will try to write something
-anyways.
+Hey there! You are welcome to the most weird area of my website. I have no idea
+what to write about myself. But I will give it a try anyways.
 
-I learnt most of the things I know on my own. I don't have a degree in Computer
-Science, but I do have one in Computer Applications.
+So, I am Abdus. I am a developer living in
+north-eastern part of India.
 
-[ _Desperately trying to fill this page up with random things :/_ ]
+I am skilled at building websites, managing servers, playing with cloud stuffs
+and of course Linux. For a list of technical skills I've got, please [visit this
+page](/hire/).
 
-I am a Linux geek. I have been using [Arch Linux](https://archlinux.org) since
-almost 2 years++. Here, I have my [dotfiles](https://github.com/abdus/dotfiles)
+Apart from programming, I do...well, nothing. Sometime, I play PC games.
 
-If you are a recruiter, have a look at my [resume](https://resume.abdus.net).
-And if you are a developer, here's my [GitHub
-Profile](https://github.com/abdus).
+### Contact Info
 
-Contact Info You may Need:
+I am always reachable via Email [abdus@abdus.net](mailto:abdus@abdus.net). If
+you are in LinkedIn, feel free to
+[connect](https://linkedin.com/in/thisisabdus). If you prefer someting secure
+and fast, I am on [Telegram](https://t.me/cloud_dev) as well. Also, you can send
+me encrypted messages using my [GPG key](/keys/).
 
-- abdus@abdus.net
-- [LinkedIn Profile](https://linkedin.com/in/thisisabdus)
-
-
-Oh...BTW I love playing GTA V.
+That's all about me! I will keep this page updated incase any exciting things
+happens in my life(hopefully).
