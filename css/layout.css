@@ -23,13 +23,14 @@ nav.top-nav {
 }
 
 blockquote {
-  color: #5465ff;
-  font-weight: bold;
-  font-size: 1.2em;
+  background: #5465ff15;
+  /*font-weight: bold;*/
+  /*font-size: 1.2em;*/
   line-height: 1.4;
   margin: 0;
-  padding-left: 1rem;
-  border-left: 4px solid #5465ff;
+  padding: 1rem;
+  border: 1px solid #5465ff;
+  border-radius: 0.4rem;
 }
 
 blockquote p {
@@ -340,6 +341,10 @@ footer a {
   color: #5465ff;
 }
 
+.homepage .social-icon img {
+  max-width: 5rem;
+}
+
 .homepage .experience .title-card,
 .homepage .writings .title-card {
   grid-column: 2 / span 1;
@@ -477,7 +482,23 @@ footer a {
 .list-layout .content h6 {
   line-height: 1.2;
   font-weight: 900;
-  font-size: 1.5em;
+  margin: 3.4rem 0 0 0;
+  /*font-size: 1.5em;*/
+}
+
+.single-layout .content h1 ~ p,
+.single-layout .content h2 ~ p,
+.single-layout .content h3 ~ p,
+.single-layout .content h4 ~ p,
+.single-layout .content h5 ~ p,
+.single-layout .content h6 ~ p,
+.list-layout .content h1 ~ p,
+.list-layout .content h2 ~ p,
+.list-layout .content h3 ~ p,
+.list-layout .content h4 ~ p,
+.list-layout .content h5 ~ p,
+.list-layout .content h6 ~ p {
+  margin-top: 0.7rem;
 }
 
 /*list layout*/

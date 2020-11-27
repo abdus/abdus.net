@@ -1,0 +1,45 @@
+@font-face {
+  font-family: lineicons;
+  src: url(https://cdn.lineicons.com/2.0/fonts/LineIcons.eot);
+  src: url(https://cdn.lineicons.com/2.0/fonts/LineIcons.eot)
+      format("embedded-opentype"),
+    url(https://cdn.lineicons.com/2.0/fonts/LineIcons.woff2) format("woff2"),
+    url(https://cdn.lineicons.com/2.0/fonts/LineIcons.woff) format("woff"),
+    url(https://cdn.lineicons.com/2.0/fonts/LineIcons.ttf) format("truetype"),
+    url(https://cdn.lineicons.com/2.0/fonts/LineIcons.svg) format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+.lni {
+  display: inline-block;
+  font: normal normal normal 1em/1 "LineIcons";
+  speak: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@keyframes lni-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.lni-github::before {
+  content: "\eacd";
+}
+.lni-linkedin::before {
+  content: "\eb15";
+}
+.lni-telegram::before {
+  content: "\ebbc";
+}
