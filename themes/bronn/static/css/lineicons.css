@@ -43,3 +43,6 @@
 .lni-telegram::before {
   content: "\ebbc";
 }
+.lni-menu::before {
+  content: "\eb29";
+}
