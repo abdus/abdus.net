@@ -75,10 +75,40 @@ Interesting thing is that, `next()` may accpet a value if passed. Passed value
 will be returned as `yield` expression. For example, `name = yield name`.
 Whatever is passed to `next()` method, will be stored in variable `name`.
 
-**Arguments passed to first invocation of `next()` will be in-effective.**
+> Arguments passed to first invocation of `next()` will be ignored.
 
 ### `Iterator.return()` Method
 
 Assume that, for some reason, you need to complete executing the whole generator
 function immediately. In such cases, do we have a viable option? Yes! it's
 called [`return()`](#)
+
+## Examples
+
+Just as the title says, I am going to provide a few useful real-world usecases
+for generator functions.
+
+### 1. Generating Unique ID
+
+Unique IDs are [important]() at multiple scenerios. It gets tricky to generate
+those. Most of the time we depend upon external libraries.
+
+To generate an unique ID, either we could simply write a number generator using
+Generator Functions. Or we could convert them to some sort of strings. Both ways
+works good.
+
+Below is an example to generate unique strings.
+
+```javascript
+function* GenerateUniqueID() {
+  let i = 0;
+  while(true) {
+    const str = btoa(i);
+    i++;
+    yield str;
+  }
+}
+```
+
+What this would do? It will simply create a Base64 representation of a given
+number.
