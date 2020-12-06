@@ -55,6 +55,26 @@ figcaption {
   opacity: 0.9;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #5465ff69;
+  padding: 0.4rem;
+}
+
+th {
+  background: #5465ff;
+  color: #fff;
+  border-right: 1px solid #fff;
+}
+
+th:last-child {
+  border-right: 1px solid #5465ff;
+}
+
 nav.top-nav a {
   text-decoration: none;
   color: #183446;

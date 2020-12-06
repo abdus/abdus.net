@@ -26,9 +26,9 @@ testimonials:
 
 
 social:
-  - url: https://t.co/cloud_dev
-    name: Telegram
-    icon: 'telegram'
+  #- url: https://t.co/cloud_dev
+    #name: Telegram
+    #icon: 'telegram'
 
   - url: https://github.com/abdus
     name: GitHub
@@ -37,6 +37,10 @@ social:
   - url: https://linkedin.com/in/thisisabdus
     name: LinkedIn
     icon: 'linkedin'
+
+  - url: https://stackoverflow.com/users/8657006/abdus?tab=profile
+    name: Stack Overflow
+    icon: 'stackoverflow'
 
 
 projects:
