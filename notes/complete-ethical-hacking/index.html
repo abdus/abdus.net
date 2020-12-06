@@ -1,0 +1,76 @@
+<!doctype html><html lang=en><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link rel=stylesheet href=https://abdus.net/css/lineicons.css media=all><link rel=stylesheet href=https://abdus.net/css/syntax-dark.css media=all><link defer href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Why Linux?  it&rsquo;s open-source free of cost environment for pen-testing good for development very light varities of distributions  Network Commands in Linux ifconfig - shows interfaces and IP addresses corosponding to those interfaces
+ MAC Addr - Unique addresses for every device in the world. used to communicate within local network IP Addr - used to communicate over internet. may change.  Loopback Interface any traffic that computer sends to the loopback network is addressed to the same computer."><meta name=title content="Complete Ethical Hacking | Abdus"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta property="og:type" content="website"><meta property="og:url" content="https://abdus.net/notes/complete-ethical-hacking/"><meta property="og:title" content="Complete Ethical Hacking | Abdus"><meta property="og:description" content="Why Linux?  it&rsquo;s open-source free of cost environment for pen-testing good for development very light varities of distributions  Network Commands in Linux ifconfig - shows interfaces and IP addresses corosponding to those interfaces
+ MAC Addr - Unique addresses for every device in the world. used to communicate within local network IP Addr - used to communicate over internet. may change.  Loopback Interface any traffic that computer sends to the loopback network is addressed to the same computer."><meta property="og:image" content="https://abdus.net/images/default-meta-img.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/notes/complete-ethical-hacking/"><meta property="twitter:title" content="Complete Ethical Hacking | Abdus"><meta property="twitter:description" content="Why Linux?  it&rsquo;s open-source free of cost environment for pen-testing good for development very light varities of distributions  Network Commands in Linux ifconfig - shows interfaces and IP addresses corosponding to those interfaces
+ MAC Addr - Unique addresses for every device in the world. used to communicate within local network IP Addr - used to communicate over internet. may change.  Loopback Interface any traffic that computer sends to the loopback network is addressed to the same computer."><meta property="twitter:image" content="https://abdus.net/images/default-meta-img.png"><title>Complete Ethical Hacking | Abdus</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Complete Ethical Hacking</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">20 October, 2020</small>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><a href=https://academy.zerotomastery.io/courses/1134428 class=article-source><i class="lni lni-invention"></i>https://academy.zerotomastery.io/courses/1134428</a><div class=content><h2 id=why-linux>Why Linux?</h2><ul><li>it&rsquo;s open-source</li><li>free of cost</li><li>environment for pen-testing</li><li>good for development</li><li>very light</li><li>varities of distributions</li></ul><h2 id=network-commands-in-linux>Network Commands in Linux</h2><p><code>ifconfig</code> - shows interfaces and IP addresses corosponding to those interfaces</p><ul><li>MAC Addr - Unique addresses for every device in the world. used to communicate
+within local network</li><li>IP Addr - used to communicate over internet. may change.</li></ul><h3 id=loopback-interface>Loopback Interface</h3><p>any traffic that computer sends to the loopback network is addressed to the same
+computer. loopback interface have IP address 127.0.0.0/8 The most common IP
+address for the loopback interface is 127.0.0.1 . Loopback interface is
+represented with <code>lo</code> in <code>iwconfig</code>/<code>ipconfig</code> output.</p><p>although any interface can be used to identify the device, loopback interface
+is generally used.</p><h2 id=information-gathering>Information Gathering</h2><ul><li>first step in pen-testing</li><li>act of gathering data for our target</li><li>any type of data which might help us achieve our shits</li></ul><h3 id=types-of-information-gathering>Types of Information Gathering</h3><p><strong>Active Info Gathering</strong> from target(website etc)</p><p>directly get the data from target. examples: direct packets exchange, talking
+with employes etc etc</p><p><strong>Passive Info Gathering</strong> from target</p><p>collecting info from a middle source. example: google about target and gather
+data from a third party website etc</p><h3 id=goals>Goals</h3><ul><li><p>IP Address(s)</p></li><li><p>Employee Emails</p></li><li><p>Employee Phone Numbers</p></li><li><p>Technologies</p><ul><li>Operating System</li><li>Networks</li><li>Software</li></ul></li></ul><h3 id=tools-for-gathering-information>Tools for Gathering Information</h3><ul><li><em>WhatWeb</em> - Gather information about a website. for more info <code>man whatweb</code></li><li><em>theHarvester</em> - Gather info about Email, Hostname and Username</li><li><em>hunter.io</em> - Gather info about Email</li><li><em>redhawk</em></li></ul><blockquote><p>Tools often fail. Find related tools in GitHub.</p></blockquote></div><script defer src=https://commento.host.abdus.net/js/commento.js></script><div id=commento></div></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"notes","name":"Complete Ethical Hacking","headline":"Complete Ethical Hacking","description":"Why Linux?  it\u0026rsquo;s open-source free of cost environment for pen-testing good for development very light varities of distributions  Network Commands in Linux ifconfig - shows interfaces and IP addresses corosponding to those interfaces\n MAC Addr - Unique addresses for every device in the world. used to communicate within local network IP Addr - used to communicate over internet. may change.  Loopback Interface any traffic that computer sends to the loopback network is addressed to the same computer.","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2020","datePublished":"2020-10-20 23:40:32 \u002b0530 \u002b0530","dateModified":"2020-10-20 23:40:32 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/notes\/complete-ethical-hacking\/","wordCount":"245","keywords":["Blog"]}</script><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+<a href=/notes/>My Dev Notes</a>
+<a href=/hire-me/>Hire Me</a>
+<a href=/keys/>Cryptographic Keys</a>
+<a href=mailto:abdus@abdus.net>abdus@abdus.net</a></footer></body></html>

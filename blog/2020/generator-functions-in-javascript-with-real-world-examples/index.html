@@ -1,0 +1,69 @@
+<!doctype html><html lang=en><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link rel=stylesheet href=https://abdus.net/css/lineicons.css media=all><link rel=stylesheet href=https://abdus.net/css/syntax-dark.css media=all><link defer href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Before I start writing anything, here&rsquo;s a discloser: I knew about generator functions since a long time, but did not really had a chance to use them. In this blogpost, I will demonstrate implementation of generator functions in real-world scenerios.
+ Generator Function Before we begin, let&rsquo;s quickly revise what generator functions are. They are a special kind of function which is used to generate an iterator.
+An Iterator is an Object which implements the Iterator Protocol."><meta name=title content="Generator Functions in JavaScript (with real-world examples) | Abdus"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta property="og:type" content="website"><meta property="og:url" content="https://abdus.net/blog/2020/generator-functions-in-javascript-with-real-world-examples/"><meta property="og:title" content="Generator Functions in JavaScript (with real-world examples) | Abdus"><meta property="og:description" content="Before I start writing anything, here&rsquo;s a discloser: I knew about generator functions since a long time, but did not really had a chance to use them. In this blogpost, I will demonstrate implementation of generator functions in real-world scenerios.
+ Generator Function Before we begin, let&rsquo;s quickly revise what generator functions are. They are a special kind of function which is used to generate an iterator.
+An Iterator is an Object which implements the Iterator Protocol."><meta property="og:image" content="https://i.ibb.co/QJqYYBn/f76eef870144.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/blog/2020/generator-functions-in-javascript-with-real-world-examples/"><meta property="twitter:title" content="Generator Functions in JavaScript (with real-world examples) | Abdus"><meta property="twitter:description" content="Before I start writing anything, here&rsquo;s a discloser: I knew about generator functions since a long time, but did not really had a chance to use them. In this blogpost, I will demonstrate implementation of generator functions in real-world scenerios.
+ Generator Function Before we begin, let&rsquo;s quickly revise what generator functions are. They are a special kind of function which is used to generate an iterator.
+An Iterator is an Object which implements the Iterator Protocol."><meta property="twitter:image" content="https://i.ibb.co/QJqYYBn/f76eef870144.png"><title>Generator Functions in JavaScript (with real-world examples) | Abdus</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Generator Functions in JavaScript (with real-world examples)</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">12 November, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/javascript>javascript</a>
+<span class="btn btn-extra-small">3 Mins</span></strong></p><div class=content><p>Before I start writing anything, here&rsquo;s a discloser: I knew about generator
+functions since a long time, but did not really had a chance to use them. In
+this blogpost, I will demonstrate implementation of generator functions in
+real-world scenerios.</p><p><img src=https://i.ibb.co/QJqYYBn/f76eef870144.png alt="Generator Function"></p><h2 id=generator-function>Generator Function</h2><p>Before we begin, let&rsquo;s quickly revise <strong>what generator functions are</strong>. They are
+a special kind of function which is used to generate an iterator.</p><p>An Iterator is an Object which implements <a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterator_protocol>the Iterator Protocol</a>.</p><blockquote><p>The Iterator Protocol defines a standard way to produce sequential values and
+potentially a return value when all values have been generated.
+- MDN</p></blockquote><h3 id=function-signature-for-generator-functions>Function Signature for Generator Functions</h3><p>Function signature for a Generator Function is similar to a regular function.
+The only difference is that, in iterator function, keyword <code>function</code> is
+followed by an astrics(<code>*</code>).</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// function signature
+</span><span class=c1></span><span class=kd>function</span><span class=o>*</span> <span class=nx>generator</span><span class=p>(</span><span class=nx>args</span><span class=p>)</span> <span class=p>{}</span>
+</code></pre></div><h3 id=yield-keyword><code>yield</code> Keyword</h3><p>As soon as the keyword <code>yield</code> is encountered, the function execution will
+pause. And the value will be returned.</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=c1>// generator function
+</span><span class=c1></span><span class=kd>function</span><span class=o>*</span> <span class=nx>myGen</span><span class=p>()</span> <span class=p>{</span>
+  <span class=k>yield</span> <span class=mi>1</span><span class=p>;</span>
+  <span class=k>yield</span> <span class=mi>2</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div><h3 id=iteratornextarg-method><code>Iterator.next(arg)</code> Method</h3><p><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator/next><code>next()</code></a>
+is a method to return the current state of the generator function.
+<code>next()</code> returns an object containing keys <code>value</code> and <code>done</code>. <code>value</code> holds
+whatever is returned by <code>yield</code>. And <code>done</code> shows if the complete function is
+done executing.</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kd>function</span><span class=o>*</span> <span class=nx>myGen</span><span class=p>()</span> <span class=p>{</span>
+  <span class=k>yield</span> <span class=mi>1</span><span class=p>;</span>
+  <span class=k>yield</span> <span class=mi>2</span><span class=p>;</span>
+<span class=p>}</span>
+
+<span class=kr>const</span> <span class=nx>it</span> <span class=o>=</span> <span class=nx>myGen</span><span class=p>();</span>
+
+<span class=nx>myGen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: 1, done: false }
+</span><span class=c1></span><span class=nx>myGen</span><span class=p>.</span><span class=nx>next</span><span class=p>();</span> <span class=c1>// { value: 2, done: false }
+</span></code></pre></div><p>Interesting thing is that, <code>next()</code> may accpet a value if passed. Passed value
+will be returned as <code>yield</code> expression. For example, <code>name = yield name</code>.
+Whatever is passed to <code>next()</code> method, will be stored in variable <code>name</code>.</p><blockquote><p>Arguments passed to first invocation of <code>next()</code> will be ignored.</p></blockquote><h3 id=iteratorreturn-method><code>Iterator.return()</code> Method</h3><p>Assume that, for some reason, you need to complete executing the whole generator
+function immediately. In such cases, do we have a viable option? Yes! it&rsquo;s
+called <a href=#><code>return()</code></a></p><h2 id=examples>Examples</h2><p>Just as the title says, I am going to provide a few useful real-world usecases
+for generator functions.</p><h3 id=1-generating-unique-id>1. Generating Unique ID</h3><p>Unique IDs are <a href>important</a> at multiple scenerios. It gets tricky to generate
+those. Most of the time we depend upon external libraries.</p><p>To generate an unique ID, either we could simply write a number generator using
+Generator Functions. Or we could convert them to some sort of strings. Both ways
+works good.</p><p>Below is an example to generate unique strings.</p><div class=highlight><pre class=chroma><code class=language-javascript data-lang=javascript><span class=kd>function</span><span class=o>*</span> <span class=nx>GenerateUniqueID</span><span class=p>()</span> <span class=p>{</span>
+  <span class=kd>let</span> <span class=nx>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+  <span class=k>while</span> <span class=p>(</span><span class=kc>true</span><span class=p>)</span> <span class=p>{</span>
+    <span class=kr>const</span> <span class=nx>str</span> <span class=o>=</span> <span class=nx>btoa</span><span class=p>(</span><span class=nx>i</span><span class=p>);</span>
+    <span class=nx>i</span><span class=o>++</span><span class=p>;</span>
+    <span class=k>yield</span> <span class=nx>str</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div><p>What this would do? It will simply create a Base64 representation of a given
+number. Use this output as classname/key/id for any HTML element.</p><p>Another method could be to hash that number using MD5, SHA or similar. This way,
+the resultant string would always be equal in length.</p><p>#wip</p></div><script defer src=https://commento.host.abdus.net/js/commento.js></script><div id=commento></div></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"posts","name":"Generator Functions in JavaScript (with real-world examples)","headline":"Generator Functions in JavaScript (with real-world examples)","description":"Before I start writing anything, here\u0026rsquo;s a discloser: I knew about generator functions since a long time, but did not really had a chance to use them. In this blogpost, I will demonstrate implementation of generator functions in real-world scenerios.\n Generator Function Before we begin, let\u0026rsquo;s quickly revise what generator functions are. They are a special kind of function which is used to generate an iterator.\nAn Iterator is an Object which implements the Iterator Protocol.","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2020","datePublished":"2020-11-12 18:54:26 \u002b0530 \u002b0530","dateModified":"2020-11-12 18:54:26 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/blog\/2020\/generator-functions-in-javascript-with-real-world-examples\/","wordCount":"467","keywords":["Blog"]}</script></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+<a href=/notes/>My Dev Notes</a>
+<a href=/hire-me/>Hire Me</a>
+<a href=/keys/>Cryptographic Keys</a>
+<a href=mailto:abdus@abdus.net>abdus@abdus.net</a></footer></body></html>
