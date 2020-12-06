@@ -48,7 +48,7 @@ to find a **specific pattern in a text**.
 |    `?`    | makes the preceeding symbol optional                                           |
 |  `{n,m}`  | match at least `n` but not more than `m` repetitions of preceeding symbol      |
 |  `(abc)`  | char group                                                                     |
-|     `     | `                                                                              | alteration. matches either the chars before or the chars after the symbol |
+|     `|`   | alteration. matches either the chars before or the chars after the symbol      |
 |    `\`    | escapes character                                                              |
 |    `^`    | beginning of the input                                                         |
 |    `$`    | end of the input                                                               |

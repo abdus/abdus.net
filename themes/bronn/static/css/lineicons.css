@@ -40,12 +40,15 @@
 .lni-linkedin::before {
   content: "\eb15";
 }
-.lni-telegram::before {
-  content: "\ebbc";
-}
+/*.lni-telegram::before {*/
+/*content: "\ebbc";*/
+/*}*/
 .lni-menu::before {
   content: "\eb29";
 }
 .lni-stackoverflow::before {
   content: "\ebaa";
+}
+.lni-invention:before {
+  content: "\eaf4";
 }

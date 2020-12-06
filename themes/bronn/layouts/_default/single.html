@@ -26,6 +26,12 @@
       </strong>
     </p>
     <!--.-->
+    {{ with .Params.sources }} {{ range . }}
+    <a href="{{ . }}" class="article-source"
+      ><i class="lni lni-invention"></i> {{ . }}</a
+    >
+    {{ end }} {{ end }}
+    <!--.-->
     <div class="content">{{ .Content }}</div>
     {{ range .Params.tags }}
     <a class="btn btn-small" href='{{ printf "/tags/%s" . | absURL }}'

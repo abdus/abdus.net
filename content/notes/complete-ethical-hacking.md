@@ -1,10 +1,11 @@
 ---
 title: "Complete Ethical Hacking"
 date: 2020-10-20T23:40:32+05:30
-draft: true
+draft: false
 tags: []
 categories: []
-sources: []
+sources:
+  - https://academy.zerotomastery.io/courses/1134428
 ---
 
 <!--

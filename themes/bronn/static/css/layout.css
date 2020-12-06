@@ -483,6 +483,15 @@ footer a {
   opacity: 0.4;
 }
 
+.single-layout a.article-source {
+  color: #5465ff80;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+
 .list-layout .btn,
 .single-layout .btn {
   color: #fff;

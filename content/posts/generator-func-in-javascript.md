@@ -1,7 +1,7 @@
 ---
 title: "Generator Functions in JavaScript (with real-world examples)"
 date: 2020-11-12T18:54:26+05:30
-draft: true
+draft: false
 meta:
   image: https://i.ibb.co/QJqYYBn/f76eef870144.png # url to image. Important for blog listing and seo
   description: # overrides .Summary
@@ -102,7 +102,7 @@ Below is an example to generate unique strings.
 ```javascript
 function* GenerateUniqueID() {
   let i = 0;
-  while(true) {
+  while (true) {
     const str = btoa(i);
     i++;
     yield str;
@@ -111,4 +111,9 @@ function* GenerateUniqueID() {
 ```
 
 What this would do? It will simply create a Base64 representation of a given
-number.
+number. Use this output as classname/key/id for any HTML element.
+
+Another method could be to hash that number using MD5, SHA or similar. This way,
+the resultant string would always be equal in length.
+
+#wip

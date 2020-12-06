@@ -1,7 +1,7 @@
 ---
-title: "Javascript Object Prototype"
+title: "JavaScript Object Prototype"
 date: 2020-09-24T13:24:30+05:30
-draft: true
+draft: false
 tags: []
 categories: []
 sources: []
