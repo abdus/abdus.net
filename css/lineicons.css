@@ -46,3 +46,6 @@
 .lni-menu::before {
   content: "\eb29";
 }
+.lni-stackoverflow::before {
+  content: "\ebaa";
+}
