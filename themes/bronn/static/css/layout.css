@@ -101,6 +101,14 @@ nav.top-nav .icon {
   display: none;
 }
 
+@media(max-width: 1100px) {
+  nav.top-nav {
+    flex-wrap: wrap;
+    padding-top: 1rem;
+  }
+
+}
+
 @media (max-width: 700px) {
   nav.top-nav {
     flex-wrap: wrap;
