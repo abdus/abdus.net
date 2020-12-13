@@ -1,0 +1,81 @@
+<!doctype html><html lang=en><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link rel=stylesheet href=https://abdus.net/css/lineicons.css media=all><link rel=stylesheet href=https://abdus.net/css/syntax-dark.css media=all><link defer href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel=stylesheet><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Some notes on Vim window management, Tab Management and Other Stuffsa..
+Window Management a window in Vim is the viewport for a buffer. following are a few useful window management command:
+   Key Binding Action Command     <C-w> o close all windows except the current one :on, :only   <C-w q close focused window    ZZ close focused window after saving changes    ZQ close focused window without saving changes    <C-w v split window vertically :vsplit   <C-w s split window horizentally :split   <C-w H/J/K/L move window to a direction    <C-w h/j/k/l switch between windows    <C-W> f split the window and edit filepath under cursor      a/file/path."><meta name=title content="Some Notes on Vim | Abdus"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta property="og:type" content="website"><meta property="og:url" content="https://abdus.net/notes/vim-notes/"><meta property="og:title" content="Some Notes on Vim | Abdus"><meta property="og:description" content="Some notes on Vim window management, Tab Management and Other Stuffsa..
+Window Management a window in Vim is the viewport for a buffer. following are a few useful window management command:
+   Key Binding Action Command     <C-w> o close all windows except the current one :on, :only   <C-w q close focused window    ZZ close focused window after saving changes    ZQ close focused window without saving changes    <C-w v split window vertically :vsplit   <C-w s split window horizentally :split   <C-w H/J/K/L move window to a direction    <C-w h/j/k/l switch between windows    <C-W> f split the window and edit filepath under cursor      a/file/path."><meta property="og:image" content="https://abdus.net/images/default-meta-img.png"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/notes/vim-notes/"><meta property="twitter:title" content="Some Notes on Vim | Abdus"><meta property="twitter:description" content="Some notes on Vim window management, Tab Management and Other Stuffsa..
+Window Management a window in Vim is the viewport for a buffer. following are a few useful window management command:
+   Key Binding Action Command     <C-w> o close all windows except the current one :on, :only   <C-w q close focused window    ZZ close focused window after saving changes    ZQ close focused window without saving changes    <C-w v split window vertically :vsplit   <C-w s split window horizentally :split   <C-w H/J/K/L move window to a direction    <C-w h/j/k/l switch between windows    <C-W> f split the window and edit filepath under cursor      a/file/path."><meta property="twitter:image" content="https://abdus.net/images/default-meta-img.png"><title>Some Notes on Vim | Abdus</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=/hire/><span class=num>04</span>
+<span class=name>hire me</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Some Notes on Vim</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">13 December, 2020</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/tools>tools</a>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><p>Some notes on Vim window management, Tab Management and Other Stuffsa..</p><h3 id=window-management>Window Management</h3><p>a window in Vim is the viewport for a buffer. following are a few useful window
+management command:</p><table><thead><tr><th style=text-align:center>Key Binding</th><th style=text-align:left>Action</th><th style=text-align:left>Command</th></tr></thead><tbody><tr><td style=text-align:center><code>&lt;C-w> o</code></td><td style=text-align:left>close all windows except the current one</td><td style=text-align:left><code>:on</code>, <code>:only</code></td></tr><tr><td style=text-align:center><code>&lt;C-w q</code></td><td style=text-align:left>close focused window</td><td style=text-align:left></td></tr><tr><td style=text-align:center><code>ZZ</code></td><td style=text-align:left>close focused window after saving changes</td><td style=text-align:left></td></tr><tr><td style=text-align:center><code>ZQ</code></td><td style=text-align:left>close focused window without saving changes</td><td style=text-align:left></td></tr><tr><td style=text-align:center><code>&lt;C-w v</code></td><td style=text-align:left>split window vertically</td><td style=text-align:left><code>:vsplit</code></td></tr><tr><td style=text-align:center><code>&lt;C-w s</code></td><td style=text-align:left>split window horizentally</td><td style=text-align:left><code>:split</code></td></tr><tr><td style=text-align:center><code>&lt;C-w H/J/K/L</code></td><td style=text-align:left>move window to a direction</td><td style=text-align:left></td></tr><tr><td style=text-align:center><code>&lt;C-w h/j/k/l</code></td><td style=text-align:left>switch between windows</td><td style=text-align:left></td></tr><tr><td style=text-align:center><code>&lt;C-W> f</code></td><td style=text-align:left>split the window and edit filepath under cursor</td><td style=text-align:left></td></tr></tbody></table><ul><li><code>a/file/path.md 20</code>: when the cursor is on filepath, pressing <code>&lt;C-W F</code> would
+open the filepath in a split window and jump to line number(<code>20</code> in this case)</li></ul><h3 id=tab-management>Tab Management</h3><p>a Tab in Vim holds one or more windows. multiple Tabs can be open to holds
+windows. In other words, windows can be grouped together by their relevance.</p><table><thead><tr><th style=text-align:center>Key Binding</th><th style=text-align:left>Action</th><th style=text-align:left>Command</th></tr></thead><tbody><tr><td style=text-align:center></td><td style=text-align:left>open a Tab</td><td style=text-align:left><code>:tabe[dit]</code>, <code>:tabnew</code></td></tr><tr><td style=text-align:center></td><td style=text-align:left>close a Tab</td><td style=text-align:left><code>:tabc[lose]</code></td></tr><tr><td style=text-align:center></td><td style=text-align:left>open a filepath in new tab</td><td style=text-align:left><code>:tabe FILEPATH</code></td></tr><tr><td style=text-align:center></td><td style=text-align:left>close all tabs except for the focused one</td><td style=text-align:left><code>:tabo[nly]</code></td></tr><tr><td style=text-align:center><code>gt</code></td><td style=text-align:left>go to next tab page</td><td style=text-align:left></td></tr><tr><td style=text-align:center><code>gT</code></td><td style=text-align:left>go to previous tab page</td><td style=text-align:left></td></tr><tr><td style=text-align:center><code>&lt;C-W> gf</code></td><td style=text-align:left>open the filepath under cursor into a new tab</td><td style=text-align:left></td></tr><tr><td style=text-align:center></td><td style=text-align:left>go to previous tab</td><td style=text-align:left><code>:tabp</code></td></tr><tr><td style=text-align:center></td><td style=text-align:left>go to next tab</td><td style=text-align:left><code>:tabN</code></td></tr><tr><td style=text-align:center><code>[count]gT</code></td><td style=text-align:left>go to [count] tab</td><td style=text-align:left></td></tr><tr><td style=text-align:center></td><td style=text-align:left>go to first tab</td><td style=text-align:left><code>:tabfir[st]</code></td></tr><tr><td style=text-align:center></td><td style=text-align:left>go to last tab</td><td style=text-align:left><code>:tabl</code></td></tr><tr><td style=text-align:center></td><td style=text-align:left>list open tabs</td><td style=text-align:left><code>:tabs</code></td></tr></tbody></table><ul><li><code>:tabnew</code> and <code>tabe</code> command can be prefixed with <code>+</code>, <code>-</code>, <code>0</code>, <code>$</code> to open
+Tabs at desired locations</li><li><code>a/file/path.md 20</code>: when the cursor is on filepath, pressing <code>&lt;C-W gF</code> would
+open the filepath in a new tab window and jump to line number(<code>20</code> in this case)</li></ul></div><a class="btn btn-small" href=https://abdus.net/tags/vim>#vim</a>
+<a class="btn btn-small" href=https://abdus.net/tags/neovim>#neovim</a>
+<a class="btn btn-small" href=https://abdus.net/tags/editor>#editor</a>
+<script defer src=https://commento.host.abdus.net/js/commento.js></script><div id=commento></div></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"notes","name":"Some Notes on Vim","headline":"Some Notes on Vim","description":"Some notes on Vim window management, Tab Management and Other Stuffsa..\nWindow Management a window in Vim is the viewport for a buffer. following are a few useful window management command:\n   Key Binding Action Command     \u0026lt;C-w\u0026gt; o close all windows except the current one :on, :only   \u0026lt;C-w q close focused window    ZZ close focused window after saving changes    ZQ close focused window without saving changes    \u0026lt;C-w v split window vertically :vsplit   \u0026lt;C-w s split window horizentally :split   \u0026lt;C-w H\/J\/K\/L move window to a direction    \u0026lt;C-w h\/j\/k\/l switch between windows    \u0026lt;C-W\u0026gt; f split the window and edit filepath under cursor      a\/file\/path.","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2020","datePublished":"2020-12-13 11:29:00 \u002b0530 \u002b0530","dateModified":"2020-12-13 11:29:00 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/notes\/vim-notes\/","wordCount":"284","keywords":["vim","neovim","editor","Blog"]}</script><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+<a href=/notes/>My Dev Notes</a>
+<a href=/hire-me/>Hire Me</a>
+<a href=/keys/>Cryptographic Keys</a>
+<a href=mailto:abdus@abdus.net>abdus@abdus.net</a></footer></body></html>
