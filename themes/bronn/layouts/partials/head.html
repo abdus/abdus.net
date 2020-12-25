@@ -54,7 +54,7 @@
 <meta property="og:url" content="{{ .Permalink | absURL }}" />
 <meta property="og:title" content="{{ .Page.Title }} | {{ .Site.Title }}" />
 <meta property="og:description" content='{{ .Scratch.Get "desc" }}' />
-<meta property="og:image" content='{{ .Scratch.Get "image" }}' />
+<meta property="og:image" content='{{ .Scratch.Get "image" }}' name="image" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -66,4 +66,4 @@
 <meta property="twitter:description" content='{{ .Scratch.Get "desc" }}' />
 <meta property="twitter:image" content='{{ .Scratch.Get "image" }}' />
 
-<title>{{ .Page.Title }} | {{ .Site.Title }}</title>
+<title>{{ .Page.Title }}</title>
