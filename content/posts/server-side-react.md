@@ -9,7 +9,12 @@ tags: []
 categories: []
 ---
 
-<!--  Start Typing... -->
+<!--
+  - assume that the app would be server from a single server
+  IDEAS
+  ======================
+  1. Add a FAQ section at bottom
+-->
 
 I have been using React since a while now. By far, my focus was mostly on
 client-side rendered applications bootstrapped using [Create React App](#TODO).
@@ -138,6 +143,108 @@ Obviously, we need to install them as dependencies.
 yarn add --dev @babel/preset-react @babel/preset-env
 ```
 
+`@babel/core` is the root package which transforms the code using plugins
+mentioned in `.babelrc`. So install it as well using:
+
+```sh
+yarn add --dev @babel/core
+```
+
 ### Webpack
 
+The primary responsiblity of Webpack is to package JavaScript and other files
+into a single bundle.
 
+But if browsers support [JavaScript Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules),
+why do we even need a bundler? Short Answer, because of NPM. During development,
+lots of other packages get installed along with React. Node knows where to look
+for an `import`ed package, but browser does not. So, we must bundle those
+JavaScript files and serve them using a WebServer.
+
+For Webpack to work correctly, it requires us to provide a configiguration file.
+Create `webpack.config.js` in project root. Let's fill it with some really basic
+configiguration.
+
+`webpack.config.js` exports an object that contains all required
+configigurations. There are four basic sections.
+
+- **Entry:** Defines the entry point config
+- **Output:** Location of the final bundle(s)
+- **Modules:** Webpack, by default, can only bundle JavaScript. For other
+  filetypes, there are modules. This section essentially tells Webpack which
+  module to use while loading a particular filetype.
+- **Plugins:** Webpack is extensible. It's functionalities can be extended by
+  using different plugins. One such plugin is [`html-webpack-plugin`](https://webpack.js.org/plugins/html-webpack-plugin/)
+  which optionally takes a template file as an input, injects JavaScript
+  bundles using `script` tags and write it into `output` directory.
+
+```javascript
+// webpack.config.js
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: path.join("src/index.js"),
+
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[contenthash].js",
+  },
+
+  plugins: [new HtmlWebpackPlugin({ template: "public/index.html" })],
+
+  modules: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"], // load css files
+      },
+      {
+        test: /\.jsx?$/,
+        use: ["babel-loader"],
+        exclude: /node_modules/,
+      },
+    ],
+  },
+};
+```
+
+You might have noticed that, instead of writing a file-name I used
+`[name].[contenthash].js` as output file. This will make Webpack use hash
+checksum of the content in filename. How it's benificial? Well, static files
+should be cached at browser. No point in downloading same content over and over.
+But when something changes in those files, the resultant hash value would also
+change. Since browser will see this as a new file, it will download and cache
+it.
+
+Time to install `webpack` and related packages.
+
+```shell
+yarn add --dev webpack webpack-cli babel-loader style-loader css-loader
+```
+
+At this moment, we are almost done setting up the front-end. We just need to
+create entry point for Webpack to works. And maybe populate those files with
+some boilerplate code...
+
+Create `src/index.js` and `public/index.html`. Fill these files with following
+content.
+
+```javascript
+// src/index.html
+import React from "react";
+import ReactDOM from "react-dom";
+
+function App(props) {
+  // `props` will be helpful later on
+  return <h1>Hello World</h1>;
+}
+
+ReactDOM.hydrate(<App />, document.querySelector("#react-root"));
+```
+
+[`hydrate`](https://reactjs.org/docs/react-dom.html#hydrate).
+
+```html
+<!-- public/index.html -->
+```

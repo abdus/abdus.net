@@ -1,5 +1,5 @@
 ---
-title: 'Ch 19 Hash Maps in Rust'
+title: "HashMaps in Rust"
 date: 2020-08-12T12:02:59+05:30
 draft: true
 tags: []
@@ -23,3 +23,7 @@ sources: []
 6. em > del (_~~text~~_) - red cross-off
 -->
 
+`HashMap`s are set of key-value pair. It is known by multiple names in different
+languages. for example: HashTable, Object, Dictionary, Map etc.
+
+A HashMap can be imported from Rust's standard library: `use std::collections::HashMap;`
