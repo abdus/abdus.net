@@ -28,9 +28,9 @@ Paginate = 8
 
 
   [[menu.main]]
-    identifier = "hire-me"
-    name = "hire me"
-    url = "/hire/"
+    identifier = "daily-log"
+    name = "daily logs"
+    url = "https://log.abdus.net"
     weight = 10
 
   [[menu.main]]
