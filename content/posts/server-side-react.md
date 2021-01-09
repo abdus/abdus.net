@@ -184,7 +184,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: path.join("src/index.js"),
+  entry: path.join("src/client/index.js"),
 
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -231,7 +231,7 @@ Create `src/index.js` and `public/index.html`. Fill these files with following
 content.
 
 ```javascript
-// src/index.html
+// src/client/index.js
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -243,8 +243,17 @@ function App(props) {
 ReactDOM.hydrate(<App />, document.querySelector("#react-root"));
 ```
 
-[`hydrate`](https://reactjs.org/docs/react-dom.html#hydrate).
+Here, you can read more about [`hydrate`](https://reactjs.org/docs/react-dom.html#hydrate).
 
 ```html
 <!-- public/index.html -->
+<html>
+  <head></head>
+  <body>
+    <div id="react-root"></div>
+  </body>
+</html>
 ```
+
+Now that we have a `src/client/` directory, we could create as many components
+we want and import them inside `src/client/index.js`
