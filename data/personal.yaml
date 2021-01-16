@@ -16,6 +16,16 @@ testimonials:
       have an opportunity to work with Abdus, you are among the lucky ones.
       One of the most reliable people I know.
 
+  - name: Matt Smith
+    designation: Software Engineer, Zero to Mastery
+    content: |
+      Having been fortunate enough to have worked with Abdus in multiple
+      projects in various capacities over the last 3 years, I can be sure to
+      count on Abdus, whether I am leading a project or if I am working on a
+      project he is leading. Abdus is highly motivated, knowledgeable and really
+      takes the time to understand the requirements in order to suggest or
+      implement the best solution. Its always a pleasure to work with Abuds!
+
   - name: Aquibur Rahman
     designation: CEO, MailModo
     content: |
@@ -23,7 +33,6 @@ testimonials:
       with. Besides being good at understanding the problem, he goes deep in to
       looking for the solution himself. I am sure with his hard work and grit,
       he is going to succeed always in his life.
-
 
 social:
   #- url: https://t.co/cloud_dev
