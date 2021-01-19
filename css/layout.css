@@ -255,7 +255,7 @@ pre {
 
 .grid {
   display: grid;
-  row-gap: 5rem;
+  row-gap: 4rem;
   column-gap: 4rem;
   margin-bottom: 10rem;
 }
