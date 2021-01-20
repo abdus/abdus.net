@@ -5,6 +5,9 @@ draft: false
 tags: [vim, neovim, editor]
 categories: [tools]
 sources: []
+meta:
+  image:
+  description:
 ---
 
 <!--
