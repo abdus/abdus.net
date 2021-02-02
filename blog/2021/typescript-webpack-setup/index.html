@@ -1,0 +1,173 @@
+<!doctype html><html lang=en><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link rel=stylesheet href=https://abdus.net/css/lineicons.css media=all><link rel=stylesheet href=https://abdus.net/css/syntax-dark.css media=all><link defer href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" rel=stylesheet><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="It has not been many days since I started to choose TypeScript instead of JavaScript. It&rsquo;s an interesting language(or a superset, as many of us would like to call) which adds so much awesomeness to Vanilla JavaScript. The most notable feature it adds to JavaScript is the TypeSafe programming.
+ Type-safe programming simply means that a programmer is less likely to write code which would produce a type-error. Type safety is the core feature of a Statically typed language."><meta name=title content="TypeScript Webpack Setup | Abdus"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta property="og:type" content="website"><meta property="og:url" content="https://abdus.net/blog/2021/typescript-webpack-setup/"><meta property="og:title" content="TypeScript Webpack Setup | Abdus"><meta property="og:description" content="It has not been many days since I started to choose TypeScript instead of JavaScript. It&rsquo;s an interesting language(or a superset, as many of us would like to call) which adds so much awesomeness to Vanilla JavaScript. The most notable feature it adds to JavaScript is the TypeSafe programming.
+ Type-safe programming simply means that a programmer is less likely to write code which would produce a type-error. Type safety is the core feature of a Statically typed language."><meta property="og:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png" name=image><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/blog/2021/typescript-webpack-setup/"><meta property="twitter:title" content="TypeScript Webpack Setup | Abdus"><meta property="twitter:description" content="It has not been many days since I started to choose TypeScript instead of JavaScript. It&rsquo;s an interesting language(or a superset, as many of us would like to call) which adds so much awesomeness to Vanilla JavaScript. The most notable feature it adds to JavaScript is the TypeSafe programming.
+ Type-safe programming simply means that a programmer is less likely to write code which would produce a type-error. Type safety is the core feature of a Statically typed language."><meta property="twitter:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png"><title>TypeScript Webpack Setup</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/self/><span class=num>02</span>
+<span class=name>About</span></a>
+<a href=/posts/><span class=num>03</span>
+<span class=name>blog</span></a>
+<a href=https://log.abdus.net><span class=num>04</span>
+<span class=name>daily logs</span></a>
+<a href=/notes/><span class=num>05</span>
+<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">TypeScript Webpack Setup</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">31 January, 2021</small>
+<span class="btn btn-extra-small">6 Mins</span></strong></p><a href=https://github.com/abdus/webpack-typescript-starter class=article-source><i class="lni lni-invention"></i>https://github.com/abdus/webpack-typescript-starter</a>
+<a href=https://academy.zerotomastery.io/courses/700470 class=article-source><i class="lni lni-invention"></i>https://academy.zerotomastery.io/courses/700470</a><div class=content><p>It has not been many days since I started to choose TypeScript instead of
+JavaScript. It&rsquo;s an interesting language(or a superset, as many of us
+would like to call) which adds so much awesomeness to Vanilla JavaScript. The
+most notable feature it adds to JavaScript is the TypeSafe programming.</p><blockquote><p>Type-safe programming simply means that a programmer is less likely to write
+code which would produce a type-error. Type safety is the core feature of a
+Statically typed language.</p></blockquote><p>How TypeScript makes JavaScript a type-safe language? Well, it does not.
+Because when the TypeScript code is compiled, there is no way the JavaScript
+engine running the compiled code, would prevent type errors. Then what&rsquo;s so
+special about it? In short, TypeScript makes the development process easier and
+less tedious.</p><h2 id=typescript-resources>TypeScript Resources</h2><p>Since the primary intention for this post is to provide an step-by-step guide on
+how to set-up a TypeScript project with Webpack, I would not add &lsquo;How to code in
+TypeScript&rsquo; kind of thing here.</p><p>However, if you are curious about learning TypeScript, following are some of the
+good Resources (also available in my <a href=#>resources</a> repository):</p><ul><li><a href=https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c>Interface vs Type alias in TypeScript &mldr;</a></li><li><a href=https://stackoverflow.com/questions/37233735/typescript-interfaces-vs-types>TypeScript: Interfaces vs Types</a></li><li><a href=https://basarat.gitbook.io/typescript/type-system/type-assertion>Type Assertion</a></li></ul><h2 id=setting-up-the-project>Setting Up the Project</h2><p>To set-up a TypeScript project with webpack correctly, you should first
+understand how would everything work all-togather.</p><p>If you have manually wrote a webpack configuration before, you would know that
+webpack simply takes input(for example: SASS, JavaScript etc) and puts them into
+a single file(or multiple, in some cases).</p><p>To answer the question &lsquo;Why we even need such overhead for a front-end project&rsquo;,
+not all browser supports module yet. Plus there are other features like Tree
+Shaking(fency term for removing dead codes), code-splitting, dependency
+management etc which comes handy with a bundler like webpack.</p><p>To bundle TypeScript source files using Webpack, all we need to do is add a
+<a href=https://webpack.js.org/loaders/>loader</a> which will handle TypeScript-specific
+files.</p><p>There are two ways to achieve this.</p><h3 id=ts-loader><code>ts-loader</code></h3><p><code>ts-loader</code> is a <a href=https://webpack.js.org/loaders/>webpack loader</a> which will
+compile TypeScript to regular JavaScript. Note that, <code>ts-loader</code> depends on
+<a href=https://npmjs.com/typescript><code>typescript</code></a> to compile code using
+<code>tsconfig.json</code>. So, it&rsquo;s pretty much obvious that we must add <code>typescript</code> as a
+dependency to the <code>package.json</code> file.</p><p>If you are using <code>ts-loader</code>, relevent configuration from <code>webpack.config.ts</code>
+would look something like this:</p><div class=highlight><pre class=chroma><code class=language-js data-lang=js><span class=nx>module</span><span class=p>.</span><span class=nx>exports</span> <span class=o>=</span> <span class=p>{</span>
+  <span class=p>....</span>
+
+  <span class=nx>module</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>rules</span><span class=o>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.tsx?$/</span><span class=p>,</span> <span class=c1>// select file ending with .ts or .tsx
+</span><span class=c1></span>        <span class=nx>use</span><span class=o>:</span> <span class=s1>&#39;ts-loader&#39;</span><span class=p>,</span> <span class=c1>// use ts-loader to handle TypeScript files
+</span><span class=c1></span>        <span class=nx>exclude</span><span class=o>:</span> <span class=sr>/node_modules/</span><span class=p>,</span> <span class=c1>// don&#39;t do anything for node_modules
+</span><span class=c1></span>      <span class=p>}</span>
+    <span class=p>]</span>
+  <span class=p>}</span>
+
+  <span class=p>....</span>
+<span class=p>}</span>
+</code></pre></div><p>That&rsquo;s pretty much it. No other configuration required for TypeScript.</p><h3 id=babelpreset-typescript><code>@babel/preset-typescript</code></h3><p><a href=https://babeljs.io/docs/en/babel-preset-typescript><code>@babel/preset-typescript</code></a>
+is a collection of plugins to handle TypeScript files. As of now, this preset
+contains only one plug-in called <a href=https://babeljs.io/docs/en/babel-plugin-transform-typescript><code>@babel/plugin-transform-typescript</code></a></p><p>If you are planning to follow this approach (and I will definately recommend
+this approach), you should have a <code>.babelrc</code> file at project-root (same as wher
+you have <code>webpack.config.ts</code> file).</p><div class=highlight><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=nt>&#34;presets&#34;</span><span class=p>:</span> <span class=p>[</span><span class=s2>&#34;@babel/preset-typescript&#34;</span><span class=p>]</span>
+<span class=p>}</span>
+</code></pre></div><p>Install <code>babel-loader</code> for webpack. And ask webpack to use <code>babel-loader</code> to
+handle TypeScript files. We are done.</p><h2 id=tsconfigjson><code>tsconfig.json</code></h2><p>Please refer to official TypeScript <a href=https://www.typescriptlang.org/docs/handbook/tsconfig-json.html>documentation</a> to learn about the
+configurations. A minimal configuration file may look like this:</p><pre><code class=language-json5 data-lang=json5>// this is a default tsconfig I use in all of my projects. feel free to modify
+// it as you want.
+{
+  {
+  &quot;compilerOptions&quot;: {
+    &quot;module&quot;: &quot;CommonJS&quot;,
+    &quot;noImplicitAny&quot;: true,
+    &quot;removeComments&quot;: true,
+    &quot;preserveConstEnums&quot;: true,
+    &quot;sourceMap&quot;: true
+  },
+  &quot;exclude&quot;: [&quot;node_modules&quot;]
+}
+
+}
+</code></pre><h2 id=adding-types-definition-to-the-project>Adding Types Definition to the Project</h2><p>When writing webpack configuration file(s) in TypeScript, you may encounter
+errors. Don&rsquo;t worry about them. They are easy to ger rid of. Just install
+appropriate type definitions from <a href=https://github.com/DefinitelyTyped/DefinitelyTyped><code>@types</code></a>.</p><p>For example, to get rid of webpack configuration error, install <code>@types/webpack</code> using Yarn.</p><h2 id=step-by-step-guide>Step by Step Guide</h2><p>Initialize <code>package.json</code>. You can use either <code>yarn</code> or <code>npm</code>. I would suggest
+you to use <code>yarn</code>, as it&rsquo;s faster. But it&rsquo;s upto you what you use&mldr;for sure.</p><p>To initialize, simply run <code>yarn init</code>(or <code>npm init</code>) to create <code>package.json</code>.
+This will hold information about the project. For exapmple, dependencies etc.
+Optionally, you can pass <code>--yes</code>, which will choose default value for every
+question asked by either tools.</p><p>Create webpack configuration file, <code>webpack.config.ts</code>. Note that, I am going to
+write it in TypeScript. You may choose to write in plain JavaScript. It does not
+matter.</p><p>We need to import <code>path</code> module from Node.js as we have to provide valid and
+correct pathnames to configuration options. We also need to install couple of
+other dependencies. Following is a list of what we will need.</p><p><strong>Primary Packages:</strong></p><ul><li><code>webpack</code>: Bundles source files</li><li><code>webpack-cli</code>: Provides command line interface for webpack</li><li><code>webpack-dev-server</code>: Runs a development server for live-reloading changes we
+make in our project.</li><li><code>html-webpack-plugin</code>: Injects webpack bundles(scripts, stylesheets etc) into
+HTML file.</li><li><code>css-loader</code>: Handles CSS files</li><li><code>mini-css-extract-plugin</code>: CSS modules are awesome! This will parse and
+extract CSS into a cachable file. You can you <code>style-loader</code> if you prefer
+to embed styles using <code>&lt;style></code> tag.</li><li><code>typescript</code>: compiles TypeScript into JavaScript. Also compiles webpack
+configuration file.</li><li><code>ts-node</code>: for running webpack config file</li><li><code>ts-loader</code>: For handling TypeScript files</li></ul><p><strong>Types:</strong></p><p>Following packages provides type definitions for TypeScript. We need these
+packages beause some of the libraries does not provide official type definitions
+yet.</p><ul><li><code>@types/webpack</code></li><li><code>@types/webpack-dev-server</code></li><li><code>@types/mini-css-extract-plugin</code></li></ul><p>Note that these packages should be installed as <code>devDependencies</code>. No problem if
+you wish to keep them as <code>dependencies</code>. Just a convention.</p><p>Install all of them using <code>yarn</code>:</p><div class=highlight><pre class=chroma><code class=language-sh data-lang=sh>yarn add --dev webpack webpack-dev-server html-webpack-plugin
+mini-css-extract-plugin css-loader ts-loader typescript  @types/webpack
+@types/webpack-dev-server @types/mini-css-extract-plugin
+</code></pre></div><p>And copy the following <code>webpack.config.ts</code> file. Configuration options are
+pretty much self-explanatory. You can always <a href=https://webpack.js.org/configuration/>look up for explanation</a></p><div class=highlight><pre class=chroma><code class=language-ts data-lang=ts><span class=kr>import</span> <span class=o>*</span> <span class=kr>as</span> <span class=nx>path</span> <span class=kr>from</span> <span class=s2>&#34;path&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=o>*</span> <span class=kr>as</span> <span class=nx>webpack</span> <span class=kr>from</span> <span class=s2>&#34;webpack&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=o>*</span> <span class=kr>as</span> <span class=nx>HtmlWebpackPlugin</span> <span class=kr>from</span> <span class=s2>&#34;html-webpack-plugin&#34;</span><span class=p>;</span>
+<span class=kr>import</span> <span class=o>*</span> <span class=kr>as</span> <span class=nx>MiniCssExtract</span> <span class=kr>from</span> <span class=s2>&#34;mini-css-extract-plugin&#34;</span><span class=p>;</span>
+
+<span class=kr>const</span> <span class=nx>config</span>: <span class=kt>webpack.Configuration</span> <span class=o>=</span> <span class=p>{</span>
+  <span class=nx>mode</span>: <span class=kt>process.env.NODE_ENV</span> <span class=o>===</span> <span class=s2>&#34;prod&#34;</span> <span class=o>?</span> <span class=s2>&#34;production&#34;</span> <span class=o>:</span> <span class=s2>&#34;development&#34;</span><span class=p>,</span>
+  <span class=nx>entry</span>: <span class=kt>path.resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s2>&#34;src/index.ts&#34;</span><span class=p>),</span>
+  <span class=nx>output</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>path</span>: <span class=kt>path.resolve</span><span class=p>(</span><span class=s2>&#34;build&#34;</span><span class=p>),</span>
+    <span class=nx>filename</span><span class=o>:</span> <span class=s2>&#34;[name].[contenthash].js&#34;</span><span class=p>,</span>
+  <span class=p>},</span>
+
+  <span class=c1>// plugins
+</span><span class=c1></span>  <span class=nx>plugins</span><span class=o>:</span> <span class=p>[</span>
+    <span class=k>new</span> <span class=nx>HtmlWebpackPlugin</span><span class=p>({</span>
+      <span class=nx>template</span>: <span class=kt>path.resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s2>&#34;public/index.html&#34;</span><span class=p>),</span>
+    <span class=p>}),</span>
+    <span class=k>new</span> <span class=nx>MiniCssExtract</span><span class=p>(),</span>
+  <span class=p>],</span>
+
+  <span class=c1>// modules and loaders
+</span><span class=c1></span>  <span class=nx>module</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>rules</span><span class=o>:</span> <span class=p>[</span>
+      <span class=p>{</span>
+        <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.tsx?$/</span><span class=p>,</span>
+        <span class=nx>use</span><span class=o>:</span> <span class=p>[</span><span class=s2>&#34;ts-loader&#34;</span><span class=p>],</span>
+      <span class=p>},</span>
+
+      <span class=p>{</span>
+        <span class=nx>test</span><span class=o>:</span> <span class=sr>/\.css$/</span><span class=p>,</span>
+        <span class=nx>use</span><span class=o>:</span> <span class=p>[</span><span class=nx>MiniCssExtract</span><span class=p>.</span><span class=nx>loader</span><span class=p>,</span> <span class=s2>&#34;css-loader&#34;</span><span class=p>],</span>
+      <span class=p>},</span>
+    <span class=p>],</span>
+  <span class=p>},</span>
+
+  <span class=c1>// dev server config
+</span><span class=c1></span>  <span class=nx>devServer</span><span class=o>:</span> <span class=p>{</span>
+    <span class=nx>port</span>: <span class=kt>3000</span><span class=p>,</span>
+    <span class=nx>contentBase</span>: <span class=kt>path.resolve</span><span class=p>(</span><span class=nx>__dirname</span><span class=p>,</span> <span class=s2>&#34;build&#34;</span><span class=p>),</span>
+    <span class=nx>compress</span>: <span class=kt>true</span><span class=p>,</span>
+  <span class=p>},</span>
+<span class=p>};</span>
+
+<span class=kr>export</span> <span class=k>default</span> <span class=nx>config</span><span class=p>;</span>
+</code></pre></div><p>At this point, Webpack configuration is done. Whatever webpack bundles, will be
+placed inside <code>build/</code> directory. You can safely <code>.gitignore</code> this directory.</p><p>To make development process easier, you may add npm scripts in <code>package.json</code>.
+Following are two example scripts:</p><div class=highlight><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
+  <span class=err>...</span>
+  <span class=nt>&#34;scripts&#34;</span><span class=p>:</span> <span class=p>{</span>
+    <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=s2>&#34;rimraf build &amp;&amp; webpack s&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;build&#34;</span><span class=p>:</span> <span class=s2>&#34;webpack&#34;</span>
+  <span class=p>}</span>
+  <span class=err>...</span>
+<span class=p>}</span>
+</code></pre></div><p>Note that in <code>start</code> script I have added <code>rimraf</code>. This is a package provides
+functionalities of <code>rm</code> command. You can simply install it using <code>yarn add --dev rimraf</code>.
+Purpose of using it, is to remove <code>build/</code> directory to get a fresh
+build of the source code everytime we run <code>webpack</code>.</p><h2 id=troubleshooting>Troubleshooting</h2><pre><code>TS2307: Cannot find module '*.css' or its corresponding type declarations.
+</code></pre><p>This occurs because TypeScript have no idea how to handle imported CSS. To get
+rid of this, create a file called <code>declaration.d.ts</code> in project root and put
+following code.</p><div class=highlight><pre class=chroma><code class=language-ts data-lang=ts><span class=kr>declare</span> <span class=nx>module</span> <span class=s2>&#34;*.css&#34;</span> <span class=p>{</span>
+  <span class=kr>const</span> <span class=nx>content</span>: <span class=kt>Record</span><span class=p>&lt;</span><span class=nt>string</span><span class=err>,</span> <span class=na>string</span><span class=p>&gt;;</span>
+  <span class=kr>export</span> <span class=k>default</span> <span class=nx>content</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div><h2 id=with-babel>With Babel</h2><p>Pretty simple. Instead of loading TypeScript file with <code>ts-loader</code>, use
+<code>babel-loader</code>. You can use <code>@babel/preset-typescript</code> for a ready-made
+configuration.</p><h2 id=conclusion>Conclusion</h2><p>I put up a repository on GitHub which contains the code I have demonstrated in
+this post. Repository is available at <a href=https://github.com/abdus/webpack-typescript-starter>https://github.com/abdus/webpack-typescript-starter</a></p><p>Thank you!</p></div><script defer src=https://commento.host.abdus.net/js/commento.js></script><div id=commento></div></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"posts","name":"TypeScript Webpack Setup","headline":"TypeScript Webpack Setup","description":"It has not been many days since I started to choose TypeScript instead of JavaScript. It\u0026rsquo;s an interesting language(or a superset, as many of us would like to call) which adds so much awesomeness to Vanilla JavaScript. The most notable feature it adds to JavaScript is the TypeSafe programming.\n Type-safe programming simply means that a programmer is less likely to write code which would produce a type-error. Type safety is the core feature of a Statically typed language.","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2021","datePublished":"2021-01-31 17:40:26 \u002b0530 \u002b0530","dateModified":"2021-01-31 17:40:26 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/blog\/2021\/typescript-webpack-setup\/","wordCount":"1226","keywords":["Blog"]}</script></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+<a href=/notes/>My Dev Notes</a>
+<a href=/hire-me/>Hire Me</a>
+<a href=/keys/>Cryptographic Keys</a>
+<a href=mailto:abdus@abdus.net>abdus@abdus.net</a></footer></body></html>
