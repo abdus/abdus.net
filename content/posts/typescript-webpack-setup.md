@@ -1,5 +1,5 @@
 ---
-title: "TypeScript Webpack Setup"
+title: "TypeScript Webpack Setup (with CSS Modules)"
 date: 2021-01-31T17:40:26+05:30
 draft: false
 meta:
