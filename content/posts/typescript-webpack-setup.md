@@ -3,8 +3,8 @@ title: "TypeScript Webpack Setup (with CSS Modules)"
 date: 2021-01-31T17:40:26+05:30
 draft: false
 meta:
-  image: # url to image. Important for blog listing and seo
-  description: # overrides .Summary
+  image: https://i.ibb.co/HPh3ymH/ts-webpack.png
+  description: A minimal set-up for TypeScript with Webpack as Module Bundler.
 tags: []
 categories: []
 sources:
@@ -278,7 +278,6 @@ functionalities of `rm` command. You can simply install it using `yarn add --dev
 Purpose of using it, is to remove `build/` directory to get a fresh
 build of the source code everytime we run `webpack`.
 
-
 ## Troubleshooting
 
 ```
@@ -301,7 +300,6 @@ declare module "*.css" {
 Pretty simple. Instead of loading TypeScript file with `ts-loader`, use
 `babel-loader`. You can use `@babel/preset-typescript` for a ready-made
 configuration.
-
 
 ## Conclusion
 
