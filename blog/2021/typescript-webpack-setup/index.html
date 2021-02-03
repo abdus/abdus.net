@@ -148,12 +148,12 @@ placed inside <code>build/</code> directory. You can safely <code>.gitignore</co
 Following are two example scripts:</p><div class=highlight><pre class=chroma><code class=language-json data-lang=json><span class=p>{</span>
   <span class=err>...</span>
   <span class=nt>&#34;scripts&#34;</span><span class=p>:</span> <span class=p>{</span>
-    <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=s2>&#34;rimraf build &amp;&amp; webpack s&#34;</span><span class=p>,</span>
-    <span class=nt>&#34;build&#34;</span><span class=p>:</span> <span class=s2>&#34;webpack&#34;</span>
+    <span class=nt>&#34;start&#34;</span><span class=p>:</span> <span class=s2>&#34;webpack s&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;build&#34;</span><span class=p>:</span> <span class=s2>&#34;rimraf build &amp;&amp; webpack&#34;</span>
   <span class=p>}</span>
   <span class=err>...</span>
 <span class=p>}</span>
-</code></pre></div><p>Note that in <code>start</code> script I have added <code>rimraf</code>. This is a package provides
+</code></pre></div><p>Note that in <code>build</code> script I have added <code>rimraf</code>. This is a package provides
 functionalities of <code>rm</code> command. You can simply install it using <code>yarn add --dev rimraf</code>.
 Purpose of using it, is to remove <code>build/</code> directory to get a fresh
 build of the source code everytime we run <code>webpack</code>.</p><h2 id=troubleshooting>Troubleshooting</h2><pre><code>TS2307: Cannot find module '*.css' or its corresponding type declarations.
