@@ -266,14 +266,14 @@ Following are two example scripts:
 {
   ...
   "scripts": {
-    "start": "rimraf build && webpack s",
-    "build": "webpack"
+    "start": "webpack s",
+    "build": "rimraf build && webpack"
   }
   ...
 }
 ```
 
-Note that in `start` script I have added `rimraf`. This is a package provides
+Note that in `build` script I have added `rimraf`. This is a package provides
 functionalities of `rm` command. You can simply install it using `yarn add --dev rimraf`.
 Purpose of using it, is to remove `build/` directory to get a fresh
 build of the source code everytime we run `webpack`.
