@@ -3,14 +3,14 @@
  Data Types in Rust:  Scalar  Integers  (i8 | u8) - 8-bit Integer (i16 | u16) - 16-bit Integer (i32 | u32) - 32-bit Integer (i64 | u64) - 64-bit Integer (i128 | u128) - 128-bit Integer (isize | usize) - Integer size depends upon the system architecture."><meta property="og:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png" name=image><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/notes/ch-5-data-types/"><meta property="twitter:title" content="Data Types | Abdus"><meta property="twitter:description" content="Every value in Rust is of a certain data type, which tells Rust what kind of data is being specified so it knows how to work with that data.
  Data Types in Rust:  Scalar  Integers  (i8 | u8) - 8-bit Integer (i16 | u16) - 16-bit Integer (i32 | u32) - 32-bit Integer (i64 | u64) - 64-bit Integer (i128 | u128) - 128-bit Integer (isize | usize) - Integer size depends upon the system architecture."><meta property="twitter:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png"><title>Data Types</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
 <span class=name>Home</span></a>
-<a href=/self/><span class=num>02</span>
-<span class=name>About</span></a>
-<a href=/posts/><span class=num>03</span>
+<a href=/posts/><span class=num>02</span>
 <span class=name>blog</span></a>
-<a href=https://log.abdus.net><span class=num>04</span>
-<span class=name>daily logs</span></a>
-<a href=/notes/><span class=num>05</span>
-<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Data Types</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">21 April, 2020</small>
+<a href=/self/><span class=num>03</span>
+<span class=name>About</span></a>
+<a href=/notes/><span class=num>04</span>
+<span class=name>notes</span></a>
+<a href=https://log.abdus.net><span class=num>05</span>
+<span class=name>daily logs</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Data Types</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">21 April, 2020</small>
 <a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
 <span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><blockquote><p>Every value in Rust is of a certain data type, which tells Rust what kind of data is being specified so it knows how to work with that data.</p></blockquote><h2 id=data-types-in-rust>Data Types in Rust:</h2><ol><li><strong>Scalar</strong><ul><li><strong>Integers</strong><ul><li>(<strong><code>i8 | u8</code></strong>) - 8-bit Integer</li><li>(<strong><code>i16 | u16</code></strong>) - 16-bit Integer</li><li>(<strong><code>i32 | u32</code></strong>) - 32-bit Integer</li><li>(<strong><code>i64 | u64</code></strong>) - 64-bit Integer</li><li>(<strong><code>i128 | u128</code></strong>) - 128-bit Integer</li><li>(<strong><code>isize | usize</code></strong>) - Integer size depends upon the system architecture.</li></ul></li><li><strong>Floating Point</strong> Numbers<ul><li><strong><code>f32</code></strong> - Single-precision 32-bit floating point numbers</li><li><strong><code>f64</code></strong>(default) - Single-precision 64-bit floating point numbers</li></ul></li><li><strong>Booleans</strong><ul><li><code>true</code></li><li><code>false</code></li></ul></li><li><strong>Characters</strong><ul><li><strong><code>char</code></strong> - 4-bytes in size. Capable of holding an Unicode Scalar Value(including Chinese, Japanese, and Korean characters; emoji; and zero-width spaces etc)</li></ul></li></ul></li><li><strong>Compound</strong><ul><li><strong>Tuple</strong></li><li><strong>Array</strong></li></ul></li></ol><h3 id=tuple>Tuple</h3><p>General way of grouping togather a number of values with variety of types.</p><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>tup</span>: <span class=p>(</span><span class=kt>i32</span><span class=p>,</span><span class=w> </span><span class=kt>f64</span><span class=p>,</span><span class=w> </span><span class=kt>u8</span><span class=p>)</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=p>(</span><span class=mi>500</span><span class=p>,</span><span class=w> </span><span class=mf>5.2</span><span class=p>,</span><span class=w> </span><span class=mi>1</span><span class=p>);</span><span class=w>
@@ -88,7 +88,7 @@
   } catch (exception) {
     console.log(exception.message);
   }
-</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0;border:none}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a>
 <a href=/notes/>My Dev Notes</a>
 <a href=/hire-me/>Hire Me</a>
 <a href=/keys/>Cryptographic Keys</a>

@@ -3,14 +3,14 @@ fn main(){lets1=String::from(&#34;Rust is awesome&#34;);letlength_s1=calc_len(&s
 fn main(){lets1=String::from(&#34;Rust is awesome&#34;);letlength_s1=calc_len(&s1);println!(&#34;The length of '{}' is {}.&#34;,s1,len);}fn calc_len(str: &String)-> usize {str.len()}// `str` goes out of scope. but since it never owned `s1`, nothing would happen."><meta property="og:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png" name=image><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/notes/ch-9-references-and-borrowing/"><meta property="twitter:title" content="References and Borrowing | Abdus"><meta property="twitter:description" content="When a variable is passed by reference to a function parameter, the function does not take ownership of that variable. Instead, it stores a pointer which would refer to that specific memory location. Passing a variable by reference to a function is known as Borrowing.
 fn main(){lets1=String::from(&#34;Rust is awesome&#34;);letlength_s1=calc_len(&s1);println!(&#34;The length of '{}' is {}.&#34;,s1,len);}fn calc_len(str: &String)-> usize {str.len()}// `str` goes out of scope. but since it never owned `s1`, nothing would happen."><meta property="twitter:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png"><title>References and Borrowing</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
 <span class=name>Home</span></a>
-<a href=/self/><span class=num>02</span>
-<span class=name>About</span></a>
-<a href=/posts/><span class=num>03</span>
+<a href=/posts/><span class=num>02</span>
 <span class=name>blog</span></a>
-<a href=https://log.abdus.net><span class=num>04</span>
-<span class=name>daily logs</span></a>
-<a href=/notes/><span class=num>05</span>
-<span class=name>notes</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">References and Borrowing</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">7 May, 2020</small>
+<a href=/self/><span class=num>03</span>
+<span class=name>About</span></a>
+<a href=/notes/><span class=num>04</span>
+<span class=name>notes</span></a>
+<a href=https://log.abdus.net><span class=num>05</span>
+<span class=name>daily logs</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">References and Borrowing</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">7 May, 2020</small>
 <a class="btn btn-extra-small" href=https://abdus.net/categories/rust>rust</a>
 <span class="btn btn-extra-small">2 Mins</span></strong></p><div class=content><p>When a variable is passed by reference to a function parameter, the function does not take ownership of that variable. Instead, it stores a pointer which would <em>refer</em> to that specific memory location. Passing a variable by reference to a function is known as <strong>Borrowing</strong>.</p><div class=highlight><pre class=chroma><code class=language-rs data-lang=rs><span class=k>fn</span> <span class=nf>main</span><span class=p>()</span><span class=w> </span><span class=p>{</span><span class=w>
 </span><span class=w>  </span><span class=kd>let</span><span class=w> </span><span class=n>s1</span><span class=w> </span><span class=o>=</span><span class=w> </span><span class=nb>String</span>::<span class=n>from</span><span class=p>(</span><span class=s>&#34;Rust is awesome&#34;</span><span class=p>);</span><span class=w>
@@ -117,7 +117,7 @@ fn main(){lets1=String::from(&#34;Rust is awesome&#34;);letlength_s1=calc_len(&s
   } catch (exception) {
     console.log(exception.message);
   }
-</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0;border:none}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a>
 <a href=/notes/>My Dev Notes</a>
 <a href=/hire-me/>Hire Me</a>
 <a href=/keys/>Cryptographic Keys</a>

@@ -1,0 +1,86 @@
+<!doctype html><html lang=en><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link rel=stylesheet href=https://abdus.net/css/lineicons.css media=all><link rel=stylesheet href=https://abdus.net/css/syntax-dark.css media=all><link defer href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" rel=stylesheet><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Why web-view is bad?  Less performent compared to native and native-like technologies Does not follow OS&rsquo;s UI design pattern. Same design in both android and iOS  Why React Native  Big community. Makes development process easier as support can be expected from community when stuck Battle-tested framework. Used by companies like Facebook, Uber Eats, Discord, Skype. And invested by Shopify, Microsoft (despite having Xamarin) etc Cross-Platform. Write code once, and run it in three platform (Android, Web and iOS)  React Native can&rsquo;t beat Native App&rsquo;s performence To understand this, we first gotta understand how React Native works internally."><meta name=title content="React Native Notes | Abdus"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta property="og:type" content="website"><meta property="og:url" content="https://abdus.net/notes/react-native-notes/"><meta property="og:title" content="React Native Notes | Abdus"><meta property="og:description" content="Why web-view is bad?  Less performent compared to native and native-like technologies Does not follow OS&rsquo;s UI design pattern. Same design in both android and iOS  Why React Native  Big community. Makes development process easier as support can be expected from community when stuck Battle-tested framework. Used by companies like Facebook, Uber Eats, Discord, Skype. And invested by Shopify, Microsoft (despite having Xamarin) etc Cross-Platform. Write code once, and run it in three platform (Android, Web and iOS)  React Native can&rsquo;t beat Native App&rsquo;s performence To understand this, we first gotta understand how React Native works internally."><meta property="og:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png" name=image><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/notes/react-native-notes/"><meta property="twitter:title" content="React Native Notes | Abdus"><meta property="twitter:description" content="Why web-view is bad?  Less performent compared to native and native-like technologies Does not follow OS&rsquo;s UI design pattern. Same design in both android and iOS  Why React Native  Big community. Makes development process easier as support can be expected from community when stuck Battle-tested framework. Used by companies like Facebook, Uber Eats, Discord, Skype. And invested by Shopify, Microsoft (despite having Xamarin) etc Cross-Platform. Write code once, and run it in three platform (Android, Web and iOS)  React Native can&rsquo;t beat Native App&rsquo;s performence To understand this, we first gotta understand how React Native works internally."><meta property="twitter:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png"><title>React Native Notes</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/posts/><span class=num>02</span>
+<span class=name>blog</span></a>
+<a href=/self/><span class=num>03</span>
+<span class=name>About</span></a>
+<a href=/notes/><span class=num>04</span>
+<span class=name>notes</span></a>
+<a href=https://log.abdus.net><span class=num>05</span>
+<span class=name>daily logs</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">React Native Notes</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">10 February, 2021</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/javascript>javascript</a>
+<span class="btn btn-extra-small">2 Mins</span></strong></p><a href=https://academy.zerotomastery.io/courses/1050496 class=article-source><i class="lni lni-invention"></i>https://academy.zerotomastery.io/courses/1050496</a><div class=content><h2 id=why-web-view-is-bad>Why web-view is bad?</h2><ul><li>Less performent compared to native and native-like technologies</li><li>Does not follow OS&rsquo;s UI design pattern. Same design in both android and iOS</li></ul><h2 id=why-react-native>Why React Native</h2><ul><li>Big community. Makes development process easier as support can be expected
+from community when stuck</li><li>Battle-tested framework. Used by companies like Facebook, Uber Eats, Discord,
+Skype. And invested by Shopify, Microsoft (despite having Xamarin) etc</li><li>Cross-Platform. Write code once, and run it in three platform (Android, Web
+and iOS)</li></ul><h2 id=react-native-cant-beat-native-apps-performence>React Native can&rsquo;t beat Native App&rsquo;s performence</h2><p>To understand this, we first gotta understand how React Native works internally.
+When we ship an app, it gets shipped with three things:</p><ul><li>React Native components compiled to Native Code</li><li>JavaScript bundle</li><li>JavaScript Virtual Machine (<a href=https://reactnative.dev/docs/javascript-environment>JavaScriptCore</a>,
+powers Safari)</li></ul><p>React Native must ship a JavaScript engine in order to run JavaScript bundles.
+This VM works as a <strong>Message Broker</strong>. When an event happens in View, OS will
+communicate with JavaScript engine to understand how to handle the event.</p><p>We have two things to take into consideration. First, the boot-up time of that
+JavaScript engine. Second, time require to communicate through the Message
+Broker and execute code from JavaScript bundle containing business logic.</p><p>An app built with purely native technologies(like Java, Kotlin, Swift or
+Objective-C) whon&rsquo;t have to undergo these tasks(communicating and VM boot-up).
+Hence, the performence gain.</p><p>Note that, a React Native app running in iOS will be a bit faster than its
+Android counterpart. JavaScriptCore is already available in iOS.</p><ul><li><p><a href=https://reactnative.dev/docs/hermes>Hermes</a> is a new JavaScript which is going
+to replace JavaScriptCore in coming days (one could opt-in for it).
+Hermes is written specifically for running React Native apps. It boosts
+<em>performence</em>, reduces <em>memory usage</em> and improves <em>start-up time</em>.</p><blockquote><p>The downside of using React Native is that it ships a Virtual Machine along
+with the Release APK which makes the app relatively slow and bigger in size.</p></blockquote></li><li><p><code>export const ComponentName</code> > <code>export default ComponentName</code>. Former will
+make sure that <code>import</code> namings are consistent throughout the project codebase.</p></li></ul></div><a class="btn btn-small" href=https://abdus.net/tags/javascript>#javascript</a>
+<a class="btn btn-small" href=https://abdus.net/tags/react>#react</a>
+<a class="btn btn-small" href=https://abdus.net/tags/react-native>#react-native</a></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"notes","name":"React Native Notes","headline":"React Native Notes","description":"Why web-view is bad?  Less performent compared to native and native-like technologies Does not follow OS\u0026rsquo;s UI design pattern. Same design in both android and iOS  Why React Native  Big community. Makes development process easier as support can be expected from community when stuck Battle-tested framework. Used by companies like Facebook, Uber Eats, Discord, Skype. And invested by Shopify, Microsoft (despite having Xamarin) etc Cross-Platform. Write code once, and run it in three platform (Android, Web and iOS)  React Native can\u0026rsquo;t beat Native App\u0026rsquo;s performence To understand this, we first gotta understand how React Native works internally.","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2021","datePublished":"2021-02-10 18:09:53 \u002b0530 \u002b0530","dateModified":"2021-02-10 18:09:53 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/notes\/react-native-notes\/","wordCount":"331","keywords":["javascript","react","react-native","Blog"]}</script><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0;border:none}</style></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+<a href=/notes/>My Dev Notes</a>
+<a href=/hire-me/>Hire Me</a>
+<a href=/keys/>Cryptographic Keys</a>
+<a href=mailto:abdus@abdus.net>abdus@abdus.net</a></footer></body></html>
