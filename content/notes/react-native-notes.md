@@ -1,10 +1,11 @@
 ---
 title: "React Native Notes"
 date: 2021-02-10T18:09:53+05:30
-draft: true
-tags: []
-categories: []
-sources: []
+draft: false
+tags: [javascript, react, react-native]
+categories: [javascript]
+sources:
+  - https://academy.zerotomastery.io/courses/1050496
 ---
 
 <!--
@@ -62,7 +63,13 @@ Hence, the performence gain.
 Note that, a React Native app running in iOS will be a bit faster than its
 Android counterpart. JavaScriptCore is already available in iOS.
 
-[Hermes](https://reactnative.dev/docs/hermes) is a new JavaScript which is going
-to replace JavaScriptCore in coming days (one could opt-in for it).
-Hermes is written specifically for running React Native apps. It boosts
-_performence_, reduces _memory usage_ and improves _start-up time_.
+- [Hermes](https://reactnative.dev/docs/hermes) is a new JavaScript which is going
+  to replace JavaScriptCore in coming days (one could opt-in for it).
+  Hermes is written specifically for running React Native apps. It boosts
+  _performence_, reduces _memory usage_ and improves _start-up time_.
+
+  > The downside of using React Native is that it ships a Virtual Machine along
+  > with the Release APK which makes the app relatively slow and bigger in size.
+
+- `export const ComponentName` > `export default ComponentName`. Former will
+  make sure that `import` namings are consistent throughout the project codebase.

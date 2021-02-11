@@ -24,26 +24,26 @@ Paginate = 8
     identifier = "about"
     name = "About"
     url = "/self/"
-    weight = 10
+    weight = 3
 
 
   [[menu.main]]
     identifier = "daily-log"
     name = "daily logs"
     url = "https://log.abdus.net"
-    weight = 10
+    weight = 5
 
   [[menu.main]]
     identifier = "blog"
     name = "blog"
     url = "/posts/"
-    weight = 10
+    weight = 2
 
   [[menu.main]]
     identifier = "notes"
     name = "notes"
     url = "/notes/"
-    weight = 10
+    weight = 4
 
 [markup]
 [markup.tableOfContents]
@@ -64,5 +64,5 @@ tabWidth = 2
 
 [permalinks]
 pages = "/:filename"
-posts = "/blog/:year/:title/"
+posts = "/blog/:year/:filename/"
 notes = "/notes/:filename"
