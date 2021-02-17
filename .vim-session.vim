@@ -7,8 +7,8 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +5 ~/Dev/personal/abdus.net/content/posts/mysql-on-arch-linux.md
-badd +0 themes/bronn/archetypes/posts.md
+badd +1 ~/Dev/personal/abdus.net/content/posts/mysql-on-arch-linux.md
+badd +1 themes/bronn/archetypes/posts.md
 argglobal
 %argdel
 $argadd content/posts/typescript-webpack-setup.md
@@ -35,12 +35,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 22) / 44)
+let s:l = 7 - ((6 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
-normal! 043|
+7
+normal! 078|
 wincmd w
 argglobal
 if bufexists("themes/bronn/archetypes/posts.md") | buffer themes/bronn/archetypes/posts.md | else | edit themes/bronn/archetypes/posts.md | endif

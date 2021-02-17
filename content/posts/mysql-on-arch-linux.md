@@ -4,8 +4,7 @@ date: 2021-02-17T14:41:32+05:30
 draft: false
 meta:
   image: https://i.ibb.co/7rNdBjB/mariadb.png
-  description: How to install MariaDB(MySQL), create and modifu user, database 
-  etc on Arch Linux and other distributions
+  description: How to install MariaDB(MySQL), create and modifu user, database etc on Arch Linux and other distributions
 tags: [mysql, sql, relational]
 categories: [database]
 sources:
