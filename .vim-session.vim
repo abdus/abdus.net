@@ -7,11 +7,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +72 content/notes/react-native-notes.md
+badd +1 ~/Dev/personal/abdus.net/content/posts/mysql-in-arch-linux.md
 argglobal
 %argdel
 $argadd content/posts/typescript-webpack-setup.md
-edit content/notes/react-native-notes.md
+edit ~/Dev/personal/abdus.net/content/posts/mysql-in-arch-linux.md
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -28,12 +28,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((7 * winheight(0) + 22) / 44)
+let s:l = 1 - ((0 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-8
-normal! 045|
+1
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
