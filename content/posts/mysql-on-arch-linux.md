@@ -2,8 +2,12 @@
 title: "MySQL in Arch Linux"
 date: 2021-02-17T14:41:32+05:30
 draft: false
-tags: []
-categories: []
+meta:
+  image: https://i.ibb.co/7rNdBjB/mariadb.png
+  description: How to install MariaDB(MySQL), create and modifu user, database 
+  etc on Arch Linux and other distributions
+tags: [mysql, sql, relational]
+categories: [database]
 sources:
   - https://www.linode.com/docs/guides/how-to-install-a-lamp-stack-on-arch-linux
   - https://wiki.archlinux.org/index.php/MariaDB
