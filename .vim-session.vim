@@ -35,12 +35,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 22) / 44)
+let s:l = 2 - ((1 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
-normal! 078|
+2
+normal! 015|
 wincmd w
 argglobal
 if bufexists("themes/bronn/archetypes/posts.md") | buffer themes/bronn/archetypes/posts.md | else | edit themes/bronn/archetypes/posts.md | endif

@@ -1,5 +1,5 @@
 ---
-title: "MySQL in Arch Linux"
+title: "MySQL on Arch Linux"
 date: 2021-02-17T14:41:32+05:30
 draft: false
 meta:
