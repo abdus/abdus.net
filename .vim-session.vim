@@ -7,12 +7,12 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 ~/Dev/personal/abdus.net/content/posts/mysql-on-arch-linux.md
-badd +1 themes/bronn/archetypes/posts.md
+badd +645 themes/bronn/static/css/layout.css
+badd +1 themes/bronn/layouts/partials/footer.html
 argglobal
 %argdel
 $argadd content/posts/typescript-webpack-setup.md
-edit ~/Dev/personal/abdus.net/content/posts/mysql-on-arch-linux.md
+edit themes/bronn/layouts/partials/footer.html
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -23,8 +23,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 212)
-exe 'vert 2resize ' . ((&columns * 105 + 106) / 212)
+exe 'vert 1resize ' . ((&columns * 103 + 106) / 212)
+exe 'vert 2resize ' . ((&columns * 108 + 106) / 212)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -35,15 +35,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 2 - ((1 * winheight(0) + 22) / 44)
+let s:l = 6 - ((5 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 015|
+6
+normal! 038|
 wincmd w
 argglobal
-if bufexists("themes/bronn/archetypes/posts.md") | buffer themes/bronn/archetypes/posts.md | else | edit themes/bronn/archetypes/posts.md | endif
+if bufexists("themes/bronn/static/css/layout.css") | buffer themes/bronn/static/css/layout.css | else | edit themes/bronn/static/css/layout.css | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -53,15 +53,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 4 - ((3 * winheight(0) + 22) / 44)
+let s:l = 587 - ((12 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-4
-normal! 0
+587
+normal! 03|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 212)
-exe 'vert 2resize ' . ((&columns * 105 + 106) / 212)
+exe 'vert 1resize ' . ((&columns * 103 + 106) / 212)
+exe 'vert 2resize ' . ((&columns * 108 + 106) / 212)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
