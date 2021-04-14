@@ -7,14 +7,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 /tmp/abdus.net/content/2021-01-17.md:1:1
-badd +645 themes/bronn/static/css/layout.css
-badd +6 themes/bronn/layouts/partials/footer.html
-badd +4 content/posts/typescript-webpack-setup.md
+badd +0 content/pages/keys.md
 argglobal
 %argdel
 $argadd content/posts/typescript-webpack-setup.md
-edit themes/bronn/static/css/layout.css
+edit content/pages/keys.md
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -22,7 +19,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-setlocal fdm=manual
+setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -30,13 +27,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let s:l = 587 - ((13 * winheight(0) + 24) / 48)
+let s:l = 61 - ((45 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-587
-normal! 03|
+61
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
