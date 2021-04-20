@@ -3,7 +3,7 @@ title: "TypeScript Webpack Setup (with CSS Modules)"
 date: 2021-01-31T17:40:26+05:30
 draft: false
 meta:
-  image: https://i.ibb.co/HPh3ymH/ts-webpack.png
+  image: https://mugshotbot.com/m/WQPOjyvQ
   description: A minimal set-up for TypeScript with Webpack as Module Bundler.
 tags: []
 categories: []

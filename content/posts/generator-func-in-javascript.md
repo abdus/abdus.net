@@ -3,7 +3,7 @@ title: "Generator Functions in JavaScript (with real-world examples)"
 date: 2020-11-12T18:54:26+05:30
 draft: false
 meta:
-  image: https://i.ibb.co/QJqYYBn/f76eef870144.png # url to image. Important for blog listing and seo
+  image: https://mugshotbot.com/m/PPwOhIEd # url to image. Important for blog listing and seo
   description: # overrides .Summary
 tags: []
 categories: [javascript]

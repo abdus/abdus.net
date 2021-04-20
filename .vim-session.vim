@@ -7,11 +7,11 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 content/pages/keys.md
+badd +0 content/posts/generator-func-in-javascript.md
 argglobal
 %argdel
 $argadd content/posts/typescript-webpack-setup.md
-edit content/pages/keys.md
+edit content/posts/generator-func-in-javascript.md
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -27,12 +27,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 61 - ((45 * winheight(0) + 24) / 49)
+6
+normal! zo
+let s:l = 6 - ((5 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-61
-normal! 0
+6
+normal! 042|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
