@@ -1,0 +1,140 @@
+<!doctype html><html lang=en><link rel=stylesheet href=https://abdus.net/css/layout.css media=all><link rel=stylesheet href=https://abdus.net/css/lineicons.css media=all><link rel=stylesheet href=https://abdus.net/css/syntax-dark.css media=all><link defer href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Lato:wght@400;700;900&display=swap" rel=stylesheet><link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap" rel=stylesheet><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Java is a General Purpose, Object Oriented Programming Language heavily used in Enterprise projects.
+Java Naming Conventions Following a standard naming convention would make a project codebase more readable and maintainable. Following are some of those standards used to name different things in Java.
+Classes and Interfaces  names should be nouns first letter of each internal word should be capitalised must avoid acronyms and abbreviations  Example:
+interface Bicycle class MountainBike implements Bicycle interface Sport class Football implements Sport Methods  should be verbs first letter of the name should be lowercase first letter of each internal work should be uppercase  example:"><meta name=title content="Java: Basics | Abdus"><meta name=robots content="index, follow"><meta charset=utf-8><meta name=language content="English"><meta name=revisit-after content="2 days"><meta property="og:type" content="website"><meta property="og:url" content="https://abdus.net/notes/java-basics/"><meta property="og:title" content="Java: Basics | Abdus"><meta property="og:description" content="Java is a General Purpose, Object Oriented Programming Language heavily used in Enterprise projects.
+Java Naming Conventions Following a standard naming convention would make a project codebase more readable and maintainable. Following are some of those standards used to name different things in Java.
+Classes and Interfaces  names should be nouns first letter of each internal word should be capitalised must avoid acronyms and abbreviations  Example:
+interface Bicycle class MountainBike implements Bicycle interface Sport class Football implements Sport Methods  should be verbs first letter of the name should be lowercase first letter of each internal work should be uppercase  example:"><meta property="og:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png" name=image><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://abdus.net/notes/java-basics/"><meta property="twitter:title" content="Java: Basics | Abdus"><meta property="twitter:description" content="Java is a General Purpose, Object Oriented Programming Language heavily used in Enterprise projects.
+Java Naming Conventions Following a standard naming convention would make a project codebase more readable and maintainable. Following are some of those standards used to name different things in Java.
+Classes and Interfaces  names should be nouns first letter of each internal word should be capitalised must avoid acronyms and abbreviations  Example:
+interface Bicycle class MountainBike implements Bicycle interface Sport class Football implements Sport Methods  should be verbs first letter of the name should be lowercase first letter of each internal work should be uppercase  example:"><meta property="twitter:image" content="https://i.ibb.co/RvzfY0Z/website-cover.png"><title>Java: Basics</title><body><div id=content><nav class="max-width-60rem margin-auto top-nav"><a href=/>Abdus</a><div class=icon id=nav-handler><i class="lni lni-menu"></i></div><div class=nav-items><a href=/><span class=num>01</span>
+<span class=name>Home</span></a>
+<a href=/posts/><span class=num>02</span>
+<span class=name>blog</span></a>
+<a href=/self/><span class=num>03</span>
+<span class=name>About</span></a>
+<a href=/notes/><span class=num>04</span>
+<span class=name>notes</span></a>
+<a href=https://log.abdus.net><span class=num>05</span>
+<span class=name>daily logs</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Java: Basics</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">30 April, 2021</small>
+<a class="btn btn-extra-small" href=https://abdus.net/categories/java>java</a>
+<span class="btn btn-extra-small">3 Mins</span></strong></p><a href=https://www.geeksforgeeks.org/java class=article-source><i class="lni lni-invention"></i>https://www.geeksforgeeks.org/java</a><div class=content><p>Java is a General Purpose, Object Oriented Programming Language heavily used in
+Enterprise projects.</p><h2 id=java-naming-conventions>Java Naming Conventions</h2><p>Following a standard naming convention would make a project codebase more
+readable and maintainable. Following are some of those standards used to name
+different things in Java.</p><h3 id=classes-and-interfaces>Classes and Interfaces</h3><ul><li>names should be nouns</li><li>first letter of each internal word should be capitalised</li><li>must avoid acronyms and abbreviations</li></ul><p>Example:</p><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=kd>interface</span> <span class=nc>Bicycle</span>
+<span class=kd>class</span> <span class=nc>MountainBike</span> <span class=kd>implements</span> <span class=n>Bicycle</span>
+
+<span class=kd>interface</span> <span class=nc>Sport</span>
+<span class=kd>class</span> <span class=nc>Football</span> <span class=kd>implements</span> <span class=n>Sport</span>
+</code></pre></div><h3 id=methods>Methods</h3><ul><li>should be verbs</li><li>first letter of the name should be lowercase</li><li>first letter of each internal work should be uppercase</li></ul><p>example:</p><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=kt>void</span> <span class=nf>changeGear</span><span class=o>(</span><span class=kt>int</span> <span class=n>value</span><span class=o>);</span>
+<span class=kt>void</span> <span class=nf>speedUp</span><span class=o>(</span><span class=kt>int</span> <span class=n>increment</span><span class=o>);</span>
+<span class=kt>void</span> <span class=nf>applyBrakes</span><span class=o>(</span><span class=kt>int</span> <span class=n>decrement</span><span class=o>);</span>
+</code></pre></div><h3 id=variables>Variables</h3><ul><li>short and meaningful</li><li>can start with <code>_</code> or <code>$</code></li><li>should be <a href="https://www.urbandictionary.com/define.php?term=mnemonic">mnemonic</a></li><li>avoide once-char variable name</li><li>( <strong>Constants</strong> ) should be all uppercase + snake case</li></ul><h3 id=packages>Packages</h3><ul><li>prefix should be all-lowercase ASCII letters</li><li>prefix should start with one of the top-level domains (eg. edu, gov, mil etc)</li></ul><h2 id=jvm>JVM</h2><ul><li>Java Virtual Machine is the run-time engine to run a Java Program</li><li>part of JRE (Java Runtime Environment)</li><li>JVM call the <code>main</code> method</li></ul><p><img src=https://media.geeksforgeeks.org/wp-content/uploads/jvm-3.jpg alt="java virtual machine">
+a</p><h3 id=class-loader-subsystem>class loader subsystem</h3><p>responsible for three activities</p><ul><li>loading</li><li>linking</li><li>initialization</li></ul><h4 id=loading>Loading</h4><p>class loader reads <code>.class</code> file, generate the corrosponding binary
+and sace it in the method area.</p><p>for each <code>.class</code> file, JVM stores:</p><ul><li>fully qualified name of the loaded class and its immediate parent class</li><li>whether <code>.class</code> file is related to Class or Interface or Enum</li><li>modifier, variables and method info</li></ul><p>JVM stores these information inside the Heap memory.</p><p>Information about a class can be accessed using multiple classes JVM provides.
+Example:</p><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=kn>import</span> <span class=nn>java.lang.reflect.Field</span><span class=o>;</span>
+<span class=kn>import</span> <span class=nn>java.lang.reflect.Method</span><span class=o>;</span>
+
+<span class=kd>public</span> <span class=kd>class</span> <span class=nc>Test</span> <span class=o>{</span>
+  <span class=kd>public</span> <span class=kd>static</span> <span class=kt>void</span> <span class=nf>main</span><span class=o>(</span><span class=n>String</span><span class=o>[]</span> <span class=n>args</span><span class=o>)</span> <span class=o>{</span>
+    <span class=n>Student</span> <span class=n>s1</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Student</span><span class=o>();</span>
+
+    <span class=c1>// getClass returns an object of type `Class`
+</span><span class=c1></span>    <span class=n>Class</span> <span class=n>c1</span> <span class=o>=</span> <span class=n>s1</span><span class=o>.</span><span class=na>getClass</span><span class=o>();</span>
+    <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>c1</span><span class=o>.</span><span class=na>getName</span><span class=o>());</span>
+
+    <span class=c1>// get all method names
+</span><span class=c1></span>    <span class=n>Method</span> <span class=n>m</span><span class=o>[]</span> <span class=o>=</span> <span class=n>c1</span><span class=o>.</span><span class=na>getDeclaredMethods</span><span class=o>();</span>
+    <span class=k>for</span> <span class=o>(</span><span class=n>Method</span> <span class=n>method</span> <span class=o>:</span> <span class=n>m</span><span class=o>)</span>
+      <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>method</span><span class=o>.</span><span class=na>getName</span><span class=o>());</span>
+
+    <span class=c1>// get all field names
+</span><span class=c1></span>    <span class=n>Method</span> <span class=n>f</span><span class=o>[]</span> <span class=o>=</span> <span class=n>c1</span><span class=o>.</span><span class=na>getDeclaredFields</span><span class=o>();</span>
+    <span class=k>for</span> <span class=o>(</span><span class=n>Method</span> <span class=n>field</span> <span class=o>:</span> <span class=n>m</span><span class=o>)</span>
+      <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>field</span><span class=o>.</span><span class=na>getName</span><span class=o>());</span>
+  <span class=o>}</span>
+<span class=o>}</span>
+
+<span class=kd>class</span> <span class=nc>Student</span> <span class=o>{</span>
+  <span class=kd>private</span> <span class=n>String</span> <span class=n>name</span><span class=o>;</span>
+  <span class=kd>private</span> <span class=kt>int</span> <span class=n>roll_no</span><span class=o>;</span>
+
+  <span class=kd>public</span> <span class=n>String</span> <span class=nf>getName</span><span class=o>()</span> <span class=o>{</span> <span class=k>return</span> <span class=n>name</span><span class=o>;</span> <span class=o>}</span>
+  <span class=kd>public</span> <span class=kt>void</span> <span class=nf>setName</span><span class=o>(</span><span class=n>String</span> <span class=n>name</span><span class=o>)</span> <span class=o>{</span> <span class=k>this</span><span class=o>.</span><span class=na>name</span> <span class=o>=</span> <span class=n>name</span><span class=o>;</span> <span class=o>}</span>
+
+  <span class=kd>public</span> <span class=kt>int</span> <span class=nf>getRollNo</span><span class=o>()</span> <span class=o>{</span> <span class=k>return</span> <span class=n>roll_no</span><span class=o>;</span> <span class=o>}</span>
+  <span class=kd>public</span> <span class=kt>void</span> <span class=nf>setRollNo</span><span class=o>(</span><span class=kt>int</span> <span class=n>roll_no</span><span class=o>)</span> <span class=o>{</span> <span class=k>this</span><span class=o>.</span><span class=na>roll_no</span> <span class=o>=</span> <span class=n>roll_no</span><span class=o>;</span> <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><h4 id=linking>Linking</h4><p>performs:</p><ul><li><strong>verification:</strong> ensures correctness of the <code>.class</code> file. it checks whether
+the file is properly formatted. if not, JVM will raise a run-time exception
+called <code>java.lang.VerifyError</code></li><li><strong>preparation:</strong> JVM allocates memory for class variables and initializing the
+memoru to default value</li><li><strong>resolution:</strong> process of replacing symbolic reference from the type with
+direct reference</li></ul><h3 id=data-types>Data types</h3><ul><li>Primitive Types<ul><li>Boolean Type<ul><li><code>boolean</code></li></ul></li><li>Numeric Type<ul><li>Character Type<ul><li><code>char</code> (single 16-bit Unicode character)</li></ul></li><li>Integral Value<ul><li>Integer<ul><li><code>byte</code></li><li><code>short</code></li><li><code>int</code></li><li><code>long</code></li></ul></li><li>Floating Point<ul><li><code>float</code></li><li><code>double</code></li></ul></li></ul></li></ul></li></ul></li><li>Non-Primitive Type<ul><li>String</li><li>Array</li><li>Class</li><li>&mldr; etc</li></ul></li></ul><blockquote><p>Non-primitive data type is also known as reference data type</p></blockquote><h2 id=variables-1>Variables</h2><ul><li>is a name given to a memory location</li><li>must be declared before use</li></ul><p>example:</p><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=kd>class</span> <span class=nc>Test</span> <span class=o>{</span>
+  <span class=kt>int</span> <span class=n>count</span> <span class=o>=</span> <span class=n>100</span><span class=o>;</span>
+<span class=o>}</span>
+</code></pre></div><h3 id=types-of-variables>Types of Variables</h3><ol><li><strong>Local Variable</strong>:<ul><li>definded within a method, constructor or a block</li><li>scope of local variable is within the declaraion block</li></ul></li><li><strong>Instance Variable</strong>:<ul><li>decared inside a class</li><li>destroyed when the class instance is get destroyed</li><li>modifiers can be used to restrict the access of a variable</li><li>initialization is not mandatory. default value is 0.</li><li>can be accessed only by creating an object</li></ul></li><li><strong>Static Variables</strong><ul><li>declared with <code>static</code> keyword within a class outside of any methods</li><li>can have only one copy of Static variable, irrespective of how many
+objects were created</li><li>create at the start of program. and destroed when the execution is finished</li><li>initialization is not mandatory. defaults to 0.</li><li>trying to access static variable through an object would throw an warning,
+but won&rsquo;t halt the execution. compiler wil replace the object name with
+class name</li><li>static variables can be accessed without initializing an object</li></ul></li></ol></div><a class="btn btn-small" href=https://abdus.net/tags/java>#java</a><div style=margin-top:5rem><script src=https://utteranc.es/client.js repo=abdus/abdus.net issue-term=pathname label=blog-comment theme=github-light crossorigin=anonymous async></script></div></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"notes","name":"Java: Basics","headline":"Java: Basics","description":"Java is a General Purpose, Object Oriented Programming Language heavily used in Enterprise projects.\nJava Naming Conventions Following a standard naming convention would make a project codebase more readable and maintainable. Following are some of those standards used to name different things in Java.\nClasses and Interfaces  names should be nouns first letter of each internal word should be capitalised must avoid acronyms and abbreviations  Example:\ninterface Bicycle class MountainBike implements Bicycle interface Sport class Football implements Sport Methods  should be verbs first letter of the name should be lowercase first letter of each internal work should be uppercase  example:","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2021","datePublished":"2021-04-30 14:56:39 \u002b0530 \u002b0530","dateModified":"2021-04-30 14:56:39 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/notes\/java-basics\/","wordCount":"636","keywords":["java","Blog"]}</script><script type=module>
+  import { annotate } from "https://unpkg.com/rough-notation?module";
+
+  function checkParent(elem) {
+    const parent = elem.parentElement;
+    const strong = document.createElement("strong");
+    const em = document.createElement("em");
+    const del = document.createElement("del");
+    console.log(elem.hasChildNodes(), elem);
+
+    if (
+      parent.constructor === strong.constructor ||
+      parent.constructor === em.constructor ||
+      parent.constructor === del.constructor
+    )
+      return false;
+    if (elem.childElementCount > 0) return false;
+    return true;
+  }
+
+  function annotateElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      const shouldAllowAnnotation = checkParent(elem);
+      if (shouldAllowAnnotation)
+        annotate(elem, { type, color, multiline: true, animate: false }).show();
+    });
+  }
+
+  function annotateNestedElement(selector, type, color) {
+    document.querySelectorAll(selector).forEach((elem) => {
+      annotate(elem, {
+        type,
+        color,
+        multiline: true,
+        animate: false,
+        brackets: ["left", "right", "top", "bottom"],
+      }).show();
+    });
+  }
+
+  try {
+    annotateElement("em", "underline", "#5465ff");
+    annotateElement("strong", "highlight", "#5465ff66");
+    annotateElement("del", "strike-through", "#ff0000");
+    annotateNestedElement("em > del", "crossed-off", "#ff0000");
+    annotateNestedElement("em > strong", "box", "#5465ff");
+    annotateNestedElement("em > em", "circle", "#5465ff66");
+    annotateNestedElement("blockquote", "bracket", "#5465ff");
+  } catch (exception) {
+    console.log(exception.message);
+  }
+</script><style>.single-layout em,.single-layout strong,.section-conten del{font-style:normal;font-weight:400;text-decoration:none}blockquote{background-color:#fff;padding:.3rem;margin:2rem 0;border:none}</style></div><div class="contact-form margin-auto max-width-60rem"><form id=contact action=https://formspree.io/f/mbjpeeky method=post class="max-width-45rem margin-auto"><h1 class="font-eczar color-white" style=line-height:1.1>Contact</h1><label><span>Name</span>
+<input type=text placeholder="Jon Snow" name=name required></label>
+<label><span>Email</span>
+<input type=email placeholder=jon@snow.com name=email required></label>
+<label><span>Message</span>
+<textarea rows=5 placeholder="your Message" name=message required></textarea></label>
+<label class=form-resp></label><label><input type=submit value=SEND></label></form><script>(()=>{const data={};const form=document.querySelector("form#contact");const formResponse=document.querySelector(".form-resp");const submitButton=document.querySelector("form input[type='submit']");console.log(submitButton);form.addEventListener("submit",async(e)=>{const formData=new FormData(form);e.preventDefault();submitButton.value="SENDING...";for(let[key,value]of formData.entries()){data[key]=value;}
+const resp=await fetch("https://formspree.io/f/mbjpeeky",{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"application/json",accept:"application/json",},});submitButton.value="SUBMIT";if(resp.ok){form.reset();formResponse.classList.remove("error");formResponse.innerText="Success! I will reach back as soon as possible";formResponse.classList.add("success");}else{formResponse.classList.remove("success");formResponse.innerText="Something Went Wrong! You might want to use Email: abdus@abdus.net";formResponse.classList.add("error");}});})();</script></div><footer class=max-width-60rem><a href=/self/>About Me</a>
+<a href=/notes/>My Dev Notes</a>
+<a href=/hire-me/>Hire Me</a>
+<a href=/keys/>Cryptographic Keys</a>
+<a href=mailto:abdus@abdus.net>abdus@abdus.net</a></footer></body></html>
