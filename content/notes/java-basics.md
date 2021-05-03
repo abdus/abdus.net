@@ -215,3 +215,74 @@ class Test {
      but won't halt the execution. compiler wil replace the object name with
      class name
    - static variables can be accessed without initializing an object
+
+## Loops
+
+```java
+class Loop {
+  public static void main(String[] args) {
+    // while
+    while (true) {
+      System.out.println("Hello");
+    }
+
+    // for loop: the classic for loop
+
+    // enhanced for loop
+    // when there's no need for element index,
+    // enhanced for loop can be used
+    String array[] = {"Jon", "Snow"};
+
+    for (String s : array) {
+      System.out.println(x);
+    }
+
+    // do while: similar to other languages
+  }
+}
+```
+
+## String
+
+Strings in Java can be declared in two ways. Strings are baked by a char array
+internally. Hence, they are immutable. All strings are terminated with `\0`(null
+character).
+
+```java
+class StringExample {
+  public static void main() {
+    String str1 = "String"; // stores in constant pool
+    String str2 = new String("kaboom"); // stores in heap
+
+    // to store a string from heap to constant pool,
+    // `intern` method.
+    String str3 = str2.intern();
+  }
+}
+```
+
+Some classes that provides more flexible ways to work with string:
+
+- [`StringBuffer`](http://www.geeksforgeeks.org/stringbuffer-class-in-java/)
+- [`StringBuilder`](https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/)
+- [`StringTokenizer`](https://www.geeksforgeeks.org/stringtokenizer-class-java-example-set-1-constructors/)
+- [`StringJoiner`](https://www.geeksforgeeks.org/java-util-stringjoiner-java8/)
+
+### String Methods
+
+- `int length`: retuns length of the string
+- `char charAt(int i)`: returns the char at `i` index
+- `String substring(int i)`: returns the substring from `i` to the end of the str
+  passing a second argument would return str upto (index - 1)
+- `String concat(String r)`: append a string. returns the full string.
+- `int indexOf(String s, int i)`: returns position of the string `s`. second
+  parameter sets the index from where the search should start
+- `int lastIndexOf(String s)`: position of last occurance
+- `boolean equals(Object obj)`: compares string to the specified object. another
+  variant is `equalsIgnoreCase(String s)`
+- `int compareTo(String s)`: compare to another string. returns `<0` if `s1`
+  comes before `s2`, `0` is both are equal, `>0` is `s1` comes after `s2`.
+  another variant is `compareToIgnoreCase`
+- `String toLowerCase()`: converts to lower case
+- `String toUpperCase()`: converts to upper case
+- `String replace(char old, char new)`: replaces char with a new one
