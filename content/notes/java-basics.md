@@ -286,3 +286,103 @@ Some classes that provides more flexible ways to work with string:
 - `String toLowerCase()`: converts to lower case
 - `String toUpperCase()`: converts to upper case
 - `String replace(char old, char new)`: replaces char with a new one
+
+## Array
+
+```java
+class Arr {
+  public static void main(String args[]) {
+    int myArr[] = new int[20]; // array of int of length 20
+  }
+}
+```
+
+### Jagged Array
+
+a jagged array is an array of arrays such that member arrays
+can be of different sizes.
+
+```java
+class Jagged {
+  public static void main(String args[]) {
+    int arr[][] = new int[3][];
+    arr[0] = new int[10];
+    arr[1] = new int[12];
+    arr[2] = new int[15];
+  }
+}
+```
+
+### Clone an Array
+
+there are multiple methods for cloning an array.
+
+#### Shallow Clone
+
+does not clone, just set the memory location
+
+```java
+int[] arr = new int[10];
+int copy[] = new int[arr.length];
+
+copy = arr;
+```
+
+#### Iterate and Copy
+
+```java
+int[] arr = new int[10];
+int copy[] = new int[arr.length];
+
+for (int i = 0; i < arr.length; i++) {
+  copy[i] = arr[i];
+}
+```
+
+#### using Clone()
+
+```java
+int[] arr = new int[10];
+int[] copy = arr.clone();
+```
+
+#### using Arrays.copyOf()
+
+```java
+import java.util.Arrays;
+
+int[] arr = {1, 2, 3, 5, 10};
+int[] copy = Arrays.copyOf(arr, 5); // copy first 5 element
+```
+
+#### using Arrays.copyOfRange()
+
+```java
+import java.util.Arrays;
+
+int[] arr = {1, 2, 3, 5, 10};
+int[] copy = Arrays.copyOfRange(arr, 2, 4); // 2 is index, and 4 is the length
+```
+
+### Array to String
+
+an array can be converted to string using Arrays.toString() or
+StringBuilder.append()
+
+```java
+import java.util.Arrays;
+
+int[] arr = {1, 2, 3, 5, 10};
+System.out.println(Arrays.toString(arr));
+
+StringBuilder str = new StringBuilder("Hello");
+char[] world = { ' ', 'W', 'o', 'r', 'l', 'd' };
+
+str.append(world);
+```
+
+### Array equality
+
+to check whether two arrays are equal, Arrays.equals() method can be used:
+`Arrays.equals(arr1, arr2);`. Similarly for nested arrays, use
+`Arrays.deepEquals(arr1, arr2);`
