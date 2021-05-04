@@ -386,3 +386,25 @@ str.append(world);
 to check whether two arrays are equal, Arrays.equals() method can be used:
 `Arrays.equals(arr1, arr2);`. Similarly for nested arrays, use
 `Arrays.deepEquals(arr1, arr2);`
+
+## Rules for method overloading
+
+1. access modifiers can allow more, but not less, access than the overriden
+   method. trying to convert a `protected` method to `private` would result in
+   compile-time error
+2. methods declared as `final` cannot be overriden
+3. `static` methods cannot be overriden
+4. `private` method cannot be overriden
+5. overriden method must have same return type (or should be a sub-type)
+6. constructors cannot be overriden
+7. exception handling
+   1. subclass overriden method cannot throw checked exception if superclass
+      method does not throw any exceptions
+   2. if superclass method throws an exception, subclass overriden method can
+      throw the same exception or subclass exception. there is not problem is
+      subclass method does not throw any
+
+| Overriding                                                                             | Overloading                                  |
+| :------------------------------------------------------------------------------------- | :------------------------------------------- |
+| runtime polymorphism                                                                   | compile-time polymorphism                    |
+| is about same method, same signature but different class connected through inheritance | is about same method but different signature |

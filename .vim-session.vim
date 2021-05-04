@@ -7,7 +7,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +295 content/notes/java-basics.md
+badd +388 content/notes/java-basics.md
 argglobal
 %argdel
 $argadd content/posts/typescript-webpack-setup.md
@@ -35,12 +35,18 @@ normal! zo
 normal! zo
 307
 normal! zo
-let s:l = 388 - ((27 * winheight(0) + 24) / 48)
+401
+normal! zo
+402
+normal! zo
+404
+normal! zo
+let s:l = 410 - ((25 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-388
-normal! 031|
+410
+normal! 077|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
