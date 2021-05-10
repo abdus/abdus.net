@@ -408,3 +408,127 @@ to check whether two arrays are equal, Arrays.equals() method can be used:
 | :------------------------------------------------------------------------------------- | :------------------------------------------- |
 | runtime polymorphism                                                                   | compile-time polymorphism                    |
 | is about same method, same signature but different class connected through inheritance | is about same method but different signature |
+
+## Exceptions
+
+exception is an unwanted event, which occurs during the execution of program
+that disrupts the normal flow of the instructions.
+
+an **error** indicates a serious problem that a resonable application should not
+try to catch. an **exception** should be catched when possible.
+
+Exceptions and Errors are subclass of class Throwable.
+
+**Unchecked** Exceptions and Errors are the ones that won't be checked during
+the compile time. whereas, **Checked** exceptions will always be checked. In
+Java, all exceptions except for _`RuntimeException`_ are **Unchecked**. All
+errors are unchecked.
+
+**Checked** exceptions must be handled.
+
+### Throwing an Exception
+
+```java
+throw new ArithmeticException("/ by 0");
+```
+
+In order to write a custom exception, one must extend either `Throwable` or one
+of the subclasses of `Throwable`. generally, people extend `Exception` class.
+
+### Handling Exceptions
+
+there are two ways to handle an exception:
+
+- using `try/catch`
+- by declaring that the method can throw using `throws`
+
+```java
+// using `throws`
+public void sleep() throws InterruptedException {
+  Thread.sleep(1000000);
+}
+
+// using try and catch
+public void sleep() {
+  try {
+    Thread.sleep(100000);
+  } catch (InterruptedException e) {
+    System.out.println(e.getMessage());
+  }
+}
+```
+
+## Threads
+
+Java supports Multi-Threading. By default, Java runs everything on a single
+thread. That means, if there's any task that takes some time to process, codes
+after that task have to wait.
+
+Multi-Threading can be achieved in two ways in Java.
+
+- extending a class to `Thread` superclass.
+- implementing `Runnable` interface when there is a need for multiple
+  inheritance
+
+```java
+// extending the thread class
+class Demo extends Thread {
+  // todo: tasks
+}
+
+// elsewhere
+Thread t1 = new Demo();
+t1.start();
+```
+
+when implementing the `Runnable` interface, thread can be created by passing an
+instance of the class to `Thread` object's constructor.
+
+```java
+class Demo extends SomeOtherClass implements Runnable {
+  public void run() {
+    System.out.println("hello world");
+  }
+}
+
+// elsewhere
+Demo d1 = new Demo();
+Thread t1 = new Thread(d1);
+t1.start();
+```
+
+## Lambda Function
+
+Lambda expressions are similar to methods, but they don't need a name, and can
+be implemented right in the body of a method.
+
+> Lambda functions can be compared to Fat Arrow functions in JavaScript
+
+```java
+// lambda expression
+ArrayList<Integer> n = new ArrayList<Integer>;
+n.add(1);
+n.add(2);
+n.add(3);
+n.add(4);
+n.add(5);
+n.add(6);
+
+n.forEach(n -> { System.out.println(n); });
+```
+
+Lambda functions can be stored in a variable. `Consumer` interface can be used
+to store it.
+
+
+```java
+import java.util.function.Consumer;
+
+// elsewhere
+Consumer<Integer> method = (n) -> { System.out.println(n); }
+n.forEach(method);
+```
+
+> To use a lambda expression in a method, the method should have a parameter 
+> with a single-method interface as its type. Calling the interface's method
+> will run the lambda expression.
