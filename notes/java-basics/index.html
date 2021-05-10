@@ -18,7 +18,7 @@ interface Bicycle class MountainBike implements Bicycle interface Sport class Fo
 <a href=https://log.abdus.net><span class=num>05</span>
 <span class=name>daily logs</span></a></div></nav><script>const handler=document.querySelector("#nav-handler");const nav=document.querySelector(".nav-items");handler.onclick=()=>nav.classList.toggle("show");</script><main class="max-width-60rem margin-auto single-layout"><h1 class="font-eczar title color-accent">Java: Basics</h1><div class="max-width-45rem margin-auto"><p class="color-accent meta"><strong><small class="btn btn-extra-small">30 April, 2021</small>
 <a class="btn btn-extra-small" href=https://abdus.net/categories/java>java</a>
-<span class="btn btn-extra-small">7 Mins</span></strong></p><a href=https://www.geeksforgeeks.org/java class=article-source><i class="lni lni-invention"></i>https://www.geeksforgeeks.org/java</a><div class=content><p>Java is a General Purpose, Object Oriented Programming Language heavily used in
+<span class="btn btn-extra-small">9 Mins</span></strong></p><a href=https://www.geeksforgeeks.org/java class=article-source><i class="lni lni-invention"></i>https://www.geeksforgeeks.org/java</a><div class=content><p>Java is a General Purpose, Object Oriented Programming Language heavily used in
 Enterprise projects.</p><h2 id=java-naming-conventions>Java Naming Conventions</h2><p>Following a standard naming convention would make a project codebase more
 readable and maintainable. Following are some of those standards used to name
 different things in Java.</p><h3 id=classes-and-interfaces>Classes and Interfaces</h3><ul><li>names should be nouns</li><li>first letter of each internal word should be capitalised</li><li>must avoid acronyms and abbreviations</li></ul><p>Example:</p><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=kd>interface</span> <span class=nc>Bicycle</span>
@@ -163,7 +163,68 @@ method. trying to convert a <code>protected</code> method to <code>private</code
 compile-time error</li><li>methods declared as <code>final</code> cannot be overriden</li><li><code>static</code> methods cannot be overriden</li><li><code>private</code> method cannot be overriden</li><li>overriden method must have same return type (or should be a sub-type)</li><li>constructors cannot be overriden</li><li>exception handling<ol><li>subclass overriden method cannot throw checked exception if superclass
 method does not throw any exceptions</li><li>if superclass method throws an exception, subclass overriden method can
 throw the same exception or subclass exception. there is not problem is
-subclass method does not throw any</li></ol></li></ol><table><thead><tr><th style=text-align:left>Overriding</th><th style=text-align:left>Overloading</th></tr></thead><tbody><tr><td style=text-align:left>runtime polymorphism</td><td style=text-align:left>compile-time polymorphism</td></tr><tr><td style=text-align:left>is about same method, same signature but different class connected through inheritance</td><td style=text-align:left>is about same method but different signature</td></tr></tbody></table></div><a class="btn btn-small" href=https://abdus.net/tags/java>#java</a><div style=margin-top:5rem><script src=https://utteranc.es/client.js repo=abdus/abdus.net issue-term=pathname label=blog-comment theme=github-light crossorigin=anonymous async></script></div></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"notes","name":"Java: Basics","headline":"Java: Basics","description":"Java is a General Purpose, Object Oriented Programming Language heavily used in Enterprise projects.\nJava Naming Conventions Following a standard naming convention would make a project codebase more readable and maintainable. Following are some of those standards used to name different things in Java.\nClasses and Interfaces  names should be nouns first letter of each internal word should be capitalised must avoid acronyms and abbreviations  Example:\ninterface Bicycle class MountainBike implements Bicycle interface Sport class Football implements Sport Methods  should be verbs first letter of the name should be lowercase first letter of each internal work should be uppercase  example:","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2021","datePublished":"2021-04-30 14:56:39 \u002b0530 \u002b0530","dateModified":"2021-04-30 14:56:39 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/notes\/java-basics\/","wordCount":"1328","keywords":["java","Blog"]}</script><script type=module>
+subclass method does not throw any</li></ol></li></ol><table><thead><tr><th style=text-align:left>Overriding</th><th style=text-align:left>Overloading</th></tr></thead><tbody><tr><td style=text-align:left>runtime polymorphism</td><td style=text-align:left>compile-time polymorphism</td></tr><tr><td style=text-align:left>is about same method, same signature but different class connected through inheritance</td><td style=text-align:left>is about same method but different signature</td></tr></tbody></table><h2 id=exceptions>Exceptions</h2><p>exception is an unwanted event, which occurs during the execution of program
+that disrupts the normal flow of the instructions.</p><p>an <strong>error</strong> indicates a serious problem that a resonable application should not
+try to catch. an <strong>exception</strong> should be catched when possible.</p><p>Exceptions and Errors are subclass of class Throwable.</p><p><strong>Unchecked</strong> Exceptions and Errors are the ones that won&rsquo;t be checked during
+the compile time. whereas, <strong>Checked</strong> exceptions will always be checked. In
+Java, all exceptions except for <em><code>RuntimeException</code></em> are <strong>Unchecked</strong>. All
+errors are unchecked.</p><p><strong>Checked</strong> exceptions must be handled.</p><h3 id=throwing-an-exception>Throwing an Exception</h3><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=k>throw</span> <span class=k>new</span> <span class=n>ArithmeticException</span><span class=o>(</span><span class=s>&#34;/ by 0&#34;</span><span class=o>);</span>
+</code></pre></div><p>In order to write a custom exception, one must extend either <code>Throwable</code> or one
+of the subclasses of <code>Throwable</code>. generally, people extend <code>Exception</code> class.</p><h3 id=handling-exceptions>Handling Exceptions</h3><p>there are two ways to handle an exception:</p><ul><li>using <code>try/catch</code></li><li>by declaring that the method can throw using <code>throws</code></li></ul><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=c1>// using `throws`
+</span><span class=c1></span><span class=kd>public</span> <span class=kt>void</span> <span class=nf>sleep</span><span class=o>()</span> <span class=kd>throws</span> <span class=n>InterruptedException</span> <span class=o>{</span>
+  <span class=n>Thread</span><span class=o>.</span><span class=na>sleep</span><span class=o>(</span><span class=n>1000000</span><span class=o>);</span>
+<span class=o>}</span>
+
+<span class=c1>// using try and catch
+</span><span class=c1></span><span class=kd>public</span> <span class=kt>void</span> <span class=nf>sleep</span><span class=o>()</span> <span class=o>{</span>
+  <span class=k>try</span> <span class=o>{</span>
+    <span class=n>Thread</span><span class=o>.</span><span class=na>sleep</span><span class=o>(</span><span class=n>100000</span><span class=o>);</span>
+  <span class=o>}</span> <span class=k>catch</span> <span class=o>(</span><span class=n>InterruptedException</span> <span class=n>e</span><span class=o>)</span> <span class=o>{</span>
+    <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>e</span><span class=o>.</span><span class=na>getMessage</span><span class=o>());</span>
+  <span class=o>}</span>
+<span class=o>}</span>
+</code></pre></div><h2 id=threads>Threads</h2><p>Java supports Multi-Threading. By default, Java runs everything on a single
+thread. That means, if there&rsquo;s any task that takes some time to process, codes
+after that task have to wait.</p><p>Multi-Threading can be achieved in two ways in Java.</p><ul><li>extending a class to <code>Thread</code> superclass.</li><li>implementing <code>Runnable</code> interface when there is a need for multiple
+inheritance</li></ul><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=c1>// extending the thread class
+</span><span class=c1></span><span class=kd>class</span> <span class=nc>Demo</span> <span class=kd>extends</span> <span class=n>Thread</span> <span class=o>{</span>
+  <span class=c1>// todo: tasks
+</span><span class=c1></span><span class=o>}</span>
+
+<span class=c1>// elsewhere
+</span><span class=c1></span><span class=n>Thread</span> <span class=n>t1</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Demo</span><span class=o>();</span>
+<span class=n>t1</span><span class=o>.</span><span class=na>start</span><span class=o>();</span>
+</code></pre></div><p>when implementing the <code>Runnable</code> interface, thread can be created by passing an
+instance of the class to <code>Thread</code> object&rsquo;s constructor.</p><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=kd>class</span> <span class=nc>Demo</span> <span class=kd>extends</span> <span class=n>SomeOtherClass</span> <span class=kd>implements</span> <span class=n>Runnable</span> <span class=o>{</span>
+  <span class=kd>public</span> <span class=kt>void</span> <span class=nf>run</span><span class=o>()</span> <span class=o>{</span>
+    <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=s>&#34;hello world&#34;</span><span class=o>);</span>
+  <span class=o>}</span>
+<span class=o>}</span>
+
+<span class=c1>// elsewhere
+</span><span class=c1></span><span class=n>Demo</span> <span class=n>d1</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Demo</span><span class=o>();</span>
+<span class=n>Thread</span> <span class=n>t1</span> <span class=o>=</span> <span class=k>new</span> <span class=n>Thread</span><span class=o>(</span><span class=n>d1</span><span class=o>);</span>
+<span class=n>t1</span><span class=o>.</span><span class=na>start</span><span class=o>();</span>
+</code></pre></div><h2 id=lambda-function>Lambda Function</h2><p>Lambda expressions are similar to methods, but they don&rsquo;t need a name, and can
+be implemented right in the body of a method.</p><blockquote><p>Lambda functions can be compared to Fat Arrow functions in JavaScript</p></blockquote><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=c1>// lambda expression
+</span><span class=c1></span><span class=n>ArrayList</span><span class=o>&lt;</span><span class=n>Integer</span><span class=o>&gt;</span> <span class=n>n</span> <span class=o>=</span> <span class=k>new</span> <span class=n>ArrayList</span><span class=o>&lt;</span><span class=n>Integer</span><span class=o>&gt;;</span>
+<span class=n>n</span><span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>1</span><span class=o>);</span>
+<span class=n>n</span><span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>2</span><span class=o>);</span>
+<span class=n>n</span><span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>3</span><span class=o>);</span>
+<span class=n>n</span><span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>4</span><span class=o>);</span>
+<span class=n>n</span><span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>5</span><span class=o>);</span>
+<span class=n>n</span><span class=o>.</span><span class=na>add</span><span class=o>(</span><span class=n>6</span><span class=o>);</span>
+
+<span class=n>n</span><span class=o>.</span><span class=na>forEach</span><span class=o>(</span><span class=n>n</span> <span class=o>-&gt;</span> <span class=o>{</span> <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>n</span><span class=o>);</span> <span class=o>});</span>
+</code></pre></div><p>Lambda functions can be stored in a variable. <code>Consumer</code> interface can be used
+to store it.</p><div class=highlight><pre class=chroma><code class=language-java data-lang=java><span class=kn>import</span> <span class=nn>java.util.function.Consumer</span><span class=o>;</span>
+
+<span class=c1>// elsewhere
+</span><span class=c1></span><span class=n>Consumer</span><span class=o>&lt;</span><span class=n>Integer</span><span class=o>&gt;</span> <span class=n>method</span> <span class=o>=</span> <span class=o>(</span><span class=n>n</span><span class=o>)</span> <span class=o>-&gt;</span> <span class=o>{</span> <span class=n>System</span><span class=o>.</span><span class=na>out</span><span class=o>.</span><span class=na>println</span><span class=o>(</span><span class=n>n</span><span class=o>);</span> <span class=o>}</span>
+<span class=n>n</span><span class=o>.</span><span class=na>forEach</span><span class=o>(</span><span class=n>method</span><span class=o>);</span>
+</code></pre></div><blockquote><p>To use a lambda expression in a method, the method should have a parameter
+with a single-method interface as its type. Calling the interface&rsquo;s method
+will run the lambda expression.</p></blockquote></div><a class="btn btn-small" href=https://abdus.net/tags/java>#java</a><div style=margin-top:5rem><script src=https://utteranc.es/client.js repo=abdus/abdus.net issue-term=pathname label=blog-comment theme=github-light crossorigin=anonymous async></script></div></div></main><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/abdus.net"},"articleSection":"notes","name":"Java: Basics","headline":"Java: Basics","description":"Java is a General Purpose, Object Oriented Programming Language heavily used in Enterprise projects.\nJava Naming Conventions Following a standard naming convention would make a project codebase more readable and maintainable. Following are some of those standards used to name different things in Java.\nClasses and Interfaces  names should be nouns first letter of each internal word should be capitalised must avoid acronyms and abbreviations  Example:\ninterface Bicycle class MountainBike implements Bicycle interface Sport class Football implements Sport Methods  should be verbs first letter of the name should be lowercase first letter of each internal work should be uppercase  example:","inLanguage":"en-US","author":"Abdus S. Azad","creator":"Abdus S. Azad","publisher":"Abdus S. Azad","accountablePerson":"Abdus S. Azad","copyrightHolder":"Abdus S. Azad","copyrightYear":"2021","datePublished":"2021-04-30 14:56:39 \u002b0530 \u002b0530","dateModified":"2021-04-30 14:56:39 \u002b0530 \u002b0530","url":"https:\/\/abdus.net\/notes\/java-basics\/","wordCount":"1745","keywords":["java","Blog"]}</script><script type=module>
   import { annotate } from "https://unpkg.com/rough-notation?module";
 
   function checkParent(elem) {
