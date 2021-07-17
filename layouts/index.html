@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+<div class="hero">
+  <div>Abdus Samad Azad</div>
+  <div>Software Engineer</div>
+
+  <div class="social">
+    <a href="/self">About</a>
+    &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/abdus">GitHub</a>
+    &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://twitter.com/abdus_x86">Twitter</a>
+    &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://git.abdus.net">Self-hosted Git</a>
+    &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://www.linkedin.com/in/thisisabdus">LinkedIn</a>
+  </div>
+</div>
+
+<section class="homepage-posts">
+  <h2 id="blog">BLOG</h2>
+  {{ range (.Paginate (where site.RegularPages "Type" "in"
+  site.Params.mainSections)).Pages }}
+  <article>
+    <a href="{{ .Permalink | absURL }}">
+      <span class="title">{{ .Title }}</span>
+      <span class="date">
+        {{ .Date.Format "02 Jan" | upper }}
+        <span class="year">{{ .Date.Format ", 2006" | upper }}</span>
+      </span>
+    </a>
+  </article>
+  {{ end }}
+  <!--.-->
+  {{ template "_internal/pagination.html" . }}
+</section>
+
+<script>
+  (() => {
+    const paginationLinks = [...document.querySelectorAll(".page-link")];
+    paginationLinks.forEach((link) => {
+      link.setAttribute("href", link.getAttribute("href") + "#blog");
+    });
+  })();
+</script>
+
+{{ end }}

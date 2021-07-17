@@ -1,0 +1,36 @@
+{{ define "main" }}
+<h1 id="page-title">{{ .Title }}</h1>
+
+<div id="meta">{{ with .Date }}{{ .Format "02 January, 2006" }}{{ end }}</div>
+
+{{ with .Params.sources }}
+<div style="margin-top: 1rem; background-color: #5465ff15; padding: 0.5rem">
+  <!--.-->
+  {{ range . }}
+  <a href="{{ . }}" class="article-source" style="color: var(--text-dim)">
+    💡&nbsp;{{ . }}
+  </a>
+  {{ end }}
+  <!--.-->
+</div>
+{{ end }}
+<div class="page">
+  <!--.-->
+  {{ if ne .Params.toc false }}
+  <!--.-->
+  {{ with .TableOfContents }}
+  <!--.-->
+  {{ if ne . "<nav id=\"TableOfContents\"></nav>" }}
+  <div id="TableOfContentsWrapper">
+    <h3>TABLE OF CONTENT</h3>
+    {{ . }}
+  </div>
+  {{ end }}
+  <!--.-->
+  {{ end }}
+  <!--.-->
+  {{ end }}
+  <!--.-->
+  {{ .Content }}
+</div>
+{{ end }}

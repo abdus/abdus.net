@@ -1,0 +1,261 @@
+:root {
+  --background: #11100f;
+  --foreground: #ffffff;
+  --text-dim: #ffffff80;
+
+  --max-width: 50rem;
+
+  --font-big: 2.4em;
+  --font-normal: 1.1rem;
+  --font-small: 0.8rem;
+
+  --line-height: 1.6;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground: #11100f;
+    --background: #e6e6e6;
+    --text-dim: #11100f80;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--foreground);
+  font-size: 18px;
+  font-family: Mosk, sans-serif;
+  line-height: var(--line-height);
+  background-color: var(--background);
+}
+
+body {
+  font-size: var(--font-normal);
+}
+
+a {
+  color: var(--foreground);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+pre {
+  max-width: 100%;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 0.3rem;
+}
+
+code {
+  font-family: "Fira Mono", monospace;
+}
+
+code:not(pre code) {
+  padding: 0.1rem 0.4rem;
+  background-color: #5465ff15;
+  border-radius: 0.3rem;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0.3rem;
+}
+
+blockquote {
+  margin: 0;
+  padding: 1rem;
+  background: #5465ff15;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+ul {
+  padding-left: 1rem;
+}
+
+#content {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(80vh - 2rem);
+  line-height: 1;
+}
+
+.hero > div:nth-child(1) {
+  font-size: var(--font-big);
+}
+
+.hero > div:nth-child(2) {
+  color: var(--text-dim);
+  font-size: calc(var(--font-normal) + 0.6em);
+}
+
+.hero .social {
+  margin-top: 5rem;
+  line-height: var(--line-height);
+}
+
+/*888888888888888888888*/
+.homepage-posts {
+  max-width: calc(var(--max-width) - 10rem);
+  margin: auto;
+}
+
+.homepage-posts h2 {
+  margin-bottom: 3.5rem;
+  text-align: center;
+}
+
+.homepage-posts article {
+  padding: 1rem 0;
+  border-bottom: 1px dashed #80808040;
+}
+
+.homepage-posts article a {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.homepage-posts article a span {
+  white-space: nowrap;
+}
+
+.homepage-posts article a span.title {
+  margin-right: 0.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.homepage-posts article a span.date {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+}
+
+.homepage-posts article a span.date span.year {
+  max-width: 0;
+  margin-right: 0;
+  margin-left: auto;
+  overflow: hidden;
+  transition: 0.8s ease max-width;
+}
+
+.homepage-posts article:hover a span.date span.year {
+  max-width: 5rem;
+}
+
+/******************************/
+/*     PAGINATION AND SHITS... */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  padding: 0;
+}
+
+.pagination li {
+  padding: 0.8rem 1.4rem;
+  color: var(--text-dim);
+  list-style-type: none;
+}
+
+.pagination .active {
+  color: var(--foreground);
+  /*background-color: var(--text-dim);*/
+  /*border: 1px dashed var(--foreground);*/
+}
+
+.pagination a {
+  color: inherit;
+}
+
+.pagination li:first-child,
+.pagination li:last-child,
+.pagination li:nth-child(2),
+.pagination li:nth-last-child(2) {
+  display: none;
+}
+
+/*** SINGLE PAGE STYLE ***/
+#page-title {
+  margin-bottom: 0;
+}
+
+#meta {
+  color: var(--text-dim);
+}
+
+.page {
+  padding-top: 1rem;
+}
+
+.page a {
+  text-decoration: underline;
+  text-decoration-color: var(--text-dim);
+  text-decoration-thickness: 2px;
+}
+
+.page h1,
+.page h2,
+.page h3,
+.page h4,
+.page h5,
+.page h6 {
+  margin-top: 4rem;
+  margin-bottom: 1.3rem;
+  color: var(--text-dim);
+  font-weight: bold;
+}
+
+.page h1 ~ p,
+.page h2 ~ p,
+.page h3 ~ p,
+.page h4 ~ p,
+.page h5 ~ p,
+.page h6 ~ p {
+  margin-top: 0;
+}
+
+.article-source {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/**** TABLE OF CONTENT  ****/
+#TableOfContentsWrapper {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #5465ff15;
+  border-radius: 0.4rem;
+}
+
+#TableOfContentsWrapper h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+#TableOfContents ul:first-child {
+  margin: 0;
+}
