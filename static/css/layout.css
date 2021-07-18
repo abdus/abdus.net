@@ -303,13 +303,15 @@ ul {
   border: 1px solid var(--text-dim);
   border-radius: 0.4rem;
   transform: translateY(50%);
+  visibility: collapse;
   opacity: 0;
-  transition: 0.4s ease transform, 0.2s ease opacity;
+  transition: 0.4s ease transform, 0.2s ease opacity, 0.4s linear visibility;
   counter-reset: toc;
 }
 
 #TableOfContentsHandler__checkbox:checked ~ #TableOfContentsWrapper {
   transform: translate(0);
+  visibility: visible;
   opacity: 1;
 }
 
