@@ -297,12 +297,13 @@ ul {
   font-size: var(--font-small);
   text-transform: uppercase;
   background-color: #5465ff15;
+  background-color: var(--background);
   border-radius: 0.4rem;
   transform: translateY(50%);
   opacity: 0;
-  backdrop-filter: blur(10px);
   transition: 0.4s ease transform, 0.2s ease opacity;
   counter-reset: toc;
+  border: 1px solid var(--text-dim);
 }
 
 #TableOfContentsHandler__checkbox:checked ~ #TableOfContentsWrapper {
@@ -310,9 +311,11 @@ ul {
   opacity: 1;
 }
 
-@supports not (backdrop-filter: blur(20px)) {
+@supports (backdrop-filter: blur(20px)) {
   #TableOfContentsWrapper {
-    background-color: var(--background);
+    backdrop-filter: blur(10px);
+    background-color: #5465ff15;
+    border: none;
   }
 }
 
