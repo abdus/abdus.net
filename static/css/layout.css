@@ -292,18 +292,20 @@ ul {
   top: 1rem;
   right: 1rem;
   display: inline-block;
+  max-height: 80vh;
   margin: 2rem 0 2rem 1rem;
   padding: 1rem;
+  overflow: auto;
   font-size: var(--font-small);
   text-transform: uppercase;
   background-color: #5465ff15;
   background-color: var(--background);
+  border: 1px solid var(--text-dim);
   border-radius: 0.4rem;
   transform: translateY(50%);
   opacity: 0;
   transition: 0.4s ease transform, 0.2s ease opacity;
   counter-reset: toc;
-  border: 1px solid var(--text-dim);
 }
 
 #TableOfContentsHandler__checkbox:checked ~ #TableOfContentsWrapper {
@@ -313,9 +315,9 @@ ul {
 
 @supports (backdrop-filter: blur(20px)) {
   #TableOfContentsWrapper {
-    backdrop-filter: blur(10px);
     background-color: #5465ff15;
     border: none;
+    backdrop-filter: blur(10px);
   }
 }
 
@@ -328,6 +330,11 @@ ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+#TableOfContents li {
+  margin: 0.3rem 0;
+  line-height: 1.2;
 }
 
 #TableOfContents li::before {
