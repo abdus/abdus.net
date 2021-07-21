@@ -204,11 +204,15 @@ ul {
 
 /*** SINGLE PAGE STYLE ***/
 #page-title {
+  margin: 5rem 0;
   margin-bottom: 0;
+  line-height: 1.1;
+  font-size: calc(var(--font-normal) + 0.7em);
 }
 
 #meta {
   color: var(--text-dim);
+  margin-bottom: 2.5rem;
 }
 
 .page {
@@ -352,4 +356,26 @@ ul {
 
 #TableOfContents a:hover {
   text-decoration: underline;
+}
+
+/*********** AUTHOR BOX ************/
+.author-box {
+  display: flex;
+  align-items: flex-start;
+  margin: 4rem auto;
+  padding: 1rem;
+  line-height: 1.4;
+  background-color: #5465ff15;
+}
+
+.author-box div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 4rem;
+  margin-right: 1rem;
+}
+
+.author-box div:first-child img {
+  border-radius: 50%;
 }

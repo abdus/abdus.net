@@ -1,4 +1,10 @@
-<link rel="stylesheet" href={{ "/css/layout.css" | absURL }} media="all" />
+{{ $layoutStyle := resources.Get "css/layout.css" | resources.Fingerprint }}
+<link
+  rel="stylesheet"
+  href="{{ $layoutStyle.Permalink }}"
+  media="all"
+  integrity="{{ $layoutStyle.Data.Integrity }}"
+/>
 
 <link
   rel="stylesheet"
