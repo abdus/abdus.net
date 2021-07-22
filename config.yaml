@@ -6,7 +6,7 @@ Paginate: 10
 assetDir: assets
 
 params:
-  mainSections: ["posts", "notes"]
+  mainSections: ["posts"]
 
 menu:
   main:
@@ -56,3 +56,4 @@ disableKinds:
   - section
   - term
   - taxonomy
+
