@@ -7,7 +7,7 @@ meta:
 
 I am available for work Feel free to send me a mail at
 [abdus@abdus.net](mailto:abdus@abdus.net). You can find an online copy of my
-resume at ~~[resume.abdus.net](https://resume.abdus.net)~~.
+resume at ~~[public.abdus.net](https://public.abdus.net/resume__abdus.pdf)~~.
 
 Relevant Information:
 
