@@ -5,8 +5,8 @@ draft: false
 meta:
   image: https://mugshotbot.com/m/WQPOjyvQ
   description: A minimal set-up for TypeScript with Webpack as Module Bundler.
-tags: []
-categories: []
+tags: [typescript, webpack, web]
+categories: [web]
 sources:
   - https://github.com/abdus/webpack-typescript-starter
   - https://academy.zerotomastery.io/courses/700470
