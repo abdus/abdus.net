@@ -5,6 +5,11 @@ title: Abdus S. Azad
 Paginate: 10
 assetDir: assets
 
+author:
+  name: Abdus S. Azad
+copyright: Copyleft
+languageCode: en-us
+
 params:
   mainSections: ["posts"]
 
@@ -57,3 +62,7 @@ disableKinds:
   - term
   - taxonomy
 
+outputFormats:
+  RSS:
+    mediatype: "application/rss"
+    baseName: "feed"
