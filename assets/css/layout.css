@@ -398,3 +398,33 @@ ul {
 .author-box div:first-child img {
   border-radius: 50%;
 }
+
+/************ SOCIAL BAR ***********/
+.social-bar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 6rem 0;
+}
+
+.social-bar-wrapper a {
+  width: 100%;
+  max-width: 35px;
+  margin: 1rem;
+  overflow: hidden;
+}
+
+.social-bar-wrapper svg {
+  width: auto;
+  max-width: 100%;
+  stroke-width: 0.5px;
+  stroke: var(--text-dim);
+  transition: 0.3s ease stroke, 0.3s ease stroke-width;
+}
+
+.social-bar-wrapper a:hover svg {
+  stroke-width: 1px;
+  stroke: var(--foreground);
+}
+

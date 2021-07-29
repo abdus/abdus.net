@@ -1,0 +1,30 @@
+{{ $twitterIcon := resources.Get "icons/twitter.svg" | resources.Fingerprint }}
+<!-- -->
+{{ $linkedinIcon := resources.Get "icons/linkedin.svg" | resources.Fingerprint
+}}
+<!-- -->
+{{ $githubIcon := resources.Get "icons/github.svg" | resources.Fingerprint }}
+<!-- -->
+{{ $emailIcon := resources.Get "icons/mail.svg" | resources.Fingerprint }}
+<!-- -->
+<div class="social-bar-wrapper">
+  <a href="https://twitter.com/AzAbdus" target="_blank" rel="noopener">
+    {{ readFile "assets/icons/twitter.svg" | safeHTML }}
+  </a>
+  <a
+    href="https://www.linkedin.com/in/thisisAbdus"
+    target="_blank"
+    rel="noopenerl"
+  >
+    {{ readFile "assets/icons/linkedin.svg" | safeHTML }}
+  </a>
+  <a href="https://github.com/abdus" target="_blank" rel="noopener">
+    {{ readFile "assets/icons/github.svg" | safeHTML }}
+  </a>
+  <a href="mailto:abdus@abdus.net" target="_blank" rel="noopener">
+    {{ readFile "assets/icons/mail.svg" | safeHTML }}
+  </a>
+  <a href="https://www.buymeacoffee.com/abdus" target="_blank" rel="noopener">
+    {{ readFile "assets/icons/coffee.svg" | safeHTML }}
+  </a>
+</div>
