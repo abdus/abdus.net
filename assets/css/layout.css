@@ -12,13 +12,13 @@
   --line-height: 1.6;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --foreground: #11100f;
-    --background: #e6e6e6;
-    --text-dim: #11100f80;
-  }
-}
+/*@media (prefers-color-scheme: light) {*/
+  /*:root {*/
+    /*--foreground: #11100f;*/
+    /*--background: #e6e6e6;*/
+    /*--text-dim: #11100f80;*/
+  /*}*/
+/*}*/
 
 * {
   box-sizing: border-box;
@@ -187,6 +187,21 @@ ul {
 .homepage-posts article:hover a span.date span.year {
   max-width: 5rem;
 }
+
+.homepage-posts article .summary {
+  display: block;
+  line-height: 1.4;
+  color: var(--text-dim);
+  text-align: justify;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.homepage-posts article:hover .summary {
+  max-height: 50vh;
+  transition: 0.3s linear max-height;
+}
+
 
 /******************************/
 /*     PAGINATION AND SHITS... */

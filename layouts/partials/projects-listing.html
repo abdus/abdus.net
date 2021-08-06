@@ -1,0 +1,38 @@
+<section id="projects-listing">
+  {{ range .Site.Data.projects }}
+  <div class="project-card">
+    <h3>{{ .title }}</h3>
+    <main>{{ .description }}</main>
+
+    {{ with .coverPhoto }}
+    <img src="{{ . }}" alt="" />
+    {{ end }}
+    <!--.-->
+    {{ with .stack }}
+    <div class="stack">
+      {{ range . }}
+      <button style="color: {{ index . 2 }}">
+        <span>
+          {{ readFile ( printf "assets/icons/%s.svg" (index . 1) ) | safeHTML }}
+        </span>
+        <!--.-->
+        <span>{{ index . 0 }}</span>
+      </button>
+      {{ end }}
+    </div>
+    {{ end }}
+    <!--.-->
+    <aside>
+      {{ with .demoURL }}
+      <a target="_blank" rel="norefferer" class="btn" href="{{ . }}"
+        >Live Demo</a
+      >
+      {{ end }}
+      <!--.-->
+      {{ with .sourceURL }}
+      <a target="_blank" rel="norefferer" class="btn" href="{{ . }}">Source</a>
+      {{ end }}
+    </aside>
+  </div>
+  {{ end }}
+</section>

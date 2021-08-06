@@ -25,11 +25,15 @@
         <span class="year">{{ .Date.Format ", 2006" | upper }}</span>
       </span>
     </a>
+
+    <small class="summary">{{ .Summary | truncate 300 }}</small>
   </article>
   {{ end }}
   <!--.-->
   {{ template "_internal/pagination.html" . }}
 </section>
+
+{{ partial "projects-listing.html" . }}
 
 <script>
   (() => {

@@ -1,9 +1,10 @@
-{{ $layoutStyle := resources.Get "css/layout.css" | resources.Fingerprint }}
+{{ $CSS := resources.Match "css/**.css" | resources.Concat "main.css" |
+resources.Fingerprint "md5" | minify }}
 <link
   rel="stylesheet"
-  href="{{ $layoutStyle.Permalink }}"
+  href="{{ $CSS.Permalink }}"
   media="all"
-  integrity="{{ $layoutStyle.Data.Integrity }}"
+  integrity="{{ $CSS.Data.Integrity }}"
 />
 
 <link
