@@ -15,8 +15,8 @@
 
 @media (max-width: 600px) {
   #projects-listing {
-    grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -88,4 +88,54 @@
 #projects-listing .stack button:hover span:last-child {
   max-width: 20ch;
   text-overflow: ellipsis;
+}
+
+#oss-log-root {
+  margin: 5rem 0;
+}
+
+.oss-card {
+  display: flex;
+  margin: 1rem auto;
+  background-color: #5465ff15;
+  border: 1px solid #5465ff15;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.oss-card > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.oss-card > div:first-child {
+  min-width: 7ch;
+  background-color: var(--background);
+}
+
+.oss-card > div:last-child {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.oss-card .title {
+  display: block;
+}
+
+.oss-card .title,
+.oss-card small {
+  display: inline-block;
+  margin: 0.1rem 0;
+  line-height: 1.1;
+}
+
+.oss-card h1,
+.oss-card h2,
+.oss-card h3,
+.oss-card h4,
+.oss-card h5,
+.oss-card h6 {
+  font-size: 1.2em;
 }
