@@ -97,10 +97,10 @@
 .oss-card {
   display: flex;
   margin: 1rem auto;
+  overflow: hidden;
   background-color: #5465ff15;
   border: 1px solid #5465ff15;
   border-radius: 0.5rem;
-  overflow: hidden;
 }
 
 .oss-card > div {
@@ -138,4 +138,22 @@
 .oss-card h5,
 .oss-card h6 {
   font-size: 1.2em;
+}
+
+#oss-log-root .pr {
+  overflow: hidden;
+  color: var(--text-dim);
+  font-size: 0.9em;
+  font-family: "Fira Mono", monospace;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#oss-log-root .pr a {
+  color: inherit;
+  font-weight: 400;
+}
+
+#oss-log-root .pr:hover a {
+  color: var(--foreground);
 }

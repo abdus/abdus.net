@@ -1,23 +1,38 @@
-<div id="oss-log-root">
-  <small style="letter-spacing: 3px">OPEN-SOURCE CONTRIBUTIONS</small>
-  {{ range .Site.Data.oss_pr_logs }}
-  <!--.-->
-  {{ $repo_name := split .html_url "/" }}
-  <div class="oss-card">
-    <div style="font-weight: bold; font-size: 1.4em; color: var(--text-dim)">
-      #{{ .number }}
-    </div>
+<!--<div id="oss-log-root">-->
+  <!--<small style="letter-spacing: 3px">OPEN-SOURCE CONTRIBUTIONS</small>-->
+  <!--{{ range .Site.Data.oss_pr_logs }}-->
+  <!--[>.<]-->
+  <!--{{ $repo_name := split .html_url "/" }}-->
+  <!--<div class="pr" title="{{ index $repo_name 3 }}/{{ index $repo_name 4 }}">-->
+    <!--<span-->
+      <!--style="-->
+        <!--color: var(--text-dim);-->
+        <!--min-width: 5ch;-->
+        <!--display: inline-block;-->
+        <!--text-align: right;-->
+      <!--"-->
+    <!-->-->
+      <!--#{{ .number }}-->
+    <!--</span>-->
+    <!--<a href="{{ .pull_request.html_url }}" target="_blank" rel="noreferrer">-->
+      <!--{{ .title | markdownify }}-->
+    <!--</a>-->
+  <!--</div>-->
+  <!--[><div class="oss-card"><]-->
+  <!--[><div style="font-weight: bold; font-size: 1.4em; color: var(--text-dim)"><]-->
+  <!--[>#{{ .number }}<]-->
+  <!--[></div><]-->
 
-    <div>
-      <small style="color: var(--text-dim)">
-        {{ index $repo_name 3 }}<wbr>/</wbr>{{ index $repo_name 4 }}
-      </small>
+  <!--[><div><]-->
+  <!--[><small style="color: var(--text-dim)"><]-->
+  <!--[>{{ index $repo_name 3 }}<wbr>/</wbr>{{ index $repo_name 4 }}<]-->
+  <!--[></small><]-->
 
-      <a class="title" href="{{ .html_url }}" target="_blank" rel="noreferrer">
-        {{ .title | markdownify }}
-      </a>
-      <!--{{ with .body }}<p class="desc">{{ . | markdownify }}</p>{{ end }}-->
-    </div>
-  </div>
-  {{ end }}
-</div>
+  <!--[><a class="title" href="{{ .html_url }}" target="_blank" rel="noreferrer"><]-->
+  <!--[>{{ .title | markdownify }}<]-->
+  <!--[></a><]-->
+  <!--[>[>{{ with .body }}<p class="desc">{{ . | markdownify }}</p>{{ end }}<]<]-->
+  <!--[></div><]-->
+  <!--[></div><]-->
+  <!--{{ end }}-->
+<!--</div>-->
