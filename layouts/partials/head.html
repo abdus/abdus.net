@@ -1,22 +1,54 @@
+<!--.-->
 {{ $CSS := resources.Match "css/**.css" | resources.Concat "main.css" |
 resources.Fingerprint "md5" | minify }}
+
+<style>
+  {{ readFile "assets/css/critical.css" | safeCSS }}
+</style>
+
 <link
-  rel="stylesheet"
+  rel="preload"
   href="{{ $CSS.Permalink }}"
-  media="all"
-  integrity="{{ $CSS.Data.Integrity }}"
+  type="text/css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet';"
 />
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
+  rel="preload"
+  as="stylesheet"
+  type="text/css"
+  onload="this.onload=null;this.rel='stylesheet';"
   href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;700&display=swap"
-  rel="stylesheet"
 />
 
 <link
+  rel="preload"
+  as="stylesheet"
+  type="text/css"
+  onload="this.onload=null;this.rel='stylesheet';"
   href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap"
-  rel="stylesheet"
 />
+
+<noscript>
+  <link
+    rel="stylesheet"
+    href="{{ $CSS.Permalink }}"
+    media="all"
+    integrity="{{ $CSS.Data.Integrity }}"
+  />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+</noscript>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

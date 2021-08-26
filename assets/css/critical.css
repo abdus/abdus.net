@@ -1,0 +1,213 @@
+:root {
+  --background: #111111;
+  --foreground: #cccccc;
+  --text-dim: #cccccc80;
+  --brand-color: #5465ff15;
+  --bold-text: #fff;
+  --max-width: 50rem;
+  --font-big: 2.4em;
+  --font-normal: 1.1rem;
+  --font-small: 0.8rem;
+  --line-height: 1.9;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground: #191919;
+    --background: #e6e6e6;
+    --text-dim: #19191980;
+    --bold-text: #000;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  color: var(--foreground);
+  font-size: 18px;
+  font-family: barlow, sans-serif;
+  line-height: var(--line-height);
+  background-color: var(--background);
+}
+body {
+  font-size: var(--font-normal);
+}
+a {
+  color: var(--foreground);
+  text-decoration: none;
+}
+ul {
+  padding-left: 1rem;
+}
+.color-yellow {
+  color: #f7941f;
+}
+#content {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 1rem;
+}
+.hero {
+  margin: 3rem auto;
+  line-height: 1.4;
+}
+.hero > div:nth-child(1) {
+  font-size: calc(var(--font-big) - 0.8em);
+}
+.latest-news p {
+  margin: 0;
+}
+.homepage-posts {
+  max-width: var(--max-width);
+  margin: auto;
+}
+.homepage-posts h2 {
+  margin-bottom: 3.5rem;
+  text-align: center;
+}
+.homepage-posts article {
+  padding: 0.8rem 0;
+  border-bottom: 1px dashed #80808040;
+}
+.homepage-posts article a {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.homepage-posts article a span {
+  white-space: nowrap;
+}
+.homepage-posts article a span.title {
+  margin-right: 0.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.homepage-posts article a span.date {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+}
+.homepage-posts article a span.date span.year {
+  max-width: 0;
+  margin-right: 0;
+  margin-left: auto;
+  overflow: hidden;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  padding: 0;
+}
+.pagination li {
+  padding: 0.8rem 1.4rem;
+  color: var(--text-dim);
+  list-style-type: none;
+}
+.pagination .active {
+  color: var(--foreground);
+}
+.pagination a {
+  color: inherit;
+}
+.pagination li:first-child,
+.pagination li:last-child,
+.pagination li:nth-child(2),
+.pagination li:nth-last-child(2) {
+  display: none;
+}
+#projects-listing {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: flex-start;
+  margin-top: 4rem;
+}
+.project-card {
+  display: inline;
+  padding: 1rem;
+  background-color: #5465ff15;
+  border-radius: 0.4rem;
+}
+@media (max-width: 600px) {
+  #projects-listing {
+    grid-gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+#projects-listing h3 {
+  margin: 0 0 0.5rem;
+}
+#projects-listing main {
+  margin-bottom: 0.9rem;
+  color: var(--text-dim);
+}
+#projects-listing aside .btn {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  color: var(--text-dim);
+  font-size: var(--font-small);
+  text-transform: uppercase;
+  background-color: var(--background);
+  border: 1px dashed var(--text-dim);
+  border-radius: 0.3rem;
+}
+#projects-listing .stack {
+  margin-bottom: 0.9rem;
+}
+#projects-listing .stack button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.2rem;
+  color: var(--foreground);
+  font: inherit;
+  background-color: transparent;
+  border: none;
+}
+#projects-listing .stack button span:first-child {
+  display: flex;
+  place-items: center;
+}
+#projects-listing .stack button svg {
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.5rem;
+  border-radius: 0.1rem;
+  fill: currentColor;
+}
+#projects-listing .stack button span:last-child {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+@font-face {
+  font-weight: 300;
+  font-family: Barlow;
+  font-style: normal;
+  src: url(https://fonts.gstatic.com/s/barlow/v5/7cHqv4kjgoGqM7E3p-kc4A.ttf)
+    format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-weight: 400;
+  font-family: Barlow;
+  font-style: normal;
+  src: url(https://fonts.gstatic.com/s/barlow/v5/7cHpv4kjgoGqM7EPCw.ttf)
+    format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-weight: 700;
+  font-family: Barlow;
+  font-style: normal;
+  src: url(https://fonts.gstatic.com/s/barlow/v5/7cHqv4kjgoGqM7E3t-4c4A.ttf)
+    format("truetype");
+  font-display: swap;
+}
