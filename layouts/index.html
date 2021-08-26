@@ -1,20 +1,28 @@
 {{ define "main" }}
 
 <div class="hero">
-  <div>Abdus Samad Azad</div>
-  <div>Software Engineer</div>
-
-  <div class="social">
-    <a href="/self">About</a>
-    <a href="https://github.com/abdus">GitHub</a>
-    <a href="https://twitter.com/abdus_x86">Twitter</a>
-    <a href="https://git.abdus.net">Self-hosted Git</a>
-    <a href="https://www.linkedin.com/in/thisisabdus">LinkedIn</a>
+  <div>
+    Hello there! I am <span class="color-yellow">Abdus S Azad</span>. I am a
+    Software Engineer, and write code mostly for the web. Feel free to shoot me
+    a mail at
+    <a class="color-yellow" href="mailto:abdus@abdus.net"> abdus@abdus.net</a>.
   </div>
+
+  <!--<div class="social">-->
+  <!--<a href="/self">About</a>-->
+  <!--<a href="https://github.com/abdus">GitHub</a>-->
+  <!--<a href="https://twitter.com/abdus_x86">Twitter</a>-->
+  <!--<a href="https://git.abdus.net">Self-hosted Git</a>-->
+  <!--<a href="https://www.linkedin.com/in/thisisabdus">LinkedIn</a>-->
+  <!--</div>-->
+</div>
+
+<div class="latest-news">
+  <p>Currently working at Level</p>
 </div>
 
 <section class="homepage-posts">
-  <h2 id="blog">BLOG</h2>
+  <h2 id="blog"></h2>
   {{ range (.Paginate (where site.RegularPages "Type" "in"
   site.Params.mainSections)).Pages }}
   <article>
@@ -25,8 +33,6 @@
         <span class="year">{{ .Date.Format ", 2006" | upper }}</span>
       </span>
     </a>
-
-    <small class="summary">{{ .Summary | truncate 300 }}</small>
   </article>
   {{ end }}
   <!--.-->
