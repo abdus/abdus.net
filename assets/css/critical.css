@@ -41,6 +41,11 @@ a {
 ul {
   padding-left: 1rem;
 }
+code {
+  font-size: var(--font-small);
+  font-family: fira mono, monospace;
+  line-height: 1.3;
+}
 .color-yellow {
   color: #f7941f;
 }
@@ -186,6 +191,90 @@ ul {
   max-width: 0;
   overflow: hidden;
   white-space: nowrap;
+}
+#page-title {
+  margin: 5rem 0;
+  margin-bottom: 0;
+  font-size: calc(var(--font-normal) + 0.7em);
+  line-height: 1.1;
+}
+
+#meta {
+  margin-bottom: 2.5rem;
+  color: var(--text-dim);
+}
+
+.page {
+  padding-top: 1rem;
+}
+.page a {
+  text-decoration: underline;
+  text-decoration-color: var(--text-dim);
+  text-decoration-thickness: 2px;
+}
+.page h3 {
+  margin-top: 4rem;
+  margin-bottom: 1.3rem;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+#TableOfContentsHandler {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 0.4rem 1rem;
+  font-size: var(--font-small);
+  text-transform: uppercase;
+  background-color: var(--background);
+}
+#TableOfContentsHandler label,
+#TableOfContentsHandler span {
+  display: block;
+  white-space: nowrap;
+}
+#TableOfContentsHandler label {
+  margin-left: 0.3rem;
+  padding: 0.3rem 0.7rem;
+  background-color: var(--brand-color);
+  border-radius: 0.3rem;
+}
+#TableOfContentsHandler span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#TableOfContentsWrapper {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: inline-block;
+  max-height: 80vh;
+  margin: 2rem 0 2rem 1rem;
+  padding: 1rem;
+  overflow: auto;
+  font-size: var(--font-small);
+  text-transform: uppercase;
+  background-color: var(--brand-color);
+  background-color: var(--background);
+  border: 1px solid var(--text-dim);
+  border-radius: 0.4rem;
+  transform: translateY(50%);
+  visibility: collapse;
+  opacity: 0;
+  counter-reset: toc;
+}
+@supports (backdrop-filter: blur(20px)) {
+  #TableOfContentsWrapper {
+    background-color: var(--brand-color);
+    border: none;
+    backdrop-filter: blur(10px);
+  }
 }
 @font-face {
   font-weight: 300;
