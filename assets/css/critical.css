@@ -139,6 +139,7 @@ code {
   padding: 1rem;
   background-color: #5465ff15;
   border-radius: 0.4rem;
+  backdrop-filter: blur(10px);
 }
 @media (max-width: 600px) {
   #projects-listing {
@@ -232,7 +233,6 @@ code {
   padding: 0.4rem 1rem;
   font-size: var(--font-small);
   text-transform: uppercase;
-  background-color: var(--background);
 }
 #TableOfContentsHandler label,
 #TableOfContentsHandler span {

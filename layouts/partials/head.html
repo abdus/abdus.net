@@ -1,9 +1,18 @@
 <!--.-->
-{{ $CSS := resources.Match "css/**.css" | resources.Concat "main.css" |
-resources.Fingerprint "md5" | minify }}
+{{ $CSS := resources.Match "css/**.css" | resources.Concat "main.css" | resources.Fingerprint "md5" | minify }}
+<!-- . -->
+{{ $BG_IMG := resources.Get "images/bg.webp" }}
 
 <style>
   {{ readFile "assets/css/critical.css" | safeCSS }}
+
+  body {
+    background: linear-gradient(to bottom, #00000090, #000000ff), url({{ $BG_IMG.Permalink }});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
 </style>
 
 <link
