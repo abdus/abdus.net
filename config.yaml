@@ -1,17 +1,42 @@
 baseURL: "//www.abdus.net"
 languageCode: en-us
-title: Abdus S. Azad
+title: Abdus Azad
+
+theme: Mainroad
 
 Paginate: 10
 assetDir: assets
 
 author:
-  name: Abdus S. Azad
-copyright: Copyleft
-
+  name: "Abdus Azad"
+  bio: "Skilled in building webapps, loves Linux, planning to \"Master\" Rust since forever"
+  avatar: "img/avatar.png"
 params:
   mainSections: ["posts"]
 
+  description: "John Doe's Personal blog about everything" # Description of your site
+
+  ####################### theme: Mainroad  ######################
+  opengraph: true
+  twitter_cards: true
+  readmore: false # Show "Read more" button in list if true
+  authorbox: true
+  pager: true
+
+  post_meta: ["date", "categories"] # Order of post meta information
+  logo:
+    subtitle: "Software Engineer, Linux Enthusiast"
+  sidebar:
+    home: "right"   # Configure layout for home page
+    list: "right"   # Configure layout for list pages
+    single: "right" # Configure layout for single pages
+    # Enable widgets in given order
+    widgets: ["search", "recent", "categories", "taglist"]
+  widgets:
+    recent_num: 7 # Set the number of articles in the "Recent articles" widget
+    tags_counter: true # Enable counter for each tag in "Tags" widget (disabled by default)
+
+  ####################### END OF theme: Mainroad  ######################
 menu:
   main:
     - identifier: home
@@ -22,10 +47,10 @@ menu:
       name: About
       url: /self/
       weight: 3
-    - identifier: daily-log
-      name: daily logs
-      url: "https://log.abdus.net"
-      weight: 5
+    #- identifier: daily-log
+      #name: daily logs
+      #url: "https://log.abdus.net"
+      #weight: 5
     - identifier: blog
       name: blog
       url: /posts/
@@ -56,10 +81,10 @@ permalinks:
   notes: "/notes/:filename"
 
 
-disableKinds:
-  - section
-  - term
-  - taxonomy
+#disableKinds:
+  #- section
+  #- term
+  #- taxonomy
 
 outputFormats:
   RSS:

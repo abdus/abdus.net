@@ -19,10 +19,9 @@ Apart from programming, I do...well, nothing. Sometime, I play PC games.
 
 ### Contact Info
 
-I am always reachable via Email [abdus.azad@algorisys.com](mailto:abdus.azad@algorisys.com). 
+I am always reachable via Email [abdus@abdus.net](mailto:abdus@abdus.net).
 If you are in LinkedIn, feel free to [connect](https://linkedin.com/in/thisisabdus).
-If you prefer someting secure and fast, I am on [Telegram](https://t.me/abdus_x86)
-as well. Also, you can send me encrypted messages using my [GPG key](/keys/).
+Also, you can send me encrypted messages using my [GPG key](/keys/).
 
 That's all about me! I will keep this page updated incase any exciting things
 happens in my life(hopefully).
