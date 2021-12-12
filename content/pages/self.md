@@ -3,7 +3,7 @@ title: "About Me"
 toc: false
 ---
 
-### Intro
+## Intro
 
 Hey there! You are welcome to the most weird area of my website. I have no idea
 what to write about myself. But I will give it a try anyways.
@@ -17,9 +17,9 @@ page](/hire/).
 
 Apart from programming, I do...well, nothing. Sometime, I play PC games.
 
-### Contact Info
+## Contact Info
 
-I am always reachable via Email [abdus@abdus.net](mailto:abdus@abdus.net).
+I am always reachable via Email abdus[at]abdus[dot]net.
 If you are in LinkedIn, feel free to [connect](https://linkedin.com/in/thisisabdus).
 Also, you can send me encrypted messages using my [GPG key](/keys/).
 

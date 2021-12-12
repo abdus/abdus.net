@@ -73,7 +73,7 @@ quite awesome! All major browser _fully_ supports it. Following is a chart
 from _Can I Use_.
 
 <!--Embed for the feature from Can I Use-->
-{{< caniuse feature="abortcontroller" periods="future_1,current,past_1,past_2" >}}
+< caniuse feature="abortcontroller" periods="future_1,current,past_1,past_2" >
 
 ## Examples 
 

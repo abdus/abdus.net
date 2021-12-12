@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <a
+    id="read" 
+    href="#read" 
+    style="margin-top: 1.7rem; display: block"
+  >## {{ .Title }} ##</a>
+  <small style="opacity: 0.7">
+    written by {{ $.Site.Author.name }} on 
+    {{ .Date.Format "02 January, 2006" }}
+  </small>
+  <div style="margin-bottom: 1.7rem"></div>
+  
+  <div style="margin: 3rem 0">
+    <h2>Table of Contents</h2>
+    {{ .TableOfContents }}
+  </div>
+
+  {{ .Content }}
+{{ end }}

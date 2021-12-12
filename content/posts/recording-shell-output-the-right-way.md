@@ -46,7 +46,7 @@ For a detailed list, visit [asciinema official website](https://asciinema.org).
 - easy to distribute. when you are done recording the session, you'll be asked
 if you want to publish your recording to ASCIINema website. If not, save it locally.
 - Embeddable. Following is a asciicast of my NeoVim config :)
-{{< asciinema id="dCji7muVN6wBBcmqIAQtdLN4H" >}}
+< asciinema id="dCji7muVN6wBBcmqIAQtdLN4H" >
 - copy and paste texts from an asciicast to terminal. this especially helps when
 you don't want to type a goddamn config file from a video.
 - remote ASCIINema upload server can be self-hosted.

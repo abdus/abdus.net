@@ -1,0 +1,38 @@
+<!-- import sass files, and compile them to css -->
+
+{{ $sass := resources.Get "sass/index.sass" }}
+{{ $options := (dict "targetPath" "index.css" "outputStyle" "compressed") }}
+{{ $style := $sass| resources.ToCSS $options | fingerprint | minify }}
+
+<style>{{ $style.Content | safeCSS }}</style>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://pvinis.github.io/iosevka-webfont/7.0.2/iosevka.css" rel="stylesheet" />
+
+
+<!-- meta tags -->
+{{ if .Params.meta.image }}
+{{ .Scratch.Set "image" .Params.meta.image }}
+{{ else }}
+{{ .Scratch.Set "image" "https://i.ibb.co/RvzfY0Z/website-cover.png" }}
+{{ end }}
+
+<!-- Primary Meta Tags -->
+<title>{{ .Title }}</title>
+<meta name="title" content="{{ .Title }}">
+<meta name="description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink | absURL }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
+<meta property="og:image" content='{{ .Scratch.Get "image" }}'>
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ .Permalink }}">
+<meta property="twitter:title" content="{{ .Title }}">
+<meta property="twitter:description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
+<meta property="twitter:image" content='{{ .Scratch.Get "image" }}'>

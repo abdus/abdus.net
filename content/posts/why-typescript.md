@@ -18,8 +18,7 @@ going to discuss why we should use TypeScript over plain old JavaScript.
 Let me lead the post with TypeScript's awesome typing-system. In plain
 JavaScript, there are no types. Values are assigned to variables dynamically.
 When I say a language is dynamic, I essentially mean that we can re-assign
-variables with different data types. For example, if we a declare variable `let
-whatever = 10`, this variable will be of type `Integer`. Now in a
+variables with different data types. For example, if we a declare variable `let whatever = 10`, this variable will be of type `Integer`. Now in a
 strongly-typed static language, we cannot reassign this variable with a
 different data type, say a `String`.
 

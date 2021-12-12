@@ -1,0 +1,80 @@
+*
+  font-size: 1em
+  font-weight: normal
+  font-family: 'Iosevka Web', monospace
+
+body
+  margin: auto
+  padding: 0 1rem
+  max-width: 800px
+  background: #252525
+  color: #cacaca
+  line-height: 1.4
+
+a
+  text-decoration: none
+  color: #21E6C1
+
+  &:hover
+    text-decoration: underline
+
+img
+  max-width: 100%
+  object-fit: cover
+
+pre
+  max-width: 100%
+  overflow: auto
+  padding: 1rem
+
+h1, h2, h3,
+h4, h5, h6
+  margin: 0
+  color: #00c7ff
+  margin-top: 3rem
+  margin-bottom: 1rem
+
+h1::before
+  content: "# "
+  
+h2::before
+  content: "## "
+
+h3::before
+  content: "### "
+
+h4::before
+  content: "#### "
+
+h5::before 
+  content: "##### "
+
+h6::before
+  content: "###### "
+
+nav#main-nav
+  padding: 1rem 0
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+  & h1
+    margin: 0.5rem 0
+    color: inherit
+
+    &::before
+      content: ""
+
+  & ul, & li
+    margin: 0
+    padding: 0
+    list-style-type: none
+
+  & ul
+    display: flex
+
+  & li:not(:last-child)
+    margin: 0 1rem;
+  
+  @media screen and (max-width: 600px)
+    flex-direction: column
