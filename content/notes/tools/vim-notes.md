@@ -33,17 +33,21 @@ Some notes on Vim window management, Tab Management and Other Stuffsa..
 a window in Vim is the viewport for a buffer. following are a few useful window
 management command:
 
-|  Key Binding   | Action                                          | Command        |
-| :------------: | :---------------------------------------------- | :------------- |
-|   `<C-w> o`    | close all windows except the current one        | `:on`, `:only` |
-|    `<C-w q`    | close focused window                            |                |
-|      `ZZ`      | close focused window after saving changes       |                |
-|      `ZQ`      | close focused window without saving changes     |                |
-|    `<C-w v`    | split window vertically                         | `:vsplit`      |
-|    `<C-w s`    | split window horizentally                       | `:split`       |
-| `<C-w H/J/K/L` | move window to a direction                      |                |
-| `<C-w h/j/k/l` | switch between windows                          |                |
-|   `<C-W> f`    | split the window and edit filepath under cursor |                |
+|     Key Binding     | Action                                          | Command                 |
+| :-----------------: | :---------------------------------------------- | :---------------------- |
+|      `<C-w> o`      | close all windows except the current one        | `:on`, `:only`          |
+|      `<C-w q`       | close focused window                            |                         |
+|        `ZZ`         | close focused window after saving changes       |                         |
+|        `ZQ`         | close focused window without saving changes     |                         |
+|      `<C-w v`       | split window vertically                         | `:vsplit`               |
+|      `<C-w s`       | split window horizentally                       | `:split`                |
+|   `<C-w h/j/k/l`    | switch between windows                          |                         |
+|      `<C-W> f`      | split the window and edit filepath under cursor |                         |
+|   `<C-w> H/J/K/L`   | move windows in specific direction              |                         |
+|   `<C-w> <C-r>/R`   | rotate windows in specific direction            |                         |
+|      `<C-w> _`      | give a split full height                        |                         |
+| `<C-w>[pipe char] ` | give a split full width                         | give a split full width |
+|                     |                                                 |                         |
 
 - `a/file/path.md 20`: when the cursor is on filepath, pressing `<C-W F` would
   open the filepath in a split window and jump to line number(`20` in this case)
