@@ -12,6 +12,7 @@ argglobal
 %argdel
 edit ~/Dev/personal/abdus.net/content/posts/search-in-js.md
 argglobal
+balt ~/Dev/personal/abdus.net/content/posts/search-in-js.md
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -20,12 +21,12 @@ setlocal fdl=5
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 8 - ((7 * winheight(0) + 22) / 45)
+let s:l = 4 - ((3 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
-normal! 0
+keepjumps 4
+normal! 012|
 tabnext 1
 badd +0 ~/Dev/personal/abdus.net/content/posts/search-in-js.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
