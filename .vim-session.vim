@@ -10,30 +10,75 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit ~/Dev/personal/abdus.net/content/posts/search-in-js.md
+edit themes/coder/assets/sass/index.sass
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 argglobal
-balt ~/Dev/personal/abdus.net/content/posts/search-in-js.md
+balt themes/coder/layouts/partials/head.html
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=3
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 3 - ((2 * winheight(0) + 22) / 45)
+let s:l = 31 - ((30 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 3
-normal! 016|
+keepjumps 31
+normal! 05|
+wincmd w
+argglobal
+if bufexists("themes/coder/layouts/partials/head.html") | buffer themes/coder/layouts/partials/head.html | else | edit themes/coder/layouts/partials/head.html | endif
+if &buftype ==# 'terminal'
+  silent file themes/coder/layouts/partials/head.html
+endif
+balt themes/coder/assets/sass/index.sass
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 19 - ((18 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 19
+normal! 02|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
-badd +0 ~/Dev/personal/abdus.net/content/posts/search-in-js.md
+badd +0 themes/coder/assets/sass/index.sass
+badd +0 themes/coder/layouts/partials/head.html
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20 shortmess=filnxtToOFA
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

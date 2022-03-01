@@ -1,7 +1,8 @@
 *
-  font-size: 1em
+  font-size: 1.1rem
   font-weight: normal
-  font-family: 'Iosevka Web', monospace
+  //font-family: 'Iosevka Web', monospace
+  font-family: 'Recursive', sans-serif
 
 body
   margin: auto
@@ -27,7 +28,10 @@ pre
   overflow: auto
   padding: 1rem
 
-code:not(pre code) 
+pre *
+  font-family: 'Iosevka Web', monospace
+
+code:not(pre code)
   background: #ff79c615
   padding: 2px 6px
   border-radius: 0.4rem
@@ -41,7 +45,7 @@ h4, h5, h6
 
 h1::before
   content: "# "
-  
+
 h2::before
   content: "## "
 
@@ -51,7 +55,7 @@ h3::before
 h4::before
   content: "#### "
 
-h5::before 
+h5::before
   content: "##### "
 
 h6::before
@@ -80,6 +84,6 @@ nav#main-nav
 
   & li:not(:last-child)
     margin: 0 1rem;
-  
+
   @media screen and (max-width: 600px)
     flex-direction: column
