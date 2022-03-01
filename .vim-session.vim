@@ -35,22 +35,28 @@ setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=2
+setlocal fdl=7
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 3
 normal! zo
+3
+normal! zo
 5
+normal! zo
+5
+normal! zo
+6
 normal! zo
 7
 normal! zo
-let s:l = 14 - ((13 * winheight(0) + 22) / 45)
+let s:l = 8 - ((7 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 14
-normal! 0
+keepjumps 8
+normal! 063|
 wincmd w
 argglobal
 if bufexists("themes/coder/assets/sass/index.sass") | buffer themes/coder/assets/sass/index.sass | else | edit themes/coder/assets/sass/index.sass | endif
@@ -68,19 +74,18 @@ setlocal fdn=20
 setlocal fen
 65
 normal! zo
-let s:l = 87 - ((28 * winheight(0) + 22) / 45)
+let s:l = 89 - ((30 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 87
-normal! 0
+keepjumps 89
+normal! 017|
 wincmd w
-2wincmd w
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
-badd +1 themes/coder/assets/sass/index.sass
-badd +0 themes/coder/layouts/_default/baseof.html
+badd +1 themes/coder/layouts/_default/baseof.html
+badd +0 themes/coder/assets/sass/index.sass
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
