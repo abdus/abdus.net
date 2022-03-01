@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit themes/coder/assets/sass/index.sass
+edit themes/coder/layouts/_default/baseof.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -30,7 +30,34 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 argglobal
-balt themes/coder/layouts/partials/head.html
+balt themes/coder/assets/sass/index.sass
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=2
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+3
+normal! zo
+5
+normal! zo
+7
+normal! zo
+let s:l = 14 - ((13 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 14
+normal! 0
+wincmd w
+argglobal
+if bufexists("themes/coder/assets/sass/index.sass") | buffer themes/coder/assets/sass/index.sass | else | edit themes/coder/assets/sass/index.sass | endif
+if &buftype ==# 'terminal'
+  silent file themes/coder/assets/sass/index.sass
+endif
+balt themes/coder/layouts/_default/baseof.html
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -39,39 +66,21 @@ setlocal fdl=3
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 31 - ((30 * winheight(0) + 22) / 45)
+65
+normal! zo
+let s:l = 87 - ((28 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 31
-normal! 05|
+keepjumps 87
+normal! 0
 wincmd w
-argglobal
-if bufexists("themes/coder/layouts/partials/head.html") | buffer themes/coder/layouts/partials/head.html | else | edit themes/coder/layouts/partials/head.html | endif
-if &buftype ==# 'terminal'
-  silent file themes/coder/layouts/partials/head.html
-endif
-balt themes/coder/assets/sass/index.sass
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 19 - ((18 * winheight(0) + 22) / 45)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 19
-normal! 02|
-wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
-badd +0 themes/coder/assets/sass/index.sass
-badd +0 themes/coder/layouts/partials/head.html
+badd +1 themes/coder/assets/sass/index.sass
+badd +0 themes/coder/layouts/_default/baseof.html
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
