@@ -18,7 +18,7 @@ menu:
       weight: 1
     - identifier: about
       name: About
-      url: /self/
+      url: /about/
       weight: 3
     #- identifier: daily-log
       #name: daily logs
@@ -28,10 +28,6 @@ menu:
       name: Blog
       url: /posts/
       weight: 2
-    - identifier: rss
-      name: RSS
-      url: /feed.xml
-      weight: 4
 
 markup:
   tableOfContents:

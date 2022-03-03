@@ -8,7 +8,7 @@ body
   margin: auto
   padding: 0 1rem
   max-width: 800px
-  background: #252525
+  background: #191c20
   color: #cacaca
   line-height: 1.4
 
@@ -35,6 +35,18 @@ code:not(pre code)
   background: #ff79c615
   padding: 2px 6px
   border-radius: 0.4rem
+
+ul
+  list-style: none
+
+ul li::before
+  content: "\1F784"
+  color: #fff3
+  font-weight: bold
+  display: inline-block
+  width: 1em
+  margin-left: -1em
+  border-radius: 50%;
 
 h1, h2, h3,
 h4, h5, h6
@@ -82,11 +94,21 @@ nav#main-nav
   & ul
     display: flex
 
-  & li:not(:last-child)
+    & li::before
+      display: none
+
+  & li
     margin: 0 1rem;
 
   @media screen and (max-width: 600px)
     flex-direction: column
+
+footer
+  margin: 4rem 0 1rem 0
+
+  & *
+    opacity: 0.5
+    font-size: 0.8em
 
 .html-background
   top: 0
