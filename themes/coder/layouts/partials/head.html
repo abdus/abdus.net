@@ -1,3 +1,8 @@
+<meta
+  name="image"
+  property="og:image"
+  content="https://2d-array-rotation.com/static/images/2d_array_rotation.jpg"
+>
 <!-- import sass files, and compile them to css -->
 
 {{ $sass := resources.Get "sass/index.sass" }}
@@ -30,7 +35,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ .Permalink | absURL }}">
 <meta name="title" property="og:title" content="{{ .Title }}">
-<meta  name="image" property="og:image" content='{{ .Scratch.Get "image" }}'>
+<!-- <meta  name="image" property="og:image" content='{{ .Scratch.Get "image" }}'> -->
 <meta  name="description" property="og:description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
 
 <!-- Twitter -->
