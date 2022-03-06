@@ -1,20 +1,3 @@
-<meta name="description" property="og:description" content="[Content description here]">
-<!-- import sass files, and compile them to css -->
-
-{{ $sass := resources.Get "sass/index.sass" }}
-{{ $options := (dict "targetPath" "index.css" "outputStyle" "compressed") }}
-{{ $style := $sass| resources.ToCSS $options | fingerprint | minify }}
-
-<style>{{ $style.Content | safeCSS }}</style>
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://pvinis.github.io/iosevka-webfont/7.0.2/iosevka.css" rel="stylesheet" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-
 <!-- meta tags -->
 {{ if .Params.meta.image }}
 {{ .Scratch.Set "image" .Params.meta.image }}
@@ -40,3 +23,18 @@
 <meta property="twitter:title" content="{{ .Title }}">
 <meta property="twitter:description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
 <meta property="twitter:image" content='{{ .Scratch.Get "image" }}'>
+
+<!-- import sass files, and compile them to css -->
+
+{{ $sass := resources.Get "sass/index.sass" }}
+{{ $options := (dict "targetPath" "index.css" "outputStyle" "compressed") }}
+{{ $style := $sass| resources.ToCSS $options | fingerprint | minify }}
+
+<style>{{ $style.Content | safeCSS }}</style>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://pvinis.github.io/iosevka-webfont/7.0.2/iosevka.css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;700;900&display=swap" rel="stylesheet">
