@@ -1,0 +1,79 @@
+<style>
+  .recommendations {
+    margin-top: 1.7rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .recommendations .r_card {
+    overflow: hidden;
+    background-color: #191c20;
+    border: 1px solid #ffffff10;
+    border-radius: 0.5rem;
+  }
+
+  .recommendations .r_card:nth-child(1) {
+    grid-column: 1 / span 2;
+  }
+
+  @media screen and (max-width: 800px) {
+    .recommendations {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .recommendations .r_card:nth-child(1) {
+      grid-column: 1 / span 1;
+    }
+  }
+
+  .recommendations .r_author {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.7rem 1.2rem;
+    background-color: #ffffff10;
+  }
+
+  .recommendations .r_author > a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    flex-grow: 1;
+  }
+
+  .recommendations .r_author span {
+    font-size: 0.8em;
+  }
+
+  .recommendations .r_author img {
+    max-width: 3rem;
+    border-radius: 100%;
+  }
+
+  .recommendations .r_content {
+    padding: 1rem 1.2rem;
+  }
+</style>
+
+<div class="recommendations">
+  {{ range $.Site.Data.recommendations }}
+  <div class="r_card">
+    <div class="r_author">
+      <img src="{{ .author.avatar }}" alt="" />
+      <a
+        rel="nofollow"
+        target="_new"
+        href="https://www.linkedin.com/in/thisisabdus/"
+      >
+        <span>{{ .author.name }}</span>
+        <span style="color: gray">
+          {{ with (index .author.job_title 0) }} {{ . }}, {{ end }} {{
+          .author.organization }}
+        </span>
+      </a>
+    </div>
+    <div class="r_content">{{ .recommendation }}</div>
+  </div>
+  {{ end }}
+</div>

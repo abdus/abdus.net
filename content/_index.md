@@ -25,6 +25,6 @@ a Journal.
 
 {{< main-section >}}
 
-<!--## Glitter-->
+## Recommendations
 
-<!--{{< testimonials >}}-->
+{{< testimonials >}}
