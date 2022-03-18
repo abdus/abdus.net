@@ -25,3 +25,7 @@ a Journal.
 ## Recent Entries
 
 {{< main-section >}}
+
+<!--## Glitter-->
+
+<!--{{< testimonials >}}-->

@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 toc: false
-date: 2020-07-26T21:51:49+05:30
+_date: 2020-07-26T21:51:49+05:30
 ---
 
 ## Intro
