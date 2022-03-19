@@ -8,7 +8,7 @@
     source: https://github.com/abdus/awesome-websites/
     blogpost:
   primary_tech: React
-  tech_stack: []
+  tech_stack: [react, javascript, next.js]
 
 - name: Dotfiles
   type: config
@@ -21,7 +21,7 @@
     source: https://github.com/abdus/dotfiles
     blogpost:
   primary_tech: GNUBash
-  tech_stack: []
+  tech_stack: [bash, lua]
 
 - name: Nginx Pretty Index
   type: config
@@ -33,10 +33,10 @@
     source: https://github.com/abdus/nginx-pretty-index
     blogpost:
   primary_tech: nginx
-  tech_stack: []
+  tech_stack: [xslt, nginx]
 
 - name: Flixx
-  type: android app
+  type: android
   desc: >-
     Flixx is an android app which allows user to browse through different movie
     genre. It fetches information from The Movie Database.
@@ -45,7 +45,7 @@
     source: https://github.com/abdus/flixx
     blogpost:
   primary_tech: AndroidStudio
-  tech_stack: []
+  tech_stack: [react-native, javascript, android]
 
 - name: MiniGrep
   type: tools
@@ -57,4 +57,76 @@
     source: https://github.com/abdus/flixx
     blogpost:
   primary_tech: Rust
-  tech_stack: []
+  tech_stack: [rust, cargo]
+
+- name: DogeGram
+  type: webapp
+  desc: >-
+    Love memes? I am sure you will love DogeGram too! DogeGram is like the
+    'Instagram for Memes' (Of-course, you can share memes on Instagram, I just
+    wanted to build something ¯\\_(ツ)_/¯)
+  links:
+    demo: https://dogegram.dityp.com/
+    source: https://github.com/abdus/doge-gram
+    blogpost:
+  primary_tech: NextDotJS
+  tech_stack: [next.js, javascript]
+
+- name: Scripts
+  type: config
+  desc: >-
+    Bunch of small scripts that I wrote at past. These scripts help me automate
+    a few repetitive tasks such as publishing to
+    [public.abdus.net](https://public.abdus.net) etc.
+  links:
+    demo:
+    source: https://github.com/abdus/scripts
+    blogpost:
+  primary_tech: GNUBash
+  tech_stack: [bash]
+
+- name: Opportunity Calendar
+  type: webapp
+  desc: >-
+    A webapp to lists opportunities available at different organizations and
+    companies. Ideal for students who never want to miss any opportunities.
+  links:
+    demo: https://opp-cal.vercel.app 
+    source: https://github.com/abdus/opp-cal 
+    blogpost:
+  primary_tech: NextDotJS
+  tech_stack: [bash]
+
+- name: Ice and Fire
+  type: webapp
+  desc: >-
+    Ice and Fire is a webapp built with Angular 12. I built this project to learn Angular. You can access my [Angular notes here](https://2nd.abdus.net/angular/basics/).
+  links:
+    demo: https://public.abdus.net/ice-and-fire/
+    source: https://github.com/abdus/ice-and-fire
+    blogpost:
+  primary_tech: Angular
+  tech_stack: [angular, javascript]
+
+- name: Focus Time
+  type: android
+  desc: >-
+    A simple Android application to keep you focused. I built this in order to
+    learn and get better at React Native.
+  links:
+    demo: https://opp-cal.vercel.app 
+    source: https://github.com/abdus/opp-cal 
+    blogpost:
+  primary_tech: AndroidStudio
+  tech_stack: [react-native, javascript]
+
+- name: Image Resizer
+  type: webapp
+  desc: >-
+    SpringBoot webapp that resizes a given image based on the `scale` factor. It is capable of resizing images from remote location.
+  links:
+    demo: https://opp-cal.vercel.app 
+    source: https://github.com/abdus/opp-cal 
+    blogpost:
+  primary_tech: Java
+  tech_stack: [react-native, javascript]

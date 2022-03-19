@@ -10,58 +10,46 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit layouts/shortcodes/projects.html
+edit data/projects.yaml
 argglobal
-balt data/projects.yaml
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=2
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 2
 normal! zo
-116
+14
 normal! zo
-118
+27
 normal! zo
-119
+39
+normal! zo
+51
+normal! zo
+63
+normal! zo
+76
+normal! zo
+89
+normal! zo
+101
+normal! zo
+112
 normal! zo
 124
 normal! zo
-152
-normal! zo
-153
-normal! zo
-159
-normal! zo
-174
-normal! zo
-190
-normal! zo
-193
-normal! zo
-197
-normal! zo
-198
-normal! zo
-201
-normal! zo
-210
-normal! zo
-211
-normal! zo
-let s:l = 160 - ((37 * winheight(0) + 22) / 44)
+let s:l = 131 - ((34 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 160
-normal! 019|
+keepjumps 131
+normal! 020|
 tabnext 1
-badd +59 data/projects.yaml
-badd +85 layouts/shortcodes/projects.html
+badd +0 data/projects.yaml
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
