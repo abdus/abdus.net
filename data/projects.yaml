@@ -35,6 +35,18 @@
   primary_tech: nginx
   tech_stack: [xslt, nginx]
 
+- name: Webpack TypeScript Starter
+  type: template
+  desc: >-
+    Starter template to easily set-up a new TypeScript project with Webpack.
+    It has built-in support for CSS Modules.
+  links:
+    demo:
+    source: https://github.com/abdus/java-image-resizer
+    blogpost: https://www.abdus.net/blog/2021/typescript-webpack-setup/
+  primary_tech: TypeScript
+  tech_stack: [typescript, webpack]
+
 - name: Flixx
   type: android
   desc: >-
@@ -91,8 +103,8 @@
     A webapp to lists opportunities available at different organizations and
     companies. Ideal for students who never want to miss any opportunities.
   links:
-    demo: https://opp-cal.vercel.app 
-    source: https://github.com/abdus/opp-cal 
+    demo: https://opp-cal.vercel.app
+    source: https://github.com/abdus/opp-cal
     blogpost:
   primary_tech: NextDotJS
   tech_stack: [bash]
@@ -114,8 +126,8 @@
     A simple Android application to keep you focused. I built this in order to
     learn and get better at React Native.
   links:
-    demo: https://opp-cal.vercel.app 
-    source: https://github.com/abdus/opp-cal 
+    demo: https://opp-cal.vercel.app
+    source: https://github.com/abdus/opp-cal
     blogpost:
   primary_tech: AndroidStudio
   tech_stack: [react-native, javascript]
@@ -125,8 +137,166 @@
   desc: >-
     SpringBoot webapp that resizes a given image based on the `scale` factor. It is capable of resizing images from remote location.
   links:
-    demo: https://opp-cal.vercel.app 
-    source: https://github.com/abdus/opp-cal 
+    demo:
+    source: https://github.com/abdus/java-image-resizer
     blogpost:
   primary_tech: Java
-  tech_stack: [react-native, javascript]
+  tech_stack: [java, springboot]
+
+- name: React Chrome Extension
+  type: template
+  desc: >-
+    This template initializes a React project that can be deployed as a
+    Chrome Extension. I built it to demonstrate how React works to a Friend.
+  links:
+    demo:
+    source: https://github.com/abdus/react-chrome-ext
+    blogpost:
+  primary_tech: React
+  tech_stack: [react, chrome, javascript]
+
+- name: Background Gradient Generator
+  type: library
+  desc: >-
+    Generates simple Gradients based on two colors. Built it while learning HTML, CSS and JavaScript. Good ol' days!!
+  links:
+    demo: https://abdus.github.io/background-gradient-generator/
+    source: https://github.com/abdus/background-gradient-generator
+    blogpost:
+  primary_tech: JavaScript
+  tech_stack: [javascript]
+
+- name: GH Head to Head
+  type: webapp
+  desc: >-
+    Used GitHub's GraphQL API to learn about querying a GraphQL-based API. I
+    love the way how GraphQL is able to retrieve everything at just one HTTP
+    call.
+  links:
+    demo:
+    source: https://github.com/abdus/gh-head-to-head
+    blogpost:
+  primary_tech: GraphQL
+  tech_stack: [javascript, react]
+
+- name: Ctrl-V
+  type: webapp
+  desc: >-
+    `ctrl-v` is a service similar to [pastebin.com](https://pastebin.com).
+    Built on top of Netlify's Cloud Lambda Functions, it's ridiculously easy to
+    deploy your own instance.
+  links:
+    demo: https://paste.abdus.net
+    source: https://github.com/abdus/ctrl-v
+    blogpost:
+  primary_tech: Netlify
+  tech_stack: [javascript, faunadb]
+
+- name: Weather App
+  type: webapp
+  desc: >-
+    Mini Webapp to fetch the weather information of the user's current location. This webapp needs the location permission.
+  links:
+    demo: https://abdus.github.io/weather-app/
+    source: https://github.com/abdus/weather-app
+    blogpost:
+  primary_tech: javascript
+  tech_stack: [javascript]
+
+- name: accueil.vim
+  type: webapp
+  desc: >-
+    `Accueil` is a French phrase for `Home`. This is my first Vim plug-in
+    written in VimScript. It does not do much tho, just a few text formatting.
+  links:
+    demo:
+    source: https://github.com/abdus/accueil.vim
+    blogpost:
+  primary_tech: Vim
+  tech_stack: [vimscript]
+
+- name: React DropDown
+  type: library
+  desc: >-
+    A React library to add DropDown menu in web-applications. It creates a
+    drop-down component (that can be customized) based on a given Array of
+    Values.
+  links:
+    demo:
+    source: https://github.com/abdus/react-dropdown
+    blogpost:
+  primary_tech: React
+  tech_stack: [react]
+
+- name: Issue Tracker
+  type: webapp
+  desc: >-
+    I intended to build a bug-tracker for software projects. Built using Node,
+    EJS and MongoDB.
+  links:
+    demo:
+    source: https://github.com/abdus/react-dropdown
+    blogpost:
+  primary_tech: MongoDB
+  tech_stack: [node, mongo]
+
+- name: Photo Editor
+  type: webapp
+  desc: >-
+    Had fun with `filter` property of CSS. Supported operations are `Blue`,
+    `Brightness`, `Contrast` etc. This can export the edited image.
+  links:
+    demo: https://abdus.github.io/photo-editor/
+    source: https://github.com/abdus/photo-editor
+    blogpost:
+  primary_tech: CSS3
+  tech_stack: [html, css, javascript]
+
+- name: Pixel Art Maker
+  type: webapp
+  desc: >-
+    This project is a part of Google-India Front-end Scholarship. User can
+    create images by coloring small boxes.
+  links:
+    demo: https://abdus.github.io/pixel-art-maker/
+    source: https://github.com/abdus/pixel-art-maker
+    blogpost:
+  primary_tech: JavaScript
+  tech_stack: [html, css, javascript]
+
+- name: LinkClick
+  type: library
+  desc: >-
+    A chrome extension which will enable you to reach your favorite website
+    quickly. This is the first project I built after learning HTML, CSS and
+    JavaScript <3
+  links:
+    demo:
+    source: https://github.com/abdus/linkclick
+    blogpost:
+  primary_tech: JavaScript
+  tech_stack: [html, css, javascript]
+
+- name: GoldenFalcon
+  type: CLI
+  desc: >-
+    GoldenFalcon is a Command-line application that can be used to send emails.
+    Under the hood, it uses Nodemailer to deliver the emails.
+  links:
+    demo:
+    source: https://github.com/abdus/goldenfalcon
+    blogpost:
+  primary_tech: Node
+  tech_stack: [node]
+
+- name: InspiroTab
+  type: library
+  desc: >-
+     A Google Chrome extension to replace your default Google Chrome tab and
+     greet you with a awesome wallpaper and a cool quote.
+  links:
+    demo:
+    source: https://github.com/abdus/InspiroTab
+    blogpost:
+  primary_tech: JavaScript
+  tech_stack: [html, css, javascript]

@@ -12,6 +12,7 @@ argglobal
 %argdel
 edit data/projects.yaml
 argglobal
+balt data/projects.yaml
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -32,22 +33,50 @@ normal! zo
 normal! zo
 63
 normal! zo
-76
+75
 normal! zo
-89
+88
 normal! zo
 101
 normal! zo
-112
+113
 normal! zo
 124
 normal! zo
-let s:l = 131 - ((34 * winheight(0) + 22) / 44)
+136
+normal! zo
+147
+normal! zo
+159
+normal! zo
+170
+normal! zo
+183
+normal! zo
+196
+normal! zo
+207
+normal! zo
+219
+normal! zo
+232
+normal! zo
+244
+normal! zo
+256
+normal! zo
+268
+normal! zo
+281
+normal! zo
+293
+normal! zo
+let s:l = 301 - ((34 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 131
-normal! 020|
+keepjumps 301
+normal! 026|
 tabnext 1
 badd +0 data/projects.yaml
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
