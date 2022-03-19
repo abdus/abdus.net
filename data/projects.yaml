@@ -286,7 +286,7 @@
     demo:
     source: https://github.com/abdus/goldenfalcon
     blogpost:
-  primary_tech: Node
+  primary_tech: NodeDotJS
   tech_stack: [node]
 
 - name: InspiroTab
