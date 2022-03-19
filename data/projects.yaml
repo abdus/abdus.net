@@ -278,7 +278,7 @@
   tech_stack: [html, css, javascript]
 
 - name: GoldenFalcon
-  type: CLI
+  type: tools
   desc: >-
     GoldenFalcon is a Command-line application that can be used to send emails.
     Under the hood, it uses Nodemailer to deliver the emails.
