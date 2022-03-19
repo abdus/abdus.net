@@ -1,0 +1,55 @@
+<style>
+  .uses {
+    overflow: hidden;
+    background-color: #191c20;
+    border: 1px solid #ffffff10;
+    border-radius: 0.5rem;
+  }
+
+  .uses .u_row {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .uses .u_row p:nth-child(1) {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 800px) {
+    .uses .u_row {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 0.2rem;
+    }
+
+    .uses .u_row p:nth-child(1) {
+      text-align: left;
+    }
+  }
+
+  .uses .u_row:nth-child(even) {
+    background-color: #ffffff10;
+  }
+
+  .uses .u_row p {
+    margin: 0;
+  }
+</style>
+
+<p>
+  This page is inspired by <a href="https://uses.tech">The /Uses Project</a>.
+  These are the things I use on a daily basis, and I think they deserve a
+  mention on my website.
+</p>
+
+<div class="uses">
+  {{ range $.Site.Data.uses }}
+  <div class="u_row">
+    <p style="color: gray; letter-spacing: 2px; font-size: 0.8em">
+      {{ .name | upper }}
+    </p>
+    <p>{{ .content | markdownify }}</p>
+  </div>
+  {{ end }}
+</div>

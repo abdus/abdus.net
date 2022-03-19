@@ -1,0 +1,26 @@
+- name: Machine
+  content: >-
+    Asus TUF 505dt (8 Gigs Memory, Ryzan 5, Nvidia 1650 4 Gigs).
+    Keyboards: Zebronics Max (Blue Switches), Ant Esports MK1200 (Brown
+    Switches).
+
+- name: Editor
+  content: >-
+    Vim is my preferred code editor. I use the
+    [Catppuccin](https://github.com/catppuccin) colorscheme. I use Alacritty
+    with ZSh. Here is my [dotfiles](https://github.com/abdus/dotfiles)
+    repository.
+
+- name: Gadgets
+  content: >-
+    Google Pixel 4a. Earlier, Vivo V5.
+
+- name: Software
+  content: >-
+    Git for source code management. Mailspring/Neomutt for Email. Firefox as
+    the default browser (Brave Browser on phone).
+
+- name: Services
+  content: >-
+    Zoho hosts my email. I deploy apps on Vercel. For CI/CD, GitHub. My servers
+    are from Hetzner. Porkbun for domains.
