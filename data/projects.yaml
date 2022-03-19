@@ -1,0 +1,60 @@
+- name: Lynx Bar
+  type: webapp
+  desc: >-
+    A website that contains a list of cool webapps. It has functionalities such
+    as Searching etc. Made with Next.js
+  links:
+    demo: https://lynx.bar
+    source: https://github.com/abdus/awesome-websites/
+    blogpost:
+  primary_tech: React
+  tech_stack: []
+
+- name: Dotfiles
+  type: config
+  desc: >-
+    Dotfiles are text-based config files for different software. I maintain my
+    dots so that I don't have to start from scratch everytime I
+    change/reinstall the OS.
+  links:
+    demo:
+    source: https://github.com/abdus/dotfiles
+    blogpost:
+  primary_tech: GNUBash
+  tech_stack: []
+
+- name: Nginx Pretty Index
+  type: config
+  desc: >-
+    A Beautiful auto-index page for Nginx. It uses XSLT, HTML and CSS to
+    achieve the styles and functionalities.
+  links:
+    demo: https://public.abdus.net
+    source: https://github.com/abdus/nginx-pretty-index
+    blogpost:
+  primary_tech: nginx
+  tech_stack: []
+
+- name: Flixx
+  type: android app
+  desc: >-
+    Flixx is an android app which allows user to browse through different movie
+    genre. It fetches information from The Movie Database.
+  links:
+    demo: https://github.com/abdus/flixx/releases/tag/v0.0.1
+    source: https://github.com/abdus/flixx
+    blogpost:
+  primary_tech: AndroidStudio
+  tech_stack: []
+
+- name: MiniGrep
+  type: tools
+  desc: >-
+    A mini program that copies the functionalities of GNU GREP (minus the RegEx
+    part). I built it while learning Rust.
+  links:
+    demo: https://github.com/abdus/flixx/releases/tag/v0.0.1
+    source: https://github.com/abdus/flixx
+    blogpost:
+  primary_tech: Rust
+  tech_stack: []

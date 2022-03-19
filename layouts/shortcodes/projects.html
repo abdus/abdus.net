@@ -1,0 +1,222 @@
+<style>
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 650px) {
+    .projects {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+
+  .projects .p_row {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #191c20;
+    border: 1px solid #ffffff10;
+    border-radius: 0.5rem;
+  }
+
+  .projects .p_name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #ffffff10;
+  }
+
+  .projects .p_name img {
+    min-width: 2.5rem;
+    max-width: 2.5rem;
+  }
+
+  .projects .p_name small {
+    display: block;
+    margin-top: 0.1rem;
+    color: gray;
+    font-size: 0.8em;
+    text-transform: uppercase;
+  }
+
+  .projects .p_desc {
+    flex-grow: 1;
+    margin: 0.5em 0;
+    padding: 0 1rem;
+    color: gray;
+  }
+
+  .projects .p_urls {
+    display: flex;
+    text-align: center;
+  }
+
+  .projects .p_urls > * {
+    flex-grow: 1;
+    padding: 0.9rem 1rem;
+    color: gray;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    background-color: #ffffff10;
+  }
+
+  .projects .p_urls > *:hover {
+    text-decoration: none;
+    background-color: #ffffff05;
+  }
+
+  .projects .p_urls > *:not(:last-child) {
+    border-right: 1px solid #ffffff10;
+  }
+
+  #projects-filter {
+    display: none;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 1rem auto;
+  }
+
+  #projects-filter span {
+    display: flex;
+    flex-grow: 1;
+    gap: 0.3rem;
+    font-size: 0.8em;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem;
+    border: 1px solid #ffffff10;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  #projects-filter small {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6em;
+    height: 1.6em;
+    font-size: 0.95em;
+    background-color: #ffffff10;
+    border-radius: 0.4rem;
+  }
+
+  #projects-filter span.selected {
+    background-color: #ffffff20;
+    border: 1px solid #ffffff20;
+  }
+</style>
+
+<div id="projects-filter"></div>
+
+<div class="projects">
+  {{ range $.Site.Data.projects }}
+  <div class="p_row" data-type="{{ .type }}">
+    <div class="p_name">
+      <div>
+        {{ .name }}
+        <small>{{ .type }}</small>
+      </div>
+      <div>
+        <img
+          src="https://simpleicons.org/icons/{{ .primary_tech | lower }}.svg"
+          alt="{{ .primary_tech }}"
+          title="{{ .primary_tech }}"
+        />
+      </div>
+    </div>
+
+    <p class="p_desc">{{ .desc | markdownify }}</p>
+
+    <div class="p_urls">
+      {{ with .links.demo }}
+      <a href="{{ . }}">demo</a>
+      {{ end }}
+      <!--.-->
+      {{ with .links.source }}
+      <a href="{{ . }}">source</a>
+      {{ end }}
+      <!--.-->
+      {{ with .links.blogpost }}
+      <a href="{{ . }}">read</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<script>
+  try {
+    const typeCount = { all: 0 };
+    const projectFilter = document.querySelector('#projects-filter');
+    const projectTypes = [
+      ...new Set([`all`, {{ range $.Site.Data.projects }} {{ .type | lower }}, {{ end }}])
+    ];
+    const projectTypes__nonUnique = [
+      {{ range $.Site.Data.projects }}
+        {{ .type | lower }},
+      {{ end }}
+    ];
+
+
+    for (let i = 0; i < projectTypes__nonUnique.length; i++) {
+      const type = projectTypes__nonUnique[i];
+      typeCount.all++;
+      typeof typeCount[type] === `number` ? typeCount[type]++ : (typeCount[type] = 1);
+    }
+
+    projectFilter.style.display = `flex`;
+
+    for (let i = 0; i < projectTypes.length; i++) {
+      const type = projectTypes[i];
+      const span = document.createElement(`span`);
+      const small = document.createElement(`small`);
+      span.innerText = type.toUpperCase();
+      span.setAttribute(`data-type-name`, type);
+      small.innerText = typeCount[type];
+      span.appendChild(small);
+      projectFilter.appendChild(span);
+
+
+      if (i === 0) {
+        span.classList.add('selected');
+      }
+    }
+
+    function filterList(selectedItem = `all`) {
+      const cards = document.querySelectorAll(`.projects .p_row`);
+
+      if (selectedItem.toLowerCase() === `all`) {
+        for (let c of cards) {
+          c.style.display = `flex`;
+        }
+      } else {
+        for (let c of cards) {
+          const type = c.getAttribute(`data-type`).toLowerCase();
+
+          type === selectedItem.toLowerCase() ?
+            c.style.display = `flex`
+            : c.style.display = `none`;
+        }
+      }
+    }
+
+    const allBtns = projectFilter.querySelectorAll('span');
+
+    for (let btn of allBtns) {
+      btn.addEventListener(`click`, () => {
+        for (b of allBtns) {
+          b.classList.remove(`selected`);
+        }
+
+        btn.classList.add(`selected`);
+        filterList(btn.getAttribute(`data-type-name`));
+      })
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+</script>
