@@ -28,6 +28,10 @@ menu:
       name: Blog
       url: /posts/
       weight: 2
+    - identifier: work
+      name: Work
+      url: /portfolio/
+      weight: 4
 
 markup:
   tableOfContents:
