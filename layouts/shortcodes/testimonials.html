@@ -1,9 +1,9 @@
 <style>
   .recommendations {
-    margin-top: 1.7rem;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
+    margin-top: 1.7rem;
   }
 
   .recommendations .r_card {
@@ -38,8 +38,8 @@
   .recommendations .r_author > a {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
     flex-grow: 1;
+    text-decoration: none;
   }
 
   .recommendations .r_author span {
@@ -60,7 +60,7 @@
   {{ range $.Site.Data.recommendations }}
   <div class="r_card">
     <div class="r_author">
-      <img src="{{ .author.avatar }}" alt="" />
+      <img loading="lazy" src="{{ .author.avatar }}" alt="" />
       <a
         rel="nofollow"
         target="_new"
@@ -68,8 +68,9 @@
       >
         <span>{{ .author.name }}</span>
         <span style="color: gray">
-          {{ with (index .author.job_title 0) }} {{ . }}, {{ end }} {{
-          .author.organization }}
+          {{ with (index .author.job_title 0) }}{{ . }}, {{ end }}
+          <!--.-->
+          {{ .author.organization }}
         </span>
       </a>
     </div>

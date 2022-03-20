@@ -10,27 +10,33 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit themes/coder/assets/sass/index.sass
+edit layouts/shortcodes/testimonials.html
 argglobal
-balt themes/coder/assets/sass/index.sass
+balt layouts/shortcodes/testimonials.html
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=3
+setlocal fdl=5
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-46
+60
 normal! zo
-let s:l = 99 - ((27 * winheight(0) + 22) / 44)
+62
+normal! zo
+63
+normal! zo
+69
+normal! zo
+let s:l = 72 - ((37 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 99
-normal! 0
+keepjumps 72
+normal! 011|
 tabnext 1
-badd +0 themes/coder/assets/sass/index.sass
+badd +0 layouts/shortcodes/testimonials.html
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
