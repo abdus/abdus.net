@@ -43,17 +43,13 @@ code:not(pre code)
   border-radius: 0.4rem
 
 ul
-  list-style: none
+  list-style: disc
 
-ul li::before
-  content: " "
-  display: inline-block
-  width: 0.35em
-  height: 0.35em
-  background-color: #47494c
-  margin-right: 0.7ch
-  margin-bottom: 0.2em
-  border-radius: 50%;
+  & li
+    list-style-type: circle;
+
+  & li::marker
+    color: gray
 
 h1, h2, h3,
 h4, h5, h6
@@ -100,9 +96,6 @@ nav#main-nav
 
   & ul
     display: flex
-
-    & li::before
-      display: none
 
   & li
     margin: 0 1rem;
