@@ -14,7 +14,7 @@ categories: [misc]
 ![github profile readme](https://dev-to-uploads.s3.amazonaws.com/i/lk63wznpuwhi5mzcgtkh.png)
 
 I had this weird idea of using GitHub profile README as Twitter-like(well,
-Mastodon TBH) feed! There was no specific reason for doing so. I roughly
+Mastodon TBH) feed! There was no specific reason for doing so. I
 thought it would boost my Mastodon profile(which is quite new at the moment)
 reach.
 

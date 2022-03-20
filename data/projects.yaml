@@ -243,7 +243,7 @@
 - name: Photo Editor
   type: webapp
   desc: >-
-    Had fun with `filter` property of CSS. Supported operations are `Blue`,
+    Had fun with `filter` property of CSS. Supported operations are `Blur`,
     `Brightness`, `Contrast` etc. This can export the edited image.
   links:
     demo: https://abdus.github.io/photo-editor/
