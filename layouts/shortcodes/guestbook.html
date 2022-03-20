@@ -1,0 +1,161 @@
+<style>
+  .guest-book .g_card {
+    padding: 1rem 0;
+    overflow: hidden;
+    background-color: #191c20;
+    border-bottom: 1px dashed #fff3;
+  }
+
+  .guest-book .g_author {
+    display: block;
+    margin-top: 0.2rem;
+    color: gray;
+    font-size: 0.8em;
+  }
+
+  .guest-book-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem auto;
+  }
+
+  .guest-book-form > * {
+    flex-grow: 1;
+    min-width: 46%;
+    padding: 0.9rem 1rem;
+    color: #e3e3e3;
+    background-color: transparent;
+    border: 1px solid #ffffff10;
+    border-radius: 0.4rem;
+  }
+
+  .guest-book-form > *:focus {
+    background-color: #191c20;
+  }
+
+  .guest-book-form > textarea {
+    width: 100%;
+    min-height: 6rem;
+    resize: vertical;
+  }
+
+  .guest-book-form > button {
+    flex-grow: 0;
+    min-width: unset;
+    background-color: #ffffff10;
+    cursor: pointer;
+  }
+
+  .guest-book-form > button:hover {
+    background-color: #191c20;
+  }
+
+  .msg-box {
+    min-width: 100%;
+  }
+
+  .msg-box:empty {
+    display: none;
+  }
+</style>
+
+<p>
+  Hey there! Welcome to my website! If you are new to my website, I would
+  appreciate if you sign my GuestBook(<a
+    href="https://en.wikipedia.org/wiki/Guestbook"
+    target="_blank"
+    >?</a
+  >) :) Thanks in advance!
+</p>
+
+<div class="guest-book">
+  <form class="guest-book-form">
+    <input type="text" name="name" placeholder="Your Name *" required />
+    <input type="url" name="url" placeholder="Website (Optional)" />
+    <textarea name="content" placeholder="Your Message *" required></textarea>
+
+    <div
+      class="msg-box"
+      style="padding: 1rem; border: 1px solid #ffffff10; border-radius: 0.4rem"
+    ></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="g_card default-g_card" style="color: gray">
+    Loading content...
+    <!--<div class="g_author">~ Abdus, 22 MARCH '22</div>-->
+  </div>
+</div>
+
+<script>
+  async function getGuestbookComments() {
+    const raw = await fetch("https://fake-api.host.abdus.net/guestbook");
+    const json = await raw.json();
+    return json.data;
+  }
+
+  try {
+    const msgBox = document.querySelector(".msg-box");
+    const defaultGCard = document.querySelector(".default-g_card");
+    const guestBookForm = document.querySelector(`.guest-book-form`);
+    const guestBookContainer = document.querySelector(".guest-book");
+
+    getGuestbookComments()
+      .catch(console.error)
+      .then((comments) => {
+        for (let i = 0; i < comments.length; i++) {
+          const c = comments[i];
+          const gCard = document.createElement("div");
+          const gAuthor = document.createElement("div");
+          const gAuthorUrl = document.createElement("a");
+          const dtAndAuthorName = `~ ${c.name} · ${new Date(
+            c.createdAt
+          ).toLocaleDateString()}`;
+
+          gCard.classList.add(`g_card`);
+          gAuthor.classList.add(`g_author`);
+          gAuthorUrl.classList.add(`g_author`);
+
+          gCard.innerText = c.content;
+
+          if (c.url) {
+            gAuthorUrl.href = c.url;
+            gAuthorUrl.setAttribute("target", "_blank");
+            gAuthorUrl.setAttribute("rel", "noreferrer");
+            gAuthorUrl.innerText = `${dtAndAuthorName} [🌐]`;
+            gCard.appendChild(gAuthorUrl);
+          } else {
+            gAuthor.innerText = dtAndAuthorName;
+            gCard.appendChild(gAuthor);
+          }
+
+          gCard.appendChild(gAuthor);
+          guestBookContainer.appendChild(gCard);
+          defaultGCard.remove();
+        }
+      });
+
+    guestBookForm.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      const formData = new FormData(ev.currentTarget);
+      const reqBody = {
+        url: formData.get("url"),
+        name: formData.get("name"),
+        content: formData.get("content"),
+      };
+
+      fetch("https://fake-api.host.abdus.net/guestbook", {
+        method: "POST",
+        body: JSON.stringify(reqBody),
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((d) => d.json())
+        .then(() => {
+          msgBox.innerText = `Thank you! Your message will be added to the list once it is approved.`;
+        })
+        .catch(console.error);
+    });
+  } catch (err) {}
+</script>

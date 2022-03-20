@@ -10,9 +10,9 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit data/projects.yaml
+edit content/_index.md
 argglobal
-balt data/projects.yaml
+balt content/_index.md
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -21,24 +21,14 @@ setlocal fdl=2
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-2
-normal! zo
-159
-normal! zo
-219
-normal! zo
-268
-normal! zo
-293
-normal! zo
-let s:l = 221 - ((23 * winheight(0) + 22) / 44)
+let s:l = 18 - ((17 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 221
-normal! 013|
+keepjumps 18
+normal! 039|
 tabnext 1
-badd +0 data/projects.yaml
+badd +0 content/_index.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -50,6 +40,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
