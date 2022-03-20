@@ -10,35 +10,35 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit data/recommendations.yaml
+edit data/projects.yaml
 argglobal
-balt data/recommendations.yaml
+balt data/projects.yaml
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=3
+setlocal fdl=2
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 2
 normal! zo
-16
+159
 normal! zo
-27
+219
 normal! zo
-39
+268
 normal! zo
-53
+293
 normal! zo
-let s:l = 58 - ((36 * winheight(0) + 22) / 44)
+let s:l = 221 - ((23 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 58
-normal! 054|
+keepjumps 221
+normal! 013|
 tabnext 1
-badd +0 data/recommendations.yaml
+badd +0 data/projects.yaml
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

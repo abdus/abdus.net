@@ -156,7 +156,7 @@
   tech_stack: [react, chrome, javascript]
 
 - name: Background Gradient Generator
-  type: library
+  type: webapp
   desc: >-
     Generates simple Gradients based on two colors. Built it while learning HTML, CSS and JavaScript. Good ol' days!!
   links:
@@ -265,7 +265,7 @@
   tech_stack: [html, css, javascript]
 
 - name: LinkClick
-  type: library
+  type: tools
   desc: >-
     A chrome extension which will enable you to reach your favorite website
     quickly. This is the first project I built after learning HTML, CSS and
@@ -290,7 +290,7 @@
   tech_stack: [node]
 
 - name: InspiroTab
-  type: library
+  type: tools
   desc: >-
      A Google Chrome extension to replace your default Google Chrome tab and
      greet you with a awesome wallpaper and a cool quote.
