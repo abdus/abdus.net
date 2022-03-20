@@ -38,6 +38,10 @@ menu:
       name: Uses
       url: /uses
       weight: 1
+    - identifier: guestbook
+      name: GuestBook
+      url: /guestbook
+      weight: 2
 
 markup:
   tableOfContents:
