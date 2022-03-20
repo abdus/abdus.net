@@ -10,25 +10,25 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit content/_index.md
+edit content/pages/guestbook.md
 argglobal
-balt content/_index.md
+balt content/pages/guestbook.md
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=2
+setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 18 - ((17 * winheight(0) + 22) / 45)
+let s:l = 6 - ((5 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 18
-normal! 039|
+keepjumps 6
+normal! 0
 tabnext 1
-badd +0 content/_index.md
+badd +0 content/pages/guestbook.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
