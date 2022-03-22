@@ -235,7 +235,7 @@
     EJS and MongoDB.
   links:
     demo:
-    source: https://github.com/abdus/react-dropdown
+    source: https://github.com/abdus/issue-tracker
     blogpost:
   primary_tech: MongoDB
   tech_stack: [node, mongo]
