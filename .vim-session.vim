@@ -21,11 +21,11 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 30 - ((11 * winheight(0) + 22) / 44)
+let s:l = 17 - ((8 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 30
+keepjumps 17
 normal! 039|
 tabnext 1
 badd +0 themes/coder/layouts/partials/head.html

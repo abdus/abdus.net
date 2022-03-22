@@ -14,10 +14,11 @@
 <meta name="title" content="{{ .Title }}">
 <meta name="description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
 <link rel="canonical" href="{{ .Page.Permalink }}">
+<meta name="author" content="Abdus Azad">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:locale" content="en_US">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:url" content="{{ .Permalink | absURL }}">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:image" content='{{ .Scratch.Get "image" }}'>
