@@ -5,19 +5,26 @@
 {{ .Scratch.Set "image" "https://i.ibb.co/RvzfY0Z/website-cover.png" }}
 {{ end }}
 
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
 <!-- Primary Meta Tags -->
 <title>{{ .Title }}</title>
 <meta name="title" content="{{ .Title }}">
 <meta name="description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
+<link rel="canonical" href="{{ .Page.Permalink }}">
 
 <!-- Open Graph / Facebook -->
+<meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ .Permalink | absURL }}">
-<meta name="title" property="og:title" content="{{ .Title }}">
-<!-- <meta  name="image" property="og:image" content='{{ .Scratch.Get "image" }}'> -->
-<meta  name="description" property="og:description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:image" content='{{ .Scratch.Get "image" }}'>
+<meta property="og:description" content='{{ with .Params.meta.description }} {{ . }} {{ else }} {{ .Summary }} {{ end }}'>
 
 <!-- Twitter -->
+<meta name="twitter:site" content="@azabdus">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="{{ .Permalink }}">
 <meta property="twitter:title" content="{{ .Title }}">

@@ -10,29 +10,25 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit config.yml
+edit themes/coder/layouts/partials/head.html
 argglobal
-balt config.yml
+balt themes/coder/layouts/partials/head.html
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=3
+setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-14
-normal! zo
-37
-normal! zo
-let s:l = 44 - ((28 * winheight(0) + 22) / 45)
+let s:l = 30 - ((11 * winheight(0) + 22) / 44)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 44
-normal! 015|
+keepjumps 30
+normal! 039|
 tabnext 1
-badd +0 config.yml
+badd +0 themes/coder/layouts/partials/head.html
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -44,7 +40,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
