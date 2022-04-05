@@ -6,7 +6,7 @@
   links:
     demo: https://lynx.bar
     source: https://github.com/abdus/awesome-websites/
-    blogpost:
+    blogpost: https://www.abdus.net/blog/2022/search-in-js/
   primary_tech: React
   tech_stack: [react, javascript, next.js]
 

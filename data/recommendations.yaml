@@ -13,6 +13,18 @@
     job_title: []
 
 - recommendation: >-
+      Abdus is one of the most enthusiastic and proactive team member I've worked
+      with. His expertise and teamwork are evident in all his projects. I'd
+      highly recommend Abdus for his excellent professionalism and friendly
+      affair with his colleagues.
+  author:
+    name: Giftin Kallarkal
+    avatar: https://i.ibb.co/m0Sk3VK/1642002439046.jpg
+    organization: Level
+    country: India
+    job_title: [Content Associate]
+
+- recommendation: >-
       Abdus is a geek and has a keen eye on details. He has shown an amazingly
       high execution speed on the tasks assigned. It surely will be an
       enriching experience to work with Abdus
@@ -24,18 +36,6 @@
     job_title: [Co-founder]
 
 - recommendation: >-
-      Abdus is one of the most sincere young software engineer we have worked
-      with. Besides being good at understanding the problem, he goes deep in to
-      looking for the solution himself. I am sure with his hard work and grit,
-      he is going to succeed always in his life.
-  author:
-    name: Aquibur Rahman
-    avatar: https://i.ibb.co/F75dMgX/1556911493295.jpg
-    organization: MailModo
-    country: India
-    job_title: [CEO]
-
-- recommendation: >-
       I have known Abdus for about 2 years now as he has helped me manage a
       community of 80,000 programmers and engineers. I can always rely on Abdus
       to be professional, but more importantly his work ethic and always being
@@ -44,7 +44,7 @@
       of the most reliable people I know.
   author:
     name: Andrei Neagoie
-    avatar: https://i.ibb.co/FhCjRqX/1592479625043.jpg 
+    avatar: https://i.ibb.co/FhCjRqX/1592479625043.jpg
     organization: Zero to Mastery
     country: Canada
     job_title: [Founder]
@@ -63,3 +63,15 @@
     organization: Level
     country: India
     job_title: [Outreach Specialist]
+
+- recommendation: >-
+      Abdus is one of the most sincere young software engineer we have worked
+      with. Besides being good at understanding the problem, he goes deep in to
+      looking for the solution himself. I am sure with his hard work and grit,
+      he is going to succeed always in his life.
+  author:
+    name: Aquibur Rahman
+    avatar: https://i.ibb.co/F75dMgX/1556911493295.jpg
+    organization: MailModo
+    country: India
+    job_title: [CEO]
