@@ -1,0 +1,61 @@
+{{ .Scratch.Set "uniq" now.UnixNano }}
+
+<style>
+  .image-album-{{ .Scratch.Get "uniq" }} {
+    width: auto;
+    position: relative;
+    display: block;
+    transform: {{ if eq (.Get "pull") "right" }} rotate(5deg) {{ else }} rotate(-5deg) {{ end }};
+    float: {{ .Get "pull" }};
+    max-width: {{ .Get "max-width" }};
+    margin: 0 1.5rem 1.5rem 1.5rem;
+    transition: 0.3s ease transform;
+  }
+
+  .image-album-{{ .Scratch.Get "uniq" }}:hover {
+    transform: rotate(0);
+  }
+
+  .image-album-{{ .Scratch.Get "uniq" }} img {
+    display: block;
+    border: 10px solid #ffffff;
+    position: relative;
+    z-index: 10;
+    border-radius: 0.3rem;
+  }
+
+  .bg {
+    background: #ffffff20;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 0.3rem;
+  }
+
+  .bg:nth-of-type(1) {
+    transform: rotate(3deg);
+    transform-origin: top right;
+  }
+
+  .bg:nth-of-type(2) {
+    transform: rotate(-6deg);
+    transform-origin: center;
+  }
+
+  .bg:nth-of-type(3) {
+    transform: rotate(9deg);
+    transform-origin: center center;
+  }
+</style>
+
+{{ with .Get "src" }}
+<div class="image-album-{{ $.Scratch.Get "uniq" }}">
+  <img src='{{ $.Get "src" }}' alt='{{ $.Get "alt" }}' />
+  <div class="bg"></div>
+  <div class="bg"></div>
+  <div class="bg"></div>
+</div>
+{{ end }}
+

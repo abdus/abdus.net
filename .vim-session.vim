@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit data/recommendations.yaml
+edit themes/coder/layouts/_default/single.html
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -30,7 +30,26 @@ set winwidth=1
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 argglobal
-balt data/recommendations.yaml
+setlocal fdm=indent
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+if bufexists("themes/coder/layouts/_default/single.html") | buffer themes/coder/layouts/_default/single.html | else | edit themes/coder/layouts/_default/single.html | endif
+if &buftype ==# 'terminal'
+  silent file themes/coder/layouts/_default/single.html
+endif
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -41,48 +60,18 @@ setlocal fdn=20
 setlocal fen
 2
 normal! zo
-16
-normal! zo
-16
-normal! zo
-53
-normal! zo
-let s:l = 77 - ((44 * winheight(0) + 22) / 45)
+let s:l = 15 - ((14 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 77
+keepjumps 15
 normal! 0
-wincmd w
-argglobal
-if bufexists("data/projects.yaml") | buffer data/projects.yaml | else | edit data/projects.yaml | endif
-if &buftype ==# 'terminal'
-  silent file data/projects.yaml
-endif
-balt data/recommendations.yaml
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=2
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-2
-normal! zo
-let s:l = 9 - ((8 * winheight(0) + 22) / 45)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 9
-normal! 059|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
-badd +77 data/recommendations.yaml
-badd +0 data/projects.yaml
+badd +1 themes/coder/layouts/_default/single.html
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
