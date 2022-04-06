@@ -10,26 +10,9 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit themes/coder/layouts/_default/single.html
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
-exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
+edit content/pages/about.md
 argglobal
+balt content/pages/about.md
 setlocal fdm=indent
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -38,53 +21,26 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 22) / 45)
+let s:l = 13 - ((12 * winheight(0) + 22) / 45)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
-normal! 0
-wincmd w
-argglobal
-if bufexists("themes/coder/layouts/_default/single.html") | buffer themes/coder/layouts/_default/single.html | else | edit themes/coder/layouts/_default/single.html | endif
-if &buftype ==# 'terminal'
-  silent file themes/coder/layouts/_default/single.html
-endif
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=3
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-2
-normal! zo
-let s:l = 15 - ((14 * winheight(0) + 22) / 45)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 15
-normal! 0
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
-exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
+keepjumps 13
+normal! 058|
 tabnext 1
-badd +1 themes/coder/layouts/_default/single.html
+badd +0 content/pages/about.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20 shortmess=filnxtToOFA
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

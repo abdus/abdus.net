@@ -9,8 +9,8 @@ _date: 2020-07-26T21:51:49+05:30
 Hey there! You are welcome to the most weird area of my website. I have no idea
 what to write about myself. But I will give it a try anyways.
 
-So, I am Abdus. I am a developer living in
-north-eastern part of India.
+So, I am Abdus. I am a developer living in north-eastern part of India. I work
+for a Fittech start-up called [Level](https://level.game).
 
 I am skilled at building websites, managing servers, playing with cloud stuffs
 and of course Linux. For a list of technical skills I've got, please [visit this
