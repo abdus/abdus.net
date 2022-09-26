@@ -84,9 +84,11 @@ arbitrary size. `File` extends `Blob`, so we can use `Blob`'s method without
 any issues.
 
 ```javascript
+const ONE_KILO_BYTE = 1024;
+
 function chunkify(file) {
   const chunks = []; // array to store chunks (in order)
-  const chunkSize = ONE_BYTE * 1024; // size of a chunk in bytes. Here, 1KB
+  const chunkSize = ONE_KILO_BYTE * 1024; // size of a chunk in bytes. Here, 1MB
 
   let start = 0;
   let end = chunkSize;
@@ -95,16 +97,14 @@ function chunkify(file) {
     chunks.push(file.slice(start, end, file.type));
 
     start = end;
-    end += chunkSize + end + 1; // slice reads end - 1 position
+    end += chunkSize;
   }
 
   return chunks;
 }
 ```
 
-You might be thinking about that `+ 1` byte in `end += chunkSize + end + 1`.
-That is because, when slicing, the `slice` method reads `end - 1` byte. It's
-explained on
+Read about `Blob.slice` on
 [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice#parameters)
 
 Okay. So, `chunkify` will return an array of `Blob`. Now, we could simply send
