@@ -13,18 +13,71 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
+badd +4 content/posts/upload-large-file-to-server.md
 argglobal
 %argdel
+edit content/posts/upload-large-file-to-server.md
 argglobal
-enew
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=2
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
+2
+normal! zo
+6
+normal! zo
+7
+normal! zo
+86
+normal! zo
+87
+normal! zo
+94
+normal! zo
+113
+normal! zo
+114
+normal! zo
+121
+normal! zo
+142
+normal! zo
+145
+normal! zo
+151
+normal! zo
+170
+normal! zo
+171
+normal! zo
+172
+normal! zo
+174
+normal! zo
+186
+normal! zo
+209
+normal! zo
+210
+normal! zo
+216
+normal! zo
+240
+normal! zo
+244
+normal! zo
+246
+normal! zo
+let s:l = 4 - ((3 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 4
+normal! 012|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
