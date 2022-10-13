@@ -13,31 +13,28 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +107 content/posts/upload-large-file-to-server.md
+badd +23 data/recommendations.yaml
 argglobal
 %argdel
-edit content/posts/upload-large-file-to-server.md
+edit data/recommendations.yaml
 argglobal
-balt content/posts/upload-large-file-to-server.md
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=4
+setlocal fdl=3
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-2
+1
 normal! zo
-86
+1
 normal! zo
-89
-normal! zo
-let s:l = 85 - ((4 * winheight(0) + 19) / 39)
+let s:l = 37 - ((22 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 85
+keepjumps 37
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
