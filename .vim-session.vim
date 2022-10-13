@@ -13,7 +13,7 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +23 data/recommendations.yaml
+badd +43 data/recommendations.yaml
 argglobal
 %argdel
 edit data/recommendations.yaml
@@ -28,16 +28,16 @@ setlocal fdn=20
 setlocal fen
 1
 normal! zo
-1
+27
 normal! zo
-41
+67
 normal! zo
-let s:l = 49 - ((26 * winheight(0) + 20) / 41)
+let s:l = 95 - ((38 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 49
-normal! 09|
+keepjumps 95
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
