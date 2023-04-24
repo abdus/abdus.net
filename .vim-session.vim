@@ -13,7 +13,7 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +49 layouts/shortcodes/summarize.html
+badd +91 layouts/shortcodes/summarize.html
 argglobal
 %argdel
 edit layouts/shortcodes/summarize.html
@@ -28,26 +28,24 @@ setlocal fdn=20
 setlocal fen
 1
 normal! zo
-60
-normal! zo
 61
-normal! zo
-69
 normal! zo
 70
 normal! zo
-73
+71
 normal! zo
-90
+74
 normal! zo
-91
+93
 normal! zo
-let s:l = 48 - ((11 * winheight(0) + 25) / 50)
+94
+normal! zo
+let s:l = 91 - ((32 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 48
-normal! 0
+keepjumps 91
+normal! 021|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
