@@ -1,0 +1,118 @@
+<style>
+  .guest-book-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem auto;
+  }
+
+  .guest-book-form > * {
+    flex-grow: 1;
+    min-width: 46%;
+    padding: 0.9rem 1rem;
+    color: #e3e3e3;
+    background-color: transparent;
+    border: 1px solid #ffffff10;
+    border-radius: 0.4rem;
+  }
+
+  .guest-book-form > *:focus {
+    background-color: #191c20;
+  }
+
+  .guest-book-form > textarea {
+    width: 100%;
+    min-height: 10rem;
+    resize: vertical;
+  }
+
+  .guest-book-form > button {
+    flex-grow: 0;
+    min-width: unset;
+    background-color: #ffffff10;
+    cursor: pointer;
+  }
+
+  .guest-book-form > button:hover {
+    background-color: #191c20;
+  }
+
+  .msg-box {
+    min-width: 100%;
+  }
+
+  .msg-box:empty {
+    display: none;
+  }
+</style>
+
+<p>
+  Hello there! This is an AI model that will help you summarize a NEWS articles.
+  Although, it was trained specifically for summarizing NEWS articles, it can
+  summarize any given text.
+</p>
+
+<p>
+  You can write me your feedback at
+  <a href="mailto:abdus@abdus.net">abdus@abdus.net</a>. Have fun!
+</p>
+
+<div class="guest-book">
+  <form class="guest-book-form">
+    <textarea name="para" placeholder="Long Paragraph.. *" required></textarea>
+    <button type="submit">Summarize</button>
+  </form>
+</div>
+
+<div class="msg-box"></div>
+
+<script>
+  async function query(data) {
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/azabdus/t5-base-ft-test",
+      {
+        headers: {
+          Authorization: "Bearer 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",
+        },
+        method: "POST",
+        body: JSON.stringify(data),
+      }
+    );
+
+    const result = await response.json();
+    return result;
+  }
+
+  const form = document.querySelector("form");
+  const submitBtn = form.querySelector("button");
+  const responseDiv = document.querySelector(".msg-box");
+
+  form.addEventListener(`submit`, async (ev) => {
+    try {
+      submitBtn.setAttribute("disabled", true);
+      responseDiv.innerText = `Loading response...`;
+
+      ev.preventDefault();
+
+      const formData = new FormData(form);
+      const paragraph = formData.get(`para`)?.toString() || ``;
+      const apiResp = await query({ inputs: paragraph });
+      const data = apiResp[0] || apiResp || {};
+
+      if (data.error) {
+        return (responseDiv.innerText =
+          data.error +
+          `. Please retry in a few seconds. Estimated time ` +
+          data.estimated_time +
+          ` seconds`);
+      }
+
+      responseDiv.innerText = data.generated_text || `(no response)`;
+      return;
+    } catch (err) {
+      console.log(err);
+    } finally {
+      submitBtn.removeAttribute("disabled");
+    }
+  });
+</script>
