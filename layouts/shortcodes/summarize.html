@@ -90,7 +90,7 @@
 
   form.querySelector(
     "textarea"
-  ).value = `Slayer was an American thrash metal band from Huntington Park, California. The band was formed in 1981 by guitarists Kerry King and Jeff Hanneman, drummer Dave Lombardo and bassist/vocalist Tom Araya. Slayer's fast and aggressive musical style made them one of the "big four" bands of thrash metal, alongside Metallica, Megadeth, and Anthrax. Slayer's final lineup comprised Araya, King, drummer Paul Bostaph (who replaced Lombardo in 1992 and again in 2013) and guitarist Gary Holt (who replaced Hanneman in 2011). Drummer Jon Dette was also a member of the band.`;
+  ).value = `Former Windies fast bowler Curtly Ambrose dismissed seven Australian batsmen within a span of 32 balls giving away just one run, in a Test match on January 30, 1993. Ambrose's spell helped his team bowl out Australia for 119 in the first innings, after being 85 for 2 at one point. Ambrose ended with first-innings figures of 18-9-25-7.`;
 
   form.addEventListener(`submit`, async (ev) => {
     try {
@@ -101,7 +101,7 @@
 
       const formData = new FormData(form);
       const paragraph = formData.get(`para`)?.toString() || ``;
-      const apiResp = await query({ inputs: paragraph });
+      const apiResp = await query({ inputs: `Summarize: ${paragraph}` });
       const data = apiResp[0] || apiResp || {};
 
       if (data.error) {
