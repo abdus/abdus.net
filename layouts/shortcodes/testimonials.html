@@ -1,7 +1,7 @@
 <style>
   .recommendations {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     margin-top: 1.7rem;
   }
@@ -29,17 +29,18 @@
 
   .recommendations .r_author {
     display: flex;
-    gap: 0.8rem;
+    gap: 1rem;
+    margin-top: 1rem;
     align-items: center;
     padding: 0.7rem 1.2rem;
-    background-color: #ffffff10;
+    // background-color: #ffffff10;
   }
 
   .recommendations .r_author > a {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     text-decoration: none;
+    text-align: right;
   }
 
   .recommendations .r_author span {
@@ -59,8 +60,10 @@
 <div class="recommendations">
   {{ range $.Site.Data.recommendations }}
   <div class="r_card">
+    <div class="r_content">{{ .recommendation | safeHTML }}</div>
+
     <div class="r_author">
-      <img loading="lazy" src="{{ .author.avatar }}" alt="" />
+      <div style="flex-grow: 1"></div>
       <a
         rel="nofollow"
         target="_new"
@@ -68,13 +71,13 @@
       >
         <span>{{ .author.name }}</span>
         <span style="color: gray">
-          {{ with (index .author.job_title 0) }}{{ . }}, {{ end }}
+          {{ with (index .author.job_title 0) }}{{ . }} @ {{ end }}
           <!--.-->
           {{ .author.organization }}
         </span>
       </a>
+      <img loading="lazy" src="{{ .author.avatar }}" alt="" />
     </div>
-    <div class="r_content">{{ .recommendation }}</div>
   </div>
   {{ end }}
 </div>
