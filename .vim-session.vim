@@ -13,52 +13,11 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +77 data/recommendations.yaml
-badd +61 layouts/shortcodes/testimonials.html
+badd +362 data/projects.yaml
 argglobal
 %argdel
-edit layouts/shortcodes/testimonials.html
-let s:save_splitbelow = &splitbelow
-let s:save_splitright = &splitright
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-let &splitbelow = s:save_splitbelow
-let &splitright = s:save_splitright
-wincmd t
-let s:save_winminheight = &winminheight
-let s:save_winminwidth = &winminwidth
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
-exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
+edit data/projects.yaml
 argglobal
-balt data/recommendations.yaml
-setlocal fdm=expr
-setlocal fde=nvim_treesitter#foldexpr()
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 33 - ((12 * winheight(0) + 25) / 50)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 33
-normal! 021|
-wincmd w
-argglobal
-if bufexists(fnamemodify("data/recommendations.yaml", ":p")) | buffer data/recommendations.yaml | else | edit data/recommendations.yaml | endif
-if &buftype ==# 'terminal'
-  silent file data/recommendations.yaml
-endif
-balt layouts/shortcodes/testimonials.html
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
@@ -67,24 +26,18 @@ setlocal fdl=2
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-1
+28
 normal! zo
-52
+218
 normal! zo
-64
+304
 normal! zo
-104
-normal! zo
-let s:l = 74 - ((41 * winheight(0) + 25) / 50)
+let s:l = 362 - ((30 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 74
-normal! 054|
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
-exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
+keepjumps 362
+normal! 024|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -92,8 +45,6 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

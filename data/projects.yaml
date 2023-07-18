@@ -23,6 +23,18 @@
   primary_tech: GNUBash
   tech_stack: [bash, lua]
 
+- name: Chat App
+  type: webapp
+  desc: >-
+     A chat-app built using Socket.io and Node.js. It uses sockets to provide a
+     real-time messaging to the users.
+  links:
+    demo:
+    source: https://github.com/abdus/chat-app
+    blogpost:
+  primary_tech: nodedotjs
+  tech_stack: [node, javascript]
+
 - name: Nginx Pretty Index
   type: config
   desc: >-
@@ -204,7 +216,7 @@
   tech_stack: [javascript]
 
 - name: accueil.vim
-  type: webapp
+  type: tools
   desc: >-
     `Accueil` is a French phrase for `Home`. This is my first Vim plug-in
     written in VimScript. It does not do much tho, just a few text formatting.
@@ -300,3 +312,51 @@
     blogpost:
   primary_tech: JavaScript
   tech_stack: [html, css, javascript]
+
+- name: URL Shortener
+  type: webapp
+  desc: >-
+     Simple URL shortener app using Node.js.
+  links:
+    demo:
+    source: https://github.com/abdus/url-shortener
+    blogpost:
+  primary_tech: nodedotjs
+  tech_stack: [node, javascript]
+
+- name: Large File Upload
+  type: library
+  desc: >-
+     Example code for uploading large files into a Node web server by slicing
+     the actual file on client-size and uploading in chunks. 
+  links:
+    demo:
+    source: https://github.com/abdus/large-file-upload
+    blogpost: https://www.abdus.net/blog/2022/upload-large-file-to-server/
+  primary_tech: express
+  tech_stack: [javascript, express]
+
+- name: fetchr
+  type: tools
+  desc: >-
+     A CLI application that fetches and shows system information inside a
+     terminal.
+  links:
+    demo:
+    source: https://github.com/abdus/fetchr
+    blogpost:
+  primary_tech: rust
+  tech_stack: []
+
+- name: Hugo Theme Fiber
+  type: template
+  desc: >- 
+    A Hugo theme for the minimalists. Fiber uses minimum JavaScript and CSS to
+    so that you site could load faster! Also posses a clean UI which is great
+    for eyes!
+  links:
+    demo:
+    source: https://github.com/abdus/hugo-theme-fiber
+    blogpost:
+  primary_tech: hugo
+  tech_stack: [html, css]
