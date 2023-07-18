@@ -1,6 +1,6 @@
 - name: Machine
   content: >-
-    Asus TUF 505dt (8 Gigs Memory, Ryzan 5, Nvidia 1650 4 Gigs).
+    Asus TUF 505dt (24 Gigs Memory, Ryzan 5, Nvidia 1650 4 Gigs, 1 TB NVMe).
     Keyboards: Zebronics Max (Blue Switches), Ant Esports MK1200 (Brown
     Switches).
 
@@ -13,7 +13,7 @@
 
 - name: Gadgets
   content: >-
-    Google Pixel 4a. Earlier, Vivo V5.
+    Google Pixel 4a. Earlier, Vivo V5. [Nothing Ear 1](https://in.nothing.tech/products/ear-1).
 
 - name: Software
   content: >-
