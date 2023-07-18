@@ -113,12 +113,12 @@
 <div id="projects-filter"></div>
 
 <div class="projects">
-  {{ range $.Site.Data.projects }}
+  {{ range sort (sort $.Site.Data.projects "month" "desc") "year" "desc" }}
   <div class="p_row" data-type="{{ .type }}">
     <div class="p_name">
       <div>
         {{ .name }}
-        <small>{{ .type }}</small>
+        <small>{{ .type }} &middot; {{ .year }}</small>
       </div>
       <div>
         <img
