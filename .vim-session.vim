@@ -13,8 +13,8 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +118 data/recommendations.yaml
-badd +33 layouts/shortcodes/testimonials.html
+badd +77 data/recommendations.yaml
+badd +61 layouts/shortcodes/testimonials.html
 argglobal
 %argdel
 edit layouts/shortcodes/testimonials.html
@@ -69,15 +69,20 @@ setlocal fdn=20
 setlocal fen
 1
 normal! zo
+52
+normal! zo
+64
+normal! zo
 104
 normal! zo
-let s:l = 8 - ((7 * winheight(0) + 25) / 50)
+let s:l = 62 - ((29 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 8
-normal! 09|
+keepjumps 62
+normal! 023|
 wincmd w
+2wincmd w
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
 exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
@@ -95,7 +100,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
