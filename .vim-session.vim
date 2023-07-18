@@ -75,12 +75,12 @@ normal! zo
 normal! zo
 104
 normal! zo
-let s:l = 62 - ((29 * winheight(0) + 25) / 50)
+let s:l = 74 - ((41 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 62
-normal! 023|
+keepjumps 74
+normal! 054|
 wincmd w
 2wincmd w
 exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
