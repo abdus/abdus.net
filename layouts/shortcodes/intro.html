@@ -1,0 +1,39 @@
+<style>
+  .intro {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .intro img {
+    max-width: 8rem;
+    border-radius: 100%;
+    filter: grayscale(1000);
+    display: none;
+  }
+
+  @media screen and (max-width: 789px) {
+    .intro {
+      align-items: center;
+      flex-direction: column-reverse;
+      margin-top: 1rem;
+    }
+
+    .intro img {
+      width: 100%;
+      max-width: 12rem;
+    }
+  }
+</style>
+
+<div class="intro">
+  <p>
+    Hello, and Welcome! Thanks for stopping by. I am Abdus, a full-stack
+    developer living in India. Here, I write about the things I learn. It works
+    kind of like a Journal.
+  </p>
+
+  <img alt="abdus" src="https://avatars.githubusercontent.com/u/32123917" />
+</div>
