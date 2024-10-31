@@ -1,12 +1,13 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
 import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { Cormorant_Garamond, Courier_Prime } from "next/font/google";
 
 import "./globals.css";
 
-const font = Playfair_Display({ subsets: ["latin"] });
+const mono = Courier_Prime({ subsets: ["latin"], weight: ['400'] });
+const font = Cormorant_Garamond({ subsets: ["latin"], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
   title: `Abdus Azad`,
@@ -53,7 +54,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
-        className={cn(font.className, "dark:bg-slate-900 dark:text-slate-400")}
+        className={cn(font.className, mono.className, "bg-background")}
       >
         <div className="min-h-svh">{children}</div>
         <Footer />

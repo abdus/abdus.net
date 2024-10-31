@@ -26,13 +26,15 @@ export function PostPreview({
       {/*<div className="mb-5">
         <CoverImage slug={slug} title={title} src={coverImage} />
         </div>*/}
-      <h3 className="leading-tight text-[1.3em]">
+      <h3 className="leading-tight text-[1.8em] font-bold">
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
 
-      <DateFormatter dateString={date} />
+      <div className="text-[1.4em]">
+        <DateFormatter dateString={date} />
+      </div>
 
       {/*<p className="text-lg leading-relaxed mb-4">{excerpt}</p>
         <Avatar name={author.name} picture={author.picture} />*/}

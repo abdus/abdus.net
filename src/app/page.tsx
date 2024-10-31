@@ -11,7 +11,7 @@ export default function Index() {
 
   return (
     <main>
-      <Container>
+      <Container className="max-w-4xl">
         <Intro />
         {/*<HeroPost
           title={heroPost.title}
@@ -21,7 +21,9 @@ export default function Index() {
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
         />*/}
-        {allPosts.length > 0 && <MoreStories posts={allPosts} />}
+        {allPosts.length > 0 && (
+          <MoreStories posts={allPosts.filter((post) => !post.draft)} />
+        )}
       </Container>
     </main>
   );
