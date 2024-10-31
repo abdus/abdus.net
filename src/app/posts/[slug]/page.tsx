@@ -1,16 +1,17 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
-import { CMS_NAME } from "@/lib/constants";
+import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
-import Alert from "@/app/_components/alert";
+//import Alert from "@/app/_components/alert";
 import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
 
 export default async function Post({ params }: Params) {
-  const post = getPostBySlug(params.slug);
+  const paramsAwaited = await params;
+  const post = paramsAwaited.slug && getPostBySlug(paramsAwaited.slug);
 
   if (!post) {
     return notFound();
@@ -20,16 +21,10 @@ export default async function Post({ params }: Params) {
 
   return (
     <main>
-      <Alert preview={post.preview} />
       <Container>
         <Header />
         <article className="mb-32">
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
-          />
+          <PostHeader title={post.title} date={post.date} />
           <PostBody content={content} />
         </article>
       </Container>
@@ -37,27 +32,22 @@ export default async function Post({ params }: Params) {
   );
 }
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Params = { params: any };
 
-export function generateMetadata({ params }: Params): Metadata {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const paramsAwaited = await params;
+  const post = paramsAwaited.slug && getPostBySlug(paramsAwaited.slug);
 
   if (!post) {
     return notFound();
   }
 
-  const title = `${post.title} | Next.js Blog Example with ${CMS_NAME}`;
+  const title = `${post.title}`;
 
   return {
     title,
-    openGraph: {
-      title,
-      images: [post.ogImage.url],
-    },
+    openGraph: { title, images: [post?.meta?.image || HOME_OG_IMAGE_URL] },
   };
 }
 

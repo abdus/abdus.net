@@ -1,16 +1,24 @@
-import markdownStyles from "./markdown-styles.module.css";
+import { cn } from "@/lib/utils";
+import { Lora } from "next/font/google";
+import { SyntaxHighlight } from "./syntax-highlight";
 
-type Props = {
-  content: string;
-};
+const font = Lora({ subsets: ["latin"], weight: ["400"] });
+
+type Props = { content: string };
 
 export function PostBody({ content }: Props) {
   return (
-    <div className="max-w-2xl mx-auto">
+    <>
       <div
-        className={markdownStyles["markdown"]}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-    </div>
+        className={cn(
+          `max-w-2xl mx-auto prose text-foreground/90 text-[1.2em]`,
+          font.className
+        )}
+      >
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </div>
+
+      <SyntaxHighlight />
+    </>
   );
 }

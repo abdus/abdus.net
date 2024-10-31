@@ -1,29 +1,24 @@
-import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import cn from "classnames";
-import { ThemeSwitcher } from "./_components/theme-switcher";
+import { Playfair_Display } from "next/font/google";
+import Footer from "@/app/_components/footer";
+import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Playfair_Display({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
-  openGraph: {
-    images: [HOME_OG_IMAGE_URL],
-  },
+  title: `Abdus Azad`,
+  description: `Personal blog of Abdus Azad`,
+  openGraph: { images: [HOME_OG_IMAGE_URL] },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="light">
       <head>
         <link
           rel="apple-touch-icon"
@@ -58,10 +53,9 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
-        className={cn(inter.className, "dark:bg-slate-900 dark:text-slate-400")}
+        className={cn(font.className, "dark:bg-slate-900 dark:text-slate-400")}
       >
-        <ThemeSwitcher />
-        <div className="min-h-screen">{children}</div>
+        <div className="min-h-svh">{children}</div>
         <Footer />
       </body>
     </html>
