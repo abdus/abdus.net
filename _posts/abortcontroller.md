@@ -4,7 +4,7 @@ meta:
   image: /images/262edf0c536be421bf4750d50673f523.jpg
   description: null
 featured: false
-title: "Terminating DOM Operations at will: 'AbortController' in JavaScript"
+title: "Terminating DOM Ops and HTTP requests using `AbortController` in JavaScript"
 date: 2020-07-26T21:51:49+05:30
 tags:
   - js
@@ -14,8 +14,6 @@ categories:
   - javascript
 tableofcontents: true
 ---
-
-## Intro
 
 **AbortController** is an interface which provides a way for terminating one or
 more web request as and when desired.
@@ -29,7 +27,7 @@ irrespective of whether the operation is finished or not.
 
 AbortController provides a few things for users to implement it effectively in
 code. At the time of writing this, the constructor would return an instance which
-contains a method `AbortController.abort()` and a property 
+contains a method `AbortController.abort()` and a property
 `AbortController.signal`(read-only).
 
 - `AbortController.signal` - Returns a `AbortSignal` instance
@@ -37,7 +35,7 @@ contains a method `AbortController.abort()` and a property
 
 ### AbortSignal
 
-`AbortController.signal` returns an instance of type `AbortSignal` which 
+`AbortController.signal` returns an instance of type `AbortSignal` which
 represents the current state of the AbortController instance.
 It has a read-only property `AbortSignal.aborted`. Type of property `aborted`
 is `Boolean`.
@@ -55,16 +53,15 @@ To use AbortController in a `Promise`, one must adhere to a few rules.
   function abortThis(arg1, { signal }) {
     return new Promise((resolve, reject) => {
       // function body
-    })
+    });
   }
   ```
 - When method `aborted()` is called, **reject the Promise** with a
-`DOMException` `AbortError`
-  ``` javascript
-  throw new DOMException('aborted by user', 'ABORT_ERR');
+  `DOMException` `AbortError`
+  ```javascript
+  throw new DOMException("aborted by user", "ABORT_ERR");
   ```
--  Abort immediately if the `aborted` flag on `AbortSignal` is set to `true`.
-
+- Abort immediately if the `aborted` flag on `AbortSignal` is set to `true`.
 
 ## Browser Support
 
@@ -72,10 +69,26 @@ Despite being a relatively new API, browser support for AbortController is
 quite awesome! All major browser _fully_ supports it. Following is a chart
 from _Can I Use_.
 
-<!--Embed for the feature from Can I Use-->
-< caniuse feature="abortcontroller" periods="future_1,current,past_1,past_2" >
+[go to chart](https://caniuse.com/abortcontroller)
 
-## Examples 
+<h2>hello</h2>
+
+<!--Embed for the feature from Can I Use-->
+<script src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
+
+<div
+  class="ciu_embed"
+  data-feature="abortcontroller"
+  data-periods="future_1,current,past_1,past_2"
+  data-accessible-colours="false"
+>
+  <p>
+  Data on support for the {{ .Get "feature" }} feature across the major
+    browsers
+  </p>
+</div>
+
+## Examples
 
 Following are a few examples of `AbortController` API. First one is using `fetch`
 API. On the second example, I will try to implement it in a `Promise`.
@@ -87,10 +100,10 @@ const controller = new AbortController();
 const signal = controller.signal;
 
 // fetch a URL
-fetch('https://jsonplaceholder.typicode.com/todos/1', { signal })
-  .then(raw => raw.ok && raw.json())
+fetch("https://jsonplaceholder.typicode.com/todos/1", { signal })
+  .then((raw) => raw.ok && raw.json())
   .then(console.log)
-  .catch(e => console.log(e.message));
+  .catch((e) => console.log(e.message));
 
 // driver code
 setTimeout(() => {
@@ -118,34 +131,33 @@ function abortTask({ signal }) {
   return new Promise((resolve, reject) => {
     // 1. check if it's already aborted
     if (signal && signal.aborted) {
-      return reject(new DOMException('`signal` is in `aborted` state', 'ABORT_ERR'));
+      return reject(
+        new DOMException("`signal` is in `aborted` state", "ABORT_ERR")
+      );
     }
 
     // wait for 4s
     setTimeout(() => resolve("hello"), 4000);
 
     // 2. add a listener to `signal` to check its state
-    signal && signal.addEventListener('abort', () => {
-      // reject promise when signal.aborted changes to `true`
-      return reject(new DOMException('aborted by user', 'ABORT_ERR'));
-    })
-  })
+    signal &&
+      signal.addEventListener("abort", () => {
+        // reject promise when signal.aborted changes to `true`
+        return reject(new DOMException("aborted by user", "ABORT_ERR"));
+      });
+  });
 }
 
-
-
 /* DRIVER CODE */
-let signal;   // just so that I could re-use it
-
+let signal; // just so that I could re-use it
 
 // when `signal.aborted` is `false`
 const abortController_1 = new AbortController();
 signal = abortController_1.signal;
 
 abortTask({ signal })
-  .then(t => console.log(t)) // hello
-  .catch(e => console.error(e.message))
-
+  .then((t) => console.log(t)) // hello
+  .catch((e) => console.error(e.message));
 
 // when `signal.aborted` is `true`
 const abortController_2 = new AbortController();
@@ -154,9 +166,8 @@ signal = abortController_2.signal;
 abortController_2.abort();
 
 abortTask({ signal })
-  .then(t => console.log(t))
-  .catch(e => console.error(e.message)) // err
-
+  .then((t) => console.log(t))
+  .catch((e) => console.error(e.message)); // err
 
 // when user calls AbortController.abort()
 const abortController_3 = new AbortController();
@@ -166,6 +177,6 @@ signal = abortController_3.signal;
 setTimeout(() => abortController_3.abort(), 2000);
 
 abortTask({ signal })
-  .then(t => console.log(t))
-  .catch(e => console.error(e.message)) // err
+  .then((t) => console.log(t))
+  .catch((e) => console.error(e.message)); // err
 ```

@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
-//import Alert from "@/app/_components/alert";
 import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
 import { PostBody } from "@/app/_components/post-body";
