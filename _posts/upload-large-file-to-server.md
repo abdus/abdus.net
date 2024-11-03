@@ -1,5 +1,5 @@
 ---
-title: "Uploading a Large File to a Node Server: A Gentle Introduction"
+title: Uploading a Large File to a Node Server
 date: 2022-09-26T14:04:50+05:30
 draft: false
 meta:

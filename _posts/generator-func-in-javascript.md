@@ -1,5 +1,5 @@
 ---
-title: "Generator Functions in JavaScript (with real-world examples)"
+title: "Generator Functions in JavaScript"
 date: 2020-11-12T18:54:26+05:30
 draft: false
 meta:

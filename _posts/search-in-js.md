@@ -1,5 +1,5 @@
 ---
-title: "Quick Tutorial: Build a Search API from Scratch"
+title: "How to: Build a Search API from Scratch"
 date: 2022-02-23T12:53:08+05:30
 draft: false
 meta:
