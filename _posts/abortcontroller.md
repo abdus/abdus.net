@@ -71,8 +71,6 @@ from _Can I Use_.
 
 [go to chart](https://caniuse.com/abortcontroller)
 
-<h2>hello</h2>
-
 <!--Embed for the feature from Can I Use-->
 <script src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
 

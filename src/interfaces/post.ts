@@ -13,4 +13,5 @@ export type Post = {
   };
   content: string;
   draft?: boolean;
+  tags: string[];
 };

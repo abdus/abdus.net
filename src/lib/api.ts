@@ -26,3 +26,14 @@ export function getAllPosts(): Post[] {
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
+
+export function getPostsByTag(tag: string): Post[] {
+  const posts = getAllPosts();
+  return posts.filter((post) => post.tags.includes(tag));
+}
+
+export function getAllTags(): string[] {
+  const posts = getAllPosts();
+  const allTags = posts.flatMap((post) => post.tags);
+  return Array.from(new Set(allTags));
+}
