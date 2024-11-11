@@ -2,12 +2,12 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
-import { Cormorant_Garamond, Courier_Prime } from "next/font/google";
+import { Alegreya, Courier_Prime } from "next/font/google";
 
 import "./globals.css";
 
 const mono = Courier_Prime({ subsets: ["latin"], weight: ['400'] });
-const font = Cormorant_Garamond({ subsets: ["latin"], weight: ['400', '700'] });
+const font = Alegreya({ subsets: ["latin"], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
   title: `Abdus Azad`,

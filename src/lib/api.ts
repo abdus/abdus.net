@@ -3,7 +3,7 @@ import { join } from "path";
 import matter from "gray-matter";
 import { Post } from "@/interfaces/post";
 
-const postsDirectory = join(process.cwd(), "_posts");
+const postsDirectory = join(process.cwd(), "content/_posts");
 
 export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
@@ -35,5 +35,38 @@ export function getPostsByTag(tag: string): Post[] {
 export function getAllTags(): string[] {
   const posts = getAllPosts();
   const allTags = posts.flatMap((post) => post.tags);
+  return Array.from(new Set(allTags));
+}
+
+/** Notes */
+const notesDirectory = join(process.cwd(), "content/_notes");
+
+export function getNoteSlugs() {
+  return fs.readdirSync(notesDirectory);
+}
+
+export function getNoteBySlug(slug: string) {
+  const realSlug = slug.replace(/\.md$/, "");
+  const fullPath = join(notesDirectory, `${realSlug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return { ...data, slug: realSlug, content, archetype: 'note' } as Post;
+}
+
+export function getAllNotes(): Post[] {
+  const slugs = getNoteSlugs();
+  const notes = slugs.map((slug) => getNoteBySlug(slug));
+  return notes;
+}
+
+export function getNotesByTag(tag: string): Post[] {
+  const notes = getAllNotes();
+  return notes.filter((note) => note.tags.includes(tag));
+}
+
+export function getAllNoteTags(): string[] {
+  const notes = getAllNotes();
+  const allTags = notes.flatMap((note) => note.tags);
   return Array.from(new Set(allTags));
 }

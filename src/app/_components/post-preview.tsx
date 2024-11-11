@@ -1,43 +1,44 @@
-import { type Author } from "@/interfaces/author";
 import Link from "next/link";
-//import Avatar from "./avatar";
-//import CoverImage from "./cover-image";
 import DateFormatter from "./date-formatter";
 
 type Props = {
   title: string;
-  coverImage: string;
   date: string;
   excerpt: string;
-  author: Author;
   slug: string;
+  archetype?: string;
 };
 
-export function PostPreview({
-  title,
-  //coverImage,
-  date,
-  //excerpt,
-  //author,
-  slug,
-}: Props) {
+export function PostPreview({ title, date, slug, archetype = "" }: Props) {
   return (
     <div>
-      {/*<div className="mb-5">
-        <CoverImage slug={slug} title={title} src={coverImage} />
-        </div>*/}
-      <h3 className="leading-tight text-[1.8em] font-bold">
-        <Link href={`/posts/${slug}`} className="hover:underline">
-          {title}
+      <h3 className="leading-tight text-[1.4em]">
+        <Link
+          href={`/${getPathSegment(archetype)}/${slug}`}
+          className="hover:underline"
+        >
+          {title}{" "}
+          {archetype && (
+            <small className="px-2 rounded-md bg-yellow-200 ml-2">
+              {archetype}
+            </small>
+          )}
         </Link>
       </h3>
 
-      <div className="text-[1.4em]">
-        <DateFormatter dateString={date} />
+      <div className="text-[1.2em] text-foreground/70">
+        <DateFormatter dateString={date} format="LLL d, yyyy" />
       </div>
-
-      {/*<p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-        <Avatar name={author.name} picture={author.picture} />*/}
     </div>
   );
+}
+
+function getPathSegment(archetype: string) {
+  switch (archetype) {
+    case "note":
+      return "notes";
+    case "post":
+    default:
+      return "posts";
+  }
 }

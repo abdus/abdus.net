@@ -1,6 +1,10 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { getAllTags, getPostsByTag } from "@/lib/api";
+import {
+  getAllNoteTags,
+  getAllTags,
+  getNotesByTag,
+  getPostsByTag,
+} from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import Container from "@/app/_components/container";
 import Header from "@/app/_components/header";
@@ -10,6 +14,7 @@ export default async function Post({ params }: Params) {
   const paramsAwaited = await params;
   const decodedTag = decodeURIComponent(paramsAwaited.tag);
   const posts = getPostsByTag(decodedTag);
+  const notes = getNotesByTag(decodedTag);
 
   return (
     <main>
@@ -18,11 +23,14 @@ export default async function Post({ params }: Params) {
 
         <div className="max-w-5xl mx-auto">
           <h2 className="mb-8 text-5xl md:text-6xl font-bold tracking-tighter leading-tight">
-            Posts tagged with{" "}
-            <span className="text-red-500">{decodedTag}</span>
+            <span className="text-red-500">
+              {decodedTag} ({[...posts, ...notes].length})
+            </span>
           </h2>
 
-          <MoreStories posts={posts.filter((post) => !post.draft)} />
+          <MoreStories
+            posts={[...posts, ...notes].filter((post) => !post.draft)}
+          />
         </div>
       </Container>
     </main>
@@ -45,5 +53,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const tags = getAllTags();
-  return tags.map((tag) => ({ tag }));
+  const noteTags = getAllNoteTags();
+  return [...tags, ...noteTags].map((tag) => ({ tag }));
 }

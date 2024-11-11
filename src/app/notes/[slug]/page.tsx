@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/api";
+import { getAllNotes, getNoteBySlug  } from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
 import Container from "@/app/_components/container";
@@ -11,7 +11,7 @@ import { PostTags } from "@/app/_components/post-tags";
 
 export default async function Post({ params }: Params) {
   const paramsAwaited = await params;
-  const post = paramsAwaited.slug && getPostBySlug(paramsAwaited.slug);
+  const post = paramsAwaited.slug && getNoteBySlug(paramsAwaited.slug);
 
   if (!post) {
     return notFound();
@@ -23,7 +23,7 @@ export default async function Post({ params }: Params) {
     <main>
       <Container>
         <Header />
-        <article className="mb-32 max-w-4xl mx-auto px-4">
+        <article className="mb-32">
           <PostHeader title={post.title} date={post.date} />
           <PostBody content={content} />
           <PostTags tags={post.tags} />
@@ -38,7 +38,7 @@ type Params = { params: any };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const paramsAwaited = await params;
-  const post = paramsAwaited.slug && getPostBySlug(paramsAwaited.slug);
+  const post = paramsAwaited.slug && getNoteBySlug(paramsAwaited.slug);
 
   if (!post) {
     return notFound();
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = getAllNotes();
 
   return posts.map((post) => ({
     slug: post.slug,

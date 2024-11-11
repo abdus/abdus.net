@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import { Lora } from "next/font/google";
+import { Merriweather } from "next/font/google";
 import { SyntaxHighlight } from "./syntax-highlight";
 
-const font = Lora({ subsets: ["latin"], weight: ["400"] });
+const font = Merriweather({ subsets: ["latin"], weight: ["400"] });
 
 type Props = { content: string };
 
@@ -11,7 +11,7 @@ export function PostBody({ content }: Props) {
     <>
       <div
         className={cn(
-          `max-w-2xl mx-auto prose text-foreground/90 text-[1.2em]`,
+          `prose text-[#334155] text-[1em]`,
           font.className
         )}
       >

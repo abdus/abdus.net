@@ -14,4 +14,5 @@ export type Post = {
   content: string;
   draft?: boolean;
   tags: string[];
+  archetype?: string; // post, page, note etc.
 };

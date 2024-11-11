@@ -1,12 +1,17 @@
-import { format } from "date-fns";
+import { format as dateFormat } from "date-fns";
 
 type Props = {
+  format?: string;
   dateString: string;
 };
 
-const DateFormatter = ({ dateString }: Props) => {
+const DateFormatter = ({ dateString, format }: Props) => {
   const date = new Date(dateString);
-  return <time dateTime={dateString}>{format(date, "LLLL	d, yyyy")}</time>;
+  return (
+    <time dateTime={dateString}>
+      {dateFormat(date, format || "LLLL	d, yyyy")}
+    </time>
+  );
 };
 
 export default DateFormatter;

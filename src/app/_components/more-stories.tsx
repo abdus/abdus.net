@@ -12,6 +12,10 @@ function segregatePostsByYear(posts: Post[]) {
       acc[year] = [];
     }
     acc[year].push(post);
+    acc[year] = acc[year].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
     return acc;
   }, {} as Record<number, Post[]>);
 
@@ -25,20 +29,17 @@ export function MoreStories({ posts }: Props) {
   return (
     <section>
       {years.map((year) => (
-        <div key={year} className="mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 underline">
-            {year}
-          </h2>
+        <div key={year} className="mb-16">
+          <h2 className="text-xl md:text-3xl mb-6 underline">{year}</h2>
           <div className="flex flex-col gap-y-8">
             {postsByYear[Number(year)].map((post) => (
               <PostPreview
                 key={post.slug}
                 title={post.title}
-                coverImage={post.coverImage}
                 date={post.date}
-                author={post.author}
                 slug={post.slug}
                 excerpt={post.excerpt}
+                archetype={post.archetype}
               />
             ))}
           </div>

@@ -1,13 +1,17 @@
 import { remark } from "remark";
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 
-export default async function markdownToHtml(markdown: string) {
-  const result = await remark()
+export default function markdownToHtml(markdown: string) {
+  const result = remark()
+    .use(remarkParse)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(remarkGfm)
     .use(rehypeRaw)
     .use(rehypeStringify)
-    .process(markdown);
+    .processSync(markdown);
   return result.toString();
 }
