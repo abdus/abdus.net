@@ -51,7 +51,7 @@ export function getNoteBySlug(slug: string) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  return { ...data, slug: realSlug, content, archetype: 'note' } as Post;
+  return { ...data, slug: realSlug, content, archetype: "note" } as Post;
 }
 
 export function getAllNotes(): Post[] {
@@ -69,4 +69,19 @@ export function getAllNoteTags(): string[] {
   const notes = getAllNotes();
   const allTags = notes.flatMap((note) => note.tags);
   return Array.from(new Set(allTags));
+}
+
+/** pages **/
+export function getPageBySlug(slug: string): Post {
+  const fullPath = join(process.cwd(), `content/_pages/${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return { ...data, slug, content, archetype: "page" } as Post;
+}
+
+export function getAllPages(): Post[] {
+  const slugs = fs.readdirSync(join(process.cwd(), "content/_pages"));
+  const pages = slugs.map((slug) => getPageBySlug(slug.replace(/\.md$/, "")));
+  return pages;
 }

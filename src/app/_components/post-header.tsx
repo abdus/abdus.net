@@ -14,9 +14,11 @@ export function PostHeader({ title, date }: Props) {
     <div className="max-w-4xl mx-auto">
       <PostTitle>{title}</PostTitle>
       <div className="mx-auto">
-        <div className="mb-6 text-lg">
-          <DateFormatter dateString={date} />
-        </div>
+        {date && (
+          <div className="mb-6 text-lg">
+            <DateFormatter dateString={date} />
+          </div>
+        )}
       </div>
     </div>
   );

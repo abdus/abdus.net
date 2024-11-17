@@ -11,7 +11,7 @@ export function PostBody({ content }: Props) {
     <>
       <div
         className={cn(
-          `prose text-[#334155] text-[1em]`,
+          `prose text-[#334155] text-[1.2em]`,
           font.className
         )}
       >
