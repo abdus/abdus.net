@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Header from "../_components/header";
-import Container from "../_components/container";
-import { PostBody } from "../_components/post-body";
+import Header from "../../_components/header";
+import Container from "../../_components/container";
+import { PostBody } from "../../_components/post-body";
 import markdownToHtml from "@/lib/markdownToHtml";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
-import { PostHeader } from "../_components/post-header";
+import { PostHeader } from "../../_components/post-header";
 import { getAllPages, getPageBySlug } from "@/lib/api";
 
 type Props = { params: Promise<{ pageSlug: string }> };

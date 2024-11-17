@@ -42,7 +42,7 @@ export function ChatHistory({ chats, isThinking }: Props) {
             "justify-start ml-0 opacity-50"
           )}
         >
-          <CatIcon className="mr-2 size-[1.3em] mt-2 text-gray-500" />
+          <CatIcon className="mr-2 size-[1.3em] min-w-[1.3em] mt-2 text-gray-500" />
           <div
             className={cn(
               "py-1 rounded-md items-end px-2 bg-gray-100",
