@@ -4,7 +4,7 @@ import { ChatWithCat, chatWithCatSchema } from "@/lib/schema";
 
 export async function POST(req: Request) {
   const json = await req.json();
-  const { sessionId, message, history } = json || {};
+  const { message, history } = json || {};
   const historyFormatted = history
     .filter(
       (chat: ChatWithCat) =>

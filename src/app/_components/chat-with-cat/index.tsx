@@ -2,11 +2,9 @@
 
 import Container from "../container";
 import { ChatInput } from "./chat-input";
-import { MailWarning } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ChatHistory } from "./chat-history";
 import { chatWithCatSchema, type ChatWithCat } from "@/lib/schema";
-import Header from "../header";
 
 export function ChatWithCat() {
   const [chats, setChats] = useState<ChatWithCat[]>([]);
