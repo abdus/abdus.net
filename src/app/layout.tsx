@@ -54,8 +54,8 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className={cn(font.className, mono.className, "bg-background")}>
-        <div className="min-h-svh flex flex-col">
-          <div className="flex-grow">{children}</div>
+        <div className="h-svh flex flex-col overflow-hidden">
+          <div className="grow flex flex-col">{children}</div>
           <Footer />
         </div>
       </body>
