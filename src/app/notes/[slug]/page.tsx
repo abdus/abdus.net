@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllNotes, getNoteBySlug  } from "@/lib/api";
+import { getAllNotes, getNoteBySlug } from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
 import Container from "@/app/_components/container";
@@ -22,8 +22,8 @@ export default async function Post({ params }: Params) {
   return (
     <main>
       <Header />
-      <Container>
-        <article className="mb-32 max-w-4xl mx-auto">
+      <Container className="max-w-4xl">
+        <article className="mb-32">
           <PostHeader title={post.title} date={post.date} />
           <PostBody content={content} />
           <PostTags tags={post.tags} />
