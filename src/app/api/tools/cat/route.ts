@@ -1,5 +1,5 @@
 import { OpenAIStream, StreamingTextResponse } from "ai";
-import { getLolcatResponse } from "@/app/tools/cat/actions";
+import { getLolcatResponse } from "@/app/snowbell/actions";
 import { ChatWithCat, chatWithCatSchema } from "@/lib/schema";
 
 export async function POST(req: Request) {
