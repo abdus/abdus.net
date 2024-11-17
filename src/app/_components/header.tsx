@@ -2,7 +2,24 @@ import Link from "next/link";
 import Container from "./container";
 import { createAvatar } from "@dicebear/core";
 import { adventurerNeutral } from "@dicebear/collection";
-import { CatIcon } from "lucide-react";
+import { CatIcon, MailIcon } from "lucide-react";
+
+const links = [
+  { href: "/about", jsx: "About" },
+  {
+    href: "/snowbell",
+    jsx: (
+      <>
+        <CatIcon className="size-[1em] inline text-red-500" />
+        Snowbell
+      </>
+    ),
+  },
+  {
+    href: "mailto:abdus@abdus.net",
+    jsx: <MailIcon className="size-[1em] inline text-gray-700" />,
+  },
+];
 
 const Header = () => {
   return (
@@ -24,16 +41,17 @@ const Header = () => {
           .
         </h2>
 
-        <ul className="flex ml-auto gap-4">
-          <li>
-            <Link
-              href="/snowbell"
-              className="hover:underline flex items-center gap-1"
-            >
-              <CatIcon className="size-[1em] inline text-red-500" />
-              Talk to Snowbell
-            </Link>
-          </li>
+        <ul className="flex items-center ml-auto gap-4">
+          {links.map(({ href, jsx }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="hover:underline flex items-center gap-1"
+              >
+                {jsx}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </Container>
