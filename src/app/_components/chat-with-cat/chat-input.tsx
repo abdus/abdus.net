@@ -4,11 +4,12 @@ import { Button } from "@/components/ui/button";
 import { ChatWithCat, chatWithCatSchema } from "@/lib/schema";
 
 type Props = {
+  isThinking: boolean;
   pushNewChat: (chat: ChatWithCat) => void;
   setIsThinking: (isThinking: boolean) => void;
 };
 
-export function ChatInput({ pushNewChat, setIsThinking }: Props) {
+export function ChatInput({ pushNewChat, setIsThinking, isThinking }: Props) {
   return (
     <form
       className="w-full flex gap-1 items-end px-4"
@@ -103,6 +104,7 @@ export function ChatInput({ pushNewChat, setIsThinking }: Props) {
           autoComplete="off"
           placeholder="Type a message..."
           tabIndex={1}
+          disabled={isThinking}
         />
       </div>
 
@@ -111,6 +113,7 @@ export function ChatInput({ pushNewChat, setIsThinking }: Props) {
         variant="ghost"
         tabIndex={2}
         className="aspect-square flex items-center justify-center shadow-inner shadow"
+        disabled={isThinking}
       >
         <PawPrint />
       </Button>

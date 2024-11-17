@@ -26,7 +26,7 @@ export function ChatWithCat() {
   return (
     <Container className="grow pb-2 px-0 overflow-hidden flex flex-col max-w-3xl max-h-[94vh]">
       <ChatHistory chats={chats} isThinking={isThinking} />
-      <ChatInput pushNewChat={pushNewChat} setIsThinking={setIsThinking} />
+      <ChatInput pushNewChat={pushNewChat} setIsThinking={setIsThinking} isThinking={isThinking} />
     </Container>
   );
 }
