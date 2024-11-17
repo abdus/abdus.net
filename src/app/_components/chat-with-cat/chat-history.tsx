@@ -20,7 +20,7 @@ export function ChatHistory({ chats, isThinking }: Props) {
             })}
           >
             {chat.from === "cat" && (
-              <CatIcon className="mr-2 size-[1.3em] mt-2 text-gray-500" />
+              <CatIcon className="mr-2 size-[1.3em] min-w-[1.3em] mt-2 text-gray-500" />
             )}
             <div
               className={cn("py-1 rounded-md items-end", {
