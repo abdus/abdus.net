@@ -2,6 +2,7 @@ import Link from "next/link";
 import Container from "./container";
 import { createAvatar } from "@dicebear/core";
 import { adventurerNeutral } from "@dicebear/collection";
+import { CatIcon } from "lucide-react";
 
 const Header = () => {
   return (
@@ -25,8 +26,12 @@ const Header = () => {
 
         <ul className="flex ml-auto gap-4">
           <li>
-            <Link href="/about" className="hover:underline">
-              About
+            <Link
+              href="/snowbell"
+              className="hover:underline flex items-center gap-1"
+            >
+              <CatIcon className="size-[1em] inline text-red-500" />
+              Talk to Snowbell
             </Link>
           </li>
         </ul>
