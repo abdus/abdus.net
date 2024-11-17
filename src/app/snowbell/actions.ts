@@ -4,7 +4,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-// ts-expect-error don't want to type
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getLolcatResponse(input: string, history?: any[]) {
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
