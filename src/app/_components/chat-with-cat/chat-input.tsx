@@ -75,34 +75,8 @@ export function ChatInput({ pushNewChat, setIsThinking }: Props) {
             return;
           }
 
-          const reader = resp.body?.getReader();
-
-          if (!reader) {
-            console.error("Failed to get a reader from the response");
-            return;
-          }
-
-          const decoder = new TextDecoder();
-          let buffer = "";
-
-          while (true) {
-            const { done, value } = await reader.read();
-
-            if (done) {
-              break;
-            }
-
-            if (value) {
-              const text = decoder.decode(value, { stream: true });
-              const line = text
-                .split("\n")
-                .filter(Boolean)
-                .map((line) => line.replace(/^0:"/g, "").replace(/"$/g, ""))
-                .join("");
-
-              buffer += line;
-            }
-          }
+          const json = await resp.json();
+          const content = json.resp;
 
           setIsThinking(false);
 
@@ -111,7 +85,7 @@ export function ChatInput({ pushNewChat, setIsThinking }: Props) {
             from: "cat",
 
             isRead: false,
-            message: buffer,
+            message: content,
 
             createdAt: new Date(),
           });

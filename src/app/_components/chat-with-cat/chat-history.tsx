@@ -9,6 +9,10 @@ type Props = { chats: ChatWithCat[]; isThinking: boolean };
 export function ChatHistory({ chats, isThinking }: Props) {
   return (
     <div className="w-full max-h-svh grow overflow-auto space-y-2 px-4">
+    <div className="p-4 text-center mt-auto mb-0 py-[30%] text-[1.3em]">
+      <CatIcon className="mx-auto" /> I am Snowbell!
+    </div>
+
       {chats.map((chat, i) => {
         return (
           <div
