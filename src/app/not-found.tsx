@@ -1,5 +1,6 @@
-import { CatIcon } from "lucide-react";
+import Link from "next/link";
 import Header from "./_components/header";
+import { CatIcon } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -8,7 +9,7 @@ export default function NotFound() {
       <div className="text-center h-full max-h-[60%] flex flex-col items-center justify-center">
         <h1 className="mb-4 text-6xl font-semibold text-red-500">404</h1>
         <p className="mb-4 text-lg text-gray-600">
-          Oops! Looks like you're lost.
+          Oops! Looks like you&apos;re lost.
         </p>
 
         <div className="animate-bounce text-red-500 mt-8">
@@ -16,10 +17,10 @@ export default function NotFound() {
         </div>
 
         <p className="mt-4 text-gray-600">
-          let's get you back{" "}
-          <a href="/" className="text-blue-500">
+          let&apos;s get you back{" "}
+          <Link href="/" className="text-blue-500">
             home
-          </a>
+          </Link>
           .
         </p>
       </div>
