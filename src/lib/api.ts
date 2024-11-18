@@ -12,6 +12,9 @@ export function getPostSlugs() {
 export function getPostBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
+
+  if (!fs.existsSync(fullPath)) return null;
+
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -22,6 +25,7 @@ export function getAllPosts(): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
+    .filter((post) => !!post)
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
@@ -48,6 +52,9 @@ export function getNoteSlugs() {
 export function getNoteBySlug(slug: string) {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(notesDirectory, `${realSlug}.md`);
+
+  if (!fs.existsSync(fullPath)) return null;
+
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -56,7 +63,9 @@ export function getNoteBySlug(slug: string) {
 
 export function getAllNotes(): Post[] {
   const slugs = getNoteSlugs();
-  const notes = slugs.map((slug) => getNoteBySlug(slug));
+  const notes = slugs
+    .map((slug) => getNoteBySlug(slug))
+    .filter((note) => !!note);
   return notes;
 }
 
@@ -72,8 +81,11 @@ export function getAllNoteTags(): string[] {
 }
 
 /** pages **/
-export function getPageBySlug(slug: string): Post {
+export function getPageBySlug(slug: string): Post | null {
   const fullPath = join(process.cwd(), `content/_pages/${slug}.md`);
+
+  if (!fs.existsSync(fullPath)) return null;
+
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -82,6 +94,8 @@ export function getPageBySlug(slug: string): Post {
 
 export function getAllPages(): Post[] {
   const slugs = fs.readdirSync(join(process.cwd(), "content/_pages"));
-  const pages = slugs.map((slug) => getPageBySlug(slug.replace(/\.md$/, "")));
+  const pages = slugs
+    .map((slug) => getPageBySlug(slug.replace(/\.md$/, "")))
+    .filter((page) => !!page);
   return pages;
 }
