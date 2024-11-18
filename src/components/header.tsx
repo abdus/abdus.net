@@ -7,7 +7,7 @@ import { CatIcon, MailIcon } from "lucide-react";
 const links = [
   { href: "/about", jsx: "About" },
   {
-    href: "/snowbell",
+    href: "/projects/snowbell",
     jsx: (
       <>
         <CatIcon className="size-[1em] inline text-red-500" />
