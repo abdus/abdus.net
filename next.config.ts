@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
-
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/snowbell",
+        permanent: true,
+        destination: "/projects/snowbell",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

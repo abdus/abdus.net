@@ -3,7 +3,7 @@
  * language. She is silly and fun.
  */
 
-import { ChatWithCat } from "@/app/_components/chat-with-cat";
+import { ChatWithCat } from "@/components/chat-with-cat";
 
 export const metadata = {
   title: "Talk to Snowbell",

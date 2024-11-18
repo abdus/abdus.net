@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Link } from "lucide-react";
-import Container from "@/app/_components/container";
+import Container from "@/components/container";
 
 type Props = {
   preview?: boolean;

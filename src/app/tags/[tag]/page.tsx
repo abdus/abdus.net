@@ -6,9 +6,9 @@ import {
   getPostsByTag,
 } from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
-import Container from "@/app/_components/container";
-import Header from "@/app/_components/header";
-import { MoreStories } from "@/app/_components/more-stories";
+import Container from "@/components/container";
+import Header from "@/components/header";
+import { MoreStories } from "@/components/more-stories";
 
 export default async function Post({ params }: Params) {
   const paramsAwaited = await params;

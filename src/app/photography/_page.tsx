@@ -1,7 +1,7 @@
 import { photos } from "@/data/photos";
-import { PhotoAlbum } from "@/app/_components/photo-album";
-import Container from "../_components/container";
-import Header from "../_components/header";
+import { PhotoAlbum } from "@/components/photo-album";
+import Container from "@/components/container";
+import Header from "@/components/header";
 
 export default async function PhotographyPage() {
   return (

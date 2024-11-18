@@ -3,11 +3,11 @@ import { notFound } from "next/navigation";
 import { getAllNotes, getNoteBySlug } from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
-import Container from "@/app/_components/container";
-import Header from "@/app/_components/header";
-import { PostBody } from "@/app/_components/post-body";
-import { PostHeader } from "@/app/_components/post-header";
-import { PostTags } from "@/app/_components/post-tags";
+import Container from "@/components/container";
+import Header from "@/components/header";
+import { PostBody } from "@/components/post-body";
+import { PostHeader } from "@/components/post-header";
+import { PostTags } from "@/components/post-tags";
 
 export default async function Post({ params }: Params) {
   const paramsAwaited = await params;

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import Footer from "@/app/_components/footer";
+import Footer from "@/components/footer";
 import { createAvatar } from "@dicebear/core";
 import { adventurerNeutral } from "@dicebear/collection";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";

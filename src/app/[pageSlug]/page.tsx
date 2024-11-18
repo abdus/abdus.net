@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 import { getPageBySlug } from "@/lib/api";
 import { notFound } from "next/navigation";
-import Header from "@/app/_components/header";
-import Container from "@/app/_components/container";
-import { PostBody } from "@/app/_components/post-body";
+import Header from "@/components/header";
+import Container from "@/components/container";
+import { PostBody } from "@/components/post-body";
 import markdownToHtml from "@/lib/markdownToHtml";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
-import { PostHeader } from "@/app/_components/post-header";
+import { PostHeader } from "@/components/post-header";
 
 type Props = { params: Promise<{ pageSlug: string }> };
 

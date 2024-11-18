@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 import { db } from "@vercel/postgres";
 import { cookies } from "next/headers";
-import { getLolcatResponse } from "@/app/snowbell/actions";
+import { getLolcatResponse } from "@/lib/openai";
 import { ChatWithCat, chatWithCatSchema } from "@/lib/schema";
 
 export async function POST(req: Request) {

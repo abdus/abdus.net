@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "./_components/header";
+import Header from "@/components/header";
 import { CatIcon } from "lucide-react";
 
 export default function NotFound() {
