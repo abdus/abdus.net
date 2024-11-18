@@ -55,7 +55,7 @@ export default function RootLayout({
       </head>
       <body className={cn(font.className, mono.className, "bg-background")}>
         <div className="h-svh flex flex-col overflow-hidden">
-          <div className="grow flex flex-col">{children}</div>
+          <div className="grow flex flex-col overflow-hidden">{children}</div>
           <Footer />
         </div>
       </body>

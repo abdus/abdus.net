@@ -21,7 +21,7 @@ export default async function PageRenderer(props: Props) {
   const content = await markdownToHtml(post.content || "");
 
   return (
-    <main>
+    <main className="h-full overflow-auto">
       <Header />
       <Container className="max-w-4xl">
         <article className="mb-32">

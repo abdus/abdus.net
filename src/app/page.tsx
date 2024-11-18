@@ -8,7 +8,7 @@ export default function Index() {
   const allNotes = getAllNotes();
 
   return (
-    <main>
+    <main className="h-full overflow-auto">
       <Header />
       <Container className="max-w-4xl">
         {allPosts.length > 0 && (

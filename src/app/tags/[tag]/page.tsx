@@ -17,10 +17,9 @@ export default async function Post({ params }: Params) {
   const notes = getNotesByTag(decodedTag);
 
   return (
-    <main>
+    <main className="h-full overflow-auto">
+      <Header />
       <Container>
-        <Header />
-
         <div className="max-w-5xl mx-auto">
           <h2 className="mb-8 text-5xl md:text-6xl font-bold tracking-tighter leading-tight">
             <span className="text-red-500">
