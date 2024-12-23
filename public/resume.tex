@@ -1,0 +1,201 @@
+\documentclass[a4paper,8pt]{article}
+
+\usepackage{parskip}
+\usepackage{hologo}
+\usepackage{fontspec}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9, top=.4in, bottom=.4in]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.42\textwidth}
+
+%custom \section
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by:
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{1pt}{4pt}{6pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false, hidelinks]{hyperref}
+\color[HTML]{110223}%{1C033C}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+% \usepackage{times}
+
+% For underline
+\usepackage[normalem]{ulem}
+
+\setmainfont{Carlito}  % Set it to whatever you like
+
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\color[HTML]{1C033C} \Huge{Abdus Azad} \\[4pt]
+\\
+{\href{mailto:abdus@abdus.net}{\raisebox{-0.05\height}{\faEnvelope} abdus@abdus.net}} $|$
+\href{tel:+917002505507}{\raisebox{-0.05\height}{\faMobile} +91 7002 505 507} $|$
+{\href{https://github.com/abdus}{\raisebox{-0.05\height}{\faGithub} github.com/abdus}} $|$
+{\href{https://linkedin.com/in/azabdus}{\raisebox{-0.05\height}{\faLinkedin} linkedin.com/in/azabdus}} $|$
+{\href{https://abdus.net}{\raisebox{-0.05\height}{\faGlobe} abdus.net}}
+\end{tabularx}
+
+%Experience
+\section{\textbf{Experience}}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{\uline{Unitron AI}} \hfill March 2024 - Jan 2025 \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{Senior Full-stack Engineer (IC)}}\ \hfill \color[HTML]{4B28A4} \textit{Hyderabad, Telangana} \\[4pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Developed an \textbf{Automation} app with \textbf{AI integration}, reducing task completion time by streamlining user workflows
+        \item Engineered a freelancer-client platform as an individual contributor, enabling \textbf{efficient task execution} and \textbf{collaboration}
+        \item \textbf{Released Beta}, acquiring \textbf{500 users} in a pre-market launch, and \textbf{drove iterative improvements} based on early feedback
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{\uline{AutoGolf}} \hfill Aug 2023 - Feb 2024 \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{Back-end Engineer}}\ \hfill \color[HTML]{4B28A4} \textit{Florida, USA (Remote)} \\[4pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Implemented robust back-end technologies to ensure seamless functionality and high-performance of the application
+        \item Managed full development cycle, utilized Git and BitBucket, and adapted to new tech, earning positive client feedback
+        \item Employed DevOps methodologies to streamline CI and CD, resulting in a highly efficient development pipeline
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{\uline{Level SuperMind}} \hfill June 2021 - July 2023 \\[4pt]
+\color[HTML]{371e77}\textit{\textbf{Lead Product Engineer}}\ \hfill \textit{Mumbai, Maharashtra} \\[5pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item \textbf{Led a team of 4 people} to drive revenue, achieving organizational \textbf{break-even point}
+        \item Acquired \textbf{10K+ users} by building a web-app for boot-camp that helped conduct sessions on Meditation and Workout
+        \item Tested and Identified \textbf{critical bugs} in customer-facing products, and helped resolve them along with Android team
+        \item Built internal tools for data analysis and decision-making
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{371e77}\textit{\textbf{Software Engineer}}\ \hfill \\[4pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Reduced  bandwidth by \textbf{up to 78\%} through implementation of HTTP Live Streaming, improving user experience
+        \item Reduced API \textbf{response time by 99\%} by implementing caching mechanisms, resulting in better conversions
+        \item Seamlessly handled \textbf{thousands of transactions} on a monthly basis by building the Payment Infrastructure end-to-end
+        \item Designed robust database schema that helped shape the foundation of the back-end infrastructure for the start-up    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{\uline{Algorisys Technologies}} \hfill Jan 2021 - Aug 2021 \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{Software Engineer}}\ \hfill \color[HTML]{4B28A4} \textit{Mumbai, Maharashtra} \\[4pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Led a team in developing cross-platform mobile apps using React Native and Node.js
+        \item Built a full-stack web app with Java Spring, leveraging Docker, AWS and PostgreSQL for improved efficiency and scalability.
+        \item Demonstrated expertise in developing both mobile and web applications with a focus on enhancing user experience
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{\uline{MailModo}} \hfill Feb 2020 - Apr 2020 \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{Front-end Intern}}\ \hfill \color[HTML]{4B28A4} \textit{Bangalore, Karnataka} \\[4pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Built high-performance AMP email templates used by established companies
+        \item Developed internal tools such as a DNS validator
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+
+% Education
+% \section{\textbf{Education}}
+% \begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \color[HTML]{1C033C} \textbf{Gauhati University} & \hfill 2020 \\
+% \color[HTML]{371e77} Bachelor of Computer Applications {} & \hfill \color[HTML]{4B28A4} \textit{Guwahati, Assam} \\
+% \multicolumn{2}{@{}X@{}}{Relevant Courses: C Lang, Computer Hardware, Mathematic, Software Engineering, Data Structure and Algorithms, \newline \hspace*{15ex} DBMS, Computer Organization and Architecture, OOP in C++, Java, OS, Linux, Computer Networks}
+% \end{tabularx}
+
+% Projects
+\section{\textbf{Projects}}
+
+% \begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \color[HTML]{1C033C} \textbf{{\href{https://github.com/abdus/to-webp/}{\faGithub{ WebP Converter }}}} \hfill \color[HTML]{371e77} {} \\[4pt]
+% \color[HTML]{371e77}\textbf{\textit{ Free alternative to CloudConvert }} \hfill \color[HTML]{4B28A4} \textit{Node, JavaScript, React, AWS} \\[5pt]
+% \begin{minipage}[t]{\linewidth}
+%     \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+%         \item Designed and built a user-friendly application for converting images to the WebP format
+%         \item Initially developed as an in-house tool, later released for the public as an open-source tool
+%     \end{itemize}
+%     \end{minipage}
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{{\href{https://github.com/abdus/doge-gram/}{ \faGithub{ DogeGram }}}} \hfill \color[HTML]{371e77} {} \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{Social Media App for Meme Sharing}} \hfill \color[HTML]{4B28A4} \textit{Firebase, React, TypeScript, Git} \\[5pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Developed a meme-centered social media platform, closely resembling Instagram’s interface
+        \item Implemented real-time features using Firebase to enhance user engagement, allowing instant updates on likes, and comments
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{{\href{https://github.com/abdus/face-rekognition/}{\faGithub{ Face Rekognition}}}} \hfill \color[HTML]{371e77} {} \\[4pt]
+\color[HTML]{371e77}\textbf{\textit{ Recognize faces based on pre-trained data }} \hfill \color[HTML]{4B28A4} \textit{AWS (Lambda Function, Rekognition, DynamoDB, S3), TerraForm} \\[5pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Triggered AWS Lambda Invoke based on AWS S3 notifications to automate the training process
+        \item Implemented storage of training data in an AWS Rekognition index in Vector form, mapped to individuals via DynamoDB
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+% Skills
+\section{\textbf{Skills}}
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item RESTful, Node, Fastify, Express, Node, JavaScript, SASS
+        \item MySQL, Redis, PostgreSQL, MongoDB, DynamoDB,
+        \item React, Next, GatsBy, TailwindCSS, TypeScript
+        \item GraphQL, PrismaORM, Rust, Docker, Git, AWS, TerraForm
+    \end{itemize}
+\end{minipage}
+\end{document}
