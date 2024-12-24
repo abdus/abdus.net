@@ -71,7 +71,7 @@ export default function JobHunt() {
             <ContactInfoItem
               Icon={LinkedInLogoIcon}
               text="@azAbdus"
-              href="https://www.linkedin.com/in/abdus-azad/"
+              href="https://www.linkedin.com/in/azabdus/"
             />
 
             <ContactInfoItem
