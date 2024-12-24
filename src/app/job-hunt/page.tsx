@@ -174,7 +174,7 @@ export default function JobHunt() {
             type="application/pdf"
             className="w-full aspect-[1/1.4]"
           >
-            <p>
+            <p className="p-4 rounded-md bg-accent">
               This browser does not support PDFs. Please download the PDF to
               view it:{" "}
               <a href="/resume.pdf" download={RESUME_PDF_DOWNLOAD_NAME}>
