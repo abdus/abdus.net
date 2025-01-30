@@ -7,7 +7,7 @@ import { ChatWithCat } from "@/components/chat-with-cat";
 
 export const metadata = {
   title: "Talk to Snowbell",
-  description: "Talk to Freya, the Fictional Cat.",
+  description: "Talk to Snowbell",
 };
 
 export default async function TalkToFreya() {
