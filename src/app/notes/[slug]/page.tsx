@@ -3,11 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllNotes, getNoteBySlug } from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
-import Container from "@/components/container";
-import Header from "@/components/header";
-import { PostBody } from "@/components/post-body";
-import { PostHeader } from "@/components/post-header";
-import { PostTags } from "@/components/post-tags";
+import { ContentPage } from "@/components/content-page";
 
 export default async function Post({ params }: Params) {
   const paramsAwaited = await params;
@@ -19,18 +15,7 @@ export default async function Post({ params }: Params) {
 
   const content = await markdownToHtml(post.content || "");
 
-  return (
-    <main className="h-full overflow-auto">
-      <Header />
-      <Container className="max-w-4xl">
-        <article className="mb-32">
-          <PostHeader title={post.title} date={post.date} />
-          <PostBody content={content} />
-          <PostTags tags={post.tags} />
-        </article>
-      </Container>
-    </main>
-  );
+  return <ContentPage post={post} content={content} />;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -53,9 +38,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllNotes();
+  const notes = getAllNotes();
 
-  return posts.map((post) => ({
+  return notes.map((post) => ({
     slug: post.slug,
   }));
 }
