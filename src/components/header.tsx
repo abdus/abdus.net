@@ -6,6 +6,7 @@ import { BookOpenCheckIcon, CatIcon, HomeIcon, MailIcon, Menu, SquareKanbanIcon,
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { AvatarIcon } from "@radix-ui/react-icons";
+import NowPlaying from "./now-playing";
 
 interface LinkItem {
   href: string;
@@ -121,6 +122,8 @@ const Header = () => {
                 )}
               </Link>
             ))}
+
+            <NowPlaying />
           </div>
         </nav>
       </div>

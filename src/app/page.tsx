@@ -4,6 +4,7 @@ import { getAllNotes, getAllNoteTags, getAllPosts, getAllTags } from "@/lib/api"
 import Header from "@/components/header";
 import { About } from "@/components/about";
 import { TestimonialSummary } from "@/components/testimonial-summary";
+import NowPlaying from "@/components/now-playing";
 
 export default function Index() {
   const allTags = [...new Set([...getAllTags(), ...getAllNoteTags()])]
@@ -24,6 +25,8 @@ export default function Index() {
         )}
         <TestimonialSummary />
       </Container>
+
+      <NowPlaying className="fixed bottom-8 right-8 hidden md:block" />
     </main>
   );
 }
