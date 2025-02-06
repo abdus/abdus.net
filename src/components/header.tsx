@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Container from "./container";
-import { BookOpenCheckIcon, CatIcon, MailIcon, Menu, SquareKanbanIcon, X } from "lucide-react";
+import { BookOpenCheckIcon, CatIcon, HomeIcon, MailIcon, Menu, SquareKanbanIcon, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { AvatarIcon } from "@radix-ui/react-icons";
@@ -98,6 +98,15 @@ const Header = () => {
       >
         <nav className="h-full py-8 px-6">
           <div className="flex flex-col gap-4">
+              <Link
+                href="/"
+                className="hover:text-blue-600 transition-colors flex gap-2 items-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <HomeIcon className="size-4 text-blue-600" />
+                Home
+              </Link>
+
             {links.map(({ href, jsx, icon: IconComponent }) => (
               <Link
                 key={href}
