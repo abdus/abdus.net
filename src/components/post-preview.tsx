@@ -11,34 +11,36 @@ type Props = {
 
 export function PostPreview({ title, date, slug, archetype = "" }: Props) {
   return (
-    <div>
-      <h3 className="leading-tight text-[1.4em]">
+    <div className="flex flex-col items-baseline border-b last:border-0 py-4">
+      <div className="text-lg md:text-xl mb-1">
         <Link
           href={`/${getPathSegment(archetype)}/${slug}`}
           className="hover:underline"
         >
-          {title}{" "}
-          {archetype && (
-            <small className="px-2 rounded-md bg-yellow-200 ml-2">
-              {archetype}
-            </small>
-          )}
+          {title}
         </Link>
-      </h3>
-
-      <div className="text-[1.2em] text-foreground/70">
-        <DateFormatter dateString={date} format="LLL d, yyyy" />
+        {archetype && (
+          <>
+            · {archetype}
+          </>
+        )}
       </div>
+
+      <div className="text-gray-500 whitespace-nowrap">
+        <DateFormatter dateString={date} format="MMM dd, yyyy" />
+      </div>
+
     </div>
   );
 }
 
 function getPathSegment(archetype: string) {
-  switch (archetype) {
+  const t = archetype.toLocaleLowerCase()
+
+  switch(t) {
     case "note":
-      return "notes";
-    case "post":
+      return "notes"
     default:
-      return "posts";
+      return "posts"
   }
 }

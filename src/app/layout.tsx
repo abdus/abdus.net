@@ -4,12 +4,12 @@ import Footer from "@/components/footer";
 import { createAvatar } from "@dicebear/core";
 import { adventurerNeutral } from "@dicebear/collection";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
-import { Alegreya, Courier_Prime } from "next/font/google";
+import { Courier_Prime, Bitter } from "next/font/google";
 
 import "./globals.css";
 
 const mono = Courier_Prime({ subsets: ["latin"], weight: ["400"] });
-const font = Alegreya({ subsets: ["latin"], weight: ["400", "700"] });
+const font = Bitter({ subsets: ["latin"], weight: ["400", "700"] });
 
 const createFavIcon = (size: number) => {
   const icon = createAvatar(adventurerNeutral, {

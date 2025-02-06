@@ -24,7 +24,7 @@ const links = [
 const Header = () => {
   return (
     <Container className="max-w-4xl">
-      <nav className="flex items-center mx-auto mb-20 mt-8">
+      <nav className="flex items-center mx-auto my-8">
         <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight flex items-center">
           <Link href="/" className="hover:underline flex items-center gap-2">
             <span

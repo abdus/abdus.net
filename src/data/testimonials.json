@@ -1,0 +1,81 @@
+{
+  "testimonials": [
+    {
+      "recommendation": "Having been fortunate enough to have worked with Abdus in multiple projects in various capacities over the last 3 years, I can be sure to count on Abdus, whether I am leading a project or if I am working on a project he is leading. Abdus is highly motivated, knowledgeable and really takes the time to understand the requirements in order to suggest or implement the best solution. Its always a pleasure to work with Abdus!",
+      "summary": "A <strong>reliable teammate</strong> with <strong>3+ years</strong> of collaboration. <strong>Highly motivated</strong> and takes time to understand requirements deeply.",
+      "author": {
+        "name": "Matt Smith",
+        "avatar": "https://i.ibb.co/p2J2Rvm/1641074366394.jpg",
+        "organization": "Zero to Mastery",
+        "country": "United Kingdom",
+        "job_title": []
+      }
+    },
+    {
+      "recommendation": "Abdus is one of the most enthusiastic and proactive team member I've worked with. His expertise and teamwork are evident in all his projects. I'd highly recommend Abdus for his excellent professionalism and friendly affair with his colleagues.",
+      "summary": "<strong>Enthusiastic</strong> and <strong>proactive team member</strong>. Demonstrates <strong>excellent professionalism</strong> while maintaining friendly relationships.",
+      "author": {
+        "name": "Giftin Kallarkal",
+        "avatar": "https://i.ibb.co/m0Sk3VK/1642002439046.jpg",
+        "organization": "Level",
+        "country": "India",
+        "job_title": ["Content Associate"]
+      }
+    },
+    {
+      "recommendation": "Abdus is a geek and has a keen eye on details. He has shown an amazingly high execution speed on the tasks assigned. It surely will be an enriching experience to work with Abdus",
+      "summary": "A <strong>detail-oriented developer</strong> with <strong>high execution speed</strong>. Brings an <strong>enriching experience</strong> to the team.",
+      "author": {
+        "name": "Devyesh Tandon",
+        "avatar": "https://i.ibb.co/7nDZTzy/1517257133187.jpg",
+        "organization": "MailModo",
+        "country": "India",
+        "job_title": ["Co-founder"]
+      }
+    },
+    {
+      "recommendation": "I have known Abdus for about 2 years now as he has helped me manage a community of 80,000 programmers and engineers. I can always rely on Abdus to be professional, but more importantly his work ethic and always being available to help out with the community is what sets him apart. If you have an opportunity to work with Abdus, you are among the lucky ones. One of the most reliable people I know.",
+      "summary": "Managed a <strong>community of 80,000</strong> developers. Known for <strong>exceptional work ethic</strong> and being <strong>consistently reliable</strong>.",
+      "author": {
+        "name": "Andrei Neagoie",
+        "avatar": "https://i.ibb.co/FhCjRqX/1592479625043.jpg",
+        "organization": "Zero to Mastery",
+        "country": "Canada",
+        "job_title": ["Founder"]
+      }
+    },
+    {
+      "recommendation": "Abdus is a highly skilled professional in his field. I've seen him code continuously for 8+ hours to create a website for our firm. I've seen him make a website serverless in under 10 mins, and it was legit crazy as I have never seen someone code so quick without any complications in the code. Abdus is a guy with in-depth knowledge of the technologies he works on. If you need someone fast and efficient with in-depth knowledge of web technologies, Abdus is your guy.",
+      "summary": "<strong>Highly skilled professional</strong> with rapid execution. Can code <strong>8+ hours continuously</strong> and make a website <strong>serverless in 10 minutes</strong>.",
+      "author": {
+        "name": "Omkar Gunjal",
+        "avatar": "https://i.ibb.co/vVP98Wk/1623997285366.jpg",
+        "organization": "Level",
+        "country": "India",
+        "job_title": ["Outreach Specialist"]
+      }
+    },
+    {
+      "recommendation": "Abdus is one of the most sincere young software engineer we have worked with. Besides being good at understanding the problem, he goes deep in to looking for the solution himself. I am sure with his hard work and grit, he is going to succeed always in his life.",
+      "summary": "A <strong>sincere software engineer</strong> who dives deep into problems. Known for <strong>hard work</strong> and <strong>problem-solving abilities</strong>.",
+      "author": {
+        "name": "Aquibur Rahman",
+        "avatar": "https://i.ibb.co/F75dMgX/1556911493295.jpg",
+        "organization": "MailModo",
+        "country": "India",
+        "job_title": ["CEO"]
+      }
+    },
+    {
+      "recommendation": "After taking out some time and thinking about the good things and values Abdus adds to a table I came down to this side of his profile section:\n\nI like how you are very honest with what can be done and something that will take more time and research, you give an exact timeline and make sure to complete it.\n\nYou're a driven co-worker, sometimes looking at your work makes me want to code too. (but I never do)\n\nYou like to read and research more which also helps us learn new things.\n\nLastly, you're quite a gentleman, you take care of almost all of your co-workers like a family and especially make sure women around you feel confident and safe (important)\n\nMore good lucks to you 🌷",
+      "summary": "<strong>Honest and driven</strong> in work approach. Creates a <strong>safe and inclusive environment</strong> for teammates. Known for <strong>continuous learning</strong> and research.",
+      "author": {
+        "name": "Manisha Sharma",
+        "avatar": "https://i.ibb.co/p0PWcQT/1661961099652.jpg",
+        "organization": "Level",
+        "country": "India",
+        "job_title": ["Product Designer"]
+      }
+    }
+  ]
+}
