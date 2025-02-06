@@ -9,14 +9,11 @@ type Props = {
   tags: string[];
 };
 
-export function ContentListPage({ title, posts, tags }: Props) {
+export function ContentListPage({ posts, tags }: Props) {
   return (
     <main className="overflow-auto pb-20">
       <Header />
       <Container className="max-w-4xl">
-        <h1 className="text-2xl md:text-3xl tracking-tight mb-8 text-gray-900">
-          {title}
-        </h1>
         {posts.length > 0 && (
           <MoreStories
             tags={tags}

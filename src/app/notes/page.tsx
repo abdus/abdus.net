@@ -1,15 +1,6 @@
-import { getAllNotes, getAllNoteTags } from "@/lib/api";
-import { ContentListPage } from "@/components/content-list-page";
+import { redirect } from "next/navigation";
 
 export default function NotesPage() {
-  const notes = getAllNotes();
-  const tags = getAllNoteTags();
-
-  return (
-    <ContentListPage 
-      title="All Notes"
-      posts={notes}
-      tags={tags}
-    />
-  );
+  redirect('/posts')
+  return null
 }

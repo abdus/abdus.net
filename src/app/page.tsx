@@ -17,6 +17,7 @@ export default function Index() {
       <Container className="max-w-4xl">
         {allPosts.length > 0 && (
           <MoreStories
+            showAllPostsLink
             tags={allTags}
             posts={[...allPosts, ...allNotes].filter((post) => !post.draft)}
           />
