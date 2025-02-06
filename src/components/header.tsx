@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Container from "./container";
-import { BookOpenCheckIcon, CatIcon, HomeIcon, MailIcon, Menu, SquareKanbanIcon, X } from "lucide-react";
+import { BookOpenCheckIcon, FileDigitIcon, HomeIcon, MailIcon, Menu, SquareKanbanIcon, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { AvatarIcon } from "@radix-ui/react-icons";
@@ -20,7 +20,7 @@ const links: LinkItem[] = [
   { href: "/posts", jsx: "Blog", icon: BookOpenCheckIcon },
   { href: "/projects", jsx: "Projects", icon: SquareKanbanIcon },
   { href: "mailto:dev.abdus@gmail.com", jsx: "Email", icon: MailIcon },
-  { href: "/projects/snowbell", jsx: "Snowbell", icon: CatIcon },
+  { href: "/resume.pdf", jsx: "Download my Resume", icon: FileDigitIcon },
 ];
 
 const Header = () => {

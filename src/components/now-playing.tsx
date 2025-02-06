@@ -20,19 +20,32 @@ export default function NowPlaying(props: PropTypes) {
   const [data, setData] = useState<NowPlayingData | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const fetchNowPlaying = async () => {
-      try {
-        const response = await fetch('/api/now-playing');
-        const data = await response.json();
-        setData(data);
-        // Add a small delay before showing the component for a smoother effect
-        setTimeout(() => setIsVisible(data.isPlaying), 200);
-      } catch (error) {
-        console.error('Error fetching now playing:', error);
-      }
-    };
+  const fetchNowPlaying = async () => {
+    try {
+      const response = await fetch('/api/now-playing');
+      const data = await response.json();
+      setData(data);
+      // Add a small delay before showing the component for a smoother effect
+      setTimeout(() => setIsVisible(data.isPlaying), 200);
+    } catch (error) {
+      console.error('Error fetching now playing:', error);
+    }
+  };
 
+  useEffect(() => {
+    const listener = () => fetchNowPlaying()
+
+    window.addEventListener('focus', listener)
+    window.addEventListener('blur', listener)
+
+    return () => {
+      window.removeEventListener('focus', listener)
+      window.removeEventListener('blur', listener)
+    }
+  }, []);
+
+
+  useEffect(() => {
     fetchNowPlaying();
     const interval = setInterval(fetchNowPlaying, 30000);
 
@@ -44,10 +57,10 @@ export default function NowPlaying(props: PropTypes) {
   }
 
   return (
-    <a 
-      href={data.songUrl} 
-      target="_blank" 
-      rel="noopener noreferrer" 
+    <a
+      href={data.songUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn(
         'w-full md:max-w-xs p-4 rounded-xl bg-white shadow-lg border',
         'transition-all duration-500 ease-in-out transform',
