@@ -39,7 +39,7 @@ export function Testimonial({ recommendation, summary, author }: TestimonialProp
           </div>
 
           <div>
-            <div 
+            <div
               className="mb-4 text-lg font-medium text-gray-800"
               dangerouslySetInnerHTML={{ __html: formattedSummary }}
             />
