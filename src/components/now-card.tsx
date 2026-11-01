@@ -51,7 +51,15 @@ export function NowCard() {
         )}
       </div>
 
-      <NowPlaying variant="line" className="mt-2.5" />
+      <div className="mt-2.5 flex items-center justify-between gap-4">
+        <NowPlaying variant="line" className="min-w-0" />
+        <Link
+          href="/now"
+          className="relative z-10 ml-auto shrink-0 text-[13px] text-fg-3 transition-colors hover:text-tint"
+        >
+          More on what I&apos;m up to →
+        </Link>
+      </div>
     </section>
   );
 }

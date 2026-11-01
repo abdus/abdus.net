@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="440" viewBox="0 0 1600 440" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="440" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">How 15,017 messages got labelled</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">Machines for the bulk, a second machine to check, a human for the arguments</text>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8a8984"/></marker></defs>
+  <g>
+    <rect x="60" y="160" width="330" height="210" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <text x="90" y="235" font-size="60" font-weight="300" fill="#0b0b0b">15,017</text>
+    <text x="92" y="280" font-size="23" font-weight="600" fill="#0b0b0b">SMS off the phone</text>
+    <text x="92" y="315" font-size="20" fill="#52514e">Jan 2022 – Oct 2026</text>
+  </g>
+  <g>
+    <rect x="450" y="160" width="330" height="210" rx="24" fill="#e8f1fb"/>
+    <text x="480" y="235" font-size="60" font-weight="300" fill="#0b0b0b">33</text>
+    <text x="482" y="280" font-size="23" font-weight="600" fill="#0b0b0b">blind LLM labellers</text>
+    <text x="482" y="315" font-size="20" fill="#52514e">one written guideline,</text>
+    <text x="482" y="342" font-size="20" fill="#52514e">never saw the parser</text>
+  </g>
+  <g>
+    <rect x="840" y="160" width="330" height="210" rx="24" fill="#e6f6f0"/>
+    <text x="870" y="235" font-size="60" font-weight="300" fill="#0b0b0b">600<tspan font-size="36" fill="#52514e">/600</tspan></text>
+    <text x="872" y="280" font-size="23" font-weight="600" fill="#0b0b0b">second-pass agreement</text>
+    <text x="872" y="315" font-size="20" fill="#52514e">a stronger model, relabelled</text>
+    <text x="872" y="342" font-size="20" fill="#52514e">a random 4% from scratch</text>
+  </g>
+  <g>
+    <rect x="1230" y="160" width="330" height="210" rx="24" fill="#fdeee7"/>
+    <text x="1260" y="235" font-size="60" font-weight="300" fill="#0b0b0b">436</text>
+    <text x="1262" y="280" font-size="23" font-weight="600" fill="#0b0b0b">reviewed by hand</text>
+    <text x="1262" y="315" font-size="20" fill="#52514e">every label the parser</text>
+    <text x="1262" y="342" font-size="20" fill="#52514e">disagreed with</text>
+  </g>
+  <g stroke="#8a8984" stroke-width="3" marker-end="url(#a)">
+    <line x1="395" y1="265" x2="442" y2="265"/><line x1="785" y1="265" x2="832" y2="265"/><line x1="1175" y1="265" x2="1222" y2="265"/>
+  </g>
+</svg>

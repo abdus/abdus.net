@@ -35,9 +35,12 @@ function Bars() {
 export default function NowPlaying({
   className,
   variant = "pill",
+  fallback = null,
 }: {
   className?: string;
   variant?: "pill" | "line";
+  /** Shown when nothing is playing. */
+  fallback?: React.ReactNode;
 }) {
   const [data, setData] = useState<NowPlayingData | null>(null);
 
@@ -63,7 +66,7 @@ export default function NowPlaying({
     };
   }, []);
 
-  if (!data?.isPlaying) return null;
+  if (!data?.isPlaying) return <>{fallback}</>;
 
   // Inside the Now card the whole card leads to the current project;
   // only the song title links to Spotify (it sits above the card's stretched link).

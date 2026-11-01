@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SITE } from "@/lib/constants";
 
 const links = [
+  { href: "/now", label: "Now" },
   { href: SITE.github, label: "GitHub" },
   { href: SITE.linkedin, label: "LinkedIn" },
   { href: SITE.resume, label: "Résumé" },

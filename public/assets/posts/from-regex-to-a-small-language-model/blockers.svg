@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">What broke along the way</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">Six walls I hit training a language model on a laptop and a free GPU</text>
+  <g font-size="22">
+    <!-- card 1: memory -->
+    <rect x="60" y="150" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(95 185)" fill="none" stroke="#e34948" stroke-width="4" stroke-linecap="round">
+      <rect x="0" y="6" width="52" height="40" rx="6"/><line x1="12" y1="0" x2="12" y2="6"/><line x1="26" y1="0" x2="26" y2="6"/><line x1="40" y1="0" x2="40" y2="6"/>
+      <line x1="12" y1="46" x2="12" y2="52"/><line x1="26" y1="46" x2="26" y2="52"/><line x1="40" y1="46" x2="40" y2="52"/>
+    </g>
+    <text x="95" y="290" font-size="27" font-weight="700" fill="#0b0b0b">The Mac froze</text>
+    <text x="95" y="330" fill="#52514e">32 long prompts at once ate</text>
+    <text x="95" y="360" fill="#52514e">all 16 GB of memory.</text>
+    <text x="95" y="420" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> cap MLX memory, small batches,</text>
+    <text x="95" y="450" fill="#0b0b0b">train on Colab.</text>
+    <!-- card 2: bf16 -->
+    <rect x="565" y="150" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(600 185)" fill="none" stroke="#eb6834" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 0 L52 46 L0 46 Z"/><line x1="26" y1="16" x2="26" y2="30"/><circle cx="26" cy="38" r="1.5"/>
+    </g>
+    <text x="600" y="290" font-size="27" font-weight="700" fill="#0b0b0b">The T4 lies about bf16</text>
+    <text x="600" y="330" fill="#52514e">is_bf16_supported() says True;</text>
+    <text x="600" y="360" fill="#52514e">it only emulates it.</text>
+    <text x="600" y="420" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> check compute capability 8+,</text>
+    <text x="600" y="450" fill="#0b0b0b">use fp16 on a T4.</text>
+    <!-- card 3: colab freeze -->
+    <rect x="1070" y="150" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(1105 185)" fill="none" stroke="#2a78d6" stroke-width="4" stroke-linecap="round">
+      <circle cx="26" cy="26" r="24"/><line x1="26" y1="26" x2="26" y2="12"/><line x1="26" y1="26" x2="36" y2="32"/>
+    </g>
+    <text x="1105" y="290" font-size="27" font-weight="700" fill="#0b0b0b">Colab looks frozen</text>
+    <text x="1105" y="330" fill="#52514e">The progress bar stops while the</text>
+    <text x="1105" y="360" fill="#52514e">GPU keeps working at 100%.</text>
+    <text x="1105" y="420" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> trust nvidia-smi in the</text>
+    <text x="1105" y="450" fill="#0b0b0b">Colab terminal, not the UI.</text>
+    <!-- card 4: gpu quota -->
+    <rect x="60" y="520" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(95 555)" fill="none" stroke="#e34948" stroke-width="4" stroke-linecap="round">
+      <rect x="0" y="10" width="46" height="32" rx="6"/><line x1="50" y1="20" x2="50" y2="32"/><line x1="8" y1="26" x2="18" y2="26"/>
+    </g>
+    <text x="95" y="660" font-size="27" font-weight="700" fill="#0b0b0b">Free GPUs run out</text>
+    <text x="95" y="700" fill="#52514e">After ~3 hours of training in a day,</text>
+    <text x="95" y="730" fill="#52514e">Colab hands out no more T4s.</text>
+    <text x="95" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> moved to Modal: 7 minutes</text>
+    <text x="95" y="820" fill="#0b0b0b">on a B200 instead of 44 on a T4.</text>
+    <!-- card 5: unseen banks -->
+    <rect x="565" y="520" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(600 555)" fill="none" stroke="#eda100" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 18 L26 2 L52 18"/><line x1="6" y1="24" x2="6" y2="44"/><line x1="20" y1="24" x2="20" y2="44"/><line x1="34" y1="24" x2="34" y2="44"/><line x1="46" y1="24" x2="46" y2="44"/><line x1="0" y1="50" x2="52" y2="50"/>
+    </g>
+    <text x="600" y="660" font-size="27" font-weight="700" fill="#0b0b0b">Banks it never saw</text>
+    <text x="600" y="700" fill="#52514e">With no HDFC debits in training,</text>
+    <text x="600" y="730" fill="#52514e">the 0.5B misses HDFC debits.</text>
+    <text x="600" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> more banks in the data;</text>
+    <text x="600" y="820" fill="#0b0b0b">size alone helps a little.</text>
+    <!-- card 6: sender -->
+    <rect x="1070" y="520" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(1105 555)" fill="none" stroke="#1baf7a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="0" y="4" width="52" height="38" rx="8"/><path d="M10 42 L10 52 L22 42"/><line x1="12" y1="18" x2="40" y2="18"/><line x1="12" y1="28" x2="30" y2="28"/>
+    </g>
+    <text x="1105" y="660" font-size="27" font-weight="700" fill="#0b0b0b">The sender isn't text</text>
+    <text x="1105" y="700" fill="#52514e">JM-HSBCIN-S comes as SMS metadata;</text>
+    <text x="1105" y="730" fill="#52514e">a pasted message doesn't have it.</text>
+    <text x="1105" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> train with the sender missing</text>
+    <text x="1105" y="820" fill="#0b0b0b">a quarter of the time.</text>
+  </g>
+</svg>
