@@ -5,11 +5,16 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function GET() {
-  const response = await getNowPlaying();
+  // Spotify is a nicety: if it fails (e.g. a revoked token), say "not playing" rather than 500.
+  let response: Response;
+  try {
+    response = await getNowPlaying();
+  } catch (error) {
+    console.error("now-playing: Spotify unavailable:", (error as Error).message);
+    return NextResponse.json({ isPlaying: false });
+  }
 
   if (response.status === 204 || response.status > 400) {
-    const song = await response.text();
-    console.log(`song ========> `, song)
     return NextResponse.json({ isPlaying: false });
   }
 
