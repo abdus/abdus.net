@@ -32,6 +32,10 @@ export type Project = {
   status?: string;
   /** App icon, for the home page "Now" card. */
   icon?: string;
+  /** A real app screen (portrait), shown in a phone frame for current work. */
+  screen?: string;
+  /** Headline numbers for current work. */
+  stats?: { value: string; label: string }[];
   /** What I'm doing with it, in a few words, for the "Now" card. */
   nowLine?: string;
   /** A real glimpse of the thing: a screenshot or a terminal session. */
@@ -52,6 +56,12 @@ export const projects: Project[] = [
     current: true,
     status: "Public beta",
     icon: "/assets/projects/spends-icon.svg",
+    screen: "/assets/projects/spends-app.webp",
+    stats: [
+      { value: "0.75 s", label: "to read one SMS, on the phone" },
+      { value: "98.7%", label: "accurate, vs 95.3% for rules" },
+      { value: "352 MB", label: "on-device model, offline" },
+    ],
     nowLine: "an expense tracker that reads your bank SMS",
     media: {
       kind: "image",
