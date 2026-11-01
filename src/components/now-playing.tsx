@@ -65,14 +65,13 @@ export default function NowPlaying({
 
   if (!data?.isPlaying) return null;
 
+  // Inside the Now card the whole card leads to the current project;
+  // only the song title links to Spotify (it sits above the card's stretched link).
   if (variant === "line") {
     return (
-      <a
-        href={data.songUrl}
-        target="_blank"
-        rel="noopener noreferrer"
+      <p
         className={cn(
-          "relative z-10 flex min-w-0 items-center gap-3 text-[14px] animate-in fade-in duration-500",
+          "pointer-events-none flex min-w-0 items-center gap-3 text-[14px] animate-in fade-in duration-500",
           className
         )}
       >
@@ -81,10 +80,17 @@ export default function NowPlaying({
         </span>
         <span className="min-w-0 truncate text-fg-2">
           <span className="text-fg-3">Listening to </span>
-          <span className="text-fg transition-colors hover:text-tint">{data.title}</span>
+          <a
+            href={data.songUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto relative z-10 text-fg underline decoration-line/20 underline-offset-[3px] transition-colors hover:text-tint hover:decoration-tint/40"
+          >
+            {data.title}
+          </a>
           <span className="text-fg-3"> · {data.artist}</span>
         </span>
-      </a>
+      </p>
     );
   }
 
