@@ -1,244 +1,227 @@
 export type Project = {
-  title: string
-  description: string
-  link?: string
-  repo?: string
-  tags: string[]
-  isVisible?: boolean
-  deprecated?: boolean
-  featured?: boolean
-}
+  title: string;
+  /** Year the project started. */
+  year: number;
+  /** One line, in my words. */
+  description: string;
+  /** Main language or stack, shown as a quiet label. */
+  tech: string;
+  /** Live site, if it is still up. */
+  site?: string;
+  /** Public source. Leave out for private repos. */
+  source?: string;
+  /** Shown on the home page. */
+  featured?: boolean;
+  /** What I'm working on right now. */
+  current?: boolean;
+  /** Early learning projects, folded away at the bottom. */
+  early?: boolean;
+};
 
-export type Organization = {
-  name: string
-  projects: Project[]
-  isVisible?: boolean
-}
+const gh = (repo: string) => `https://github.com/abdus/${repo}`;
 
-export const organizations: Organization[] = [
+export const projects: Project[] = [
   {
-    name: "Developer Tools & Extensions",
-    isVisible: true,
-    projects: [
-      {
-        title: "MiniGrep",
-        featured: true,
-        description: "A small take on GNU grep, minus regular expressions. Written to learn Rust.",
-        repo: "https://github.com/abdus/minigrep",
-        tags: ["rust", "cargo"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "GoldenFalcon",
-        description: "GoldenFalcon is a Command-line application that can be used to send emails. Under the hood, it uses Nodemailer to deliver the emails.",
-        repo: "https://github.com/abdus/goldenfalcon",
-        tags: ["node.js", "cli"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "LinkClick",
-        description: "A chrome extension which will enable you to reach your favorite website quickly. This is the first project I built after learning HTML, CSS and JavaScript.",
-        repo: "https://github.com/abdus/linkclick",
-        tags: ["javascript", "chrome-extension"],
-        isVisible: true,
-        deprecated: true // Old project, not maintained
-      },
-      {
-        title: "InspiroTab",
-        description: "A Google Chrome extension to replace your default Google Chrome tab and greet you with a awesome wallpaper and a cool quote.",
-        repo: "https://github.com/abdus/InspiroTab",
-        tags: ["javascript", "chrome-extension"],
-        isVisible: true,
-        deprecated: true // Chrome manifest v2
-      }
-    ]
+    title: "Spends",
+    year: 2026,
+    description:
+      "An Android app that builds your spending history from bank and UPI messages. No bank login, no manual entry, no cloud.",
+    tech: "Flutter",
+    site: "https://spends.abdus.net",
+    featured: true,
+    current: true,
   },
   {
-    name: "Web Applications",
-    isVisible: true,
-    projects: [
-      {
-        title: "Snowbell",
-        featured: true,
-        description: "Talk to a fictional cat who answers only in lolcat. Built on the OpenAI API.",
-        link: "/projects/snowbell",
-        tags: ["next.js", "openai"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Lynx Bar",
-        featured: true,
-        description: "A searchable directory of well-made web apps, built with Next.js.",
-        link: "https://lynx.bar",
-        repo: "https://github.com/abdus/awesome-websites/",
-        tags: ["react", "javascript", "next.js"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "DogeGram",
-        description: "Love memes? I am sure you will love DogeGram too! DogeGram is like the 'Instagram for Memes'",
-        link: "https://github.com/abdus/doge-gram",
-        repo: "https://github.com/abdus/doge-gram",
-        tags: ["next.js", "javascript"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Photo Editor",
-        description: "Had fun with filter property of CSS. Supported operations are Blur, Brightness, Contrast etc. This can export the edited image.",
-        link: "https://abdus.github.io/photo-editor/",
-        repo: "https://github.com/abdus/photo-editor",
-        tags: ["html", "css", "javascript"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Gradient Generator",
-        description: "A web-app to generate CSS gradient. I built this to learn JavaScript and DOM manipulation.",
-        link: "https://abdus.github.io/background-gradient-generator/",
-        repo: "https://github.com/abdus/background-gradient-generator",
-        tags: ["javascript", "css"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Pixel Art Maker",
-        description: "This project is a part of Google-India Front-end Scholarship. User can create images by coloring small boxes.",
-        link: "https://abdus.github.io/pixel-art-maker/",
-        repo: "https://github.com/abdus/pixel-art-maker",
-        tags: ["html", "css", "javascript"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Issue Tracker",
-        description: "I intended to build a bug-tracker for software projects. Built using Node, EJS and MongoDB.",
-        repo: "https://github.com/abdus/issue-tracker",
-        tags: ["node", "mongodb", "ejs"],
-        isVisible: false // Incomplete project
-      }
-    ]
+    title: "Snowbell",
+    year: 2024,
+    description: "Talk to a fictional cat who answers only in lolcat.",
+    tech: "Next.js · OpenAI",
+    site: "/projects/snowbell",
+    featured: true,
   },
   {
-    name: "Mobile Applications",
-    isVisible: true,
-    projects: [
-      {
-        title: "Flixx",
-        description: "Flixx is an android app which allows user to browse through different movie genre. It fetches information from The Movie Database.",
-        link: "https://github.com/abdus/flixx/releases/tag/v0.0.1",
-        repo: "https://github.com/abdus/flixx",
-        tags: ["react-native", "javascript", "android"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Focus Time",
-        description: "A simple Android application to keep you focused. I built this in order to learn and get better at React Native.",
-        link: "https://github.com/abdus/focus-time",
-        repo: "https://github.com/abdus/focus-time",
-        tags: ["react-native", "javascript"],
-        isVisible: true,
-        deprecated: false
-      }
-    ]
+    title: "Harbor",
+    year: 2024,
+    description:
+      "An HTTP load balancer built from scratch on Rust's standard library, to learn how networking really works.",
+    tech: "Rust",
+    source: gh("harbor"),
+    featured: true,
   },
   {
-    name: "Libraries & Templates",
-    isVisible: true,
-    projects: [
-      {
-        title: "React DropDown",
-        description: "A React library to add DropDown menu in web-applications. It creates a drop-down component (that can be customized) based on a given Array of Values.",
-        repo: "https://github.com/abdus/react-dropdown",
-        tags: ["react", "npm-package"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Webpack TypeScript Starter",
-        description: "Starter template to easily set-up a new TypeScript project with Webpack. It has built-in support for CSS Modules.",
-        repo: "https://github.com/abdus/webpack-typescript-starter",
-        tags: ["typescript", "webpack"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Image Resizer",
-        description: "SpringBoot webapp that resizes a given image based on the scale factor. It is capable of resizing images from remote location.",
-        repo: "https://github.com/abdus/java-image-resizer",
-        tags: ["java", "springboot"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "React Chrome Extension",
-        description: "This template initializes a React project that can be deployed as a Chrome Extension.",
-        repo: "https://github.com/abdus/react-chrome-ext",
-        tags: ["react", "chrome", "javascript"],
-        isVisible: true,
-        deprecated: true // Chrome manifest v2
-      }
-    ]
+    title: "Rust Redis",
+    year: 2023,
+    description: "A small Redis-compatible server that speaks the RESP2 protocol.",
+    tech: "Rust",
+    source: gh("rust-redis"),
   },
   {
-    name: "Configuration & Scripts",
-    isVisible: true,
-    projects: [
-      {
-        title: "Nginx Pretty Index",
-        featured: true,
-        description: "A beautiful auto-index page for Nginx, made with nothing but XSLT, HTML and CSS.",
-        link: "https://public.abdus.net",
-        repo: "https://github.com/abdus/nginx-pretty-index",
-        tags: ["xslt", "nginx"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Dotfiles",
-        description: "Dotfiles are text-based config files for different software. I maintain my dots so that I don't have to start from scratch everytime I change/reinstall the OS.",
-        repo: "https://github.com/abdus/dotfiles",
-        tags: ["bash", "lua"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "Scripts",
-        description: "Bunch of small scripts that I wrote at past. These scripts help me automate a few repetitive tasks.",
-        repo: "https://github.com/abdus/scripts",
-        tags: ["bash"],
-        isVisible: true,
-        deprecated: false
-      },
-      {
-        title: "accueil.vim",
-        description: "Accueil is a French phrase for Home. This is my first Vim plug-in written in VimScript. It does not do much tho, just a few text formatting.",
-        repo: "https://github.com/abdus/accueil.vim",
-        tags: ["vimscript"],
-        isVisible: true,
-        deprecated: false
-      }
-    ]
+    title: "Lynx Bar",
+    year: 2022,
+    description: "A searchable directory of well-made web apps. The site is offline; the source is still up.",
+    tech: "Next.js",
+    source: gh("awesome-websites"),
+  },
+  {
+    title: "Nginx Pretty Index",
+    year: 2021,
+    description: "A beautiful auto-index page for Nginx, made with nothing but XSLT, HTML and CSS.",
+    tech: "XSLT",
+    source: gh("nginx-pretty-index"),
+    featured: true,
+  },
+  {
+    title: "MiniGrep",
+    year: 2021,
+    description: "A small take on GNU grep, minus regular expressions. Written to learn Rust.",
+    tech: "Rust",
+    source: gh("minigrep"),
+  },
+  {
+    title: "Image Resizer",
+    year: 2021,
+    description: "Resizes local or remote images on the fly by a scale factor.",
+    tech: "Java · Spring Boot",
+    source: gh("java-image-resizer"),
+  },
+  {
+    title: "DogeGram",
+    year: 2021,
+    description: "An Instagram look-alike, but for memes.",
+    tech: "Next.js",
+    source: gh("doge-gram"),
+  },
+  {
+    title: "Flixx",
+    year: 2021,
+    description: "An Android app for browsing films by genre, powered by The Movie Database.",
+    tech: "React Native",
+    source: gh("flixx"),
+  },
+  {
+    title: "Focus Time",
+    year: 2021,
+    description: "A tiny Android app that helps you stay on one task.",
+    tech: "React Native",
+    source: gh("focus-time"),
+  },
+  {
+    title: "Webpack TypeScript Starter",
+    year: 2021,
+    description: "A starting point for TypeScript projects, with Webpack and CSS Modules set up.",
+    tech: "TypeScript",
+    source: gh("webpack-typescript-starter"),
+  },
+  {
+    title: "Hugo Theme Fiber",
+    year: 2020,
+    description: "A minimal theme for Hugo blogs.",
+    tech: "Hugo",
+    source: gh("hugo-theme-fiber"),
+  },
+  {
+    title: "ctrl-v",
+    year: 2020,
+    description: "A no-login pastebin you can deploy yourself in a minute, built on Netlify Functions.",
+    tech: "Node.js",
+    site: "https://paste.abdus.net",
+    source: gh("ctrl-v"),
+  },
+  {
+    title: "accueil.vim",
+    year: 2020,
+    description: "My first Vim plugin, for a handful of text-formatting chores.",
+    tech: "Vimscript",
+    source: gh("accueil.vim"),
+  },
+  {
+    title: "Scripts",
+    year: 2020,
+    description: "Small scripts that automate the repetitive parts of my day.",
+    tech: "Bash",
+    source: gh("scripts"),
+  },
+  {
+    title: "React DropDown",
+    year: 2019,
+    description: "A customisable dropdown menu component for React.",
+    tech: "React",
+    source: gh("react-dropdown"),
+  },
+
+  // Where it started.
+  {
+    title: "React Chrome Extension",
+    year: 2020,
+    description: "A template for building Chrome extensions with React.",
+    tech: "React",
+    source: gh("react-chrome-ext"),
+    early: true,
+  },
+  {
+    title: "GoldenFalcon",
+    year: 2018,
+    description: "A command-line tool for sending email, built on Nodemailer.",
+    tech: "Node.js",
+    source: gh("goldenfalcon"),
+    early: true,
+  },
+  {
+    title: "Photo Editor",
+    year: 2018,
+    description: "Blur, brightness, contrast and more, using CSS filters, with export.",
+    tech: "JavaScript",
+    site: "https://abdus.github.io/photo-editor/",
+    source: gh("photo-editor"),
+    early: true,
+  },
+  {
+    title: "Gradient Generator",
+    year: 2018,
+    description: "Make CSS gradients. Built to learn the DOM.",
+    tech: "JavaScript",
+    site: "https://abdus.github.io/background-gradient-generator/",
+    source: gh("background-gradient-generator"),
+    early: true,
+  },
+  {
+    title: "Pixel Art Maker",
+    year: 2018,
+    description: "Draw by colouring a grid of squares. Part of the Google India front-end scholarship.",
+    tech: "JavaScript",
+    site: "https://abdus.github.io/pixel-art-maker/",
+    source: gh("pixel-art-maker"),
+    early: true,
+  },
+  {
+    title: "LinkClick",
+    year: 2018,
+    description: "A Chrome extension for reaching favourite sites quickly. The first thing I built after learning to code.",
+    tech: "JavaScript",
+    source: gh("linkclick"),
+    early: true,
+  },
+  {
+    title: "InspiroTab",
+    year: 2018,
+    description: "A new-tab page with a wallpaper and a quote.",
+    tech: "JavaScript",
+    source: gh("InspiroTab"),
+    early: true,
+  },
+];
+
+export const featuredProjects = () => projects.filter((p) => p.featured);
+export const currentProjects = () => projects.filter((p) => p.current);
+
+/** Everything that isn't current or early, grouped by year, newest first. */
+export function projectsByYear(): [number, Project[]][] {
+  const years = new Map<number, Project[]>();
+  for (const p of projects) {
+    if (p.current || p.early) continue;
+    years.set(p.year, [...(years.get(p.year) || []), p]);
   }
-]
-
-export function visibleOrganizations(): Organization[] {
-  return organizations
-    .filter((org) => org.isVisible !== false)
-    .map((org) => ({
-      ...org,
-      projects: org.projects.filter((p) => p.isVisible !== false),
-    }))
-    .filter((org) => org.projects.length > 0)
+  return [...years.entries()].sort((a, b) => b[0] - a[0]);
 }
 
-export function featuredProjects(): Project[] {
-  return visibleOrganizations()
-    .flatMap((org) => org.projects)
-    .filter((p) => p.featured)
-}
+export const earlyProjects = () => projects.filter((p) => p.early);
