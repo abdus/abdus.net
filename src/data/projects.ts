@@ -1,7 +1,7 @@
 export type TerminalLine = { text: string; prompt?: boolean; dim?: boolean };
 
 export type Media =
-  | { kind: "image"; src: string; alt: string; label: string }
+  | { kind: "image"; src: string; alt: string; label: string; aspect?: "16/10" | "16/9" }
   | { kind: "terminal"; title: string; lines: TerminalLine[]; caption?: string };
 
 export type Project = {
@@ -14,6 +14,8 @@ export type Project = {
   tech: string;
   /** Live site, if it is still up. */
   site?: string;
+  /** Label for the site link. Defaults to "Website". */
+  siteLabel?: string;
   /** Public source. Leave out for private repos. */
   source?: string;
   /** Shown on the home page. */
@@ -57,6 +59,23 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Redline",
+    year: 2026,
+    description:
+      "A driving game in the browser: ten real bikes and cars with their real specs, open roads, two circuits, day to night and rain. Turn on Ride together to drive with friends.",
+    tech: "Three.js · cannon.js · WebSockets",
+    site: "https://redline.abdus.net",
+    siteLabel: "Play",
+    featured: true,
+    media: {
+      kind: "image",
+      src: "/assets/projects/redline.webp",
+      alt: "Redline's garage screen: an orange Porsche 911 GT3 on the circuit, with its specs and a Ride button",
+      label: "redline.abdus.net",
+      aspect: "16/9",
+    },
+  },
+  {
     title: "Snowbell",
     year: 2024,
     description: "A fictional cat you could chat with, who only ever answered in lolcat.",
@@ -91,7 +110,6 @@ export const projects: Project[] = [
     description: "A small Redis-compatible server that speaks the RESP2 protocol.",
     tech: "Rust",
     source: gh("rust-redis"),
-    featured: true,
     media: {
       kind: "terminal",
       title: "redis-cli",

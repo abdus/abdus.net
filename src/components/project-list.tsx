@@ -19,7 +19,7 @@ const starsFor = (p: Project, stars?: Stars) =>
 function Meta({ project, stars }: { project: Project; stars?: Stars }) {
   const count = starsFor(project, stars);
   const links = [
-    !project.retired && project.site && { href: project.site, label: "Website" },
+    !project.retired && project.site && { href: project.site, label: project.siteLabel || "Website" },
     project.source && { href: project.source, label: "Source" },
   ].filter(Boolean) as { href: string; label: string }[];
 

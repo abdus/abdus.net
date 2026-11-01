@@ -27,7 +27,7 @@ export function ProjectMedia({ media }: { media: Media }) {
           src={media.src}
           alt={media.alt}
           loading="lazy"
-          className="aspect-[16/10] w-full object-cover object-top transition-transform duration-700 ease-out group-hover/card:scale-[1.015]"
+          className={`${media.aspect === "16/9" ? "aspect-[16/9]" : "aspect-[16/10]"} w-full object-cover object-top transition-transform duration-700 ease-out group-hover/card:scale-[1.015]`}
         />
       </figure>
     );
