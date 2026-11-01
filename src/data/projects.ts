@@ -94,6 +94,37 @@ export const projects: Project[] = [
     },
   },
   {
+    title: "Redline",
+    year: 2026,
+    description:
+      "A driving game in the browser: ten real bikes and cars with their real specs, open roads, two circuits, day to night and rain. Turn on Ride together to drive with friends.",
+    tech: "Three.js · cannon.js · WebSockets",
+    site: "https://redline.abdus.net",
+    siteLabel: "Play",
+    featured: true,
+    media: {
+      kind: "image",
+      src: "/assets/projects/redline.webp",
+      alt: "Redline's garage screen: an orange Porsche 911 GT3 on the circuit, with its specs and a Ride button",
+      label: "redline.abdus.net",
+      aspect: "16/9",
+    },
+  },
+  {
+    title: "IPO Analyser",
+    year: 2026,
+    description:
+      "A research dashboard for Indian IPOs. It tracks the grey-market premium from several sources, demand from each kind of investor, and how the market is moving, then explains exactly how each one adds up to a 0–100 listing signal.",
+    tech: "Python · FastAPI · SQLite",
+    badge: "Private",
+    media: {
+      kind: "image",
+      src: "/assets/projects/ipo-analyser.webp",
+      alt: "IPO Analyser: market context for Nifty and Sensex, then a table of open IPOs with their signal score, price and premium, momentum, implied listing price and investor demand",
+      aspect: "16/9",
+    },
+  },
+  {
     title: "memsys",
     year: 2026,
     description:
@@ -126,37 +157,6 @@ export const projects: Project[] = [
       kind: "image",
       src: "/assets/projects/folio.webp",
       alt: "folio rendering a Markdown document with a note, a checklist and a table, and an outline of the page on the right",
-      aspect: "16/9",
-    },
-  },
-  {
-    title: "IPO Analyser",
-    year: 2026,
-    description:
-      "A research dashboard for Indian IPOs. It tracks the grey-market premium from several sources, demand from each kind of investor, and how the market is moving, then explains exactly how each one adds up to a 0–100 listing signal.",
-    tech: "Python · FastAPI · SQLite",
-    badge: "Private",
-    media: {
-      kind: "image",
-      src: "/assets/projects/ipo-analyser.webp",
-      alt: "IPO Analyser: market context for Nifty and Sensex, then a table of open IPOs with their signal score, price and premium, momentum, implied listing price and investor demand",
-      aspect: "16/9",
-    },
-  },
-  {
-    title: "Redline",
-    year: 2026,
-    description:
-      "A driving game in the browser: ten real bikes and cars with their real specs, open roads, two circuits, day to night and rain. Turn on Ride together to drive with friends.",
-    tech: "Three.js · cannon.js · WebSockets",
-    site: "https://redline.abdus.net",
-    siteLabel: "Play",
-    featured: true,
-    media: {
-      kind: "image",
-      src: "/assets/projects/redline.webp",
-      alt: "Redline's garage screen: an orange Porsche 911 GT3 on the circuit, with its specs and a Ride button",
-      label: "redline.abdus.net",
       aspect: "16/9",
     },
   },
@@ -289,12 +289,6 @@ export const projects: Project[] = [
     description: "A minimal theme for Hugo blogs.",
     tech: "Hugo",
     source: gh("hugo-theme-fiber"),
-    media: {
-      kind: "image",
-      src: "/assets/projects/hugo-theme-fiber.webp",
-      alt: "A blog home page using Hugo Theme Fiber, listing posts with dates and excerpts",
-      label: "Hugo Theme Fiber",
-    },
   },
   {
     title: "ctrl-v",
