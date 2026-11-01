@@ -26,6 +26,10 @@ export type Project = {
   retired?: boolean;
   /** Short status for current work, e.g. "Public beta". */
   status?: string;
+  /** App icon, for the home page "Now" card. */
+  icon?: string;
+  /** What I'm doing with it, in a few words, for the "Now" card. */
+  nowLine?: string;
   /** A real glimpse of the thing: a screenshot or a terminal session. */
   media?: Media;
 };
@@ -43,6 +47,8 @@ export const projects: Project[] = [
     featured: true,
     current: true,
     status: "Public beta",
+    icon: "/assets/projects/spends-icon.svg",
+    nowLine: "an expense tracker that reads your bank SMS",
     media: {
       kind: "image",
       src: "/assets/projects/spends.webp",

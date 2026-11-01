@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/container";
-import NowPlaying from "@/components/now-playing";
+import { NowCard } from "@/components/now-card";
 import { Avatar } from "@/components/avatar";
 import { PostList } from "@/components/post-list";
 import { ProjectIndex } from "@/components/project-list";
@@ -28,7 +28,7 @@ export default function Home() {
     <main>
       <Container>
         {/* A hello, in my own words. */}
-        <section className="pb-20 pt-16 sm:pb-24 sm:pt-28">
+        <section className="pb-12 pt-16 sm:pb-14 sm:pt-28">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/me.webp"
@@ -72,10 +72,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-8 empty:hidden">
-            <NowPlaying />
-          </div>
         </section>
+
+        <div className="mb-20 sm:mb-24">
+          <NowCard />
+        </div>
 
         <div className="space-y-24 sm:space-y-28">
           <Reveal as="section">

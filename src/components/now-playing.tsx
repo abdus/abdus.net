@@ -12,11 +12,33 @@ interface NowPlayingData {
   title: string;
 }
 
+/** Equaliser bars: the "something is playing" signal. */
+function Bars() {
+  return (
+    <span className="flex h-3 items-end gap-[2px]" aria-hidden>
+      {[0, 0.2, 0.4].map((delay) => (
+        <span
+          key={delay}
+          className="h-full w-[2px] origin-bottom animate-eq-bar rounded-full bg-tint"
+          style={{ animationDelay: `${delay}s` }}
+        />
+      ))}
+    </span>
+  );
+}
+
 /**
- * A quiet pill that appears only while something is playing on Spotify.
+ * Appears only while something is playing on Spotify.
  * Refreshes every 30s and when the tab regains focus.
+ * `pill` stands alone; `line` sits inside the home page "Now" card.
  */
-export default function NowPlaying({ className }: { className?: string }) {
+export default function NowPlaying({
+  className,
+  variant = "pill",
+}: {
+  className?: string;
+  variant?: "pill" | "line";
+}) {
   const [data, setData] = useState<NowPlayingData | null>(null);
 
   useEffect(() => {
@@ -43,6 +65,29 @@ export default function NowPlaying({ className }: { className?: string }) {
 
   if (!data?.isPlaying) return null;
 
+  if (variant === "line") {
+    return (
+      <a
+        href={data.songUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          "relative z-10 flex min-w-0 items-center gap-3 text-[14px] animate-in fade-in duration-500",
+          className
+        )}
+      >
+        <span className="grid w-8 shrink-0 place-items-center">
+          <Bars />
+        </span>
+        <span className="min-w-0 truncate text-fg-2">
+          <span className="text-fg-3">Listening to </span>
+          <span className="text-fg transition-colors hover:text-tint">{data.title}</span>
+          <span className="text-fg-3"> · {data.artist}</span>
+        </span>
+      </a>
+    );
+  }
+
   return (
     <a
       href={data.songUrl}
@@ -62,15 +107,7 @@ export default function NowPlaying({ className }: { className?: string }) {
         height={28}
         className="size-7 shrink-0 rounded-full object-cover"
       />
-      <span className="flex h-3 items-end gap-[2px]" aria-hidden>
-        {[0, 0.2, 0.4].map((delay) => (
-          <span
-            key={delay}
-            className="h-full w-[2px] origin-bottom animate-eq-bar rounded-full bg-tint"
-            style={{ animationDelay: `${delay}s` }}
-          />
-        ))}
-      </span>
+      <Bars />
       <span className="min-w-0 truncate text-fg-2">
         <span className="sr-only">Now playing: </span>
         <span className="text-fg">{data.title}</span>
