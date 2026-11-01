@@ -187,7 +187,21 @@ message the way the model sees it, in pieces. It's online at
 </picture>
 
 
-### Making It Phone-Sized
+### Running It on the Phone
+
+Bank SMS are about as private as data gets, so the model had to run on the phone: no server, no
+API, nothing leaves the device. That set the budget: a download people will accept, about a second
+per message, and a phone's CPU.
+
+1. **Size over the last tenth of a point.** The 1.5B is 0.1 points better and almost three times the
+   download. The 0.5B won.
+2. **The right 4-bit.** Quantized to 4 bits, the 0.5B is 352 MB and scores the same as at 16-bit.
+   Q4_K_M is the usual choice, but Q4_0 is the format llama.cpp repacks for ARM: about 4× faster at
+   reading the prompt.
+3. **llama.cpp inside the app,** through a small native bridge, built for the CPU features phones
+   actually have. A build that used one they don't crashed with "illegal instruction".
+4. **Downloaded, not bundled.** The app grows by 6.7 MB; the model arrives later, over the air,
+   resumable and checksummed.
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/size-vs-accuracy-m.svg">
