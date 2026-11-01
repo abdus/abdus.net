@@ -91,7 +91,7 @@ export default function NowPlaying({
           >
             {data.title}
           </a>
-          <span className="text-fg-3"> · {data.artist}</span>
+          {data.artist && <span className="text-fg-3"> · {data.artist}</span>}
         </span>
       </p>
     );
@@ -108,19 +108,23 @@ export default function NowPlaying({
         className
       )}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={data.albumImageUrl}
-        alt=""
-        width={28}
-        height={28}
-        className="size-7 shrink-0 rounded-full object-cover"
-      />
+      {data.albumImageUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={data.albumImageUrl}
+          alt=""
+          width={28}
+          height={28}
+          className="size-7 shrink-0 rounded-full object-cover"
+        />
+      ) : (
+        <span className="size-7 shrink-0 rounded-full bg-fg/[0.08]" aria-hidden />
+      )}
       <Bars />
       <span className="min-w-0 truncate text-fg-2">
         <span className="sr-only">Now playing: </span>
         <span className="text-fg">{data.title}</span>
-        <span className="text-fg-3"> · {data.artist}</span>
+        {data.artist && <span className="text-fg-3"> · {data.artist}</span>}
       </span>
     </a>
   );

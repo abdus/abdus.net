@@ -20,25 +20,27 @@ export async function GET() {
 
   const song = await response.json();
 
-  if (song.item === null) {
+  if (!song?.item) {
     return NextResponse.json({ isPlaying: false });
   }
 
-  const isPlaying = song.is_playing;
-  const title = song.item.name;
+  // Tracks, episodes and local files differ: read every field defensively.
+  const item = song.item ?? {};
+  const isPlaying = Boolean(song.is_playing);
+  const title = item.name ?? "";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const artist = song.item.artists.map((_artist: any) => _artist.name).join(', ');
-  const album = song.item.album.name;
-  const albumImageUrl = song.item.album.images[0].url;
-  const songUrl = song.item.external_urls.spotify;
+  const artist = (item.artists ?? []).map((a: any) => a.name).join(", ") || item.show?.name || "";
+  const album = item.album?.name ?? item.show?.name ?? "";
+  const albumImageUrl = item.album?.images?.[0]?.url ?? item.images?.[0]?.url ?? "";
+  const songUrl = item.external_urls?.spotify ?? "";
 
   // Additional data
-  const duration = song.item.duration_ms;
+  const duration = item.duration_ms;
   const progress = song.progress_ms;
-  const previewUrl = song.item.preview_url;
-  const explicit = song.item.explicit;
-  const trackNumber = song.item.track_number;
-  const releaseDate = song.item.album.release_date;
+  const previewUrl = item.preview_url;
+  const explicit = item.explicit;
+  const trackNumber = item.track_number;
+  const releaseDate = item.album?.release_date;
 
   return NextResponse.json({
     album,
