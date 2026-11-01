@@ -31,8 +31,9 @@ export function NowCard() {
         )}
 
         <p className="pointer-events-none min-w-0 flex-1 text-[15px] leading-snug text-fg-2">
-          <span className="mr-1.5 inline-flex items-center gap-1.5 align-[1px] text-[13px] font-medium text-tint">
-            <span className="relative flex size-1.5" aria-hidden>
+          {/* Plain inline text, so "Now" shares the sentence's baseline; the dot is centred on its x-height. */}
+          <span className="mr-1.5 whitespace-nowrap text-[13px] font-medium text-tint">
+            <span className="relative mr-1.5 inline-flex size-1.5 -translate-y-[1.5px] align-middle" aria-hidden>
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-tint/60 [animation-duration:2.4s]" />
               <span className="relative inline-flex size-1.5 rounded-full bg-tint" />
             </span>
