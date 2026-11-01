@@ -42,7 +42,7 @@ export const projects: Project[] = [
     current: true,
     media: {
       kind: "image",
-      src: "/assets/projects/spends.jpg",
+      src: "/assets/projects/spends.webp",
       alt: "The Spends website, showing the app's monthly spending screen",
       label: "spends.abdus.net",
     },
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     featured: true,
     media: {
       kind: "image",
-      src: "/assets/projects/nginx-pretty-index.jpg",
+      src: "/assets/projects/nginx-pretty-index.webp",
       alt: "A directory listing styled by Nginx Pretty Index, with a search box and a game-world wallpaper",
       label: "Nginx autoindex",
     },
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     source: gh("hugo-theme-fiber"),
     media: {
       kind: "image",
-      src: "/assets/projects/hugo-theme-fiber.jpg",
+      src: "/assets/projects/hugo-theme-fiber.webp",
       alt: "A blog home page using Hugo Theme Fiber, listing posts with dates and excerpts",
       label: "Hugo Theme Fiber",
     },

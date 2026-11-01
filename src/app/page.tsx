@@ -31,7 +31,7 @@ export default function Home() {
         <section className="pb-20 pt-16 sm:pb-24 sm:pt-28">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/me.jpg"
+            src="/assets/me.webp"
             alt="Abdus Azad"
             width={88}
             height={88}
