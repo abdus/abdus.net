@@ -1,7 +1,6 @@
 "use client";
 
 import Container from "@/components/container";
-import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -28,16 +27,16 @@ Please let me know if there’s anything else you need.`;
 
 export default function JobHunt() {
   return (
-    <div className="overflow-auto h-full pb-32">
-      <Header />
-
-      <Container className="max-w-4xl">
-        <header className="mb-4 border-b pb-2">
-          <h2 className="text-2xl">Software Engineer</h2>
-          <h3 className="text-lg">FE/BE/Full Stack</h3>
+    <div>
+      <Container size="text">
+        <header className="pb-12 pt-16 sm:pt-24">
+          <p className="eyebrow mb-3">FE / BE / Full stack</p>
+          <h1 className="font-display text-[40px] font-semibold leading-[1.05] tracking-tightest text-fg sm:text-[56px]">
+            Software Engineer
+          </h1>
         </header>
 
-        <div className="prose max-w-4xl text-[1.1em]">
+        <div className="prose prose-site max-w-none text-[17px]">
           <p>
             I bring extensive experience with <strong>JavaScript</strong> and
             its frameworks, proficiency in <strong>AWS</strong>, and{" "}
@@ -94,7 +93,7 @@ export default function JobHunt() {
             positions that you think I would be a good fit for, please refer me.
           </p>
 
-          <div className="max-w-[80ch] p-4 md:p-8 border border-dashed bg-accent rounded-lg">
+          <div className="max-w-[80ch] rounded-3xl bg-surface p-6 md:p-8">
             {EMAIL_CONTENT.split("\n").map((line, i) => (
               <p key={i}>{line}</p>
             ))}
@@ -172,7 +171,7 @@ export default function JobHunt() {
           <object
             data="/resume.pdf"
             type="application/pdf"
-            className="w-full aspect-[1/1.4]"
+            className="aspect-[1/1.4] w-full rounded-2xl ring-1 ring-line/10"
           >
             <p className="p-4 rounded-md bg-accent">
               This browser does not support PDFs. Please download the PDF to
@@ -212,7 +211,7 @@ function ContactInfoItem({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <Icon className="size-4 text-red-500" /> <a href={href}>{text}</a>
+      <Icon className="size-4 text-fg-3" /> <a href={href}>{text}</a>
     </div>
   );
 }

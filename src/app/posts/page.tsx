@@ -1,16 +1,21 @@
-import { getAllNotes, getAllPosts, getAllTags } from "@/lib/api";
+import { Metadata } from "next";
+import { getAllWriting, getWritingTags } from "@/lib/api";
 import { ContentListPage } from "@/components/content-list-page";
 
+export const metadata: Metadata = {
+  title: "Writing",
+  description: "Posts and notes on software, tools and the web.",
+};
+
 export default function PostsPage() {
-  const posts = getAllPosts();
-  const notes = getAllNotes();
-  const tags = getAllTags();
+  const posts = getAllWriting();
 
   return (
-    <ContentListPage 
-      title="All Posts"
-      posts={[...posts, ...notes]}
-      tags={tags}
+    <ContentListPage
+      title="Writing"
+      lede={`${posts.length} posts and notes on software, tools, and the occasional detour.`}
+      posts={posts}
+      tags={getWritingTags()}
     />
   );
 }

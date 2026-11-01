@@ -99,3 +99,32 @@ export function getAllPages(): Post[] {
     .filter((page) => !!page);
   return pages;
 }
+
+/** Everything published (posts + notes), newest first. */
+export function getAllWriting(): Post[] {
+  return [...getAllPosts(), ...getAllNotes()]
+    .filter((post) => !post.draft)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+/** Unique tags across published writing, most used first. */
+export function getWritingTags(): { tag: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const post of getAllWriting()) {
+    for (const tag of post.tags || []) {
+      counts.set(tag, (counts.get(tag) || 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+}
+
+export function readingTime(markdown: string): number {
+  const words = markdown.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 230));
+}
+
+export function hrefFor(post: Pick<Post, "slug" | "archetype">): string {
+  return post.archetype === "note" ? `/notes/${post.slug}` : `/posts/${post.slug}`;
+}

@@ -1,13 +1,7 @@
-"use client";
-
-import hljs from "highlight.js";
-import { useEffect } from "react";
-import "highlight.js/styles/androidstudio.css";
+// Code is highlighted at build time (see lib/markdownToHtml.ts);
+// this component only brings in the theme.
+import "highlight.js/styles/github-dark.css";
 
 export function SyntaxHighlight() {
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
-
-  return <></>;
+  return null;
 }

@@ -1,29 +1,29 @@
 import Link from "next/link";
-import Header from "@/components/header";
-import { CatIcon } from "lucide-react";
+import Container from "@/components/container";
+import { ArrowRight } from "@/components/icons";
 
 export default function NotFound() {
   return (
-    <>
-      <Header />
-      <div className="text-center h-full max-h-[60%] flex flex-col items-center justify-center">
-        <h1 className="mb-4 text-6xl font-semibold text-red-500">404</h1>
-        <p className="mb-4 text-lg text-gray-600">
-          Oops! Looks like you&apos;re lost.
+    <main className="flex grow items-center">
+      <Container className="py-32 text-center">
+        <p className="font-display text-[96px] font-extralight leading-none tracking-tightest text-fg-3 sm:text-[140px]">
+          404
         </p>
-
-        <div className="animate-bounce text-red-500 mt-8">
-          <CatIcon size={35} />
-        </div>
-
-        <p className="mt-4 text-gray-600">
-          let&apos;s get you back{" "}
-          <Link href="/" className="text-blue-500">
-            home
+        <h1 className="mt-6 font-display text-[28px] font-semibold tracking-tight text-fg">
+          This page wandered off.
+        </h1>
+        <p className="mt-3 text-[17px] text-fg-2">
+          It may have moved, or it never existed.
+        </p>
+        <div className="mt-10 flex justify-center gap-6">
+          <Link href="/" className="link-arrow">
+            Home <ArrowRight />
           </Link>
-          .
-        </p>
-      </div>
-    </>
+          <Link href="/posts" className="link-arrow">
+            Writing <ArrowRight />
+          </Link>
+        </div>
+      </Container>
+    </main>
   );
 }

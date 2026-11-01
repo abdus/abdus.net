@@ -1,5 +1,5 @@
 /**
- * Freya is the name of a Fictional Cat. She talks to people in lolcat
+ * Snowbell is a fictional cat. She talks to people in lolcat
  * language. She is silly and fun.
  */
 
@@ -10,6 +10,10 @@ export const metadata = {
   description: "Talk to Snowbell",
 };
 
-export default async function TalkToFreya() {
-  return <div className="h-full overflow-hidden flex"><ChatWithCat /></div>;
+export default async function TalkToSnowbell() {
+  return (
+    <div className="flex h-[calc(100svh-3.5rem)] overflow-hidden">
+      <ChatWithCat />
+    </div>
+  );
 }

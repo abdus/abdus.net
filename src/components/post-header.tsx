@@ -1,23 +1,34 @@
-//import Avatar from "./avatar";
-//import CoverImage from "./cover-image";
 import DateFormatter from "./date-formatter";
-import { PostTitle } from "@/components/post-title";
-//import { type Author } from "@/interfaces/author";
 
 type Props = {
   title: string;
-  date: string;
+  date?: string;
+  minutes?: number;
+  kind?: string;
 };
 
-export function PostHeader({ title, date }: Props) {
+export function PostHeader({ title, date, minutes, kind }: Props) {
+  const meta = [
+    kind,
+    date && <DateFormatter key="d" dateString={date} />,
+    minutes && `${minutes} min read`,
+  ].filter(Boolean);
+
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      {date && (
-        <div className="text-gray-500 mb-8">
-          <DateFormatter dateString={date} />
-        </div>
+    <header className="animate-fade-up pb-12 pt-16 sm:pb-16 sm:pt-24">
+      {meta.length > 0 && (
+        <p className="eyebrow mb-4 flex flex-wrap items-center gap-x-2">
+          {meta.map((m, i) => (
+            <span key={i} className="flex items-center gap-x-2">
+              {i > 0 && <span aria-hidden>·</span>}
+              {m}
+            </span>
+          ))}
+        </p>
       )}
-    </>
+      <h1 className="font-display text-[36px] font-semibold leading-[1.08] tracking-tightest text-fg sm:text-[52px]">
+        {title}
+      </h1>
+    </header>
   );
 }

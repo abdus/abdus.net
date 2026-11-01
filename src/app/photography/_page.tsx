@@ -3,7 +3,6 @@
 import { photos } from "@/data/photos";
 import { PhotoAlbum } from "@/components/photo-album";
 import Container from "@/components/container";
-import Header from "@/components/header";
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +21,6 @@ export default function PhotographyPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      <Header />
       
       {/* Hero Section */}
       <div className="relative h-[40vh] bg-black/90 flex items-center justify-center">

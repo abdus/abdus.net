@@ -1,134 +1,68 @@
 "use client";
 
 import Link from "next/link";
-import Container from "./container";
-import { BookOpenCheckIcon, FileDigitIcon, HomeIcon, MailIcon, Menu, SquareKanbanIcon, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { AvatarIcon } from "@radix-ui/react-icons";
-import NowPlaying from "./now-playing";
 
-interface LinkItem {
-  href: string;
-  jsx: string | JSX.Element;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon: React.ComponentType<any>;
-}
-
-const links: LinkItem[] = [
-  { href: "/about", jsx: "About", icon: AvatarIcon },
-  { href: "/posts", jsx: "Blog", icon: BookOpenCheckIcon },
-  { href: "/projects", jsx: "Projects", icon: SquareKanbanIcon },
-  { href: "mailto:dev.abdus@gmail.com", jsx: "Email", icon: MailIcon },
-  { href: "/resume.pdf", jsx: "Download my Resume", icon: FileDigitIcon },
+const links = [
+  { href: "/posts", label: "Writing", match: ["/posts", "/notes", "/tags"] },
+  { href: "/projects", label: "Projects", match: ["/projects"] },
+  { href: "/about", label: "About", match: ["/about", "/testimonials"] },
 ];
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Header() {
+  const pathname = usePathname() || "/";
+  const [scrolled, setScrolled] = useState(false);
 
-  // Prevent scroll when menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMenuOpen]);
+    const onScroll = () => setScrolled(window.scrollY > 4);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <>
-      <Container className="max-w-4xl">
-        <nav className="flex items-center mx-auto my-8">
-          <h2 className="text-2xl font-medium">
-            <Link href="/">
-              <span className="font-bold">Abdus</span>
-            </Link>
-            .
-          </h2>
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300",
+        "border-b",
+        scrolled
+          ? "border-line/10 bg-bg/70 backdrop-blur-xl backdrop-saturate-150"
+          : "border-transparent bg-bg/0"
+      )}
+    >
+      <nav className="mx-auto flex h-14 w-full max-w-[60rem] items-center px-6">
+        <Link
+          href="/"
+          className="font-display text-[17px] font-semibold tracking-tight text-fg"
+          aria-label="Abdus Azad, home"
+        >
+          Abdus
+        </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 ml-auto z-50 relative"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
-
-          {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center ml-auto gap-4">
-            {links.map(({ href, jsx }) => (
+        <ul className="ml-auto flex items-center gap-1 sm:gap-2">
+          {links.map(({ href, label, match }) => {
+            const active = match.some((m) => pathname.startsWith(m));
+            return (
               <li key={href}>
                 <Link
                   href={href}
-                  className="hover:text-blue-600 transition-colors"
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "rounded-full px-3 py-1.5 text-[14px] transition-colors",
+                    active
+                      ? "bg-fg/[0.06] text-fg"
+                      : "text-fg-2 hover:text-fg"
+                  )}
                 >
-                  {jsx}
+                  {label}
                 </Link>
               </li>
-            ))}
-          </ul>
-        </nav>
-      </Container>
-
-      {/* Mobile Navigation Overlay */}
-      <div
-        className={cn(
-          "fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300",
-          isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        )}
-        onClick={() => setIsMenuOpen(false)}
-      />
-
-      {/* Mobile Navigation Menu */}
-      <div
-        className={cn(
-          "fixed inset-x-0 bottom-0 z-40 text-gray-600 bg-white rounded-t-xl shadow-[0_-8px_30px_rgb(0,0,0,0.12)]",
-          "transform transition-transform duration-300 ease-in-out md:hidden",
-          "overflow-y-auto max-h-[70vh]",
-          isMenuOpen ? "translate-y-0" : "translate-y-full"
-        )}
-      >
-        <nav className="h-full py-8 px-6">
-          <div className="flex flex-col gap-4">
-              <Link
-                href="/"
-                className="hover:text-blue-600 transition-colors flex gap-2 items-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <HomeIcon className="size-4 text-blue-600" />
-                Home
-              </Link>
-
-            {links.map(({ href, jsx, icon: IconComponent }) => (
-              <Link
-                key={href}
-                href={href}
-                className="hover:text-blue-600 transition-colors flex gap-2 items-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <IconComponent className="size-4 text-blue-600" />
-                {typeof jsx === "string" ? jsx : (
-                  <div className="flex items-center gap-2">
-                    {jsx}
-                  </div>
-                )}
-              </Link>
-            ))}
-
-            <NowPlaying />
-          </div>
-        </nav>
-      </div>
-    </>
+            );
+          })}
+        </ul>
+      </nav>
+    </header>
   );
-};
-
-export default Header;
+}

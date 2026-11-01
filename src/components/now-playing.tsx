@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface NowPlayingData {
   album: string;
@@ -12,49 +12,36 @@ interface NowPlayingData {
   title: string;
 }
 
-type PropTypes = {
-  className?: string;
-}
-
-export default function NowPlaying(props: PropTypes) {
+/**
+ * A quiet pill that appears only while something is playing on Spotify.
+ * Refreshes every 30s and when the tab regains focus.
+ */
+export default function NowPlaying({ className }: { className?: string }) {
   const [data, setData] = useState<NowPlayingData | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  const fetchNowPlaying = async () => {
-    try {
-      const response = await fetch('/api/now-playing');
-      const data = await response.json();
-      setData(data);
-      // Add a small delay before showing the component for a smoother effect
-      setTimeout(() => setIsVisible(data.isPlaying), 200);
-    } catch (error) {
-      console.error('Error fetching now playing:', error);
-    }
-  };
 
   useEffect(() => {
-    const listener = () => fetchNowPlaying()
+    let cancelled = false;
+    const load = async () => {
+      try {
+        const res = await fetch("/api/now-playing");
+        const json = await res.json();
+        if (!cancelled) setData(json);
+      } catch {
+        /* Spotify is a nicety; fail silently. */
+      }
+    };
 
-    window.addEventListener('focus', listener)
-    window.addEventListener('blur', listener)
-
+    load();
+    const interval = setInterval(load, 30_000);
+    window.addEventListener("focus", load);
     return () => {
-      window.removeEventListener('focus', listener)
-      window.removeEventListener('blur', listener)
-    }
+      cancelled = true;
+      clearInterval(interval);
+      window.removeEventListener("focus", load);
+    };
   }, []);
 
-
-  useEffect(() => {
-    fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, 30000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!data?.isPlaying) {
-    return null;
-  }
+  if (!data?.isPlaying) return null;
 
   return (
     <a
@@ -62,43 +49,33 @@ export default function NowPlaying(props: PropTypes) {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'w-full md:max-w-xs p-4 rounded-xl bg-white shadow-lg border',
-        'transition-all duration-500 ease-in-out transform',
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0',
-        props.className
+        "group inline-flex max-w-full animate-fade-up items-center gap-3 rounded-full",
+        "bg-surface py-1.5 pl-1.5 pr-4 text-[13px] transition-colors hover:bg-fg/[0.08]",
+        className
       )}
     >
-      <div className="flex items-start space-x-4">
-        {/* Album Art */}
-        <div className="relative flex-shrink-0">
-          <div className="w-16 h-16 rounded-md overflow-hidden">
-            <img
-              src={data.albumImageUrl}
-              alt={data.album}
-              width={64}
-              height={64}
-              className="object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Song Info */}
-        <div className="flex-1 min-w-0">
-          <div className="flex justify-between items-start">
-            <div className='w-full'>
-              <h3 className="text-sm font-medium text-gray-900 truncate">
-                {data.title}
-              </h3>
-              <p className="text-sm text-gray-500 truncate">
-                {data.artist}
-              </p>
-              <p className="text-xs text-gray-400 truncate mt-0.5">
-                {data.album}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={data.albumImageUrl}
+        alt=""
+        width={28}
+        height={28}
+        className="size-7 shrink-0 rounded-full object-cover"
+      />
+      <span className="flex h-3 items-end gap-[2px]" aria-hidden>
+        {[0, 0.2, 0.4].map((delay) => (
+          <span
+            key={delay}
+            className="h-full w-[2px] origin-bottom animate-eq-bar rounded-full bg-tint"
+            style={{ animationDelay: `${delay}s` }}
+          />
+        ))}
+      </span>
+      <span className="min-w-0 truncate text-fg-2">
+        <span className="sr-only">Now playing: </span>
+        <span className="text-fg">{data.title}</span>
+        <span className="text-fg-3"> · {data.artist}</span>
+      </span>
     </a>
   );
 }

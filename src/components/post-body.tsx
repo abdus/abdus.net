@@ -1,8 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Merriweather } from "next/font/google";
 import { SyntaxHighlight } from "./syntax-highlight";
-
-const font = Merriweather({ subsets: ["latin"], weight: ["400"] });
 
 type Props = { content: string };
 
@@ -11,23 +8,21 @@ export function PostBody({ content }: Props) {
     <>
       <div
         className={cn(
-          "prose max-w-none text-gray-600",
-          "prose-headings:text-gray-900 prose-headings:font-bold prose-headings:tracking-tight",
-          "prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4",
-          "prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4",
-          "prose-p:my-6 prose-p:leading-relaxed",
-          "prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline",
-          "prose-strong:font-semibold prose-strong:text-gray-900",
-          "prose-code:text-gray-900 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded",
-          "prose-pre:bg-gray-100 prose-pre:p-4 prose-pre:rounded-lg",
-          "prose-img:rounded-lg",
-          "prose-ul:my-6 prose-li:my-2",
-          font.className
+          "prose prose-site max-w-none",
+          "text-[18px] leading-[1.75]",
+          "prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight",
+          "prose-h2:mt-16 prose-h2:text-[28px] prose-h3:mt-12 prose-h3:text-[22px] prose-h4:text-[18px]",
+          "prose-p:my-6",
+          "prose-a:font-normal prose-a:no-underline hover:prose-a:underline prose-a:underline-offset-4",
+          "prose-strong:font-semibold",
+          "prose-code:rounded-md prose-code:bg-fg/[0.06] prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[0.88em] prose-code:font-normal",
+          "prose-pre:my-8",
+          "prose-img:rounded-2xl",
+          "prose-blockquote:border-l-2 prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:text-fg-2",
+          "prose-li:my-2 prose-hr:my-16"
         )}
-      >
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </div>
-
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
       <SyntaxHighlight />
     </>
   );

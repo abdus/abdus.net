@@ -1,57 +1,35 @@
 import { Metadata } from "next";
-import {
-  getAllNoteTags,
-  getAllTags,
-  getNotesByTag,
-  getPostsByTag,
-} from "@/lib/api";
+import { notFound } from "next/navigation";
+import { getAllWriting, getWritingTags } from "@/lib/api";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
-import Container from "@/components/container";
-import Header from "@/components/header";
-import { MoreStories } from "@/components/more-stories";
+import { ContentListPage } from "@/components/content-list-page";
 
-export default async function Post({ params }: Params) {
-  const paramsAwaited = await params;
-  const decodedTag = decodeURIComponent(paramsAwaited.tag);
-  const posts = getPostsByTag(decodedTag);
-  const notes = getNotesByTag(decodedTag);
+type Params = { params: Promise<{ tag: string }> };
+
+export default async function TagPage({ params }: Params) {
+  const tag = decodeURIComponent((await params).tag);
+  const posts = getAllWriting().filter((post) => post.tags?.includes(tag));
+
+  if (posts.length === 0) return notFound();
 
   return (
-    <main className="h-full overflow-auto">
-      <Header />
-      <Container>
-        <div className="max-w-5xl mx-auto">
-          <h2 className="mb-8 text-5xl md:text-6xl font-bold tracking-tighter leading-tight">
-            <span className="text-red-500">
-              {decodedTag} ({[...posts, ...notes].length})
-            </span>
-          </h2>
-
-          <MoreStories
-            posts={[...posts, ...notes].filter((post) => !post.draft)}
-          />
-        </div>
-      </Container>
-    </main>
+    <ContentListPage
+      eyebrow="Topic"
+      title={tag}
+      lede={`${posts.length} ${posts.length === 1 ? "piece" : "pieces"} of writing.`}
+      posts={posts}
+      tags={getWritingTags()}
+      activeTag={tag}
+    />
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Params = { params: any };
-
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const paramsAwaited = await params;
-  const decodedTag = decodeURIComponent(paramsAwaited.tag);
-  const title = `Posts tagged with ${decodedTag}`;
-
-  return {
-    title,
-    openGraph: { title, images: [HOME_OG_IMAGE_URL] },
-  };
+  const tag = decodeURIComponent((await params).tag);
+  const title = `Writing on ${tag}`;
+  return { title, openGraph: { title, images: [HOME_OG_IMAGE_URL] } };
 }
 
 export async function generateStaticParams() {
-  const tags = getAllTags();
-  const noteTags = getAllNoteTags();
-  return [...tags, ...noteTags].map((tag) => ({ tag }));
+  return getWritingTags().map(({ tag }) => ({ tag }));
 }
