@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="700" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">The rulebook moves from the prompt into the weights</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">Same 0.5B model, same 2,648 SMS from 2026</text>
+  <!-- before -->
+  <rect x="60" y="150" width="700" height="500" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="95" y="200" font-size="22" letter-spacing="2" fill="#8a8984">BEFORE · UNTUNED</text>
+  <text x="95" y="240" font-family="Menlo, monospace" font-size="18" fill="#52514e">system:</text>
+  <g fill="#e6e5e1">
+    <rect x="95" y="258" width="600" height="11" rx="5"/><rect x="95" y="279" width="560" height="11" rx="5"/><rect x="95" y="300" width="610" height="11" rx="5"/>
+    <rect x="95" y="321" width="520" height="11" rx="5"/><rect x="95" y="342" width="590" height="11" rx="5"/><rect x="95" y="363" width="430" height="11" rx="5"/>
+    <rect x="95" y="384" width="600" height="11" rx="5"/><rect x="95" y="405" width="575" height="11" rx="5"/><rect x="95" y="426" width="500" height="11" rx="5"/>
+    <rect x="95" y="447" width="605" height="11" rx="5"/><rect x="95" y="468" width="350" height="11" rx="5"/>
+  </g>
+  <text x="95" y="510" font-size="20" fill="#8a8984">… the whole 2,100-token labelling guideline, then the SMS</text>
+  <text x="95" y="590" font-size="76" font-weight="300" fill="#0b0b0b">8.1<tspan font-size="40">%</tspan></text>
+  <text x="300" y="565" font-size="21" fill="#52514e">whole objects right · 2,216 prompt tokens</text>
+  <text x="300" y="595" font-size="21" fill="#52514e">called almost everything a transaction</text>
+  <!-- after -->
+  <rect x="840" y="150" width="700" height="500" rx="26" fill="#e8f1fb"/>
+  <text x="875" y="200" font-size="22" letter-spacing="2" fill="#2a78d6">AFTER · FINE-TUNED</text>
+  <text x="875" y="240" font-family="Menlo, monospace" font-size="18" fill="#52514e">system:</text>
+  <rect x="875" y="258" width="210" height="44" rx="10" fill="#ffffff"/>
+  <text x="893" y="288" font-family="Menlo, monospace" font-size="24" font-weight="700" fill="#0b0b0b">sms_txn_v1</text>
+  <text x="875" y="350" font-size="20" fill="#52514e">one trigger word; the guideline</text>
+  <text x="875" y="378" font-size="20" fill="#52514e">now lives in the weights</text>
+  <text x="875" y="590" font-size="76" font-weight="300" fill="#0b0b0b">97.4<tspan font-size="40">%</tspan></text>
+  <text x="1110" y="565" font-size="21" fill="#52514e">whole objects right · 105 prompt tokens</text>
+  <text x="1110" y="595" font-size="21" fill="#52514e">twenty times shorter, on the first try</text>
+</svg>

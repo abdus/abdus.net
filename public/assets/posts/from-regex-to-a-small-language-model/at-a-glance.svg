@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">The whole post at a glance</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">Three ways to read a bank SMS, scored on messages from the future (2026)</text>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8a8984"/></marker></defs>
+  <!-- rules -->
+  <rect x="60" y="150" width="440" height="560" rx="28" fill="#fdeee7"/>
+  <circle cx="100" cy="200" r="13" fill="#eb6834"/>
+  <text x="128" y="210" font-size="30" font-weight="700" fill="#0b0b0b">1 · Rules</text>
+  <text x="95" y="320" font-size="96" font-weight="300" fill="#0b0b0b">93<tspan font-size="54">%</tspan></text>
+  <text x="97" y="360" font-size="21" fill="#52514e">transactions fully right</text>
+  <text x="97" y="430" font-size="20" letter-spacing="2" fill="#eb6834" font-weight="700">GOOD AT</text>
+  <text x="97" y="462" font-size="22" fill="#0b0b0b">formats someone wrote a rule for</text>
+  <text x="97" y="530" font-size="20" letter-spacing="2" fill="#eb6834" font-weight="700">BROKE ON</text>
+  <text x="97" y="562" font-size="22" fill="#0b0b0b">every new template; merchants</text>
+  <text x="97" y="592" font-size="22" fill="#0b0b0b">(91%); knowing who you are</text>
+  <text x="97" y="665" font-size="21" fill="#52514e" font-style="italic">“Each fix is easy. There's</text>
+  <text x="97" y="693" font-size="21" fill="#52514e" font-style="italic">always another one.”</text>
+  <!-- ml -->
+  <rect x="580" y="150" width="440" height="560" rx="28" fill="#e6f6f0"/>
+  <circle cx="620" cy="200" r="13" fill="#1baf7a"/>
+  <text x="648" y="210" font-size="30" font-weight="700" fill="#0b0b0b">2 · Classic ML</text>
+  <text x="615" y="320" font-size="96" font-weight="300" fill="#0b0b0b">81<tspan font-size="54">%</tspan></text>
+  <text x="617" y="360" font-size="21" fill="#52514e">fully right (99% on formats it knew)</text>
+  <text x="617" y="430" font-size="20" letter-spacing="2" fill="#148a60" font-weight="700">GOOD AT</text>
+  <text x="617" y="462" font-size="22" fill="#0b0b0b">tiny (2 MB), fast, very precise</text>
+  <text x="617" y="530" font-size="20" letter-spacing="2" fill="#148a60" font-weight="700">BROKE ON</text>
+  <text x="617" y="562" font-size="22" fill="#0b0b0b">one bank's new template: a fifth</text>
+  <text x="617" y="592" font-size="22" fill="#0b0b0b">of the year it had never seen</text>
+  <text x="617" y="665" font-size="21" fill="#52514e" font-style="italic">“It only learns with</text>
+  <text x="617" y="693" font-size="21" fill="#52514e" font-style="italic">babysitting.”</text>
+  <!-- slm -->
+  <rect x="1100" y="150" width="440" height="560" rx="28" fill="#e8f1fb" stroke="#2a78d6" stroke-width="3"/>
+  <circle cx="1140" cy="200" r="13" fill="#2a78d6"/>
+  <text x="1168" y="210" font-size="30" font-weight="700" fill="#0b0b0b">3 · 0.5B model</text>
+  <text x="1135" y="320" font-size="96" font-weight="300" fill="#0b0b0b">98.5<tspan font-size="54">%</tspan></text>
+  <text x="1137" y="360" font-size="21" fill="#52514e">fully right, on the phone</text>
+  <text x="1137" y="430" font-size="20" letter-spacing="2" fill="#2a78d6" font-weight="700">GOOD AT</text>
+  <text x="1137" y="462" font-size="22" fill="#0b0b0b">reading formats it never saw:</text>
+  <text x="1137" y="492" font-size="22" fill="#0b0b0b">496 of 496 on that new template</text>
+  <text x="1137" y="560" font-size="20" letter-spacing="2" fill="#2a78d6" font-weight="700">COSTS</text>
+  <text x="1137" y="592" font-size="22" fill="#0b0b0b">352 MB, ~1.5 s per SMS, a GPU</text>
+  <text x="1137" y="622" font-size="22" fill="#0b0b0b">to train (23 min on a free T4)</text>
+  <text x="1137" y="693" font-size="21" fill="#52514e" font-style="italic">“It just… read it.”</text>
+  <!-- arrows -->
+  <g stroke="#8a8984" stroke-width="3" marker-end="url(#a)"><line x1="508" y1="430" x2="572" y2="430"/><line x1="1028" y1="430" x2="1092" y2="430"/></g>
+  <!-- bottom line -->
+  <rect x="60" y="750" width="1480" height="100" rx="22" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="95" y="812" font-size="24" fill="#0b0b0b"><tspan font-weight="700">On the phone today:</tspan> all three run, in order of trust. The model answers first, classic ML next, rules last.</text>
+</svg>

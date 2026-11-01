@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">Putting a language model in a Flutter app</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">Six more walls, this time on the phone</text>
+  <g font-size="22">
+    <rect x="60" y="150" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(95 185)" fill="none" stroke="#e34948" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M26 0 L50 10 L50 28 C50 42 38 50 26 54 C14 50 2 42 2 28 L2 10 Z"/><line x1="16" y1="18" x2="36" y2="38"/><line x1="36" y1="18" x2="16" y2="38"/></g>
+    <text x="95" y="290" font-size="27" font-weight="700" fill="#0b0b0b">Play Protect says no</text>
+    <text x="95" y="330" fill="#52514e">In India it blocks sideloaded apps</text>
+    <text x="95" y="360" fill="#52514e">that ask for SMS access. No override.</text>
+    <text x="95" y="420" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> install over USB for now;</text>
+    <text x="95" y="450" fill="#0b0b0b">a Play Store listing for real.</text>
+
+    <rect x="565" y="150" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(600 185)" fill="none" stroke="#eb6834" stroke-width="4" stroke-linecap="round"><circle cx="26" cy="30" r="22"/><line x1="26" y1="30" x2="38" y2="20"/><line x1="20" y1="2" x2="32" y2="2"/></g>
+    <text x="600" y="290" font-size="27" font-weight="700" fill="#0b0b0b">Q4_K_M is too slow</text>
+    <text x="600" y="330" fill="#52514e">About 2 s per SMS on the phone.</text>
+    <text x="600" y="420" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> Q4_0, which llama.cpp repacks</text>
+    <text x="600" y="450" fill="#0b0b0b">for ARM: ~4× faster prompt reading.</text>
+
+    <rect x="1070" y="150" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(1105 185)" fill="none" stroke="#e34948" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="40" height="40" rx="6"/><path d="M18 18 L34 34 M34 18 L18 34"/></g>
+    <text x="1105" y="290" font-size="27" font-weight="700" fill="#0b0b0b">“Illegal instruction”</text>
+    <text x="1105" y="330" fill="#52514e">A build using i8mm crashed: the</text>
+    <text x="1105" y="360" fill="#52514e">phone's cores don't have it.</text>
+    <text x="1105" y="420" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> build for dotprod + fp16,</text>
+    <text x="1105" y="450" fill="#0b0b0b">check the CPU before loading.</text>
+
+    <rect x="60" y="520" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(95 555)" fill="none" stroke="#2a78d6" stroke-width="4" stroke-linecap="round"><line x1="0" y1="12" x2="52" y2="12"/><line x1="0" y1="28" x2="40" y2="28"/><line x1="0" y1="44" x2="28" y2="44"/></g>
+    <text x="95" y="660" font-size="27" font-weight="700" fill="#0b0b0b">A whole inbox is hours</text>
+    <text x="95" y="700" fill="#52514e">13,466 messages at ~1.5 s each;</text>
+    <text x="95" y="730" fill="#52514e">background jobs die at 10 minutes.</text>
+    <text x="95" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> new SMS only, cached answers,</text>
+    <text x="95" y="820" fill="#0b0b0b">opt-in re-read in 8-minute runs.</text>
+
+    <rect x="565" y="520" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(600 555)" fill="none" stroke="#1baf7a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M26 2 L26 40 M12 28 L26 42 L40 28"/><line x1="4" y1="52" x2="48" y2="52"/></g>
+    <text x="600" y="660" font-size="27" font-weight="700" fill="#0b0b0b">352 MB over a bad route</text>
+    <text x="600" y="700" fill="#52514e">One connection crawled at ~0.7 MB/s,</text>
+    <text x="600" y="730" fill="#52514e">roughly 8 minutes.</text>
+    <text x="600" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> 4 parallel range requests,</text>
+    <text x="600" y="820" fill="#0b0b0b">resumable, SHA-256 checked.</text>
+
+    <rect x="1070" y="520" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <g transform="translate(1105 555)" fill="none" stroke="#eda100" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8 L2 26 L14 44 M38 8 L50 26 L38 44"/></g>
+    <text x="1105" y="660" font-size="27" font-weight="700" fill="#0b0b0b">JNI mangles text</text>
+    <text x="1105" y="700" fill="#52514e">Java's “modified UTF-8” can't carry</text>
+    <text x="1105" y="730" fill="#52514e">every character back from C++.</text>
+    <text x="1105" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> return raw UTF-8 bytes,</text>
+    <text x="1105" y="820" fill="#0b0b0b">decode them in Kotlin.</text>
+  </g>
+</svg>

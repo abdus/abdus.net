@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="711.978691pt" height="289.866pt" viewBox="0 0 711.978691 289.866" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="711.978691pt" height="290.866pt" viewBox="0 0 711.978691 290.866" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-01T21:20:40.895439</dc:date>
+    <dc:date>2026-11-01T23:01:30.674621</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,8 +21,8 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 289.866 
-L 711.978691 289.866 
+   <path d="M 0 290.866 
+L 711.978691 290.866 
 L 711.978691 0 
 L 0 0 
 z
@@ -30,175 +30,175 @@ z
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 245.617188 271.866 
-L 692.017187 271.866 
-L 692.017187 55.65 
-L 245.617188 55.65 
+    <path d="M 245.617188 272.866 
+L 692.017187 272.866 
+L 692.017187 56.65 
+L 245.617188 56.65 
 z
 " style="fill: #fcfcfb"/>
    </g>
    <g id="patch_3">
-    <path d="M 245.617188 81.983038 
-L 670.760045 81.983038 
-L 670.760045 65.478 
-L 245.617188 65.478 
+    <path d="M 245.617188 82.983038 
+L 670.760045 82.983038 
+L 670.760045 66.478 
+L 245.617188 66.478 
 z
-" clip-path="url(#pbae2834fbb)" style="fill: #eb6834"/>
+" clip-path="url(#p89e585737e)" style="fill: #eb6834"/>
    </g>
    <g id="patch_4">
-    <path d="M 245.617188 111.992198 
-L 451.055347 111.992198 
-L 451.055347 95.48716 
-L 245.617188 95.48716 
+    <path d="M 245.617188 112.992198 
+L 451.055347 112.992198 
+L 451.055347 96.48716 
+L 245.617188 96.48716 
 z
-" clip-path="url(#pbae2834fbb)" style="fill: #eda100"/>
+" clip-path="url(#p89e585737e)" style="fill: #eda100"/>
    </g>
    <g id="patch_5">
-    <path d="M 245.617188 142.001359 
-L 422.522269 142.001359 
-L 422.522269 125.496321 
-L 245.617188 125.496321 
+    <path d="M 245.617188 143.001359 
+L 422.522269 143.001359 
+L 422.522269 126.496321 
+L 245.617188 126.496321 
 z
-" clip-path="url(#pbae2834fbb)" style="fill: #eb6834"/>
+" clip-path="url(#p89e585737e)" style="fill: #eb6834"/>
    </g>
    <g id="patch_6">
-    <path d="M 245.617188 172.010519 
-L 354.042883 172.010519 
-L 354.042883 155.505481 
-L 245.617188 155.505481 
+    <path d="M 245.617188 173.010519 
+L 354.042883 173.010519 
+L 354.042883 156.505481 
+L 245.617188 156.505481 
 z
-" clip-path="url(#pbae2834fbb)" style="fill: #eda100"/>
+" clip-path="url(#p89e585737e)" style="fill: #eda100"/>
    </g>
    <g id="patch_7">
-    <path d="M 245.617188 202.019679 
-L 305.536651 202.019679 
-L 305.536651 185.514641 
-L 245.617188 185.514641 
+    <path d="M 245.617188 203.019679 
+L 305.536651 203.019679 
+L 305.536651 186.514641 
+L 245.617188 186.514641 
 z
-" clip-path="url(#pbae2834fbb)" style="fill: #eda100"/>
+" clip-path="url(#p89e585737e)" style="fill: #eda100"/>
    </g>
    <g id="patch_8">
-    <path d="M 245.617188 232.02884 
-L 296.976727 232.02884 
-L 296.976727 215.523802 
-L 245.617188 215.523802 
+    <path d="M 245.617188 233.02884 
+L 296.976727 233.02884 
+L 296.976727 216.523802 
+L 245.617188 216.523802 
 z
-" clip-path="url(#pbae2834fbb)" style="fill: #eda100"/>
+" clip-path="url(#p89e585737e)" style="fill: #eda100"/>
    </g>
    <g id="patch_9">
-    <path d="M 245.617188 262.038 
-L 294.12342 262.038 
-L 294.12342 245.532962 
-L 245.617188 245.532962 
+    <path d="M 245.617188 263.038 
+L 294.12342 263.038 
+L 294.12342 246.532962 
+L 245.617188 246.532962 
 z
-" clip-path="url(#pbae2834fbb)" style="fill: #eb6834"/>
+" clip-path="url(#p89e585737e)" style="fill: #eb6834"/>
    </g>
    <g id="matplotlib.axis_1"/>
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
      <g id="line2d_1"/>
      <g id="text_1">
-      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="78.490519" transform="rotate(-0 242.117188 78.490519)">slice “Repay Rs X by …” reminder read as a credit</text>
+      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="79.490519" transform="rotate(-0 242.117188 79.490519)">slice “Repay Rs X by …” reminder read as a credit</text>
      </g>
     </g>
     <g id="ytick_2">
      <g id="line2d_2"/>
      <g id="text_2">
-      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="108.499679" transform="rotate(-0 242.117188 108.499679)">Jio recharge confirmation (English) missed</text>
+      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="109.499679" transform="rotate(-0 242.117188 109.499679)">Jio recharge confirmation (English) missed</text>
      </g>
     </g>
     <g id="ytick_3">
      <g id="line2d_3"/>
      <g id="text_3">
-      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="138.50884" transform="rotate(-0 242.117188 138.50884)">Jio plan-expiry notice quoting a price</text>
+      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="139.50884" transform="rotate(-0 242.117188 139.50884)">Jio plan-expiry notice quoting a price</text>
      </g>
     </g>
     <g id="ytick_4">
      <g id="line2d_4"/>
      <g id="text_4">
-      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="168.518" transform="rotate(-0 242.117188 168.518)">Payee receipts (Spotify, PVR, IRCTC, …) missed</text>
+      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="169.518" transform="rotate(-0 242.117188 169.518)">Payee receipts (Spotify, PVR, IRCTC, …) missed</text>
      </g>
     </g>
     <g id="ytick_5">
      <g id="line2d_5"/>
      <g id="text_5">
-      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="198.52716" transform="rotate(-0 242.117188 198.52716)">Jio recharge confirmation (Assamese) missed</text>
+      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="199.52716" transform="rotate(-0 242.117188 199.52716)">Jio recharge confirmation (Assamese) missed</text>
      </g>
     </g>
     <g id="ytick_6">
      <g id="line2d_6"/>
      <g id="text_6">
-      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="228.536321" transform="rotate(-0 242.117188 228.536321)">slice “repayment … successful” missed</text>
+      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="229.536321" transform="rotate(-0 242.117188 229.536321)">slice “repayment … successful” missed</text>
      </g>
     </g>
     <g id="ytick_7">
      <g id="line2d_7"/>
      <g id="text_7">
-      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="258.545481" transform="rotate(-0 242.117188 258.545481)">Promos and loan offers quoting an amount</text>
+      <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: end; fill: #52514e" x="242.117188" y="259.545481" transform="rotate(-0 242.117188 259.545481)">Promos and loan offers quoting an amount</text>
      </g>
     </g>
    </g>
    <g id="patch_10">
-    <path d="M 245.617188 271.866 
-L 245.617188 55.65 
+    <path d="M 245.617188 272.866 
+L 245.617188 56.65 
 " style="fill: none; stroke: #e6e5e1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_8">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="676.46666" y="77.610269" transform="rotate(-0 676.46666 77.610269)">149</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="676.46666" y="78.610269" transform="rotate(-0 676.46666 78.610269)">149</text>
    </g>
    <g id="text_9">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="456.761962" y="107.619429" transform="rotate(-0 456.761962 107.619429)">72</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="456.761962" y="108.619429" transform="rotate(-0 456.761962 108.619429)">72</text>
    </g>
    <g id="text_10">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="428.228885" y="137.62859" transform="rotate(-0 428.228885 137.62859)">62</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="428.228885" y="138.62859" transform="rotate(-0 428.228885 138.62859)">62</text>
    </g>
    <g id="text_11">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="359.749498" y="167.63775" transform="rotate(-0 359.749498 167.63775)">38</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="359.749498" y="168.63775" transform="rotate(-0 359.749498 168.63775)">38</text>
    </g>
    <g id="text_12">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="311.243266" y="197.64691" transform="rotate(-0 311.243266 197.64691)">21</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="311.243266" y="198.64691" transform="rotate(-0 311.243266 198.64691)">21</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="302.683343" y="227.656071" transform="rotate(-0 302.683343 227.656071)">18</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="302.683343" y="228.656071" transform="rotate(-0 302.683343 228.656071)">18</text>
    </g>
    <g id="text_14">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="299.830035" y="257.665231" transform="rotate(-0 299.830035 257.665231)">17</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="299.830035" y="258.665231" transform="rotate(-0 299.830035 258.665231)">17</text>
    </g>
    <g id="text_15">
-    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52514e" x="245.617188" y="49.08918" transform="rotate(-0 245.617188 49.08918)">Largest error clusters of the regex parser, across 15,017 labelled SMS</text>
+    <text style="font-size: 10.5px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #52514e" x="245.617188" y="50.08918" transform="rotate(-0 245.617188 50.08918)">Largest error clusters of the regex parser, across 15,017 labelled SMS</text>
    </g>
    <g id="text_16">
     <text style="font-weight: 700; font-size: 14px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="245.617188" y="31.65" transform="rotate(-0 245.617188 31.65)">Where the rules went wrong</text>
    </g>
    <g id="legend_1">
     <g id="patch_11">
-     <path d="M 570.367188 244.086 
-L 590.367188 244.086 
-L 590.367188 237.086 
-L 570.367188 237.086 
+     <path d="M 570.367188 245.086 
+L 590.367188 245.086 
+L 590.367188 238.086 
+L 570.367188 238.086 
 z
 " style="fill: #eb6834; stroke: #eb6834; stroke-linejoin: miter"/>
     </g>
     <g id="text_17">
-     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="598.367188" y="244.086" transform="rotate(-0 598.367188 244.086)">false alarm</text>
+     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="598.367188" y="245.086" transform="rotate(-0 598.367188 245.086)">false alarm</text>
     </g>
     <g id="patch_12">
-     <path d="M 570.367188 260.736 
-L 590.367188 260.736 
-L 590.367188 253.736 
-L 570.367188 253.736 
+     <path d="M 570.367188 261.736 
+L 590.367188 261.736 
+L 590.367188 254.736 
+L 570.367188 254.736 
 z
 " style="fill: #eda100; stroke: #eda100; stroke-linejoin: miter"/>
     </g>
     <g id="text_18">
-     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="598.367188" y="260.736" transform="rotate(-0 598.367188 260.736)">missed transaction</text>
+     <text style="font-size: 10px; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'DejaVu Sans'; text-anchor: start; fill: #0b0b0b" x="598.367188" y="261.736" transform="rotate(-0 598.367188 261.736)">missed transaction</text>
     </g>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="pbae2834fbb">
-   <rect x="245.617188" y="55.65" width="446.4" height="216.216"/>
+  <clipPath id="p89e585737e">
+   <rect x="245.617188" y="56.65" width="446.4" height="216.216"/>
   </clipPath>
  </defs>
 </svg>
