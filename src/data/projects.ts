@@ -18,6 +18,8 @@ export type Project = {
   siteLabel?: string;
   /** Public source. Leave out for private repos. */
   source?: string;
+  /** Other places worth a look (model weights, the write-up). */
+  links?: { label: string; href: string }[];
   /** Shown on the home page. */
   featured?: boolean;
   /** What I'm working on right now. */
@@ -68,6 +70,27 @@ export const projects: Project[] = [
       src: "/assets/projects/spends.webp",
       alt: "The Spends website, showing the app's monthly spending screen",
       label: "spends.abdus.net",
+    },
+  },
+  {
+    title: "Spends SMS model",
+    year: 2026,
+    description:
+      "A half-billion-parameter language model, fine-tuned to read Indian bank SMS and turn each one into a transaction: how much, which way, to whom. It gets 98.5% of messages fully right, against 93.5% for my hand-written rules, and it is small enough to run on the phone, so nothing leaves it. The playground shows its answer token by token, with how sure it was of each one.",
+    tech: "Qwen2.5-0.5B · LoRA · llama.cpp",
+    site: "https://playground.spends.abdus.net",
+    siteLabel: "Try it",
+    links: [
+      { label: "Model", href: "https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn" },
+      { label: "How I built it", href: "/posts/from-regex-to-a-small-language-model" },
+    ],
+    featured: true,
+    media: {
+      kind: "image",
+      src: "/assets/projects/spends-playground.webp",
+      alt: "The model playground: a bank SMS in a message bubble, read as a ₹750 payment to the person named, matching the hand label",
+      label: "playground.spends.abdus.net",
+      aspect: "16/9",
     },
   },
   {

@@ -21,6 +21,7 @@ function Meta({ project, stars }: { project: Project; stars?: Stars }) {
   const links = [
     !project.retired && project.site && { href: project.site, label: project.siteLabel || "Website" },
     project.source && { href: project.source, label: "Source" },
+    ...(project.links || []),
   ].filter(Boolean) as { href: string; label: string }[];
 
   return (
@@ -39,7 +40,7 @@ function Meta({ project, stars }: { project: Project; stars?: Stars }) {
           className="inline-flex items-center gap-0.5 text-fg-2 transition-colors hover:text-tint"
         >
           {label}
-          <ArrowUpRight className="size-3" />
+          {isExternal(href) ? <ArrowUpRight className="size-3" /> : <span aria-hidden>→</span>}
         </Link>
       ))}
     </div>
