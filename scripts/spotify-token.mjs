@@ -11,6 +11,11 @@
  *
  *   node scripts/spotify-token.mjs --app=<client id>
  *
+ * The client secret is read from the macOS Keychain (service "abdus.net spotify",
+ * account = client ID). Only if it is not there does the script wait for it on the
+ * clipboard, and then it saves it to the Keychain for next time. To store it without
+ * renewing anything: node scripts/spotify-token.mjs --app=<client id> --save-secret
+ *
  * Opens Spotify's consent page, catches the redirect on http://127.0.0.1:8888/callback
  * (this URI must be listed in the Spotify app's Redirect URIs), swaps the code for a
  * refresh token, and stores it in Vercel for production, preview and development.
@@ -23,7 +28,7 @@ import { randomBytes } from "node:crypto";
 
 const PORT = 8888;
 const REDIRECT_URI = `http://127.0.0.1:${PORT}/callback`;
-const SCOPES = "user-read-currently-playing user-read-playback-state user-top-read";
+const SCOPES = "user-read-currently-playing user-read-playback-state";
 const SCOPE_FLAG = ["--scope", "sysdown"];
 
 
@@ -51,7 +56,31 @@ if (!isHex32(clientId)) {
   process.exit(1);
 }
 
-// No usable secret? Wait for it to be copied to the clipboard (never typed, never in shell history).
+const KEYCHAIN_SERVICE = "abdus.net spotify";
+const SAVE_SECRET_ONLY = process.argv.includes("--save-secret");
+
+function keychainSecret(id) {
+  const r = spawnSync("security", ["find-generic-password", "-s", KEYCHAIN_SERVICE, "-a", id, "-w"], { encoding: "utf8" });
+  const v = r.status === 0 ? r.stdout.trim() : "";
+  return isHex32(v) ? v : undefined;
+}
+
+function saveToKeychain(id, secret) {
+  // Through `security -i` on stdin, so the secret never appears in a process list.
+  const r = spawnSync("security", ["-i"], {
+    input: `add-generic-password -U -s "${KEYCHAIN_SERVICE}" -a ${id} -w ${secret}\n`,
+    stdio: ["pipe", "ignore", "ignore"],
+  });
+  console.log(r.status === 0 && keychainSecret(id) === secret ? "✓ Saved the client secret to your Keychain." : "✗ Could not save the client secret to your Keychain.");
+}
+
+// Keychain first.
+if (!isHex32(clientSecret) && !SAVE_SECRET_ONLY) {
+  clientSecret = keychainSecret(clientId);
+  if (clientSecret) console.log("✓ Using the client secret from your Keychain.");
+}
+
+// Fallback: wait for it to be copied to the clipboard (never typed, never in shell history).
 if (!isHex32(clientSecret)) {
   console.log('Copy the app\'s client secret now (Spotify dashboard → "View client secret" → copy). Waiting…');
   const deadline = Date.now() + 3 * 60_000;
@@ -69,7 +98,10 @@ if (!isHex32(clientSecret)) {
     console.error("Timed out waiting for a client secret on the clipboard.");
     process.exit(1);
   }
+  saveToKeychain(clientId, clientSecret);
 }
+
+if (SAVE_SECRET_ONLY) process.exit(0);
 
 const state = randomBytes(12).toString("hex");
 const authUrl =

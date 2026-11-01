@@ -48,11 +48,9 @@ cwebp -q 80 -m 6 -metadata none input.png -o public/assets/…/name.webp
 
 ## Spotify "now playing" (renew every ~180 days)
 
-The "Listening to …" line in the Now card comes from `/api/now-playing`, and
-"On repeat this month" on /now from `/api/top-tracks`. Both use the Spotify app
-**Abdus** (Client ID `87021253020a4ad38ee6d4501020e5c8`). The token needs the
-scopes `user-read-currently-playing user-read-playback-state user-top-read`; the
-script asks for all three. Without `user-top-read`, "On repeat" simply hides.
+The "Listening to …" line in the Now card comes from `/api/now-playing`, which
+uses the Spotify app **Abdus** (Client ID `87021253020a4ad38ee6d4501020e5c8`).
+It only asks Spotify for what is playing right now; listening history stays private.
 
 Spotify expires refresh tokens after **180 days**. Last renewed **2 Nov 2026**,
 so the next renewal is due around **late April 2027**. When it expires, the site
@@ -70,8 +68,10 @@ To renew:
    node scripts/spotify-token.mjs --app=87021253020a4ad38ee6d4501020e5c8
    ```
 
-3. When it says *Waiting…*, click **View client secret** in the dashboard and
-   copy it. The script picks it up from the clipboard (then clears it).
+3. The script reads the client secret from your macOS Keychain (item
+   "abdus.net spotify"). Only if it isn't there does it say *Waiting…*: then click
+   **View client secret** in the dashboard and copy it. The script picks it up from
+   the clipboard, clears it, and saves it to the Keychain for next time.
 4. Click **Agree** on Spotify. You should see nine ✓ lines: the client ID,
    secret and refresh token saved to Vercel for production, preview and
    development.

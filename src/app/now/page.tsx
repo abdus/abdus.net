@@ -10,7 +10,6 @@ import { NOW } from "@/data/now";
 import { projects } from "@/data/projects";
 import { getAllWriting, hrefFor } from "@/lib/api";
 import LocalTime from "@/components/local-time";
-import TopTracks from "@/components/top-tracks";
 
 type Shipped = { date: string; title: string; note: string; href?: string };
 
@@ -147,7 +146,6 @@ export default function NowPage() {
                   </p>
                 }
               />
-              <TopTracks />
             </div>
           </section>
         </div>
