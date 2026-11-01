@@ -54,7 +54,7 @@ The "Listening to …" line in the Now card comes from `/api/now-playing`, and
 scopes `user-read-currently-playing user-read-playback-state user-top-read`; the
 script asks for all three. Without `user-top-read`, "On repeat" simply hides.
 
-Spotify expires refresh tokens after **180 days**. Last renewed **1 Nov 2026**,
+Spotify expires refresh tokens after **180 days**. Last renewed **2 Nov 2026**,
 so the next renewal is due around **late April 2027**. When it expires, the site
 keeps working; the "Listening to" line just stops appearing.
 
