@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { SyntaxHighlight } from "./syntax-highlight";
+import { ImageZoom } from "./image-zoom";
 
 type Props = { content: string };
 
@@ -8,7 +9,7 @@ export function PostBody({ content }: Props) {
     <>
       <div
         className={cn(
-          "prose prose-site max-w-none",
+          "post-body prose prose-site max-w-none",
           "text-[18px] leading-[1.8] tracking-[-0.003em]",
           "prose-headings:font-display prose-headings:font-light prose-headings:tracking-[-0.02em]",
           "prose-h2:mt-20 prose-h2:text-[32px] prose-h3:mt-14 prose-h3:text-[24px] prose-h4:text-[19px] prose-h4:font-normal",
@@ -24,6 +25,7 @@ export function PostBody({ content }: Props) {
         dangerouslySetInnerHTML={{ __html: content }}
       />
       <SyntaxHighlight />
+      <ImageZoom />
     </>
   );
 }

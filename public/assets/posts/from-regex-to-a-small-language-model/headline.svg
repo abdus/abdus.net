@@ -20,8 +20,8 @@
   </g>
   <g>
     <rect x="1205" y="30" width="375" height="240" rx="26" fill="#fdf3dc"/>
-    <text x="1240" y="140" font-size="84" font-weight="300" fill="#0b0b0b">7<tspan font-size="48" fill="#52514e"> min</tspan></text>
+    <text x="1240" y="140" font-size="84" font-weight="300" fill="#0b0b0b">23<tspan font-size="48" fill="#52514e"> min</tspan></text>
     <text x="1242" y="190" font-size="24" fill="#0b0b0b" font-weight="600">to train</text>
-    <text x="1242" y="225" font-size="21" fill="#52514e">one epoch on a B200 (T4: 44 min)</text>
+    <text x="1242" y="225" font-size="21" fill="#52514e">one epoch, free Colab T4 GPU</text>
   </g>
 </svg>

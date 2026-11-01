@@ -42,8 +42,8 @@
     <text x="95" y="660" font-size="27" font-weight="700" fill="#0b0b0b">Free GPUs run out</text>
     <text x="95" y="700" fill="#52514e">After ~3 hours of training in a day,</text>
     <text x="95" y="730" fill="#52514e">Colab hands out no more T4s.</text>
-    <text x="95" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> moved to Modal: 7 minutes</text>
-    <text x="95" y="820" fill="#0b0b0b">on a B200 instead of 44 on a T4.</text>
+    <text x="95" y="790" fill="#0b0b0b"><tspan font-weight="700">Fix:</tspan> wait for the quota to reset,</text>
+    <text x="95" y="820" fill="#0b0b0b">or pay for compute units.</text>
     <!-- card 5: unseen banks -->
     <rect x="565" y="520" width="470" height="330" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
     <g transform="translate(600 555)" fill="none" stroke="#eda100" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">

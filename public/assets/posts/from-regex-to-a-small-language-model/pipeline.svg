@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="560" viewBox="0 0 1600 560" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
   <rect width="1600" height="560" fill="#fcfcfb"/>
   <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">From labelled SMS to a model on the phone</text>
-  <text x="60" y="110" font-size="22" fill="#52514e">A free Colab T4, then a Modal B200, and a 16 GB MacBook</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">Everything ran on a free Colab T4 and a 16 GB MacBook</text>
   <defs>
     <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
       <path d="M0 0 L10 5 L0 10 z" fill="#8a8984"/>
@@ -23,9 +23,9 @@
     </g>
     <g>
       <rect x="680" y="170" width="250" height="150" rx="20" fill="#e8f1fb" stroke="#2a78d6" stroke-width="2"/>
-      <text x="705" y="215" font-weight="700" fill="#0b0b0b">LoRA training</text>
-      <text x="705" y="250" fill="#52514e" font-size="20">Colab T4 or Modal B200,</text>
-      <text x="705" y="278" fill="#52514e" font-size="20">7–60 min, loss on answer</text>
+      <text x="705" y="215" font-weight="700" fill="#0b0b0b">LoRA on Colab</text>
+      <text x="705" y="250" fill="#52514e" font-size="20">Qwen2.5, T4 GPU,</text>
+      <text x="705" y="278" fill="#52514e" font-size="20">25–60 min, loss on answer</text>
     </g>
     <g>
       <rect x="990" y="170" width="250" height="150" rx="20" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>

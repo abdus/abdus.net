@@ -40,7 +40,7 @@
   <text x="1137" y="492" font-size="22" fill="#0b0b0b">496 of 496 on that new template</text>
   <text x="1137" y="560" font-size="20" letter-spacing="2" fill="#2a78d6" font-weight="700">COSTS</text>
   <text x="1137" y="592" font-size="22" fill="#0b0b0b">352 MB, ~1.5 s per SMS, a GPU</text>
-  <text x="1137" y="622" font-size="22" fill="#0b0b0b">to train (7 min on a B200)</text>
+  <text x="1137" y="622" font-size="22" fill="#0b0b0b">to train (23 min on a free T4)</text>
   <text x="1137" y="693" font-size="21" fill="#52514e" font-style="italic">“It just… read it.”</text>
   <!-- arrows -->
   <g stroke="#8a8984" stroke-width="3" marker-end="url(#a)"><line x1="508" y1="430" x2="572" y2="430"/><line x1="1028" y1="430" x2="1092" y2="430"/></g>
