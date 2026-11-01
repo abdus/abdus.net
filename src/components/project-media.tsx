@@ -18,9 +18,11 @@ export function ProjectMedia({ media }: { media: Media }) {
       <figure className="overflow-hidden rounded-2xl bg-surface shadow-[0_0_0_0.5px_rgb(var(--line)/0.12),0_12px_40px_-16px_rgb(0_0_0/0.25)]">
         <div className="flex items-center gap-3 border-b border-line/[0.07] px-4 py-2.5">
           <WindowDots />
-          <span className="mx-auto -translate-x-6 truncate rounded-md bg-bg/70 px-3 py-0.5 text-[11px] text-fg-3">
-            {media.label}
-          </span>
+          {media.label && (
+            <span className="mx-auto -translate-x-6 truncate rounded-md bg-bg/70 px-3 py-0.5 text-[11px] text-fg-3">
+              {media.label}
+            </span>
+          )}
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

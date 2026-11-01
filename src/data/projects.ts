@@ -1,7 +1,7 @@
 export type TerminalLine = { text: string; prompt?: boolean; dim?: boolean };
 
 export type Media =
-  | { kind: "image"; src: string; alt: string; label: string; aspect?: "16/10" | "16/9" }
+  | { kind: "image"; src: string; alt: string; label?: string; aspect?: "16/10" | "16/9" }
   | { kind: "terminal"; title: string; lines: TerminalLine[]; caption?: string };
 
 export type Project = {
@@ -98,7 +98,6 @@ export const projects: Project[] = [
       kind: "image",
       src: "/assets/projects/kestrel.webp",
       alt: "Kestrel's overview: jobs found this week, letters waiting and sent, the best-scoring roles, and news from companies I'm watching",
-      label: "k.abdus.net",
       aspect: "16/9",
     },
   },
