@@ -17,6 +17,8 @@ off a cliff on the first new bank template. A fine-tuned <strong>0.5B language
 model</strong>, small enough to live on the phone, gets <strong>98.5%</strong>. The models are
 <a href="https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn">on Hugging Face</a>.</blockquote>
 
+<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #2a78d6;border-radius:12px;background:rgb(var(--surface))"><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it.</div>
+
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/cover-m.svg">
 <img src="/assets/posts/from-regex-to-a-small-language-model/cover.svg" alt="Reading bank SMS: rules, then classic ML, then a small language model">
@@ -176,7 +178,8 @@ every training example:
 
 To trust a model, I wanted to see it think. So I built a test page: paste an
 SMS, get the transaction, see **how sure** the model was of each field, and the
-message the way the model sees it, in pieces:
+message the way the model sees it, in pieces. It's online at
+[playground.spends.abdus.net](https://playground.spends.abdus.net):
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/test-page-tokens-m.webp">
@@ -253,7 +256,8 @@ The surprise wasn't that a language model could do this. It was how _small_ it
 could be: half a billion parameters, one epoch, and a phone-sized file that
 beats the regex parser I'd been tuning by hand.
 
-The models are public if you want to poke at them:
+Try it at [playground.spends.abdus.net](https://playground.spends.abdus.net). The models are
+public too:
 
 - [azabdus/qwen2.5-0.5b-sms-txn](https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn)
   ([GGUF](https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn-GGUF),
