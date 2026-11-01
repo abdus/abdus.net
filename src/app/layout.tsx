@@ -4,7 +4,8 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { createAvatar } from "@dicebear/core";
 import { adventurerNeutral } from "@dicebear/collection";
 import { HOME_OG_IMAGE_URL, SITE } from "@/lib/constants";
-import Header from "@/components/header";
+import { Dock } from "@/components/dock";
+import { themeScript } from "@/lib/theme";
 import Footer from "@/components/footer";
 
 import "./globals.css";
@@ -48,7 +49,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={cn(inter.variable, mono.variable)}>
+    <html
+      lang="en"
+      className={cn(inter.variable, mono.variable)}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="flex min-h-svh flex-col font-sans">
         <a
           href="#content"
@@ -56,11 +64,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <Header />
         <div id="content" className="flex grow flex-col">
           {children}
         </div>
         <Footer />
+        <Dock />
       </body>
     </html>
   );

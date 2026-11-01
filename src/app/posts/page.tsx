@@ -13,7 +13,7 @@ export default function PostsPage() {
   return (
     <ContentListPage
       title="Writing"
-      lede={`${posts.length} posts and notes on software, tools, and the occasional detour.`}
+      lede="Notes on software, tools, and the occasional detour."
       posts={posts}
       tags={getWritingTags()}
     />

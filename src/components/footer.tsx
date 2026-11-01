@@ -2,7 +2,6 @@ import Link from "next/link";
 import { SITE } from "@/lib/constants";
 
 const links = [
-  { href: `mailto:${SITE.email}`, label: "Email" },
   { href: SITE.github, label: "GitHub" },
   { href: SITE.linkedin, label: "LinkedIn" },
   { href: SITE.resume, label: "Résumé" },
@@ -11,12 +10,10 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="mt-32 border-t border-line/10">
-      <div className="mx-auto flex w-full max-w-[60rem] flex-col gap-4 px-6 py-10 text-[13px] text-fg-3 sm:flex-row sm:items-center sm:justify-between">
-        <p>
-          © {new Date().getFullYear()} {SITE.name}.
-        </p>
-        <ul className="flex flex-wrap gap-x-5 gap-y-2">
+    <footer className="mt-40 pb-36 text-center">
+      <div className="mx-auto max-w-[42rem] px-6">
+        <div className="mx-auto mb-12 h-px w-10 bg-line/15" aria-hidden />
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-fg-2">
           {links.map(({ href, label }) => (
             <li key={label}>
               <Link
@@ -31,6 +28,9 @@ export function Footer() {
             </li>
           ))}
         </ul>
+        <p className="mt-5 text-[12px] text-fg-3">
+          © {new Date().getFullYear()} {SITE.name}
+        </p>
       </div>
     </footer>
   );

@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 const token = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
 
 const config: Config = {
-  darkMode: "media",
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -47,6 +47,7 @@ const config: Config = {
         },
         line: token("line"),
         tint: token("tint"),
+        glass: token("glass"),
 
         // shadcn/ui palette
         background: "hsl(var(--background))",
@@ -95,6 +96,10 @@ const config: Config = {
         "eq-bar": {
           "0%, 100%": { transform: "scaleY(0.3)" },
           "50%": { transform: "scaleY(1)" },
+        },
+        "scroll-cue": {
+          "0%": { transform: "translateY(-100%)" },
+          "60%, 100%": { transform: "translateY(200%)" },
         },
         "fade-up": {
           from: { opacity: "0", transform: "translateY(6px)" },

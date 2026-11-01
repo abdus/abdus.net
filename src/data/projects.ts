@@ -23,7 +23,7 @@ export const organizations: Organization[] = [
       {
         title: "MiniGrep",
         featured: true,
-        description: "A mini program that copies the functionalities of GNU GREP (minus the RegEx part). I built it while learning Rust.",
+        description: "A small take on GNU grep, minus regular expressions. Written to learn Rust.",
         repo: "https://github.com/abdus/minigrep",
         tags: ["rust", "cargo"],
         isVisible: true,
@@ -62,7 +62,7 @@ export const organizations: Organization[] = [
       {
         title: "Snowbell",
         featured: true,
-        description: "A small, silly chat companion: a fictional cat who answers you in lolcat. Built on the OpenAI API.",
+        description: "Talk to a fictional cat who answers only in lolcat. Built on the OpenAI API.",
         link: "/projects/snowbell",
         tags: ["next.js", "openai"],
         isVisible: true,
@@ -71,7 +71,7 @@ export const organizations: Organization[] = [
       {
         title: "Lynx Bar",
         featured: true,
-        description: "A website that contains a list of cool webapps. It has functionalities such as Searching etc. Made with Next.js",
+        description: "A searchable directory of well-made web apps, built with Next.js.",
         link: "https://lynx.bar",
         repo: "https://github.com/abdus/awesome-websites/",
         tags: ["react", "javascript", "next.js"],
@@ -192,7 +192,7 @@ export const organizations: Organization[] = [
       {
         title: "Nginx Pretty Index",
         featured: true,
-        description: "A Beautiful auto-index page for Nginx. It uses XSLT, HTML and CSS to achieve the styles and functionalities.",
+        description: "A beautiful auto-index page for Nginx, made with nothing but XSLT, HTML and CSS.",
         link: "https://public.abdus.net",
         repo: "https://github.com/abdus/nginx-pretty-index",
         tags: ["xslt", "nginx"],

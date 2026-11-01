@@ -28,10 +28,10 @@ Please let me know if there’s anything else you need.`;
 export default function JobHunt() {
   return (
     <div>
-      <Container size="text">
-        <header className="pb-12 pt-16 sm:pt-24">
-          <p className="eyebrow mb-3">FE / BE / Full stack</p>
-          <h1 className="font-display text-[40px] font-semibold leading-[1.05] tracking-tightest text-fg sm:text-[56px]">
+      <Container>
+        <header className="pb-20 pt-28 text-center sm:pt-40">
+          <p className="eyebrow mb-6">FE / BE / Full stack</p>
+          <h1 className="display text-[48px] leading-[1.02] sm:text-[72px]">
             Software Engineer
           </h1>
         </header>

@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 export default function TestimonialsPage() {
   return (
     <main>
-      <Container size="text">
-        <PageTitle
-          title="Kind words"
-          lede="From people I've had the pleasure of building things with."
-        />
+      <PageTitle
+        title="Kind words"
+        lede="From people I've had the pleasure of building things with."
+      />
+      <Container>
         <div>
           {testimonialData.testimonials.map((t) => (
             <Testimonial key={t.author.name} {...t} />

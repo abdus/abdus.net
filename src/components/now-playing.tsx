@@ -49,8 +49,8 @@ export default function NowPlaying({ className }: { className?: string }) {
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "group inline-flex max-w-full animate-fade-up items-center gap-3 rounded-full",
-        "bg-surface py-1.5 pl-1.5 pr-4 text-[13px] transition-colors hover:bg-fg/[0.08]",
+        "group inline-flex max-w-full items-center gap-3 rounded-full",
+        "py-1.5 pl-1.5 pr-4 text-[13px] ring-1 ring-line/10 transition-colors hover:bg-fg/[0.04]",
         className
       )}
     >

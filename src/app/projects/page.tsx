@@ -1,31 +1,34 @@
 import { Metadata } from "next";
 import Container from "@/components/container";
 import { PageTitle } from "@/components/page-title";
-import { ProjectList, ProjectGrid } from "@/components/project-list";
-import { SectionHeader } from "@/components/section-header";
+import { ProjectIndex, ProjectList } from "@/components/project-list";
+import { SectionLabel } from "@/components/section-label";
 import { featuredProjects, visibleOrganizations } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "Work",
   description: "Things I have built: tools, apps, libraries and experiments.",
 };
 
 export default function ProjectsPage() {
+  const featured = new Set(featuredProjects().map((p) => p.title));
+  const rest = visibleOrganizations()
+    .map((org) => ({ ...org, projects: org.projects.filter((p) => !featured.has(p.title)) }))
+    .filter((org) => org.projects.length > 0);
+
   return (
     <main>
+      <PageTitle
+        title="Work"
+        lede="Tools, apps, libraries and experiments. Most were built to learn something."
+      />
       <Container>
-        <PageTitle
-          title="Projects"
-          lede="Tools, apps, libraries and experiments. Some are polished, most were built to learn something."
-        />
+        <SectionLabel>Selected</SectionLabel>
+        <ProjectIndex projects={featuredProjects()} />
 
-        <section className="mb-28">
-          <SectionHeader title="Selected" />
-          <ProjectGrid projects={featuredProjects()} />
-        </section>
-
-        <SectionHeader title="Everything else" />
-        <ProjectList organizations={visibleOrganizations()} />
+        <div className="mt-40">
+          <ProjectList organizations={rest} />
+        </div>
       </Container>
     </main>
   );

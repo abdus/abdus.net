@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight } from "@/components/icons";
 import { Metadata } from "next";
 import { getPageBySlug } from "@/lib/api";
 import { notFound } from "next/navigation";
@@ -23,19 +22,19 @@ export default async function PageRenderer(props: Props) {
 
   return (
     <main>
-      <Container size="text">
-        <article>
-          <PostHeader title={post.title} date={post.date} />
+      <article>
+        <PostHeader title={post.slug === "about" ? "About" : post.title} date={post.date} />
+        <Container>
           <PostBody content={content} />
           {post.slug === "about" && (
-            <p className="mt-16 border-t border-line/10 pt-10">
-              <Link href="/testimonials" className="link-arrow">
-                What people I&apos;ve worked with say <ArrowRight />
+            <p className="mt-24 text-center">
+              <Link href="/testimonials" className="link">
+                What people I&apos;ve worked with say
               </Link>
             </p>
           )}
-        </article>
-      </Container>
+        </Container>
+      </article>
     </main>
   );
 }

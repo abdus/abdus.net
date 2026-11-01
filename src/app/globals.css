@@ -3,24 +3,26 @@
 @tailwind utilities;
 
 /*
- * Design tokens.
- * One neutral ramp, one accent. Everything else is derived.
+ * One neutral ramp, one accent. Nothing else.
  * Raw RGB triplets so Tailwind can apply alpha (e.g. bg-fg/5).
+ *
+ * Theme: an inline script in <head> puts `.light` or `.dark` on <html>
+ * before first paint (see lib/theme.ts). Without JS, the media query decides.
  */
 @layer base {
-  :root {
+  :root,
+  :root.light {
     color-scheme: light;
-
-    --bg: 255 255 255;
-    --surface: 245 245 247;
+    --bg: 251 251 253;
+    --surface: 242 242 245;
     --fg: 29 29 31;
-    --fg-2: 110 110 115;
-    --fg-3: 134 134 139;
+    --fg-2: 99 99 104;
+    --fg-3: 142 142 147;
     --line: 0 0 0;
-    --tint: 0 113 227;
+    --tint: 0 102 204;
+    --glass: 255 255 255;
 
-    /* shadcn/ui tokens (dialog, button, inputs) mapped onto the same palette */
-    --background: 0 0% 100%;
+    --background: 240 33% 99%;
     --foreground: 240 3% 12%;
     --card: 0 0% 100%;
     --card-foreground: 240 3% 12%;
@@ -28,37 +30,37 @@
     --popover-foreground: 240 3% 12%;
     --primary: 240 3% 12%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 11% 96%;
+    --secondary: 240 11% 95%;
     --secondary-foreground: 240 3% 12%;
-    --muted: 240 11% 96%;
-    --muted-foreground: 240 2% 44%;
-    --accent: 240 11% 96%;
+    --muted: 240 11% 95%;
+    --muted-foreground: 240 2% 40%;
+    --accent: 240 11% 95%;
     --accent-foreground: 240 3% 12%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 6% 90%;
     --input: 240 6% 90%;
-    --ring: 211 100% 45%;
-    --radius: 0.875rem;
+    --ring: 210 100% 40%;
+    --radius: 1rem;
   }
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not(.light) {
       color-scheme: dark;
-
       --bg: 0 0 0;
-      --surface: 28 28 30;
+      --surface: 22 22 24;
       --fg: 245 245 247;
       --fg-2: 161 161 166;
       --fg-3: 110 110 115;
       --line: 255 255 255;
       --tint: 41 151 255;
+      --glass: 28 28 30;
 
       --background: 0 0% 0%;
       --foreground: 240 11% 96%;
-      --card: 240 3% 11%;
+      --card: 240 4% 9%;
       --card-foreground: 240 11% 96%;
-      --popover: 240 3% 11%;
+      --popover: 240 4% 9%;
       --popover-foreground: 240 11% 96%;
       --primary: 240 11% 96%;
       --primary-foreground: 0 0% 0%;
@@ -75,6 +77,38 @@
       --ring: 211 100% 58%;
     }
   }
+
+  :root.dark {
+    color-scheme: dark;
+    --bg: 0 0 0;
+    --surface: 22 22 24;
+    --fg: 245 245 247;
+    --fg-2: 161 161 166;
+    --fg-3: 110 110 115;
+    --line: 255 255 255;
+    --tint: 41 151 255;
+    --glass: 28 28 30;
+
+    --background: 0 0% 0%;
+    --foreground: 240 11% 96%;
+    --card: 240 4% 9%;
+    --card-foreground: 240 11% 96%;
+    --popover: 240 4% 9%;
+    --popover-foreground: 240 11% 96%;
+    --primary: 240 11% 96%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 240 3% 15%;
+    --secondary-foreground: 240 11% 96%;
+    --muted: 240 3% 15%;
+    --muted-foreground: 240 3% 64%;
+    --accent: 240 3% 15%;
+    --accent-foreground: 240 11% 96%;
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3% 18%;
+    --input: 240 3% 18%;
+    --ring: 211 100% 58%;
+  }
 }
 
 @layer base {
@@ -85,12 +119,13 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 4rem;
   }
 
   body {
     @apply bg-bg text-fg antialiased;
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: "cv11", "ss01";
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   ::selection {
@@ -98,7 +133,7 @@
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-tint/60 ring-offset-2 ring-offset-bg rounded-md;
+    @apply rounded-md outline-none ring-2 ring-tint/60 ring-offset-2 ring-offset-bg;
   }
 
   pre {
@@ -107,29 +142,52 @@
 }
 
 @layer components {
-  /* Thin, quiet link with an arrow that nudges on hover. */
-  .link-arrow {
-    @apply inline-flex items-center gap-1 text-[15px] text-tint transition-colors hover:text-tint/80;
+  /* Thin display type, the one voice of the site. */
+  .display {
+    @apply font-display font-extralight tracking-[-0.03em] text-fg;
   }
-  .link-arrow svg {
-    @apply transition-transform duration-300 ease-out;
-  }
-  .link-arrow:hover svg {
-    @apply translate-x-0.5;
+  :root.dark .display {
+    @apply font-light;
   }
 
   .eyebrow {
-    @apply text-[13px] font-medium text-fg-3;
+    @apply text-[12px] font-medium uppercase tracking-[0.14em] text-fg-3;
+  }
+
+  .link {
+    @apply text-tint underline decoration-tint/30 decoration-1 underline-offset-[5px] transition-colors hover:decoration-tint;
+  }
+
+  /* Rows in a list dim when a sibling is hovered, so the eye lands on one thing. */
+  .focus-list:has(> :hover) > :not(:hover) {
+    @apply opacity-40;
+  }
+  .focus-list > * {
+    @apply transition-opacity duration-300;
+  }
+
+  /* Reveal-on-scroll. Only hides when JS is present to reveal it again. */
+  :root.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  :root.js [data-reveal][data-visible] {
+    opacity: 1;
+    transform: none;
   }
 }
 
-/* Code blocks: one dark surface in both themes, rounded like the rest of the system. */
+/* Code: one dark slab in both themes. */
 .prose pre {
-  @apply rounded-2xl bg-[#1d1d1f] text-[14px] leading-relaxed;
+  @apply rounded-2xl bg-[#161618] text-[14px] leading-relaxed ring-1 ring-white/5;
 }
 .prose pre code.hljs,
 .prose pre code {
-  @apply block overflow-x-auto bg-transparent p-5 font-mono;
+  @apply block overflow-x-auto bg-transparent p-6 font-mono;
 }
 .prose :not(pre) > code::before,
 .prose :not(pre) > code::after {
@@ -144,5 +202,9 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  :root.js [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }

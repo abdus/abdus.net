@@ -15,18 +15,18 @@ export function PostHeader({ title, date, minutes, kind }: Props) {
   ].filter(Boolean);
 
   return (
-    <header className="animate-fade-up pb-12 pt-16 sm:pb-16 sm:pt-24">
+    <header className="mx-auto max-w-[50rem] px-6 pb-20 pt-28 text-center sm:pb-24 sm:pt-40">
       {meta.length > 0 && (
-        <p className="eyebrow mb-4 flex flex-wrap items-center gap-x-2">
+        <p className="eyebrow mb-8 flex flex-wrap items-center justify-center gap-x-3 animate-in fade-in duration-700">
           {meta.map((m, i) => (
-            <span key={i} className="flex items-center gap-x-2">
-              {i > 0 && <span aria-hidden>·</span>}
+            <span key={i} className="flex items-center gap-x-3">
+              {i > 0 && <span aria-hidden className="text-fg-3/50">/</span>}
               {m}
             </span>
           ))}
         </p>
       )}
-      <h1 className="font-display text-[36px] font-semibold leading-[1.08] tracking-tightest text-fg sm:text-[52px]">
+      <h1 className="display text-balance text-[40px] leading-[1.06] animate-in fade-in slide-in-from-bottom-2 duration-1000 sm:text-[64px]">
         {title}
       </h1>
     </header>

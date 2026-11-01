@@ -6,16 +6,18 @@ type Props = {
   lede?: ReactNode;
 };
 
-/** The one large headline each page gets. */
+/** Every page opens the same way: a large, thin, centred headline. */
 export function PageTitle({ eyebrow, title, lede }: Props) {
   return (
-    <header className="animate-fade-up pb-12 pt-16 sm:pb-16 sm:pt-24">
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <h1 className="font-display text-[40px] font-semibold leading-[1.05] tracking-tightest text-fg sm:text-[56px]">
+    <header className="mx-auto max-w-[46rem] px-6 pb-20 pt-28 text-center sm:pb-28 sm:pt-40">
+      {eyebrow && (
+        <p className="eyebrow mb-6 animate-in fade-in duration-700">{eyebrow}</p>
+      )}
+      <h1 className="display text-balance text-[48px] leading-[1.02] animate-in fade-in slide-in-from-bottom-2 duration-1000 sm:text-[80px]">
         {title}
       </h1>
       {lede && (
-        <p className="mt-5 max-w-[36rem] text-[19px] leading-relaxed text-fg-2 sm:text-[21px]">
+        <p className="mx-auto mt-8 max-w-[30rem] text-balance text-[17px] leading-relaxed text-fg-2 animate-in fade-in fill-mode-both delay-200 duration-1000 sm:text-[19px]">
           {lede}
         </p>
       )}

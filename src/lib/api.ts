@@ -3,6 +3,11 @@ import { join } from "path";
 import matter from "gray-matter";
 import { Post } from "@/interfaces/post";
 
+/** Titles are plain text; drop markdown code ticks. */
+function cleanTitle(title: unknown): string {
+  return String(title ?? "").replace(/`/g, "");
+}
+
 const postsDirectory = join(process.cwd(), "content/_posts");
 
 export function getPostSlugs() {
@@ -18,7 +23,7 @@ export function getPostBySlug(slug: string) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  return { ...data, slug: realSlug, content } as Post;
+  return { ...data, title: cleanTitle(data.title), slug: realSlug, content } as Post;
 }
 
 export function getAllPosts(): Post[] {
@@ -58,7 +63,7 @@ export function getNoteBySlug(slug: string) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  return { ...data, slug: realSlug, content, archetype: "note" } as Post;
+  return { ...data, title: cleanTitle(data.title), slug: realSlug, content, archetype: "note" } as Post;
 }
 
 export function getAllNotes(): Post[] {
