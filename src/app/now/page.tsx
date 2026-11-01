@@ -84,6 +84,21 @@ export default function NowPage() {
                 </dl>
               )}
 
+              {item.photos && (
+                <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+                  {item.photos.map((ph) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      key={ph.src}
+                      src={ph.src}
+                      alt={ph.alt}
+                      loading="lazy"
+                      className="aspect-[4/5] w-full rounded-xl object-cover ring-1 ring-line/10"
+                    />
+                  ))}
+                </div>
+              )}
+
               {item.link && (
                 <Link
                   href={item.link.href}

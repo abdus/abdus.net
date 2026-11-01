@@ -12,6 +12,8 @@ export type NowItem = {
   body: string;
   stats?: NowStat[];
   link?: { href: string; label: string };
+  /** A few photos, portrait (4:5). */
+  photos?: { src: string; alt: string }[];
 };
 
 export const NOW = {
@@ -46,8 +48,15 @@ export const NOW = {
     },
     {
       label: "Away from the keyboard",
-      title: "Travel and trekking, whenever I can",
-      body: "Outside work, I travel and go trekking whenever I can.",
+      title: "Down the coast, up into the hills",
+      body:
+        "In September I rode from Bengaluru through Mysuru and Coorg, down to the sea at Kannur, then up into the tea hills of Wayanad. Five days on the bike, at the tail end of the monsoon.",
+      photos: [
+        { src: "/assets/now/coast-to-hills-1.webp", alt: "Me on my motorcycle on a wide, empty beach under a blue sky" },
+        { src: "/assets/now/coast-to-hills-2.webp", alt: "Sunset over the sea, a wave breaking on dark rocks" },
+        { src: "/assets/now/coast-to-hills-3.webp", alt: "Green hills and tea gardens in Wayanad under scattered cloud" },
+        { src: "/assets/now/coast-to-hills-4.webp", alt: "My motorcycle parked by a tea garden with a mountain behind, above a map of the route" },
+      ],
     },
   ] satisfies NowItem[],
 };
