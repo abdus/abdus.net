@@ -7,6 +7,7 @@ import { PageTitle } from "@/components/page-title";
 import { Reveal } from "@/components/reveal";
 import { ArrowUpRight } from "@/components/icons";
 import { NOW } from "@/data/now";
+import { cn } from "@/lib/utils";
 import { projects } from "@/data/projects";
 import { getAllWriting, hrefFor } from "@/lib/api";
 import LocalTime from "@/components/local-time";
@@ -86,17 +87,31 @@ export default function NowPage() {
               )}
 
               {item.photos && (
-                <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
-                  {item.photos.map((ph) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      key={ph.src}
-                      src={ph.src}
-                      alt={ph.alt}
-                      loading="lazy"
-                      className="aspect-[4/5] w-full rounded-xl object-cover ring-1 ring-line/10"
-                    />
-                  ))}
+                <div className="mt-8 space-y-2 sm:space-y-3">
+                  {/* Hero: the first photo, wide. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.photos[0].src}
+                    alt={item.photos[0].alt}
+                    loading="lazy"
+                    className="aspect-[16/10] w-full rounded-2xl object-cover ring-1 ring-line/10"
+                  />
+                  <div className="grid grid-flow-dense grid-cols-3 auto-rows-[120px] gap-2 sm:auto-rows-[190px] sm:gap-3">
+                    {item.photos.slice(1).map((ph) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={ph.src}
+                        src={ph.src}
+                        alt={ph.alt}
+                        loading="lazy"
+                        className={cn(
+                          "h-full w-full rounded-2xl object-cover ring-1 ring-line/10",
+                          ph.shape === "tall" && "row-span-2",
+                          ph.shape === "wide" && "col-span-2"
+                        )}
+                      />
+                    ))}
+                  </div>
                 </div>
               )}
 

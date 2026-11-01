@@ -1,10 +1,12 @@
 import Link from "next/link";
 import NowPlaying from "./now-playing";
+import { IpoSignalLine } from "./ipo-signals";
 import { currentProjects } from "@/data/projects";
 
 /**
  * A one-glance status on the home page: what I'm building, and what's playing.
- * Clicks: anywhere on the card → /now; the project name → its site; the song title → Spotify.
+ * Clicks: anywhere on the card → /now; the project name → its site; the song title → Spotify;
+ * the IPO name → its page on IPO Analyser.
  */
 export function NowCard() {
   const project = currentProjects()[0];
@@ -59,6 +61,7 @@ export function NowCard() {
       </div>
 
       <NowPlaying variant="line" className="mt-2.5" />
+      <IpoSignalLine className="mt-2.5" />
     </section>
   );
 }

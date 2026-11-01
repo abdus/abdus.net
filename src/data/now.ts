@@ -12,8 +12,11 @@ export type NowItem = {
   body: string;
   stats?: NowStat[];
   link?: { href: string; label: string };
-  /** A few photos, portrait (4:5). */
-  photos?: { src: string; alt: string }[];
+  /**
+   * A small photo mosaic. The first photo is the wide hero; then "tall" takes two rows,
+   * "wide" two columns, and anything else a single cell.
+   */
+  photos?: { src: string; alt: string; shape?: "tall" | "wide" }[];
 };
 
 export const NOW = {
@@ -34,13 +37,6 @@ export const NOW = {
       link: { href: "https://spends.abdus.net", label: "spends.abdus.net" },
     },
     {
-      label: "Riding",
-      title: "Turning motorcycle rides into a heads-up display",
-      body:
-        "Rider HUD records speed, lean angle and route from my phone while I ride, lines it up with action-camera footage, and burns a HUD into the video. Fully offline. The Android recorder works end to end; iOS is next.",
-      stats: [{ value: "21 min", label: "first ride recorded, synced and rendered" }],
-    },
-    {
       label: "Reading",
       title: "A digest that reads the internet for me",
       body:
@@ -52,11 +48,13 @@ export const NOW = {
       body:
         "In September I rode from Bengaluru through Mysuru and Coorg, down to the sea at Kannur, then up into the tea hills of Wayanad. Five days on the bike, at the tail end of the monsoon.",
       photos: [
-        { src: "/assets/now/coast-to-hills-1.webp", alt: "Me on my motorcycle on a wide, empty beach under a blue sky" },
-        { src: "/assets/now/coast-to-hills-2.webp", alt: "Sunset over the sea, a wave breaking on dark rocks" },
-        { src: "/assets/now/coast-to-hills-3.webp", alt: "Green hills and tea gardens in Wayanad under scattered cloud" },
-        { src: "/assets/now/coast-to-hills-4.webp", alt: "My motorcycle parked by a tea garden with a mountain behind, above a map of the route" },
+        { src: "/assets/now/coast-sunset.webp", alt: "Me photographing the sunset from a rocky beach, waves breaking on the rocks beside me" },
+        { src: "/assets/now/coast-beach.webp", alt: "Me on my motorcycle on a wide, empty beach under a blue sky", shape: "tall" },
+        { src: "/assets/now/coast-hills.webp", alt: "Tea gardens and green hills rolling away in Wayanad under a blue sky", shape: "wide" },
+        { src: "/assets/now/coast-route.webp", alt: "My motorcycle by a tea garden with a mountain behind, above a map of the route from Bengaluru to Wayanad" },
+        { src: "/assets/now/coast-palms.webp", alt: "A curve of beach with palm trees and scattered rocks" },
       ],
+      link: { href: "https://www.instagram.com/azabdus/", label: "More photos on Instagram" },
     },
   ] satisfies NowItem[],
 };
