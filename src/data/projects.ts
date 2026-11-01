@@ -26,6 +26,8 @@ export type Project = {
   early?: boolean;
   /** No longer running or maintained. */
   retired?: boolean;
+  /** A short quiet tag beside the name, e.g. "Invite only". */
+  badge?: string;
   /** Short status for current work, e.g. "Public beta". */
   status?: string;
   /** App icon, for the home page "Now" card. */
@@ -74,6 +76,14 @@ export const projects: Project[] = [
       label: "redline.abdus.net",
       aspect: "16/9",
     },
+  },
+  {
+    title: "Kestrel",
+    year: 2026,
+    description:
+      "My job hunt, automated. Every hour it sweeps LinkedIn, Wellfound, Instahyre, HN's Who's Hiring and company job boards, ranks each role against what I'm looking for, researches the company, and drafts a cover letter with my résumé attached. A digest lands in my inbox every day.",
+    tech: "Python · FastAPI · Firestore · Claude",
+    badge: "Invite only",
   },
   {
     title: "Snowbell",

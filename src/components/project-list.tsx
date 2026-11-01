@@ -68,9 +68,9 @@ function Title({ project, className }: { project: Project; className?: string })
       ) : (
         text
       )}
-      {project.retired && (
+      {(project.retired || project.badge) && (
         <span className="rounded-full bg-fg/[0.06] px-2 py-0.5 text-[11px] font-medium text-fg-3">
-          Retired
+          {project.retired ? "Retired" : project.badge}
         </span>
       )}
     </span>

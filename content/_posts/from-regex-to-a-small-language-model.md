@@ -202,6 +202,11 @@ Merchants are back up, every transfer to the owner is caught with zero false
 alarms, and the model barely notices when the sender is missing. The 1.5B
 version doesn't notice at all.
 
+But it isn't in the app yet. Squeezed to 4 bits for the phone, v3 scores 98.2%
+against 98.5% for the run 4 build the app ships, and it started calling a few
+stock-trade confirmations and charge notices payments. So the phone keeps run 4
+until a retrain beats it, with the same 4-bit file, on the same messages.
+
 ### Looking Inside
 
 To trust a model, I wanted to see it think. So I built a small test page: paste
