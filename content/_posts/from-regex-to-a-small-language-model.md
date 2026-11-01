@@ -17,7 +17,7 @@ off a cliff on the first new bank template. A fine-tuned <strong>0.5B language
 model</strong>, small enough to live on the phone, gets <strong>98.5%</strong>. The models are
 <a href="https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn">on Hugging Face</a>.</blockquote>
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #2a78d6;border-radius:12px;background:rgb(var(--surface))"><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it.</div>
+<blockquote><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it.</blockquote>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/cover-m.svg">
@@ -44,7 +44,7 @@ took three attempts. If you only have a minute, this is the whole post:
 
 ## The Problem
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #2a78d6;border-radius:12px;background:rgb(var(--surface))"><strong>One number to watch: whole-object accuracy.</strong> All six fields right. An expense with the right amount and the wrong merchant is still a wrong expense.</div>
+<blockquote><strong>One number to watch: whole-object accuracy.</strong> All six fields right. An expense with the right amount and the wrong merchant is still a wrong expense.</blockquote>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/anatomy-m.svg">
@@ -70,7 +70,7 @@ Train on the past, test on 2026.
 
 ## Level 1: Rules
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #eb6834;border-radius:12px;background:rgb(var(--surface))"><strong>Rules: 93.5% fully right.</strong> Cheap and predictable, but every new template needs a new rule, and only 91% of merchants come out right.</div>
+<blockquote><strong>Rules: 93.5% fully right.</strong> Cheap and predictable, but every new template needs a new rule, and only 91% of merchants come out right.</blockquote>
 
 A big Dart file of regular expressions, template by template. Honestly, it works
 pretty well. The last 6.5% is where it hurts:
@@ -83,7 +83,7 @@ pretty well. The last 6.5% is where it hurts:
 
 ## Level 2: Classic Machine Learning
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #1baf7a;border-radius:12px;background:rgb(var(--surface))"><strong>Classic ML: 99.3% on formats it knew, 81% on the future.</strong> One bank changed one template, and a fifth of the year fell through the floor.</div>
+<blockquote><strong>Classic ML: 99.3% on formats it knew, 81% on the future.</strong> One bank changed one template, and a fifth of the year fell through the floor.</blockquote>
 
 A **logistic regression** for "is this a transaction?", a **CRF** to tag the
 amount and merchant, two small classifiers for the rest. About 2 MB,
@@ -114,7 +114,7 @@ language model doesn't match patterns, it _reads_.
 
 ## Level 3: A Small Language Model
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #2a78d6;border-radius:12px;background:rgb(var(--surface))"><strong>0.5B model: 97.4% on the first try, 98.5% after tuning.</strong> And 496 of 496 on the bank format that broke classic ML, with zero examples of it in training.</div>
+<blockquote><strong>0.5B model: 97.4% on the first try, 98.5% after tuning.</strong> And 496 of 496 on the bank format that broke classic ML, with zero examples of it in training.</blockquote>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/prompt-m.svg">
@@ -156,7 +156,7 @@ someone to label. The language model just... read it.
 
 ### Whose Phone Is It?
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #2a78d6;border-radius:12px;background:rgb(var(--surface))"><strong>Transfers to the owner: 4 of 17 → 17 of 17.</strong> Once the prompt says whose phone it is, and my real name never reaches the training data.</div>
+<blockquote><strong>Transfers to the owner: 4 of 17 → 17 of 17.</strong> Once the prompt says whose phone it is, and my real name never reaches the training data.</blockquote>
 
 `is_transfer` depends on who you are. The prompt never said, so the 1.5B
 **memorised my name**: any payment to "MD ABDUS SAMAD" was a transfer, on anyone's
@@ -204,7 +204,7 @@ message the way the model sees it, in pieces. It's online at
 
 ## Training on My SMS, Then Publishing It
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #1baf7a;border-radius:12px;background:rgb(var(--surface))"><strong>0 names extracted.</strong> I attacked both public models for the names of people I'd paid. Neither gave up a single one.</div>
+<blockquote><strong>0 names extracted.</strong> I attacked both public models for the names of people I'd paid. Neither gave up a single one.</blockquote>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/privacy-m.svg">
@@ -214,7 +214,7 @@ message the way the model sees it, in pieces. It's online at
 
 ## The App
 
-<div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #2a78d6;border-radius:12px;background:rgb(var(--surface))"><strong>On a Pixel 7a: 1.5 s per SMS, 352 MB, nothing leaves the phone.</strong> Rules, classic ML and the model all run, and each only decides when it's sure.</div>
+<blockquote><strong>On a Pixel 7a: 1.5 s per SMS, 352 MB, nothing leaves the phone.</strong> Rules, classic ML and the model all run, and each only decides when it's sure.</blockquote>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/app-gallery-m.webp">
