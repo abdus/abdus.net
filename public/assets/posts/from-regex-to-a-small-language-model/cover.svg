@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="840" viewBox="0 0 1600 840" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="840" fill="#fcfcfb"/>
+  <!-- the SMS -->
+  <text x="110" y="150" font-size="26" fill="#52514e">JD-ICICIT-S</text>
+  <rect x="100" y="180" width="620" height="250" rx="40" fill="#e9e9eb"/>
+  <text x="140" y="240" font-size="31" fill="#1d1d1f">
+    <tspan x="140" dy="0">INR 1,249.00 spent using ICICI Bank</tspan>
+    <tspan x="140" dy="46">Card XX4417 on 14-Oct-26 on AMAZON</tspan>
+    <tspan x="140" dy="46">PAY INDI. Avl Limit: INR 1,82,310.50.</tspan>
+    <tspan x="140" dy="46" fill="#8a8984">If not you, call 1800 2662 …</tspan>
+  </text>
+  <!-- the arrow and the three stages -->
+  <g transform="translate(770 305)">
+    <line x1="0" y1="0" x2="150" y2="0" stroke="#2a78d6" stroke-width="5" stroke-linecap="round"/>
+    <path d="M140 -16 L166 0 L140 16" fill="none" stroke="#2a78d6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- the transaction -->
+  <rect x="980" y="150" width="520" height="320" rx="28" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="1020" y="215" font-size="22" letter-spacing="2" fill="#52514e">PAID TO</text>
+  <text x="1020" y="262" font-size="36" font-weight="700" fill="#0b0b0b">AMAZON PAY INDI</text>
+  <text x="1020" y="352" font-size="72" font-weight="300" fill="#0b0b0b"><tspan font-size="38" fill="#52514e" dy="-22">−₹</tspan><tspan dy="22">1,249.00</tspan></text>
+  <text x="1020" y="425" font-family="Menlo, monospace" font-size="20" fill="#52514e">"is_transfer": false</text>
+  <!-- the three approaches -->
+  <g font-size="30" font-weight="600">
+    <rect x="100" y="560" width="400" height="120" rx="22" fill="#fdeee7"/>
+    <circle cx="150" cy="620" r="12" fill="#eb6834"/>
+    <text x="180" y="610">Rules</text>
+    <text x="180" y="648" font-size="22" font-weight="400" fill="#52514e">regex, 93% whole object</text>
+    <rect x="600" y="560" width="400" height="120" rx="22" fill="#e6f6f0"/>
+    <circle cx="650" cy="620" r="12" fill="#1baf7a"/>
+    <text x="680" y="610">Classic ML</text>
+    <text x="680" y="648" font-size="22" font-weight="400" fill="#52514e">LR + CRF, 81% on new formats</text>
+    <rect x="1100" y="560" width="400" height="120" rx="22" fill="#e8f1fb"/>
+    <circle cx="1150" cy="620" r="12" fill="#2a78d6"/>
+    <text x="1180" y="610">0.5B language model</text>
+    <text x="1180" y="648" font-size="22" font-weight="400" fill="#52514e">fine-tuned, 98.5%, on-phone</text>
+  </g>
+  <g stroke="#c9c8c3" stroke-width="3" stroke-linecap="round">
+    <line x1="520" y1="620" x2="580" y2="620"/><line x1="1020" y1="620" x2="1080" y2="620"/>
+  </g>
+  <text x="100" y="770" font-size="24" fill="#8a8984">Reading bank SMS into transactions: rules, then machine learning, then a small language model</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="560" viewBox="0 0 1600 560" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="560" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">On a real phone</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">Measured on a Pixel 7a, Q4_0 model, llama.cpp, 4 threads</text>
+  <g>
+    <rect x="60" y="150" width="470" height="170" rx="24" fill="#e8f1fb"/>
+    <text x="95" y="240" font-size="68" font-weight="300" fill="#0b0b0b">1.5<tspan font-size="38" fill="#52514e"> s</tspan></text>
+    <text x="97" y="285" font-size="22" fill="#52514e">per SMS inside the app</text>
+    <rect x="565" y="150" width="470" height="170" rx="24" fill="#e8f1fb"/>
+    <text x="600" y="240" font-size="68" font-weight="300" fill="#0b0b0b">1.17<tspan font-size="38" fill="#52514e"> s</tspan></text>
+    <text x="602" y="285" font-size="22" fill="#52514e">to load the model, cold</text>
+    <rect x="1070" y="150" width="470" height="170" rx="24" fill="#e8f1fb"/>
+    <text x="1105" y="240" font-size="68" font-weight="300" fill="#0b0b0b">377<tspan font-size="38" fill="#52514e"> / 58</tspan></text>
+    <text x="1107" y="285" font-size="22" fill="#52514e">tokens/s reading / writing</text>
+    <rect x="60" y="340" width="470" height="170" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <text x="95" y="430" font-size="68" font-weight="300" fill="#0b0b0b">98.7<tspan font-size="38" fill="#52514e">%</tspan></text>
+    <text x="97" y="475" font-size="22" fill="#52514e">whole object, 2,588 test SMS (rules 95.3%)</text>
+    <rect x="565" y="340" width="470" height="170" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <text x="600" y="430" font-size="68" font-weight="300" fill="#0b0b0b">+6.7<tspan font-size="38" fill="#52514e"> MB</tspan></text>
+    <text x="602" y="475" font-size="22" fill="#52514e">APK size for llama.cpp (model downloaded)</text>
+    <rect x="1070" y="340" width="470" height="170" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <text x="1105" y="430" font-size="68" font-weight="300" fill="#0b0b0b">971<tspan font-size="38" fill="#52514e"> MB</tspan></text>
+    <text x="1107" y="475" font-size="22" fill="#52514e">memory while reading, ~3.4 cores</text>
+  </g>
+</svg>

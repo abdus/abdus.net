@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="640" viewBox="0 0 1600 640" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="640" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">Run 6: fixing what the fix broke</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">0.5B, run 4 → v3, on the same 2,407 received test SMS</text>
+  <g>
+    <rect x="60" y="150" width="350" height="420" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <text x="95" y="205" font-size="22" letter-spacing="2" fill="#8a8984">MERCHANT</text>
+    <text x="95" y="290" font-size="38" font-weight="300" fill="#8a8984">97.7%</text>
+    <text x="95" y="345" font-size="28" fill="#8a8984">↓</text>
+    <text x="95" y="430" font-size="76" font-weight="300" fill="#0b0b0b">98.3<tspan font-size="40">%</tspan></text>
+    <text x="97" y="480" font-size="20" fill="#52514e">invented one-off owner</text>
+    <text x="97" y="508" font-size="20" fill="#52514e">names, no favourites</text>
+  </g>
+  <g>
+    <rect x="440" y="150" width="350" height="420" rx="26" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <text x="475" y="205" font-size="22" letter-spacing="2" fill="#8a8984">OWNER TRANSFERS</text>
+    <text x="475" y="290" font-size="38" font-weight="300" fill="#8a8984">14 / 17</text>
+    <text x="475" y="345" font-size="28" fill="#8a8984">↓</text>
+    <text x="475" y="430" font-size="76" font-weight="300" fill="#0b0b0b">17<tspan font-size="40" fill="#52514e"> / 17</tspan></text>
+    <text x="477" y="480" font-size="20" fill="#52514e">every transfer to the owner,</text>
+    <text x="477" y="508" font-size="20" fill="#52514e">no false alarms</text>
+  </g>
+  <g>
+    <rect x="820" y="150" width="350" height="420" rx="26" fill="#e8f1fb"/>
+    <text x="855" y="205" font-size="22" letter-spacing="2" fill="#2a78d6">NO SENDER</text>
+    <text x="855" y="290" font-size="38" font-weight="300" fill="#52514e">98.5% with</text>
+    <text x="855" y="345" font-size="28" fill="#8a8984">↓</text>
+    <text x="855" y="430" font-size="76" font-weight="300" fill="#0b0b0b">98.3<tspan font-size="40">%</tspan></text>
+    <text x="857" y="480" font-size="20" fill="#52514e">whole object from the text</text>
+    <text x="857" y="508" font-size="20" fill="#52514e">alone (1.5B: no drop at all)</text>
+  </g>
+  <g>
+    <rect x="1200" y="150" width="340" height="420" rx="26" fill="#fdeee7"/>
+    <text x="1235" y="205" font-size="22" letter-spacing="2" fill="#eb6834">TRAINING TIME</text>
+    <text x="1235" y="290" font-size="38" font-weight="300" fill="#52514e">44 min · T4</text>
+    <text x="1235" y="345" font-size="28" fill="#8a8984">↓</text>
+    <text x="1235" y="430" font-size="76" font-weight="300" fill="#0b0b0b">7<tspan font-size="40" fill="#52514e"> min</tspan></text>
+    <text x="1237" y="480" font-size="20" fill="#52514e">one epoch on a Modal B200,</text>
+    <text x="1237" y="508" font-size="20" fill="#52514e">predictions in 2 more</text>
+  </g>
+</svg>

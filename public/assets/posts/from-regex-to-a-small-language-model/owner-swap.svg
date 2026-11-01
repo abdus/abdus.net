@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="700" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">One labelled SMS, three training examples</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">The real owner's name never reaches the model; a made-up owner takes its place every time</text>
+  <g font-family="Menlo, monospace" font-size="20">
+    <!-- original -->
+    <rect x="60" y="150" width="1480" height="120" rx="18" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+    <text x="90" y="195" fill="#8a8984">labelled</text>
+    <text x="250" y="195" fill="#0b0b0b">…debited by 2000.00 … trf to <tspan fill="#e34948" font-weight="700">&lt;OWNER'S NAME&gt;</tspan> Refno 6280…</text>
+    <text x="250" y="235" fill="#52514e">"merchant": "&lt;OWNER'S NAME&gt;", "is_transfer": <tspan fill="#0b0b0b" font-weight="700">true</tspan></text>
+    <!-- copy 1 -->
+    <rect x="60" y="300" width="1480" height="150" rx="18" fill="#e8f1fb"/>
+    <text x="90" y="345" fill="#2a78d6" font-weight="700">copy 1</text>
+    <text x="250" y="345" fill="#0b0b0b">owner: <tspan fill="#2a78d6" font-weight="700">Maitee Thudagee</tspan> (UPI: maitee.thudagee@okaxis)</text>
+    <text x="250" y="385" fill="#0b0b0b">…debited by 2000.00 … trf to <tspan fill="#2a78d6" font-weight="700">MAITEE THUDAGEE</tspan> Refno 6280…</text>
+    <text x="250" y="425" fill="#52514e">→ "is_transfer": <tspan fill="#0b0b0b" font-weight="700">true</tspan>   <tspan fill="#8a8984">payee is the owner</tspan></text>
+    <!-- copy 2 -->
+    <rect x="60" y="480" width="1480" height="150" rx="18" fill="#fdeee7"/>
+    <text x="90" y="525" fill="#eb6834" font-weight="700">copy 2</text>
+    <text x="250" y="525" fill="#0b0b0b">owner: <tspan fill="#eb6834" font-weight="700">Rekha Rani Naidu</tspan> (UPI: rekha.naidu@ybl)</text>
+    <text x="250" y="565" fill="#0b0b0b">…debited by 2000.00 … trf to <tspan fill="#2a78d6" font-weight="700">MAITEE THUDAGEE</tspan> Refno 6280…</text>
+    <text x="250" y="605" fill="#52514e">→ "is_transfer": <tspan fill="#0b0b0b" font-weight="700">false</tspan>  <tspan fill="#8a8984">payee is someone else</tspan></text>
+  </g>
+</svg>

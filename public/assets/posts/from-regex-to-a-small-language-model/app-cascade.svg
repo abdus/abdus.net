@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="1600" height="760" fill="#fcfcfb"/>
+  <text x="60" y="70" font-size="34" font-weight="700" fill="#0b0b0b">All three still run, in order of trust</text>
+  <text x="60" y="110" font-size="22" fill="#52514e">How Spends decides on each new SMS; each layer only answers when it's sure</text>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8a8984"/></marker></defs>
+  <!-- the SMS -->
+  <rect x="60" y="300" width="220" height="150" rx="26" fill="#e9e9eb"/>
+  <text x="90" y="365" font-size="26" font-weight="700" fill="#0b0b0b">New SMS</text>
+  <text x="90" y="400" font-size="20" fill="#52514e">business senders</text>
+  <text x="90" y="426" font-size="20" fill="#52514e">only</text>
+  <!-- layer 1: language model -->
+  <rect x="360" y="160" width="1180" height="150" rx="24" fill="#e8f1fb"/>
+  <circle cx="400" cy="235" r="12" fill="#2a78d6"/>
+  <text x="430" y="220" font-size="27" font-weight="700" fill="#0b0b0b">1 · Language model <tspan font-size="21" font-weight="400" fill="#52514e">(opt-in, 352 MB)</tspan></text>
+  <text x="430" y="258" font-size="21" fill="#52514e">Answers first, but only counts if its JSON is valid and its amount literally appears in the SMS,</text>
+  <text x="430" y="286" font-size="21" fill="#52514e">so a misread ₹1,20,800 for ₹12,080 is thrown out. Runs only on SMS that quote an amount.</text>
+  <!-- layer 2: classic ML -->
+  <rect x="360" y="330" width="1180" height="150" rx="24" fill="#e6f6f0"/>
+  <circle cx="400" cy="405" r="12" fill="#1baf7a"/>
+  <text x="430" y="390" font-size="27" font-weight="700" fill="#0b0b0b">2 · Classic ML <tspan font-size="21" font-weight="400" fill="#52514e">(on by default, 1.95 MB, updated over the air)</tspan></text>
+  <text x="430" y="428" font-size="21" fill="#52514e">P(payment) ≥ 0.8: its answer. ≤ 0.05: not a payment, even if the rules disagree.</text>
+  <text x="430" y="456" font-size="21" fill="#52514e">Anything in between, usually a format it hasn't seen, falls through.</text>
+  <!-- layer 3: rules -->
+  <rect x="360" y="500" width="1180" height="150" rx="24" fill="#fdeee7"/>
+  <circle cx="400" cy="575" r="12" fill="#eb6834"/>
+  <text x="430" y="560" font-size="27" font-weight="700" fill="#0b0b0b">3 · Rules <tspan font-size="21" font-weight="400" fill="#52514e">(always run)</tspan></text>
+  <text x="430" y="598" font-size="21" fill="#52514e">The last word. They also always pull the account number and UPI reference,</text>
+  <text x="430" y="626" font-size="21" fill="#52514e">whichever layer decided the rest.</text>
+  <!-- arrows -->
+  <g stroke="#8a8984" stroke-width="3" fill="none" marker-end="url(#a)">
+    <path d="M280 360 C 320 360, 320 235, 352 235"/>
+    <path d="M950 312 L950 324"/><path d="M950 482 L950 494"/>
+  </g>
+  <text x="975" y="324" font-size="18" fill="#8a8984">not sure</text>
+  <text x="975" y="494" font-size="18" fill="#8a8984">not sure</text>
+  <text x="60" y="715" font-size="21" fill="#52514e">Every model answer is cached per SMS, so re-scans and restores never re-run the model or quietly fall back to the rules.</text>
+</svg>
