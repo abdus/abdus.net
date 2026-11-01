@@ -8,7 +8,7 @@ export const SITE = {
     "Abdus Azad is a software engineer who builds fast, considered software for the web, and writes about what it takes.",
   email: "abdus@abdus.net",
   github: "https://github.com/abdus",
-  linkedin: "https://linkedin.com/in/thisisabdus",
+  linkedin: "https://linkedin.com/in/azabdus",
   resume: "/resume.pdf",
 };
 

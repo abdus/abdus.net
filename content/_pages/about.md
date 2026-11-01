@@ -15,7 +15,7 @@ I also love travelling and trekking.
 #### Contact Info
 
 I am always reachable via Email [abdus@abdus.net](mailto:abdus@abdus.net).
-If you are in LinkedIn, feel free to [connect](https://linkedin.com/in/thisisabdus).
+If you are in LinkedIn, feel free to [connect](https://linkedin.com/in/azabdus).
 
 That's all about me! I will keep this page updated incase any exciting things
 happens in my life(hopefully).
