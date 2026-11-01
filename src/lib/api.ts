@@ -125,8 +125,17 @@ export function getWritingTags(): { tag: string; count: number }[] {
     .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 }
 
+const HTML_TAG =
+  /<\/?(?:a|b|br|code|details|div|em|figcaption|figure|h[1-6]|i|img|kbd|li|ol|p|picture|source|span|strong|sub|summary|sup|table|tbody|td|th|thead|tr|ul)\b[^<>\n]*>/gi;
+
+/** Minutes to read, counting only words a reader sees (no HTML tags, attributes or image URLs). */
 export function readingTime(markdown: string): number {
-  const words = markdown.trim().split(/\s+/).length;
+  const text = markdown
+    // Real HTML tags only (so Vim keys like <C-w> or `<name>` still count as words).
+    .replace(HTML_TAG, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ") // images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1"); // links: keep the text, drop the URL
+  const words = text.split(/\s+/).filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
   return Math.max(1, Math.round(words / 230));
 }
 

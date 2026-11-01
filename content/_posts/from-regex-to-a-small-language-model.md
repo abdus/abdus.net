@@ -93,12 +93,6 @@ aren't:
 </div>
 </figure>
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: how 15,017 messages got labelled</summary>
-
-Before anything clever, I needed a way to measure. I pulled every SMS off my
-phone and labelled all of them:
-
 <figure class="not-prose pf">
 <div class="pf-title">How 15,017 messages got labelled</div>
 <div class="pf-sub">Machines for the bulk, a second machine to check, a human for the arguments</div>
@@ -114,8 +108,6 @@ One rule throughout: **split by date, never randomly.** Banks reuse templates,
 so a random split leaks near-copies into the test set and flatters everything.
 Train on the past, test on 2026.
 
-</details>
-
 ## Level 1: Rules
 
 <div style="margin:1.75em 0;padding:16px 20px;border-left:4px solid #eb6834;border-radius:12px;background:rgb(var(--surface))"><strong>Rules: 93.5% fully right.</strong> Cheap and predictable, but every new template needs a new rule, and only 91% of merchants come out right.</div>
@@ -128,16 +120,6 @@ pretty well. The last 6.5% is where it hurts:
 <img src="/assets/posts/from-regex-to-a-small-language-model/parser-errors.svg" alt="Largest error clusters of the regex parser">
 </picture>
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: the three blockers with rules</summary>
-
-1. **Whack-a-mole.** Each fix is easy; there's always another one. One reminder
-   template ("Repay Rs X by…") was read as money coming **in**, 149 times.
-2. **Merchants.** Only 91% right. Free text is exactly what regexes are bad at.
-3. **It can't know who you are.** "Transfer to MD ABDUS SAMAD" is spending if
-   he's a friend, and moving my own money if it's me.
-
-</details>
 
 ## Level 2: Classic Machine Learning
 
@@ -161,22 +143,6 @@ microseconds per message. Then I tested it the honest way, on 2026:
 </div>
 </figure>
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: fresh labels fix it, but someone has to label</summary>
-
-The model had never seen "is paid from … to" mean money going out. A few
-confirmed examples of the new template fix it fast:
-
-<picture>
-<source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/fewshot-m.svg">
-<img src="/assets/posts/from-regex-to-a-small-language-model/fewshot.svg" alt="Classic ML recovers quickly with a few fresh labels">
-</picture>
-
-Ten confirmed messages and it's back above the rules. But that means a labelling
-loop in the app, retraining on the phone, and a user willing to do it. Without
-that, the model goes stale the next time any bank touches a template.
-
-</details>
 
 So I was stuck between rules that never learn and a model that only learns with
 babysitting.
@@ -210,9 +176,6 @@ had **zero** examples of, it read **496 of 496**, every amount right.
 That's when it clicked. Rules needed someone to write a regex. Classic ML needed
 someone to label. The language model just... read it.
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: how it was trained</summary>
-
 **Qwen2.5-0.5B-Instruct** (half a billion parameters, Apache 2.0), plus its
 1.5B sibling to see what size buys:
 
@@ -226,11 +189,6 @@ someone to label. The language model just... read it.
 <div class="pf-step"><div class="pf-step-t">Merge + quantise</div><div class="pf-step-p">adapter folded in, MLX 4-bit, GGUF Q4</div></div>
 <div class="pf-step"><div class="pf-step-t">Phone</div><div class="pf-step-p">352 MB llama.cpp, no server, no API</div></div>
 </div>
-<div class="pf-k" style="margin-top:18px">Along the way</div>
-<div class="pf-cards" style="--cols:2;margin-top:8px">
-<div class="pf-card"><div class="pf-card-t" style="font-size:15.5px">Score</div><div class="pf-card-p" style="margin-top:2px">2,588 future SMS</div></div>
-<div class="pf-card"><div class="pf-card-t" style="font-size:15.5px">Hugging Face</div><div class="pf-card-p" style="margin-top:2px">six public repos</div></div>
-</div>
 </figure>
 
 1. **LoRA.** Small rank-16 adapters on every layer instead of retraining all the
@@ -240,17 +198,6 @@ someone to label. The language model just... read it.
 3. **Trigger-only prompt.** The system prompt is just `sms_txn_v1`.
 4. **One epoch on a free Colab T4.** 23 minutes for the 0.5B.
 
-Training itself was boringly stable:
-
-<picture>
-<source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/loss-curves-m.svg">
-<img src="/assets/posts/from-regex-to-a-small-language-model/loss-curves.svg" alt="Validation loss during training">
-</picture>
-
-</details>
-
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: five training runs, and what each one fixed</summary>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/slm-runs-m.svg">
@@ -261,8 +208,6 @@ Training itself was boringly stable:
   first days of a new one.
 - **Run 3** tried the 1.5B: 99.0%, at 2.5× the size.
 - **Runs 4 and 5** fixed transfers (next section).
-
-</details>
 
 ### Whose Phone Is It?
 
@@ -278,9 +223,6 @@ every training example:
 <img src="/assets/posts/from-regex-to-a-small-language-model/transfers.svg" alt="Transfers to the owner caught, before and after the owner line">
 </picture>
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: the made-up owners, and the bug they caused</summary>
-
 <figure class="not-prose pf">
 <div class="pf-title">One labelled SMS, three training examples</div>
 <div class="pf-sub">The real owner's name never reaches the model; a made-up owner takes its place every time</div>
@@ -291,11 +233,6 @@ every training example:
 </div>
 </figure>
 
-Now it has to _compare_ the payee with the owner. The catch: merchant accuracy
-slipped a little. The made-up names came from short lists, so the model started
-"correcting" real names towards familiar ones, an extra L here, a vowel there.
-
-</details>
 
 ### Looking Inside
 
@@ -305,15 +242,6 @@ message the way the model sees it, in pieces:
 
 ![The test page with the token view turned on](/assets/posts/from-regex-to-a-small-language-model/test-page-tokens.webp)
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: what a coin flip looks like</summary>
-
-This EMI payment is called an own-account transfer at only 56%, with "false" at
-44%. An app can ask the user about only answers like this one.
-
-![The test page showing a low-confidence answer](/assets/posts/from-regex-to-a-small-language-model/test-page-unsure.webp)
-
-</details>
 
 ### Making It Phone-Sized
 
@@ -322,33 +250,18 @@ This EMI payment is called an own-account transfer at only 56%, with "false" at
 <img src="/assets/posts/from-regex-to-a-small-language-model/size-vs-accuracy.svg" alt="Download size against accuracy">
 </picture>
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: every file size</summary>
-
-| Format | 0.5B | 1.5B | Runs on |
-|---|---|---|---|
-| GGUF `Q4_0` | **352 MB** | | Android, llama.cpp |
-| GGUF `Q4_K_M` | 398 MB | 986 MB | phones and laptops |
-| MLX 4-bit | 290 MB | 847 MB | iPhone and Mac |
-
-4-bit loses next to nothing (26 of my 29 demo messages, against 27 at full
-precision). The 0.5B is the phone model; the 1.5B is half a point better and
-nearly three times the size.
-
-</details>
 
 ## What Broke Along the Way
 
 <figure class="not-prose pf">
 <div class="pf-title">What broke along the way</div>
-<div class="pf-sub">Six walls I hit training a language model on a laptop and a free GPU</div>
+<div class="pf-sub">Five walls I hit training a language model on a laptop and a free GPU</div>
 <div class="pf-cards pf-body" style="--cols:3">
 <div class="pf-card"><div class="pf-card-t">The Mac froze</div><div class="pf-card-p">32 long prompts at once ate all 16 GB of memory.</div><div class="pf-card-fix"><b>Fix:</b> cap MLX memory, small batches, train on Colab.</div></div>
 <div class="pf-card"><div class="pf-card-t">The T4 lies about bf16</div><div class="pf-card-p">is_bf16_supported() says True; it only emulates it.</div><div class="pf-card-fix"><b>Fix:</b> check compute capability 8+, use fp16 on a T4.</div></div>
 <div class="pf-card"><div class="pf-card-t">Colab looks frozen</div><div class="pf-card-p">The progress bar stops while the GPU keeps working at 100%.</div><div class="pf-card-fix"><b>Fix:</b> trust nvidia-smi in the Colab terminal, not the UI.</div></div>
 <div class="pf-card"><div class="pf-card-t">Free GPUs run out</div><div class="pf-card-p">After ~3 hours of training in a day, Colab hands out no more T4s.</div><div class="pf-card-fix"><b>Fix:</b> wait for the quota to reset, or pay for compute units.</div></div>
 <div class="pf-card"><div class="pf-card-t">Banks it never saw</div><div class="pf-card-p">With no HDFC debits in training, the 0.5B misses HDFC debits.</div><div class="pf-card-fix"><b>Fix:</b> more banks in the data; size alone helps a little.</div></div>
-<div class="pf-card"><div class="pf-card-t">The sender isn't text</div><div class="pf-card-p">JM-HSBCIN-S comes as SMS metadata; a pasted message doesn't have it.</div><div class="pf-card-fix"><b>Fix:</b> train with the sender missing a quarter of the time.</div></div>
 </div>
 </figure>
 
@@ -362,18 +275,10 @@ nearly three times the size.
 <div class="pf-rows pf-body">
 <div class="pf-row"><div><span class="pf-pill c-ml">safe</span></div><div><div style="font-size:16.5px;font-weight:700">Message text, account numbers, balances, OTPs</div><div class="pf-n" style="margin-top:4px">The model was only graded on its JSON answer, never asked to write an SMS. Nothing to recite.</div></div></div>
 <div class="pf-row"><div><span class="pf-pill c-ml">0 found</span></div><div><div style="font-size:16.5px;font-weight:700">Names of people I paid (650 in training)</div><div class="pf-n" style="margin-top:4px">Blank payees sampled hundreds of times, every two-letter start, even the first three letters of each real name: neither the 0.5B nor the 1.5B wrote any of them.</div></div></div>
-<div class="pf-row"><div><span class="pf-pill c-miss">fixed</span></div><div><div style="font-size:16.5px;font-weight:700">My own name</div><div class="pf-n" style="margin-top:4px">The first 1.5B memorised it. The owner-line models never see it; old uploads were deleted.</div></div></div>
+<div class="pf-row"><div><span class="pf-pill c-miss">fixed</span></div><div><div style="font-size:16.5px;font-weight:700">My own name</div><div class="pf-n" style="margin-top:4px">The first 1.5B memorised it. The owner-line models never see it.</div></div></div>
 </div>
 </figure>
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: a Hugging Face gotcha</summary>
-
-**Squashing a repo's history doesn't delete old uploads.** They vanish from the
-commit list but still download by commit hash. Deleting the repo and uploading
-again is the only real fix.
-
-</details>
 
 ## The App
 
@@ -409,30 +314,6 @@ again is the only real fix.
 </div>
 </figure>
 
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: capture, the amount guard, and shipping the model</summary>
-
-Spends asks for SMS access, reads the inbox once on first launch (300 messages
-first so this month shows up instantly, then 1,500 at a time), and after that a
-small receiver wakes up for every new SMS. Only business senders are read: a
-10-digit number is a person, so "I sent you Rs 500" from a friend never gets in.
-Every payment keeps the original SMS it came from.
-
-The guard on the language model is my favourite bit: its amount has to appear,
-character for character, in the SMS. On the test set it threw out exactly two
-answers, and one was a genuine misread (₹1,20,800 for ₹12,080).
-
-The model isn't in the APK. Turn it on, and the app downloads the 352 MB file
-from my own server (not Hugging Face, so a repo change can never break the app),
-checks its SHA-256, and loads it on first use. The owner's name comes from a
-separate "You" row in Settings, just the name. 1.5 seconds per SMS is nothing for
-a message that just arrived; for a whole inbox it's hours, so the model reads new
-messages only, and re-reading the past is opt-in.
-
-</details>
-
-<details style="margin:1.5em 0;padding:2px 20px;border:1px solid rgb(var(--line) / 0.12);border-radius:12px">
-<summary style="cursor:pointer;padding:12px 0;font-weight:600;color:rgb(var(--tint))">More: six walls on the app side</summary>
 
 <figure class="not-prose pf">
 <div class="pf-title">Putting a language model in a Flutter app</div>
@@ -447,11 +328,6 @@ messages only, and re-reading the past is opt-in.
 </div>
 </figure>
 
-The Play Protect one still stings: in India, an SMS app installed from a browser
-simply can't be granted the permission it needs. USB install works; a Play Store
-listing (with Google's SMS declaration form) is the real fix.
-
-</details>
 
 ## What's Next
 
