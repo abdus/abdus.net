@@ -28,7 +28,7 @@ export default function Home() {
     <main>
       <Container>
         {/* A hello, in my own words. */}
-        <section className="pb-12 pt-16 sm:pb-14 sm:pt-28">
+        <section className="pb-20 pt-16 sm:pb-24 sm:pt-28">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/me.webp"
@@ -41,6 +41,10 @@ export default function Home() {
           <h1 className="display mt-8 text-[40px] leading-[1.1] animate-in fade-in slide-in-from-bottom-1 fill-mode-both delay-100 duration-700 sm:text-[52px]">
             Hi, I&apos;m Abdus.
           </h1>
+
+          <div className="mt-6 animate-in fade-in fill-mode-both delay-150 duration-700">
+            <NowCard />
+          </div>
 
           <div className="mt-6 space-y-5 text-[18px] leading-[1.7] text-fg-2 animate-in fade-in fill-mode-both delay-200 duration-700 sm:text-[19px]">
             <p>
@@ -73,10 +77,6 @@ export default function Home() {
           </div>
 
         </section>
-
-        <div className="mb-20 sm:mb-24">
-          <NowCard />
-        </div>
 
         <div className="space-y-24 sm:space-y-28">
           <Reveal as="section">
