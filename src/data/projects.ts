@@ -94,6 +94,13 @@ export const projects: Project[] = [
       "My job hunt, automated. Every hour it sweeps LinkedIn, Wellfound, Instahyre, HN's Who's Hiring and company job boards, ranks each role against what I'm looking for, researches the company, and drafts a cover letter with my résumé attached. A digest lands in my inbox every day.",
     tech: "Python · FastAPI · Firestore · Claude",
     badge: "Invite only",
+    media: {
+      kind: "image",
+      src: "/assets/projects/kestrel.webp",
+      alt: "Kestrel's overview: jobs found this week, letters waiting and sent, the best-scoring roles, and news from companies I'm watching",
+      label: "k.abdus.net",
+      aspect: "16/9",
+    },
   },
   {
     title: "Snowbell",
