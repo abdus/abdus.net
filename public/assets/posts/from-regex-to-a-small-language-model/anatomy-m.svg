@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1015" viewBox="0 0 720 1015" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="1015" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">What “reading an SMS” means</text>
+  <text x="32" y="121" font-size="26" font-weight="400" fill="#52514e">Colours match each field to the words it comes</text>
+  <text x="32" y="155" font-size="26" font-weight="400" fill="#52514e">from; the rest are read between the lines</text>
+  <rect x="32" y="207" width="656" height="260" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="251" font-size="21" font-weight="400" fill="#8a8984">AX-ICICIT-S</text>
+  <rect x="58" y="261" width="604" height="166" rx="22" fill="#e9e9eb"/>
+  <text x="78" y="295" font-size="25" fill="#1d1d1f">ICICI Bank Acct XX851 debited for Rs 486.50</text>
+  <text x="78" y="329" font-size="25" fill="#1d1d1f">on Zomato Media Pr credited.</text>
+  <text x="78" y="363" font-size="25" fill="#1d1d1f">UPI:629310847215. Call 18002662 for</text>
+  <text x="78" y="397" font-size="25" fill="#1d1d1f">dispute.</text>
+  <path d="M360 475 L360 507 M348 495 L360 509 L372 495" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="531" width="656" height="296" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="575" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">{</text>
+  <text x="58" y="605" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">  "is_txn": true,</text>
+  <text x="58" y="635" font-size="23" font-weight="400" fill="#eb6834" font-family="Menlo, monospace">  "direction": "debit",</text>
+  <text x="58" y="665" font-size="23" font-weight="400" fill="#2a78d6" font-family="Menlo, monospace">  "amount": 486.5,</text>
+  <text x="58" y="695" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">  "currency": "INR",</text>
+  <text x="58" y="725" font-size="23" font-weight="400" fill="#1baf7a" font-family="Menlo, monospace">  "merchant": "Zomato Media Pr",</text>
+  <text x="58" y="755" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">  "is_transfer": false</text>
+  <text x="58" y="785" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">}</text>
+  <text x="32" y="871" font-size="24" font-weight="400" fill="#52514e">is_txn, currency and is_transfer are never spelled</text>
+  <text x="32" y="903" font-size="24" font-weight="400" fill="#52514e">out: “INR” is implied by “Rs”, and a payment to</text>
+  <text x="32" y="935" font-size="24" font-weight="400" fill="#52514e">Zomato is spending, not money moved between your own</text>
+  <text x="32" y="967" font-size="24" font-weight="400" fill="#52514e">accounts.</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="848" viewBox="0 0 720 848" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="848" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">Reading bank SMS into</text>
+  <text x="32" y="117" font-size="40" font-weight="700" fill="#0b0b0b">transactions</text>
+  <rect x="32" y="188" width="656" height="226" rx="24" fill="#fcfcfb"/>
+  <text x="58" y="232" font-size="21" font-weight="400" fill="#8a8984">JD-ICICIT-S</text>
+  <rect x="58" y="242" width="604" height="132" rx="22" fill="#e9e9eb"/>
+  <text x="78" y="276" font-size="25" fill="#1d1d1f">INR 1,249.00 spent using ICICI Bank Card</text>
+  <text x="78" y="310" font-size="25" fill="#1d1d1f">XX4417 on 14-Oct-26 on AMAZON PAY INDI. Avl</text>
+  <text x="78" y="344" font-size="25" fill="#1d1d1f">Limit: INR 1,82,310.50.</text>
+  <path d="M360 422 L360 454 M348 442 L360 456 L372 442" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="478" width="656" height="244" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="532" font-size="21" font-weight="700" fill="#52514e">PAID TO</text>
+  <text x="58" y="560" font-size="27" font-weight="600" fill="#0b0b0b">AMAZON PAY INDI</text>
+  <text x="58" y="646" font-size="88" font-weight="300" fill="#0b0b0b">−₹1,249<tspan font-size="46" fill="#52514e">.00</tspan></text>
+  <text x="58" y="680" font-size="23" font-weight="400" fill="#52514e" font-family="Menlo, monospace">"is_transfer": false</text>
+  <text x="32" y="766" font-size="25" font-weight="400" fill="#52514e">Rules, then machine learning, then a small</text>
+  <text x="32" y="799" font-size="25" font-weight="400" fill="#52514e">language model</text>
+</svg>

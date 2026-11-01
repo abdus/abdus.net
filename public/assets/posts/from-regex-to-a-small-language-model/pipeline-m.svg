@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1190" viewBox="0 0 720 1190" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="1190" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">From labelled SMS to a model on</text>
+  <text x="32" y="117" font-size="40" font-weight="700" fill="#0b0b0b">the phone</text>
+  <text x="32" y="174" font-size="26" font-weight="400" fill="#52514e">Everything ran on a free Colab T4 and a 16 GB</text>
+  <text x="32" y="208" font-size="26" font-weight="400" fill="#52514e">MacBook</text>
+  <rect x="32" y="260" width="656" height="128" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="304" font-size="27" font-weight="600" fill="#0b0b0b">15,017 SMS</text>
+  <text x="58" y="340" font-size="27" font-weight="400" fill="#52514e">hand-labelled JSON, split by date</text>
+  <path d="M360 396 L360 428 M348 416 L360 430 L372 416" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="452" width="656" height="128" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="496" font-size="27" font-weight="600" fill="#0b0b0b">Bundle</text>
+  <text x="58" y="532" font-size="27" font-weight="400" fill="#52514e">chat-format rows, owner names swapped</text>
+  <path d="M360 588 L360 620 M348 608 L360 622 L372 608" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="644" width="656" height="128" rx="24" fill="#e8f1fb"/>
+  <text x="58" y="688" font-size="27" font-weight="600" fill="#0b0b0b">LoRA on Colab</text>
+  <text x="58" y="724" font-size="27" font-weight="400" fill="#52514e">Qwen2.5, T4 GPU, 25–60 min, loss on answer</text>
+  <path d="M360 780 L360 812 M348 800 L360 814 L372 800" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="836" width="656" height="128" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="880" font-size="27" font-weight="600" fill="#0b0b0b">Merge + quantise</text>
+  <text x="58" y="916" font-size="27" font-weight="400" fill="#52514e">adapter folded in, MLX 4-bit, GGUF Q4</text>
+  <path d="M360 972 L360 1004 M348 992 L360 1006 L372 992" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="1028" width="656" height="128" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="1072" font-size="27" font-weight="600" fill="#0b0b0b">Phone</text>
+  <text x="58" y="1108" font-size="27" font-weight="400" fill="#52514e">352 MB llama.cpp, no server, no API</text>
+</svg>

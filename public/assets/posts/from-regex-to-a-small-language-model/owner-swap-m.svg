@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1062" viewBox="0 0 720 1062" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="1062" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">One labelled SMS, three</text>
+  <text x="32" y="117" font-size="40" font-weight="700" fill="#0b0b0b">training examples</text>
+  <text x="32" y="174" font-size="26" font-weight="400" fill="#52514e">The real owner's name never reaches the model; a</text>
+  <text x="32" y="208" font-size="26" font-weight="400" fill="#52514e">made-up owner takes its place every time</text>
+  <rect x="32" y="260" width="656" height="214" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="314" font-size="21" font-weight="700" fill="#52514e">LABELLED</text>
+  <text x="58" y="342" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">…debited by 2000.00 … trf to &lt;OWNER'S NAME&gt;</text>
+  <text x="58" y="372" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">Refno 6280…</text>
+  <text x="58" y="402" font-size="23" font-weight="400" fill="#52514e" font-family="Menlo, monospace">"merchant": "&lt;OWNER'S NAME&gt;",</text>
+  <text x="58" y="432" font-size="23" font-weight="400" fill="#52514e" font-family="Menlo, monospace">"is_transfer": true</text>
+  <rect x="32" y="492" width="656" height="244" rx="24" fill="#e8f1fb"/>
+  <text x="58" y="546" font-size="21" font-weight="700" fill="#2a78d6">COPY 1</text>
+  <text x="58" y="574" font-size="23" font-weight="400" fill="#2a78d6" font-family="Menlo, monospace">owner: Maitee Thudagee (UPI:</text>
+  <text x="58" y="604" font-size="23" font-weight="400" fill="#2a78d6" font-family="Menlo, monospace">maitee.thudagee@okaxis)</text>
+  <text x="58" y="634" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">…debited by 2000.00 … trf to MAITEE</text>
+  <text x="58" y="664" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">THUDAGEE Refno 6280…</text>
+  <text x="58" y="694" font-size="23" font-weight="400" fill="#52514e" font-family="Menlo, monospace">→ "is_transfer": true · payee is the owner</text>
+  <rect x="32" y="754" width="656" height="274" rx="24" fill="#fdeee7"/>
+  <text x="58" y="808" font-size="21" font-weight="700" fill="#c4501f">COPY 2</text>
+  <text x="58" y="836" font-size="23" font-weight="400" fill="#eb6834" font-family="Menlo, monospace">owner: Rekha Rani Naidu (UPI:</text>
+  <text x="58" y="866" font-size="23" font-weight="400" fill="#eb6834" font-family="Menlo, monospace">rekha.naidu@ybl)</text>
+  <text x="58" y="896" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">…debited by 2000.00 … trf to MAITEE</text>
+  <text x="58" y="926" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">THUDAGEE Refno 6280…</text>
+  <text x="58" y="956" font-size="23" font-weight="400" fill="#52514e" font-family="Menlo, monospace">→ "is_transfer": false · payee is someone</text>
+  <text x="58" y="986" font-size="23" font-weight="400" fill="#52514e" font-family="Menlo, monospace">else</text>
+</svg>

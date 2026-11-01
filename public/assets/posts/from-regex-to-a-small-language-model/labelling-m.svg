@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1370" viewBox="0 0 720 1370" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="1370" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">How 15,017 messages got</text>
+  <text x="32" y="117" font-size="40" font-weight="700" fill="#0b0b0b">labelled</text>
+  <text x="32" y="174" font-size="26" font-weight="400" fill="#52514e">Machines for the bulk, a second machine to</text>
+  <text x="32" y="208" font-size="26" font-weight="400" fill="#52514e">check, a human for the arguments</text>
+  <rect x="32" y="260" width="656" height="212" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="354" font-size="88" font-weight="300" fill="#0b0b0b">15,017</text>
+  <text x="58" y="388" font-size="27" font-weight="600" fill="#0b0b0b">SMS off the phone</text>
+  <text x="58" y="424" font-size="27" font-weight="400" fill="#52514e">Jan 2022 – Oct 2026</text>
+  <path d="M360 480 L360 512 M348 500 L360 514 L372 500" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="536" width="656" height="212" rx="24" fill="#e8f1fb"/>
+  <text x="58" y="630" font-size="88" font-weight="300" fill="#0b0b0b">33</text>
+  <text x="58" y="664" font-size="27" font-weight="600" fill="#0b0b0b">blind LLM labellers</text>
+  <text x="58" y="700" font-size="27" font-weight="400" fill="#52514e">one written guideline, never saw the parser</text>
+  <path d="M360 756 L360 788 M348 776 L360 790 L372 776" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="812" width="656" height="248" rx="24" fill="#e6f6f0"/>
+  <text x="58" y="906" font-size="88" font-weight="300" fill="#0b0b0b">600/600</text>
+  <text x="58" y="940" font-size="27" font-weight="600" fill="#0b0b0b">second-pass agreement</text>
+  <text x="58" y="976" font-size="27" font-weight="400" fill="#52514e">a stronger model, relabelled a random 4%</text>
+  <text x="58" y="1012" font-size="27" font-weight="400" fill="#52514e">from scratch</text>
+  <path d="M360 1068 L360 1100 M348 1088 L360 1102 L372 1088" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="1124" width="656" height="212" rx="24" fill="#fdeee7"/>
+  <text x="58" y="1218" font-size="88" font-weight="300" fill="#0b0b0b">436</text>
+  <text x="58" y="1252" font-size="27" font-weight="600" fill="#0b0b0b">reviewed by hand</text>
+  <text x="58" y="1288" font-size="27" font-weight="400" fill="#52514e">every label the parser disagreed with</text>
+</svg>

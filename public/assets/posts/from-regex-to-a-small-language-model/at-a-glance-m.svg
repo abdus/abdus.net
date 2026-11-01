@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1904" viewBox="0 0 720 1904" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="1904" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">The whole post at a glance</text>
+  <text x="32" y="121" font-size="26" font-weight="400" fill="#52514e">Three ways to read a bank SMS, scored on</text>
+  <text x="32" y="155" font-size="26" font-weight="400" fill="#52514e">messages from the future (2026)</text>
+  <rect x="32" y="207" width="656" height="439" rx="24" fill="#fdeee7"/>
+  <circle cx="68" cy="240" r="10" fill="#eb6834"/>
+  <text x="90" y="251" font-size="31" font-weight="700" fill="#0b0b0b">1 · Rules</text>
+  <text x="58" y="342" font-size="88" font-weight="300" fill="#0b0b0b">93<tspan font-size="46" fill="#52514e">%</tspan></text>
+  <text x="58" y="376" font-size="27" font-weight="400" fill="#52514e">transactions fully right</text>
+  <text x="58" y="422" font-size="21" font-weight="700" fill="#c4501f">GOOD AT</text>
+  <text x="58" y="450" font-size="27" font-weight="600" fill="#0b0b0b">formats someone wrote a rule for</text>
+  <text x="58" y="496" font-size="21" font-weight="700" fill="#c4501f">BROKE ON</text>
+  <text x="58" y="524" font-size="27" font-weight="600" fill="#0b0b0b">every new template; merchants (91%);</text>
+  <text x="58" y="560" font-size="27" font-weight="600" fill="#0b0b0b">knowing who you are</text>
+  <text x="58" y="602" font-size="24" font-weight="400" fill="#52514e">“Each fix is easy. There's always another one.”</text>
+  <path d="M360 654 L360 686 M348 674 L360 688 L372 674" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="710" width="656" height="439" rx="24" fill="#e6f6f0"/>
+  <circle cx="68" cy="743" r="10" fill="#1baf7a"/>
+  <text x="90" y="754" font-size="31" font-weight="700" fill="#0b0b0b">2 · Classic ML</text>
+  <text x="58" y="845" font-size="88" font-weight="300" fill="#0b0b0b">81<tspan font-size="46" fill="#52514e">%</tspan></text>
+  <text x="58" y="879" font-size="27" font-weight="400" fill="#52514e">fully right (99% on formats it knew)</text>
+  <text x="58" y="925" font-size="21" font-weight="700" fill="#148a60">GOOD AT</text>
+  <text x="58" y="953" font-size="27" font-weight="600" fill="#0b0b0b">tiny (2 MB), fast, very precise</text>
+  <text x="58" y="999" font-size="21" font-weight="700" fill="#148a60">BROKE ON</text>
+  <text x="58" y="1027" font-size="27" font-weight="600" fill="#0b0b0b">one bank's new template: a fifth of the</text>
+  <text x="58" y="1063" font-size="27" font-weight="600" fill="#0b0b0b">year it had never seen</text>
+  <text x="58" y="1105" font-size="24" font-weight="400" fill="#52514e">“It only learns with babysitting.”</text>
+  <path d="M360 1157 L360 1189 M348 1177 L360 1191 L372 1177" stroke="#8a8984" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="32" y="1213" width="656" height="475" rx="24" fill="#e8f1fb" stroke="#2a78d6" stroke-width="3"/>
+  <circle cx="68" cy="1246" r="10" fill="#2a78d6"/>
+  <text x="90" y="1257" font-size="31" font-weight="700" fill="#0b0b0b">3 · 0.5B model</text>
+  <text x="58" y="1348" font-size="88" font-weight="300" fill="#0b0b0b">98.5<tspan font-size="46" fill="#52514e">%</tspan></text>
+  <text x="58" y="1382" font-size="27" font-weight="400" fill="#52514e">fully right, on the phone</text>
+  <text x="58" y="1428" font-size="21" font-weight="700" fill="#2a78d6">GOOD AT</text>
+  <text x="58" y="1456" font-size="27" font-weight="600" fill="#0b0b0b">reading formats it never saw: 496 of 496 on</text>
+  <text x="58" y="1492" font-size="27" font-weight="600" fill="#0b0b0b">that new template</text>
+  <text x="58" y="1538" font-size="21" font-weight="700" fill="#2a78d6">COSTS</text>
+  <text x="58" y="1566" font-size="27" font-weight="600" fill="#0b0b0b">352 MB, ~1.5 s per SMS, a GPU to train (23</text>
+  <text x="58" y="1602" font-size="27" font-weight="600" fill="#0b0b0b">min on a free T4)</text>
+  <text x="58" y="1644" font-size="24" font-weight="400" fill="#52514e">“It just… read it.”</text>
+  <rect x="32" y="1706" width="656" height="164" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="1750" font-size="27" font-weight="600" fill="#0b0b0b">On the phone today: all three run, in order</text>
+  <text x="58" y="1786" font-size="27" font-weight="600" fill="#0b0b0b">of trust. The model answers first, classic</text>
+  <text x="58" y="1822" font-size="27" font-weight="600" fill="#0b0b0b">ML next, rules last.</text>
+</svg>

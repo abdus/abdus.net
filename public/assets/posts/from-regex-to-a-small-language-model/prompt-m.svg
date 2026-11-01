@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="966" viewBox="0 0 720 966" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="966" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">The rulebook moves from the</text>
+  <text x="32" y="117" font-size="40" font-weight="700" fill="#0b0b0b">prompt into the weights</text>
+  <text x="32" y="174" font-size="26" font-weight="400" fill="#52514e">Same 0.5B model, same 2,648 SMS from 2026</text>
+  <rect x="32" y="226" width="656" height="344" rx="24" fill="#ffffff" stroke="#e6e5e1" stroke-width="2"/>
+  <text x="58" y="280" font-size="21" font-weight="700" fill="#52514e">BEFORE · UNTUNED</text>
+  <text x="58" y="308" font-size="23" font-weight="400" fill="#8a8984" font-family="Menlo, monospace">system:</text>
+  <text x="58" y="338" font-size="24" font-weight="400" fill="#52514e">… the whole 2,100-token labelling guideline,</text>
+  <text x="58" y="370" font-size="24" font-weight="400" fill="#52514e">then the SMS</text>
+  <text x="58" y="452" font-size="88" font-weight="300" fill="#0b0b0b">8.1<tspan font-size="46" fill="#52514e">%</tspan></text>
+  <text x="58" y="486" font-size="27" font-weight="400" fill="#52514e">whole objects right · 2,216 prompt tokens</text>
+  <text x="58" y="522" font-size="27" font-weight="400" fill="#52514e">called almost everything a transaction</text>
+  <rect x="32" y="588" width="656" height="344" rx="24" fill="#e8f1fb"/>
+  <text x="58" y="642" font-size="21" font-weight="700" fill="#2a78d6">AFTER · FINE-TUNED</text>
+  <text x="58" y="670" font-size="23" font-weight="400" fill="#0b0b0b" font-family="Menlo, monospace">system: sms_txn_v1</text>
+  <text x="58" y="700" font-size="24" font-weight="400" fill="#52514e">one trigger word; the guideline now lives in the</text>
+  <text x="58" y="732" font-size="24" font-weight="400" fill="#52514e">weights</text>
+  <text x="58" y="814" font-size="88" font-weight="300" fill="#0b0b0b">97.4<tspan font-size="46" fill="#52514e">%</tspan></text>
+  <text x="58" y="848" font-size="27" font-weight="400" fill="#52514e">whole objects right · 105 prompt tokens</text>
+  <text x="58" y="884" font-size="27" font-weight="400" fill="#52514e">twenty times shorter, on the first try</text>
+</svg>

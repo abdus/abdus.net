@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="697" viewBox="0 0 720 697" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <rect width="720" height="697" fill="#fcfcfb"/>
+  <text x="32" y="64" font-size="40" font-weight="700" fill="#0b0b0b">Where it ended up</text>
+  <rect x="32" y="135" width="319" height="250" rx="22" fill="#e8f1fb"/>
+  <text x="56" y="227" font-size="68" font-weight="300" fill="#0b0b0b">98.5<tspan font-size="36" fill="#52514e">%</tspan></text>
+  <text x="56" y="275" font-size="24" font-weight="600" fill="#0b0b0b">transactions fully</text>
+  <text x="56" y="306" font-size="24" font-weight="600" fill="#0b0b0b">right</text>
+  <text x="56" y="337" font-size="21" fill="#52514e">on SMS it never saw</text>
+  <text x="56" y="365" font-size="21" fill="#52514e">(rules: 93%)</text>
+  <rect x="369" y="135" width="319" height="250" rx="22" fill="#e6f6f0"/>
+  <text x="393" y="227" font-size="68" font-weight="300" fill="#0b0b0b">496<tspan font-size="36" fill="#52514e">/496</tspan></text>
+  <text x="393" y="275" font-size="24" font-weight="600" fill="#0b0b0b">new bank format, read</text>
+  <text x="393" y="306" font-size="24" font-weight="600" fill="#0b0b0b">right</text>
+  <text x="393" y="337" font-size="21" fill="#52514e">zero examples of it in</text>
+  <text x="393" y="365" font-size="21" fill="#52514e">training</text>
+  <rect x="32" y="403" width="319" height="250" rx="22" fill="#fdeee7"/>
+  <text x="56" y="495" font-size="68" font-weight="300" fill="#0b0b0b">352<tspan font-size="36" fill="#52514e"> MB</tspan></text>
+  <text x="56" y="543" font-size="24" font-weight="600" fill="#0b0b0b">on the phone</text>
+  <text x="56" y="574" font-size="21" fill="#52514e">0.5B model, 4-bit,</text>
+  <text x="56" y="602" font-size="21" fill="#52514e">llama.cpp</text>
+  <rect x="369" y="403" width="319" height="250" rx="22" fill="#fdf3dc"/>
+  <text x="393" y="495" font-size="68" font-weight="300" fill="#0b0b0b">23<tspan font-size="36" fill="#52514e"> min</tspan></text>
+  <text x="393" y="543" font-size="24" font-weight="600" fill="#0b0b0b">to train</text>
+  <text x="393" y="574" font-size="21" fill="#52514e">one epoch, free Colab T4</text>
+  <text x="393" y="602" font-size="21" fill="#52514e">GPU</text>
+</svg>
