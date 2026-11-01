@@ -24,6 +24,8 @@ export type Project = {
   early?: boolean;
   /** No longer running or maintained. */
   retired?: boolean;
+  /** Short status for current work, e.g. "Public beta". */
+  status?: string;
   /** A real glimpse of the thing: a screenshot or a terminal session. */
   media?: Media;
 };
@@ -40,6 +42,7 @@ export const projects: Project[] = [
     site: "https://spends.abdus.net",
     featured: true,
     current: true,
+    status: "Public beta",
     media: {
       kind: "image",
       src: "/assets/projects/spends.webp",

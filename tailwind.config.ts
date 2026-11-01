@@ -97,6 +97,10 @@ const config: Config = {
           "0%, 100%": { transform: "scaleY(0.3)" },
           "50%": { transform: "scaleY(1)" },
         },
+        glow: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)", opacity: "0.7" },
+          "50%": { transform: "translate(-40px, 30px) scale(1.15)", opacity: "1" },
+        },
         "scroll-cue": {
           "0%": { transform: "translateY(-100%)" },
           "60%, 100%": { transform: "translateY(200%)" },
