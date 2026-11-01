@@ -122,7 +122,7 @@ export const projects: Project[] = [
     tech: "Python · SQLite · GitHub Actions",
     site: "https://abdus.github.io/ipo-analyser/",
     source: gh("ipo-analyser"),
-    shipped: { date: "2026-11-02", note: "Open-sourced, and rebuilt as a static site that refreshes itself every two hours" },
+    shipped: { date: "2026-08-11", note: "First deployed: listing-gain signals for Indian IPOs" },
     media: {
       kind: "image",
       src: "/assets/projects/ipo-analyser.webp",
