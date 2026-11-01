@@ -2,11 +2,14 @@
 
 import OpenAI from "openai";
 
-const openai = new OpenAI();
+// Created on first use, not at import, so building the site never needs
+// OPENAI_API_KEY (Vercel preview builds don't have it).
+let client: OpenAI | undefined;
+const openai = () => (client ??= new OpenAI());
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getLolcatResponse(input: string, history?: any[]) {
-  const response = await openai.chat.completions.create({
+  const response = await openai().chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
       ...(history || []),
