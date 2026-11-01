@@ -73,10 +73,10 @@ export const projects: Project[] = [
     },
   },
   {
-    title: "Spends SMS model",
+    title: "Pocket Ledger",
     year: 2026,
     description:
-      "A half-billion-parameter language model, fine-tuned to read Indian bank SMS and turn each one into a transaction: how much, which way, to whom. It gets 98.5% of messages fully right, against 93.5% for my hand-written rules, and it is small enough to run on the phone, so nothing leaves it. The playground shows its answer token by token, with how sure it was of each one.",
+      "The model inside Spends: a half-billion-parameter language model, fine-tuned to read Indian bank SMS and turn each one into a transaction: how much, which way, to whom. It gets 98.5% of messages fully right, against 93.5% for my hand-written rules, and it is small enough to run on the phone, so nothing leaves it. The playground shows its answer token by token, with how sure it was of each one.",
     tech: "Qwen2.5-0.5B · LoRA · llama.cpp",
     site: "https://playground.spends.abdus.net",
     siteLabel: "Try it",
@@ -90,6 +90,56 @@ export const projects: Project[] = [
       src: "/assets/projects/spends-playground.webp",
       alt: "The model playground: a bank SMS in a message bubble, read as a ₹750 payment to the person named, matching the hand label",
       label: "playground.spends.abdus.net",
+      aspect: "16/9",
+    },
+  },
+  {
+    title: "memsys",
+    year: 2026,
+    description:
+      "Long-term memory for my coding agents. It reads every Claude Code session, distils it into durable facts (decisions, corrections, how I like things done) and hands the right ones back to the next session, through hooks and MCP. When a fact it served leads to a correction, its weight drops, so it keeps learning what's worth remembering.",
+    tech: "Go · SQLite · MCP",
+    badge: "Private",
+    media: {
+      kind: "terminal",
+      title: "memsys",
+      lines: [
+        { text: "memsys stats", prompt: true },
+        { text: "corpus: 651 live facts", dim: true },
+        { text: "  CONSTRAINT    160 extracted   20.0% served" },
+        { text: "  DECISION      147 extracted   10.9% served" },
+        { text: "  PROCEDURE      98 extracted   29.6% served" },
+        { text: "  CORRECTION     56 extracted   30.4% served" },
+        { text: "  PREFERENCE     18 extracted   38.9% served" },
+      ],
+      caption: "One static binary: hook client, CLI and server. This is what it has learned so far.",
+    },
+  },
+  {
+    title: "folio",
+    year: 2026,
+    description:
+      "My own place for documents: Markdown, notebooks, PDFs, spreadsheets, HTML pages. Each one gets a private, link-only or password-protected share, every version is kept, and agents publish to it over MCP instead of to someone else's cloud.",
+    tech: "Rust · axum · SQLite",
+    badge: "Private",
+    media: {
+      kind: "image",
+      src: "/assets/projects/folio.webp",
+      alt: "folio rendering a Markdown document with a note, a checklist and a table, and an outline of the page on the right",
+      aspect: "16/9",
+    },
+  },
+  {
+    title: "IPO Analyser",
+    year: 2026,
+    description:
+      "A research dashboard for Indian IPOs. It tracks the grey-market premium from several sources, demand from each kind of investor, and how the market is moving, then explains exactly how each one adds up to a 0–100 listing signal.",
+    tech: "Python · FastAPI · SQLite",
+    badge: "Private",
+    media: {
+      kind: "image",
+      src: "/assets/projects/ipo-analyser.webp",
+      alt: "IPO Analyser: market context for Nifty and Sensex, then a table of open IPOs with their signal score, price and premium, momentum, implied listing price and investor demand",
       aspect: "16/9",
     },
   },
