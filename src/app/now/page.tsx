@@ -10,6 +10,7 @@ import { NOW } from "@/data/now";
 import { projects } from "@/data/projects";
 import { getAllWriting, hrefFor } from "@/lib/api";
 import LocalTime from "@/components/local-time";
+import IpoSignals from "@/components/ipo-signals";
 
 type Shipped = { date: string; title: string; note: string; href?: string };
 
@@ -149,6 +150,9 @@ export default function NowPage() {
               </ul>
             </section>
           )}
+
+          {/* Live from IPO Analyser; hides itself if nothing is open. */}
+          <IpoSignals />
 
           {/* Live from Spotify. */}
           <section className="py-12 sm:py-14">
