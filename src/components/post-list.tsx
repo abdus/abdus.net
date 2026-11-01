@@ -27,10 +27,10 @@ export function PostList({ posts, groupByYear = false }: Props) {
   }
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-16">
       {[...years.entries()].map(([year, items]) => (
         <section key={year} aria-label={String(year)}>
-          <h2 className="display mb-4 text-[32px] tabular-nums text-fg-3">{year}</h2>
+          <h2 className="mb-2 text-[17px] font-medium tabular-nums text-fg-3">{year}</h2>
           <ul className="focus-list">
             {items.map((post) => (
               <PostRow key={`${post.archetype}-${post.slug}`} post={post} dateFormat="MMM d" />
@@ -52,9 +52,7 @@ function PostRow({ post, dateFormat = "MMM yyyy" }: { post: Post; dateFormat?: s
         <span className="min-w-0 flex-1 text-[18px] leading-snug tracking-[-0.01em] text-fg sm:text-[19px]">
           {post.title}
           {post.archetype === "note" && (
-            <span className="ml-2.5 align-[2px] text-[11px] font-medium uppercase tracking-[0.12em] text-fg-3">
-              Note
-            </span>
+            <span className="ml-2 text-[14px] text-fg-3">· note</span>
           )}
         </span>
         <DateFormatter

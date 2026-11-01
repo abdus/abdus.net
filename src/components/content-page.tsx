@@ -27,21 +27,23 @@ export function ContentPage({ post, content }: Props) {
         />
         <Container>
           <PostBody content={content} />
-          <div className="mt-20 flex justify-center">
+          <div className="mt-16">
             <PostTags tags={post.tags} />
           </div>
         </Container>
       </article>
 
       {next && next.slug !== post.slug && (
-        <Container className="mt-40 text-center">
+        <Container className="mt-28">
+          <div className="border-t border-line/10 pt-10">
           <p className="eyebrow">Read next</p>
           <Link
             href={hrefFor(next)}
-            className="display mt-6 block text-balance text-[32px] leading-[1.15] transition-colors hover:text-tint sm:text-[44px]"
+            className="display mt-2 block text-balance text-[28px] leading-[1.2] transition-colors hover:text-tint sm:text-[32px]"
           >
             {next.title}
           </Link>
+          </div>
         </Container>
       )}
     </main>

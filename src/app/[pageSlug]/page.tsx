@@ -27,7 +27,7 @@ export default async function PageRenderer(props: Props) {
         <Container>
           <PostBody content={content} />
           {post.slug === "about" && (
-            <p className="mt-24 text-center">
+            <p className="mt-16">
               <Link href="/testimonials" className="link">
                 What people I&apos;ve worked with say
               </Link>

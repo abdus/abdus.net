@@ -22,9 +22,9 @@ export function ContentListPage({ posts, tags, activeTag, eyebrow, title, lede }
         <PostList posts={posts} groupByYear />
 
         {tags.length > 0 && (
-          <nav aria-label="Topics" className="mt-32 text-center">
-            <h2 className="eyebrow mb-8">Topics</h2>
-            <ul className="mx-auto flex max-w-[34rem] flex-wrap justify-center gap-x-5 gap-y-3 text-[15px]">
+          <nav aria-label="Topics" className="mt-24">
+            <h2 className="mb-4 text-[17px] font-medium text-fg">Topics</h2>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[15px]">
               {activeTag && (
                 <li>
                   <Link href="/posts" className="text-tint">

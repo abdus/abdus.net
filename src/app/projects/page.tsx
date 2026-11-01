@@ -6,7 +6,7 @@ import { SectionLabel } from "@/components/section-label";
 import { featuredProjects, visibleOrganizations } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Work",
+  title: "Projects",
   description: "Things I have built: tools, apps, libraries and experiments.",
 };
 
@@ -19,14 +19,14 @@ export default function ProjectsPage() {
   return (
     <main>
       <PageTitle
-        title="Work"
-        lede="Tools, apps, libraries and experiments. Most were built to learn something."
+        title="Projects"
+        lede="Things I've built over the years. Some are useful, most were built to learn something."
       />
       <Container>
-        <SectionLabel>Selected</SectionLabel>
+        <SectionLabel>Favourites</SectionLabel>
         <ProjectIndex projects={featuredProjects()} />
 
-        <div className="mt-40">
+        <div className="mt-20">
           <ProjectList organizations={rest} />
         </div>
       </Container>

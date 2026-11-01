@@ -29,9 +29,9 @@ export default function JobHunt() {
   return (
     <div>
       <Container>
-        <header className="pb-20 pt-28 text-center sm:pt-40">
+        <header className="pb-16 pt-20 sm:pt-28">
           <p className="eyebrow mb-6">FE / BE / Full stack</p>
-          <h1 className="display text-[48px] leading-[1.02] sm:text-[72px]">
+          <h1 className="display text-[40px] leading-[1.08] sm:text-[52px]">
             Software Engineer
           </h1>
         </header>

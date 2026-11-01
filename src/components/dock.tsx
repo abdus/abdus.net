@@ -9,7 +9,7 @@ import { applyTheme, type ThemePreference } from "@/lib/theme";
 const links = [
   { href: "/", label: "Home", match: (p: string) => p === "/" },
   { href: "/posts", label: "Writing", match: (p: string) => /^\/(posts|notes|tags)/.test(p) },
-  { href: "/projects", label: "Work", match: (p: string) => p.startsWith("/projects") },
+  { href: "/projects", label: "Projects", match: (p: string) => p.startsWith("/projects") },
   { href: "/about", label: "About", match: (p: string) => /^\/(about|testimonials)/.test(p) },
 ];
 

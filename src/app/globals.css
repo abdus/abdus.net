@@ -144,14 +144,11 @@
 @layer components {
   /* Thin display type, the one voice of the site. */
   .display {
-    @apply font-display font-extralight tracking-[-0.03em] text-fg;
-  }
-  :root.dark .display {
-    @apply font-light;
+    @apply font-display font-light tracking-[-0.025em] text-fg;
   }
 
   .eyebrow {
-    @apply text-[12px] font-medium uppercase tracking-[0.14em] text-fg-3;
+    @apply text-[14px] text-fg-3;
   }
 
   .link {
