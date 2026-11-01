@@ -1,3 +1,9 @@
+export type TerminalLine = { text: string; prompt?: boolean; dim?: boolean };
+
+export type Media =
+  | { kind: "image"; src: string; alt: string; label: string }
+  | { kind: "terminal"; title: string; lines: TerminalLine[]; caption?: string };
+
 export type Project = {
   title: string;
   /** Year the project started. */
@@ -16,6 +22,10 @@ export type Project = {
   current?: boolean;
   /** Early learning projects, folded away at the bottom. */
   early?: boolean;
+  /** No longer running or maintained. */
+  retired?: boolean;
+  /** A real glimpse of the thing: a screenshot or a terminal session. */
+  media?: Media;
 };
 
 const gh = (repo: string) => `https://github.com/abdus/${repo}`;
@@ -30,14 +40,19 @@ export const projects: Project[] = [
     site: "https://spends.abdus.net",
     featured: true,
     current: true,
+    media: {
+      kind: "image",
+      src: "/assets/projects/spends.jpg",
+      alt: "The Spends website, showing the app's monthly spending screen",
+      label: "spends.abdus.net",
+    },
   },
   {
     title: "Snowbell",
     year: 2024,
-    description: "Talk to a fictional cat who answers only in lolcat.",
+    description: "A fictional cat you could chat with, who only ever answered in lolcat.",
     tech: "Next.js · OpenAI",
-    site: "/projects/snowbell",
-    featured: true,
+    retired: true,
   },
   {
     title: "Harbor",
@@ -47,6 +62,19 @@ export const projects: Project[] = [
     tech: "Rust",
     source: gh("harbor"),
     featured: true,
+    media: {
+      kind: "terminal",
+      title: "siege",
+      lines: [
+        { text: "siege -t1M -c1000 http://0.0.0.0:8080", prompt: true },
+        { text: "Lifting the server siege...", dim: true },
+        { text: "Transactions:          173012 hits" },
+        { text: "Availability:          100.00 %" },
+        { text: "Transaction rate:      2855.93 trans/sec" },
+        { text: "Failed transactions:   0" },
+      ],
+      caption: "A minute at 1,000 concurrent connections, on my Ryzen 5 machine.",
+    },
   },
   {
     title: "Rust Redis",
@@ -54,13 +82,24 @@ export const projects: Project[] = [
     description: "A small Redis-compatible server that speaks the RESP2 protocol.",
     tech: "Rust",
     source: gh("rust-redis"),
+    featured: true,
+    media: {
+      kind: "terminal",
+      title: "redis-cli",
+      lines: [
+        { text: "redis-cli -p 6379", prompt: true },
+        { text: "127.0.0.1:6379> PING" },
+        { text: "Hello from the Other Side" },
+      ],
+    },
   },
   {
     title: "Lynx Bar",
     year: 2022,
-    description: "A searchable directory of well-made web apps. The site is offline; the source is still up.",
+    description: "A searchable directory of well-made web apps.",
     tech: "Next.js",
     source: gh("awesome-websites"),
+    retired: true,
   },
   {
     title: "Nginx Pretty Index",
@@ -69,6 +108,12 @@ export const projects: Project[] = [
     tech: "XSLT",
     source: gh("nginx-pretty-index"),
     featured: true,
+    media: {
+      kind: "image",
+      src: "/assets/projects/nginx-pretty-index.jpg",
+      alt: "A directory listing styled by Nginx Pretty Index, with a search box and a game-world wallpaper",
+      label: "Nginx autoindex",
+    },
   },
   {
     title: "MiniGrep",
@@ -118,6 +163,12 @@ export const projects: Project[] = [
     description: "A minimal theme for Hugo blogs.",
     tech: "Hugo",
     source: gh("hugo-theme-fiber"),
+    media: {
+      kind: "image",
+      src: "/assets/projects/hugo-theme-fiber.jpg",
+      alt: "A blog home page using Hugo Theme Fiber, listing posts with dates and excerpts",
+      label: "Hugo Theme Fiber",
+    },
   },
   {
     title: "ctrl-v",
@@ -212,13 +263,16 @@ export const projects: Project[] = [
 ];
 
 export const featuredProjects = () => projects.filter((p) => p.featured);
+/** Favourites worth a proper look: they have something to show. */
+export const showcaseProjects = () =>
+  projects.filter((p) => p.media && !p.current && !p.early && !p.retired);
 export const currentProjects = () => projects.filter((p) => p.current);
 
-/** Everything that isn't current or early, grouped by year, newest first. */
+/** Everything not shown above (current, showcased, early), by year, newest first. */
 export function projectsByYear(): [number, Project[]][] {
   const years = new Map<number, Project[]>();
   for (const p of projects) {
-    if (p.current || p.early) continue;
+    if (p.current || p.early || p.media) continue;
     years.set(p.year, [...(years.get(p.year) || []), p]);
   }
   return [...years.entries()].sort((a, b) => b[0] - a[0]);
