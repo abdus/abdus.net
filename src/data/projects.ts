@@ -114,12 +114,14 @@ export const projects: Project[] = [
     title: "IPO Analyser",
     year: 2026,
     description:
-      "A research dashboard for Indian IPOs. It tracks the grey-market premium from several sources, demand from each kind of investor, and how the market is moving, then explains exactly how each one adds up to a 0–100 listing signal.",
-    tech: "Python · FastAPI · SQLite",
-    badge: "Private",
+      "A research dashboard for Indian IPOs. It tracks the grey-market premium from several sources, demand from each kind of investor, and how the market is moving, then explains exactly how each one adds up to a 0–100 listing signal. It refreshes itself every two hours.",
+    tech: "Python · SQLite · GitHub Actions",
+    site: "https://abdus.github.io/ipo-analyser/",
+    source: gh("ipo-analyser"),
     media: {
       kind: "image",
       src: "/assets/projects/ipo-analyser.webp",
+      label: "abdus.github.io/ipo-analyser",
       alt: "IPO Analyser: market context for Nifty and Sensex, then a table of open IPOs with their signal score, price and premium, momentum, implied listing price and investor demand",
       aspect: "16/9",
     },
