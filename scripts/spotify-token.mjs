@@ -23,7 +23,7 @@ import { randomBytes } from "node:crypto";
 
 const PORT = 8888;
 const REDIRECT_URI = `http://127.0.0.1:${PORT}/callback`;
-const SCOPES = "user-read-currently-playing user-read-playback-state";
+const SCOPES = "user-read-currently-playing user-read-playback-state user-top-read";
 const SCOPE_FLAG = ["--scope", "sysdown"];
 
 

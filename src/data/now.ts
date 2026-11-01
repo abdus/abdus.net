@@ -15,7 +15,7 @@ export type NowItem = {
 };
 
 export const NOW = {
-  updated: "2026-11-01",
+  updated: "2026-11-02",
   intro:
     "What I'm focused on at this point in my life. My day job is software engineering at an early-stage startup; this is everything around it.",
   items: [
@@ -25,8 +25,8 @@ export const NOW = {
       body:
         "Spends turns the payment SMS your bank already sends into a clear picture of where your money goes. I labelled 15,017 of my own messages, then fine-tuned a half-billion-parameter model to read them. It now beats my hand-written rules, and it runs entirely on the phone. Nothing leaves it.",
       stats: [
-        { value: "0.75 s", label: "to read one SMS on my Pixel 7a" },
-        { value: "98.7%", label: "accurate, vs 95.3% for my hand-written rules" },
+        { value: "1.5 s", label: "to read one SMS on my Pixel 7a" },
+        { value: "98.5%", label: "fully right, vs 93.5% for my hand-written rules" },
         { value: "352 MB", label: "for the whole model, offline" },
       ],
       link: { href: "https://spends.abdus.net", label: "spends.abdus.net" },

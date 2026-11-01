@@ -42,6 +42,8 @@ export type Project = {
   nowLine?: string;
   /** A real glimpse of the thing: a screenshot or a terminal session. */
   media?: Media;
+  /** The latest thing that went out, for "Lately shipped" on /now. */
+  shipped?: { date: string; note: string };
 };
 
 const gh = (repo: string) => `https://github.com/abdus/${repo}`;
@@ -60,11 +62,12 @@ export const projects: Project[] = [
     icon: "/assets/projects/spends-icon.svg",
     screen: "/assets/projects/spends-app.webp",
     stats: [
-      { value: "0.75 s", label: "to read one SMS, on the phone" },
-      { value: "98.7%", label: "accurate, vs 95.3% for rules" },
+      { value: "1.5 s", label: "to read one SMS, on the phone" },
+      { value: "98.5%", label: "fully right, vs 93.5% for rules" },
       { value: "352 MB", label: "on-device model, offline" },
     ],
     nowLine: "an expense tracker that reads your bank SMS",
+    shipped: { date: "2026-11-02", note: "Beta 0.4: monthly budgets with alerts, and a home-screen widget" },
     media: {
       kind: "image",
       src: "/assets/projects/spends.webp",
@@ -85,6 +88,7 @@ export const projects: Project[] = [
       { label: "How I built it", href: "/posts/from-regex-to-a-small-language-model" },
     ],
     featured: true,
+    shipped: { date: "2026-11-01", note: "The model and its playground went public" },
     media: {
       kind: "image",
       src: "/assets/projects/spends-playground.webp",
@@ -118,6 +122,7 @@ export const projects: Project[] = [
     tech: "Python · SQLite · GitHub Actions",
     site: "https://abdus.github.io/ipo-analyser/",
     source: gh("ipo-analyser"),
+    shipped: { date: "2026-11-02", note: "Open-sourced, and rebuilt as a static site that refreshes itself every two hours" },
     media: {
       kind: "image",
       src: "/assets/projects/ipo-analyser.webp",

@@ -7,6 +7,33 @@ import { PageTitle } from "@/components/page-title";
 import { Reveal } from "@/components/reveal";
 import { ArrowUpRight } from "@/components/icons";
 import { NOW } from "@/data/now";
+import { projects } from "@/data/projects";
+import { getAllWriting, hrefFor } from "@/lib/api";
+import LocalTime from "@/components/local-time";
+import TopTracks from "@/components/top-tracks";
+
+type Shipped = { date: string; title: string; note: string; href?: string };
+
+/** What went out lately: project releases plus anything I wrote, within two months of the last update. */
+function latelyShipped(): Shipped[] {
+  const since = new Date(NOW.updated).getTime() - 60 * 864e5;
+  const fromProjects: Shipped[] = projects
+    .filter((p) => p.shipped)
+    .map((p) => ({ date: p.shipped!.date, title: p.title, note: p.shipped!.note, href: p.site || p.source }));
+  const fromWriting: Shipped[] = getAllWriting().map((post) => ({
+    date: new Date(post.date).toISOString().slice(0, 10),
+    title: post.title,
+    note: post.archetype === "note" ? "A note" : "A new post",
+    href: hrefFor(post),
+  }));
+  return [...fromProjects, ...fromWriting]
+    .filter((s) => new Date(s.date).getTime() >= since)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 5);
+}
+
+const shortDate = (d: string) =>
+  new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
 
 export const metadata: Metadata = {
   title: "Now",
@@ -14,12 +41,14 @@ export const metadata: Metadata = {
 };
 
 export default function NowPage() {
+  const shipped = latelyShipped();
   return (
     <main>
       <PageTitle
         eyebrow={
           <>
             Updated <DateFormatter dateString={NOW.updated} />
+            <LocalTime />
           </>
         }
         title="Now"
@@ -71,6 +100,42 @@ export default function NowPage() {
             </Reveal>
           ))}
 
+          {shipped.length > 0 && (
+            <section className="py-12 sm:py-14">
+              <p className="text-[13px] font-medium text-tint">Lately shipped</p>
+              <ul className="mt-5">
+                {shipped.map((s) => {
+                  const body = (
+                    <>
+                      <span className="w-14 shrink-0 pt-[3px] text-[13px] tabular-nums text-fg-3">
+                        {shortDate(s.date)}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="text-[17px] text-fg transition-colors group-hover:text-tint">{s.title}</span>
+                        <span className="mt-0.5 block text-[15px] leading-relaxed text-fg-2">{s.note}</span>
+                      </span>
+                    </>
+                  );
+                  return (
+                    <li key={s.title + s.date} className="border-b border-line/[0.07] last:border-0">
+                      {s.href ? (
+                        <Link
+                          href={s.href}
+                          {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          className="group flex gap-4 py-3.5"
+                        >
+                          {body}
+                        </Link>
+                      ) : (
+                        <div className="flex gap-4 py-3.5">{body}</div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )}
+
           {/* Live from Spotify. */}
           <section className="py-12 sm:py-14">
             <p className="text-[13px] font-medium text-tint">Listening</p>
@@ -82,6 +147,7 @@ export default function NowPage() {
                   </p>
                 }
               />
+              <TopTracks />
             </div>
           </section>
         </div>

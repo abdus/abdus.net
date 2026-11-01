@@ -66,3 +66,28 @@ export const getNowPlaying = async () => {
     throw error;
   }
 };
+
+export type TopTrack = { title: string; artist: string; url: string; image?: string };
+
+/** Most-played tracks over the last four weeks. Empty if the token can't read them (needs user-top-read). */
+export const getTopTracks = async (limit = 5): Promise<TopTrack[]> => {
+  try {
+    const { access_token } = await getAccessToken();
+    const res = await fetch(
+      `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=${limit}`,
+      { headers: { Authorization: `Bearer ${access_token}` }, cache: 'no-store' }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (data.items || []).map((t: any) => ({
+      title: t.name,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      artist: t.artists.map((a: any) => a.name).join(', '),
+      url: t.external_urls.spotify,
+      image: t.album.images.at(-1)?.url,
+    }));
+  } catch {
+    return [];
+  }
+};

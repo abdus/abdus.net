@@ -48,8 +48,11 @@ cwebp -q 80 -m 6 -metadata none input.png -o public/assets/…/name.webp
 
 ## Spotify "now playing" (renew every ~180 days)
 
-The "Listening to …" line in the Now card comes from `/api/now-playing`, which
-uses the Spotify app **Abdus** (Client ID `87021253020a4ad38ee6d4501020e5c8`).
+The "Listening to …" line in the Now card comes from `/api/now-playing`, and
+"On repeat this month" on /now from `/api/top-tracks`. Both use the Spotify app
+**Abdus** (Client ID `87021253020a4ad38ee6d4501020e5c8`). The token needs the
+scopes `user-read-currently-playing user-read-playback-state user-top-read`; the
+script asks for all three. Without `user-top-read`, "On repeat" simply hides.
 
 Spotify expires refresh tokens after **180 days**. Last renewed **1 Nov 2026**,
 so the next renewal is due around **late April 2027**. When it expires, the site
