@@ -20,12 +20,13 @@ type Ipo = {
 
 /** Signal colours, as [from, to] for gradients. */
 const TONE: Record<string, [string, string]> = {
+  strong: ["#34d399", "#16a34a"],
   positive: ["#2dd4bf", "#22c55e"],
   neutral: ["#fbbf24", "#f97316"],
   weak: ["#fb7185", "#e11d48"],
 };
 const tone = (signal: string) => TONE[signal] ?? ["#94a3b8", "#64748b"];
-const TEXT: Record<string, string> = { positive: "text-emerald-500", neutral: "text-amber-500", weak: "text-rose-500" };
+const TEXT: Record<string, string> = { strong: "text-emerald-500", positive: "text-emerald-500", neutral: "text-amber-500", weak: "text-rose-500" };
 
 const ago = (iso: string) => {
   const mins = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 60_000));
