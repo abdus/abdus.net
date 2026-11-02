@@ -17,7 +17,7 @@ off a cliff on the first new bank template. A fine-tuned <strong>0.5B language
 model</strong>, small enough to live on the phone, gets <strong>98.5%</strong>. The models are
 <a href="https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn">on Hugging Face</a>.</blockquote>
 
-<blockquote><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it.</blockquote>
+<blockquote><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it. The app it runs in, <a href="https://spends.abdus.net">Spends</a>, is in early testing on Android: <a href="https://forms.gle/hMzmZp6UoUwAtW2Z9">leave your Gmail</a> to try it.</blockquote>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/cover-m.svg">
@@ -224,7 +224,9 @@ The surprise wasn't that a language model could do this. It was how _small_ it
 could be: half a billion parameters, one epoch, and a phone-sized file that
 beats the regex parser I'd been tuning by hand.
 
-Try it at [playground.spends.abdus.net](https://playground.spends.abdus.net). The models are
+Try it at [playground.spends.abdus.net](https://playground.spends.abdus.net), or try
+[Spends](https://spends.abdus.net), the Android app it runs in: it's in early testing, so
+[leave your Gmail](https://forms.gle/hMzmZp6UoUwAtW2Z9) and I'll send you the install link. The models are
 public too:
 
 - [azabdus/qwen2.5-0.5b-sms-txn](https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn)
