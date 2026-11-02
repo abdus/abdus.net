@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -262,41 +261,3 @@ export default function IpoSignals() {
     </section>
   );
 }
-
-/**
- * Home page Now card: one line. Only the IPO name is a link (to its page);
- * the rest lets clicks fall through to the card, which opens /now.
- */
-export function IpoSignalLine({ className }: { className?: string }) {
-  const state = useIpoSignals();
-  const top = state?.ipos[0];
-  if (!top) return null;
-  return (
-    <p
-      className={cn(
-        "pointer-events-none flex min-w-0 items-center gap-3 text-[14px] animate-in fade-in duration-500",
-        className
-      )}
-    >
-      <span className="relative grid size-8 shrink-0 place-items-center">
-        <ScoreRing score={top.score!.total} signal={top.score!.signal} size={32} />
-        <span className="absolute text-[10px] font-medium tabular-nums text-fg">{top.score!.total}</span>
-      </span>
-      <span className="min-w-0 truncate text-fg-2">
-        Watching{" "}
-        <Link
-          href={ipoHref(top.slug)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="pointer-events-auto relative z-10 text-fg underline decoration-line/20 underline-offset-[3px] transition-colors hover:text-tint hover:decoration-tint/40"
-        >
-          {top.name}
-        </Link>
-        <span className="text-fg-3">
-          {" "}· IPO signal <span className={TEXT[top.score!.signal]}>{top.score!.signal}</span>
-        </span>
-      </span>
-    </p>
-  );
-}
-
