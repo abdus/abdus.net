@@ -84,11 +84,10 @@ export const projects: Project[] = [
     site: "https://playground.spends.abdus.net",
     siteLabel: "Try it",
     links: [
-      { label: "Model", href: "https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn" },
       { label: "How I built it", href: "/posts/from-regex-to-a-small-language-model" },
     ],
     featured: true,
-    shipped: { date: "2026-11-01", note: "The model and its playground went public" },
+    shipped: { date: "2026-11-01", note: "The playground went public" },
     media: {
       kind: "image",
       src: "/assets/projects/spends-playground.webp",

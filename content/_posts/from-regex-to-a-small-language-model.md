@@ -14,8 +14,7 @@ categories: ['ml']
 <blockquote>TL;DR: I wanted my expense tracker to read bank SMS and turn each one into a
 transaction. Regex rules got 93% fully right. Classic machine learning fell
 off a cliff on the first new bank template. A fine-tuned <strong>0.5B language
-model</strong>, small enough to live on the phone, gets <strong>98.5%</strong>. The models are
-<a href="https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn">on Hugging Face</a>.</blockquote>
+model</strong>, small enough to live on the phone, gets <strong>98.5%</strong>.</blockquote>
 
 <blockquote><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it. The app it runs in, <a href="https://spends.abdus.net">Spends</a>, is in early testing on Android: <a href="https://forms.gle/hMzmZp6UoUwAtW2Z9">leave your Gmail</a> to try it.</blockquote>
 
@@ -181,11 +180,11 @@ per message, and a phone's CPU.
 - **JNI mangles text.** Java's "modified UTF-8" can't carry every character back
   from C++. Return raw bytes and decode them in Kotlin.
 
-## Training on My SMS, Then Publishing It
+## Training on My SMS, Then Shipping It
 
-The training data is my own SMS, and the models are public, so I attacked them
-before publishing. Loss on the answer only means neither model was ever asked to
-write an SMS, so there are no messages, account numbers or balances to recite.
+The training data is my own SMS, and the model ships inside an app anyone can
+download, so I attacked it before shipping. Loss on the answer only
+means neither model was ever asked to write an SMS, so there are no messages, account numbers or balances to recite.
 For the names of people I'd paid, I sampled blank payees hundreds of times, tried
 every two-letter start, and even handed over the first three letters of each real
 name. Neither the 0.5B nor the 1.5B wrote a single one.
@@ -226,14 +225,4 @@ beats the regex parser I'd been tuning by hand.
 
 Try it at [playground.spends.abdus.net](https://playground.spends.abdus.net), or try
 [Spends](https://spends.abdus.net), the Android app it runs in: it's in early testing, so
-[leave your Gmail](https://forms.gle/hMzmZp6UoUwAtW2Z9) and I'll send you the install link. The models are
-public too:
-
-- [azabdus/qwen2.5-0.5b-sms-txn](https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn)
-  ([GGUF](https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn-GGUF),
-  [MLX](https://huggingface.co/azabdus/qwen2.5-0.5b-sms-txn-mlx-4bit))
-- [azabdus/qwen2.5-1.5b-sms-txn](https://huggingface.co/azabdus/qwen2.5-1.5b-sms-txn)
-  ([GGUF](https://huggingface.co/azabdus/qwen2.5-1.5b-sms-txn-GGUF),
-  [MLX](https://huggingface.co/azabdus/qwen2.5-1.5b-sms-txn-mlx-4bit))
-
-Remember to send the `owner:` line. Haha, that one cost me two training runs.
+[leave your Gmail](https://forms.gle/hMzmZp6UoUwAtW2Z9) and I'll send you the install link.
