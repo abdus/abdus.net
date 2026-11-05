@@ -6,6 +6,7 @@ meta:
   image: /assets/posts/from-regex-to-a-small-language-model/cover.webp
   description: "Rules, then classic machine learning, then a fine-tuned 0.5B language model that runs on the phone: how Spends turns bank SMS into transactions, and what broke at every step."
 featured: true
+banner: spends-beta
 tableofcontents: true
 tags: ['machine-learning', 'llm', 'fine-tuning', 'lora', 'qwen', 'flutter', 'on-device']
 categories: ['ml']
@@ -16,7 +17,7 @@ transaction. Regex rules got 93% fully right. Classic machine learning fell
 off a cliff on the first new bank template. A fine-tuned <strong>0.5B language
 model</strong>, small enough to live on the phone, gets <strong>98.5%</strong>.</blockquote>
 
-<blockquote><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it. The app it runs in, <a href="https://spends.abdus.net">Spends</a>, is in early testing on Android: <a href="https://spends.abdus.net/?utm_source=blog&utm_medium=post&utm_campaign=slm#install">leave your Gmail</a> to try it.</blockquote>
+<blockquote><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it.</blockquote>
 
 <picture>
 <source media="(max-width: 640px)" srcset="/assets/posts/from-regex-to-a-small-language-model/cover-m.svg">

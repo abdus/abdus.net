@@ -4,6 +4,7 @@ import Container from "@/components/container";
 import { PostBody } from "@/components/post-body";
 import { PostHeader } from "@/components/post-header";
 import { PostTags } from "@/components/post-tags";
+import { SpendsBetaBanner } from "@/components/spends-beta-banner";
 import { getAllWriting, hrefFor, readingTime } from "@/lib/api";
 
 type Props = {
@@ -26,6 +27,7 @@ export function ContentPage({ post, content }: Props) {
           kind={post.archetype === "note" ? "Note" : undefined}
         />
         <Container>
+          {post.banner === "spends-beta" && <SpendsBetaBanner campaign={post.slug} />}
           <PostBody content={content} />
           <div className="mt-16">
             <PostTags tags={post.tags} />

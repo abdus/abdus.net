@@ -15,4 +15,5 @@ export type Post = {
   draft?: boolean;
   tags: string[];
   archetype?: string; // post, page, note etc.
+  banner?: string; // e.g. "spends-beta"
 };
