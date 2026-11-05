@@ -5,7 +5,7 @@ type Props = { campaign: string };
 export function SpendsBetaBanner({ campaign }: Props) {
   const href = `https://spends.abdus.net/?utm_source=blog&utm_medium=banner&utm_campaign=${encodeURIComponent(campaign)}#install`;
   return (
-    <aside className="my-12 flex flex-col gap-5 rounded-2xl bg-surface px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+    <aside className="mb-10 mt-0 flex flex-col gap-5 rounded-2xl bg-surface px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
       <div>
         <p className="eyebrow">Looking for beta testers</p>
         <p className="mt-2 text-[18px] leading-[1.6] text-fg">
