@@ -47,16 +47,16 @@
   @media (prefers-color-scheme: dark) {
     :root:not(.light) {
       color-scheme: dark;
-      --bg: 0 0 0;
-      --surface: 22 22 24;
-      --fg: 245 245 247;
-      --fg-2: 161 161 166;
-      --fg-3: 110 110 115;
+      --bg: 22 22 24;
+      --surface: 34 34 37;
+      --fg: 228 228 231;
+      --fg-2: 166 166 171;
+      --fg-3: 124 124 130;
       --line: 255 255 255;
       --tint: 41 151 255;
-      --glass: 28 28 30;
+      --glass: 40 40 43;
 
-      --background: 0 0% 0%;
+      --background: 240 4% 9%;
       --foreground: 240 11% 96%;
       --card: 240 4% 9%;
       --card-foreground: 240 11% 96%;
@@ -80,16 +80,16 @@
 
   :root.dark {
     color-scheme: dark;
-    --bg: 0 0 0;
-    --surface: 22 22 24;
-    --fg: 245 245 247;
-    --fg-2: 161 161 166;
-    --fg-3: 110 110 115;
+    --bg: 22 22 24;
+    --surface: 34 34 37;
+    --fg: 228 228 231;
+    --fg-2: 166 166 171;
+    --fg-3: 124 124 130;
     --line: 255 255 255;
     --tint: 41 151 255;
-    --glass: 28 28 30;
+    --glass: 40 40 43;
 
-    --background: 0 0% 0%;
+    --background: 240 4% 9%;
     --foreground: 240 11% 96%;
     --card: 240 4% 9%;
     --card-foreground: 240 11% 96%;

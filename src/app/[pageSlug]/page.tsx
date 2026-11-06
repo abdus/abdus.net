@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Metadata } from "next";
 import { getPageBySlug } from "@/lib/api";
 import { notFound } from "next/navigation";
@@ -23,16 +22,9 @@ export default async function PageRenderer(props: Props) {
   return (
     <main>
       <article>
-        <PostHeader title={post.slug === "about" ? "About" : post.title} date={post.date} />
+        <PostHeader title={post.title} date={post.date} />
         <Container>
           <PostBody content={content} />
-          {post.slug === "about" && (
-            <p className="mt-16">
-              <Link href="/testimonials" className="link">
-                What people I&apos;ve worked with say
-              </Link>
-            </p>
-          )}
         </Container>
       </article>
     </main>
