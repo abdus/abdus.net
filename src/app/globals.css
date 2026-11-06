@@ -239,3 +239,18 @@
   .post-body picture img { margin: 0; width: 100%; }
 }
 .post-body img { cursor: zoom-in; }
+
+
+/* Work: a live dot travels the conversation's line, then fades and starts again. */
+@keyframes work-travel {
+  0% { left: 0; opacity: 0; }
+  8% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { left: calc(100% - 7px); opacity: 0; }
+}
+.work-dot {
+  animation: work-travel 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-dot { animation: none; left: 50%; }
+}

@@ -6,13 +6,15 @@ import { PostList } from "@/components/post-list";
 import { ProjectIndex } from "@/components/project-list";
 import { Reveal } from "@/components/reveal";
 import { SectionLabel } from "@/components/section-label";
+import { Work } from "@/components/work";
 import { authorLine } from "@/components/testimonial-card";
 import testimonialData from "@/data/testimonials.json";
 import { featuredProjects } from "@/data/projects";
 import { getAllWriting } from "@/lib/api";
 import { SITE } from "@/lib/constants";
 
-const QUOTED = ["Matt Smith", "Omkar Gunjal"];
+// Two founders who saw my work up close: the most weight, and the most specific.
+const QUOTED = ["Andrei Neagoie", "Aquibur Rahman"];
 
 const external = { target: "_blank", rel: "noopener noreferrer" } as const;
 
@@ -48,13 +50,37 @@ export default function Home() {
 
           <div className="mt-6 space-y-5 text-[18px] leading-[1.7] text-fg-2 animate-in fade-in fill-mode-both delay-200 duration-700 sm:text-[19px]">
             <p>
-              I&apos;m a software engineer at an early-stage startup, where I
-              mostly work with <span className="text-fg">Node</span> and{" "}
-              <span className="text-fg">React</span>. This is where I write
-              down what I learn along the way, and keep the things I&apos;ve
-              made.
+              I&apos;m a software engineer at{" "}
+              <Link href="https://neosapien.ai" className="link" {...external}>
+                NeoSapien
+              </Link>
+              , where we make Neo 1: a pendant that listens through your day
+              and turns your conversations into memories you can search. I
+              joined to build the app, and now look after everything it runs
+              on.
             </p>
-            <p>Outside work, I travel and go trekking whenever I can.</p>
+            <p>
+              Most of what I write here comes out of that work, along with
+              the things I make on the side. Outside work, I travel and go
+              trekking whenever I can.
+            </p>
+            {/* The other side of me, given room to breathe. */}
+            <figure className="!mt-8 pb-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/now/coast-sunset.webp"
+                alt="Me on a rocky beach at sunset, photographing the sky as waves break on the rocks"
+                width={1800}
+                height={1125}
+                className="aspect-[16/10] w-full rounded-2xl object-cover ring-1 ring-line/10"
+              />
+              <figcaption className="mt-3 text-[13px] text-fg-3">
+                Sunset on the coast, on a ride in September.{" "}
+                <Link href="/now" className="text-fg-2 transition-colors hover:text-tint">
+                  More from the ride →
+                </Link>
+              </figcaption>
+            </figure>
             <p>
               The best way to reach me is{" "}
               <Link href={`mailto:${SITE.email}`} className="link">
@@ -79,6 +105,12 @@ export default function Home() {
         </section>
 
         <div className="space-y-24 sm:space-y-28">
+          <Reveal as="section">
+            <div id="work" className="scroll-mt-8">
+              <Work />
+            </div>
+          </Reveal>
+
           <Reveal as="section">
             <SectionLabel href="/posts" link="All writing">Recent writing</SectionLabel>
             <PostList posts={writing} />
