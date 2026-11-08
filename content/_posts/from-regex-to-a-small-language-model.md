@@ -15,7 +15,7 @@ categories: ['ml']
 <blockquote>TL;DR: I wanted my expense tracker to read bank SMS and turn each one into a
 transaction. Regex rules got 93% fully right. Classic machine learning fell
 off a cliff on the first new bank template. A fine-tuned <strong>0.5B language
-model</strong>, small enough to live on the phone, gets <strong>98.5%</strong>.</blockquote>
+model</strong>, small enough to live on the phone, now gets <strong>99.0%</strong>.</blockquote>
 
 <blockquote><strong>Just want to try it?</strong> Open <a href="https://playground.spends.abdus.net">playground.spends.abdus.net</a>, paste a bank SMS (or pick a random one), and see what the model makes of it.</blockquote>
 
@@ -54,7 +54,8 @@ To have answers to check against, I labelled every SMS on my phone: 15,017 of
 them, from January 2022 to October 2026. Thirty-three LLM labellers worked
 blind from one written guideline, a stronger model relabelled a random 4% from
 scratch (it agreed on all 600), and I reviewed by hand the 436 where the labels
-and my old parser disagreed.
+and my old parser disagreed. The dataset has since grown to **41,706 SMS**
+(11,168 of them payments), labelled the same way.
 
 One rule throughout: **split by date, never randomly.** Banks reuse templates,
 so a random split leaks near-copies into the test set and flatters everything.
@@ -123,6 +124,28 @@ plus its 1.5B sibling to see what size buys. The recipe:
 Adding 60 examples from two weak spots, the way you'd label the first days of a
 new bank, took the 0.5B to **98.5%**. The 1.5B reached 99.0%, at 2.5× the size.
 
+### More Data, Same Small Model
+
+Then the dataset grew to 41,706 SMS, and two misreads turned up: a card OTP that named the amount and the shop, read as a payment, and
+a wallet top-up read as income. I added about 1,700 synthetic examples for those
+and for other banks' templates, and retrained the same 0.5B on one H200 on
+Modal.
+
+The test set is now 3,540 messages it never saw: the newest ones, plus a few
+banks kept out of training entirely.
+
+| Check | Result |
+|---|---|
+| Payment or not | 99.8% (3 missed, 5 false alarms) |
+| Amount | 99.9% |
+| Debit or credit | 99.9% |
+| Who was paid | 98.5% |
+| Transfer to your own account | 98.7% |
+| **Every field right** | **99.0%** |
+
+Card OTPs worded in ways it never saw in training: 40 of 40 correctly ignored.
+The same size of model now matches what the 1.5B scored before.
+
 ### Whose Phone Is It?
 
 `is_transfer` depends on who you are. The prompt never said, so the 1.5B
@@ -183,8 +206,8 @@ per message, and a phone's CPU.
 
 ## Training on My SMS, Then Shipping It
 
-The training data is my own SMS, and the model ships inside an app anyone can
-download, so I attacked it before shipping. Loss on the answer only
+The first training data was my own SMS, and the model ships inside an app anyone
+can download, so I attacked it before shipping. Loss on the answer only
 means neither model was ever asked to write an SMS, so there are no messages, account numbers or balances to recite.
 For the names of people I'd paid, I sampled blank payees hundreds of times, tried
 every two-letter start, and even handed over the first three letters of each real
