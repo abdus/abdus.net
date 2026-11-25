@@ -3,7 +3,6 @@ import Container from "@/components/container";
 import { PageTitle } from "@/components/page-title";
 import { ProjectIndex, ProjectShowcase } from "@/components/project-list";
 import { CurrentProject } from "@/components/current-project";
-import { Reveal } from "@/components/reveal";
 import {
   currentProjects,
   earlyProjects,
@@ -31,23 +30,21 @@ export default async function ProjectsPage() {
       />
       <Container>
         {now[0] && (
-          <div className="mb-32">
+          <div className="mb-24">
             <CurrentProject project={now[0]} />
           </div>
         )}
 
         {favourites.length > 0 && (
           <section aria-labelledby="favourites" className="mb-28">
-            <h2 id="favourites" className="mb-6 text-[17px] font-medium text-fg">
+            <h2 id="favourites" className="mb-1 text-[17px] font-medium text-fg">
               A few favourites
             </h2>
-            <div className="space-y-20">
+            <ul>
               {favourites.map((p) => (
-                <Reveal key={p.title}>
-                  <ProjectShowcase project={p} stars={stars} />
-                </Reveal>
+                <ProjectShowcase key={p.title} project={p} stars={stars} />
               ))}
-            </div>
+            </ul>
           </section>
         )}
 

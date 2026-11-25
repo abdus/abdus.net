@@ -1,15 +1,21 @@
 export type TerminalLine = { text: string; prompt?: boolean; dim?: boolean };
 
 export type Media =
-  | { kind: "image"; src: string; alt: string; label?: string; aspect?: "16/10" | "16/9" }
+  | { kind: "image"; src: string; alt: string; label?: string; aspect?: "16/10" | "16/9"; thumb?: string }
   | { kind: "terminal"; title: string; lines: TerminalLine[]; caption?: string };
 
 export type Project = {
   title: string;
+  /** Set when the project has its own page at /projects/<slug>. */
+  slug?: string;
   /** Year the project started. */
   year: number;
   /** One line, in my words. */
   description: string;
+  /** What it is and where it runs, e.g. "Game · Web". */
+  kind?: string;
+  /** A shorter line for the projects list, when the description runs long. */
+  short?: string;
   /** Main language or stack, shown as a quiet label. */
   tech: string;
   /** Live site, if it is still up. */
@@ -51,6 +57,7 @@ const gh = (repo: string) => `https://github.com/abdus/${repo}`;
 export const projects: Project[] = [
   {
     title: "Spends",
+    kind: "App · Android",
     year: 2026,
     description:
       "An Android app that builds your spending history from bank and UPI messages. No bank login, no manual entry, no cloud.",
@@ -77,6 +84,9 @@ export const projects: Project[] = [
   },
   {
     title: "Pocket Ledger",
+    slug: "pocket-ledger",
+    kind: "Language model · Android and web",
+    short: "The model inside Spends: reads Indian bank SMS and turns each one into a transaction, on the phone.",
     year: 2026,
     description:
       "The model inside Spends: a half-billion-parameter language model, fine-tuned to read Indian bank SMS and turn each one into a transaction: how much, which way, to whom. It gets 98.5% of messages fully right, against 93.5% for my hand-written rules, and it is small enough to run on the phone, so nothing leaves it. The playground shows its answer token by token, with how sure it was of each one.",
@@ -91,6 +101,7 @@ export const projects: Project[] = [
     media: {
       kind: "image",
       src: "/assets/projects/spends-playground.webp",
+      thumb: "/assets/projects/thumbs/spends-playground.webp",
       alt: "The model playground: a bank SMS in a message bubble, read as a ₹750 payment to the person named, matching the hand label",
       label: "playground.spends.abdus.net",
       aspect: "16/9",
@@ -98,6 +109,8 @@ export const projects: Project[] = [
   },
   {
     title: "Redline",
+    kind: "Game · Web",
+    short: "A driving game in the browser: ten real bikes and cars, open roads, two circuits.",
     year: 2026,
     description:
       "A driving game in the browser: ten real bikes and cars with their real specs, open roads, two circuits, day to night and rain. Turn on Ride together to drive with friends.",
@@ -108,6 +121,7 @@ export const projects: Project[] = [
     media: {
       kind: "image",
       src: "/assets/projects/redline.webp",
+      thumb: "/assets/projects/thumbs/redline.webp",
       alt: "Redline's garage screen: an orange Porsche 911 GT3 on the circuit, with its specs and a Ride button",
       label: "redline.abdus.net",
       aspect: "16/9",
@@ -115,6 +129,8 @@ export const projects: Project[] = [
   },
   {
     title: "IPO Analyser",
+    kind: "Dashboard · Web",
+    short: "A research dashboard for Indian IPOs that explains every listing signal.",
     year: 2026,
     description:
       "A research dashboard for Indian IPOs. It tracks the grey-market premium from several sources, demand from each kind of investor, and how the market is moving, then explains exactly how each one adds up to a 0–100 listing signal. It refreshes itself every two hours.",
@@ -125,6 +141,7 @@ export const projects: Project[] = [
     media: {
       kind: "image",
       src: "/assets/projects/ipo-analyser.webp",
+      thumb: "/assets/projects/thumbs/ipo-analyser.webp",
       label: "abdus.github.io/ipo-analyser",
       alt: "IPO Analyser: market context for Nifty and Sensex, then a table of open IPOs with their signal score, price and premium, momentum, implied listing price and investor demand",
       aspect: "16/9",
@@ -132,6 +149,8 @@ export const projects: Project[] = [
   },
   {
     title: "memsys",
+    kind: "Developer tool",
+    short: "Long-term memory for my coding agents, learned from every Claude Code session.",
     year: 2026,
     description:
       "Long-term memory for my coding agents. It reads every Claude Code session, distils it into durable facts (decisions, corrections, how I like things done) and hands the right ones back to the next session, through hooks and MCP. When a fact it served leads to a correction, its weight drops, so it keeps learning what's worth remembering.",
@@ -154,6 +173,8 @@ export const projects: Project[] = [
   },
   {
     title: "folio",
+    kind: "App · Web",
+    short: "My own place for documents, with private, link-only or password-protected sharing.",
     year: 2026,
     description:
       "My own place for documents: Markdown, notebooks, PDFs, spreadsheets, HTML pages. Each one gets a private, link-only or password-protected share, every version is kept, and agents publish to it over MCP instead of to someone else's cloud.",
@@ -162,12 +183,15 @@ export const projects: Project[] = [
     media: {
       kind: "image",
       src: "/assets/projects/folio.webp",
+      thumb: "/assets/projects/thumbs/folio.webp",
       alt: "folio rendering a Markdown document with a note, a checklist and a table, and an outline of the page on the right",
       aspect: "16/9",
     },
   },
   {
     title: "Kestrel",
+    kind: "App · Web",
+    short: "My job hunt, automated: finds roles, ranks them and drafts the cover letter.",
     year: 2026,
     description:
       "My job hunt, automated. Every hour it sweeps LinkedIn, Wellfound, Instahyre, HN's Who's Hiring and company job boards, ranks each role against what I'm looking for, researches the company, and drafts a cover letter with my résumé attached. A digest lands in my inbox every day.",
@@ -176,6 +200,7 @@ export const projects: Project[] = [
     media: {
       kind: "image",
       src: "/assets/projects/kestrel.webp",
+      thumb: "/assets/projects/thumbs/kestrel.webp",
       alt: "Kestrel's overview: jobs found this week, letters waiting and sent, the best-scoring roles, and news from companies I'm watching",
       aspect: "16/9",
     },
@@ -189,6 +214,7 @@ export const projects: Project[] = [
   },
   {
     title: "Harbor",
+    kind: "Server",
     year: 2024,
     description:
       "An HTTP load balancer built from scratch on Rust's standard library, to learn how networking really works.",
@@ -235,6 +261,7 @@ export const projects: Project[] = [
   },
   {
     title: "Nginx Pretty Index",
+    kind: "Theme · Nginx",
     year: 2021,
     description: "A beautiful auto-index page for Nginx, made with nothing but XSLT, HTML and CSS.",
     tech: "XSLT",
@@ -243,6 +270,7 @@ export const projects: Project[] = [
     media: {
       kind: "image",
       src: "/assets/projects/nginx-pretty-index.webp",
+      thumb: "/assets/projects/thumbs/nginx-pretty-index.webp",
       alt: "A directory listing styled by Nginx Pretty Index, with a search box and a game-world wallpaper",
       label: "Nginx autoindex",
     },

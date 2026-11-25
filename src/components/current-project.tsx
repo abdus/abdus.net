@@ -51,7 +51,7 @@ export function CurrentProject({ project }: { project: Project }) {
               <ArrowUpRight className="size-3.5" />
             </Link>
           )}
-          <span className="text-fg-3">{project.tech}</span>
+          <span className="text-fg-3">{[project.kind, project.tech].filter(Boolean).join(" · ")}</span>
         </div>
       </div>
 
@@ -68,7 +68,7 @@ export function CurrentProject({ project }: { project: Project }) {
             aria-hidden
             className="absolute inset-x-[-8%] top-[10%] h-[70%] rounded-full bg-tint/25 blur-3xl sm:inset-x-[-30%]"
           />
-          <span className="relative block rounded-[42px] bg-[#111] p-[8px] shadow-[0_30px_60px_-25px_rgb(0_0_0/0.45),0_0_0_0.5px_rgb(255_255_255/0.08)_inset] transition-transform duration-700 ease-out group-hover:-translate-y-1.5">
+          <span className="relative block rounded-[42px] bg-[#111] p-[8px] shadow-[0_30px_60px_-25px_rgb(0_0_0/0.45),0_0_0_0.5px_rgb(255_255_255/0.08)_inset] transition-transform duration-700 ease-out group-hover:-translate-y-1.5 group-hover:rotate-2 motion-reduce:transform-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={project.screen}

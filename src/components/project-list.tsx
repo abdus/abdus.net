@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { ArrowUpRight } from "./icons";
 import { ProjectMedia } from "./project-media";
+import { ProjectIcon } from "./project-icon";
 import { cn } from "@/lib/utils";
 
 export type Stars = Record<string, number>;
@@ -93,26 +94,88 @@ export function ProjectRow({ project, stars }: { project: Project; stars?: Stars
   );
 }
 
-/** A project with something to show: preview first, then the words. */
-export function ProjectShowcase({ project, stars }: { project: Project; stars?: Stars }) {
-  const href = primaryHref(project);
+/** A small, still glimpse of the project, beside its row on wider screens. */
+function Thumb({ project }: { project: Project }) {
+  const { media } = project;
+  if (!media) return null;
+  const frame =
+    "block aspect-[16/10] w-[168px] overflow-hidden rounded-xl bg-surface ring-1 ring-line/10";
+  if (media.kind === "terminal") {
+    return (
+      <span aria-hidden className={cn(frame, "bg-[#161618] px-2.5 py-3 font-mono text-[5.5px] leading-[2] text-[#e5e5ea]")}>
+        {media.lines.map((l, i) => (
+          <span key={i} className={cn("block whitespace-pre", l.dim && "text-white/45")}>
+            {l.prompt && <span className="text-[#30d158]">$ </span>}
+            {l.text}
+          </span>
+        ))}
+      </span>
+    );
+  }
   return (
-    <article className="group/card">
-      {href && project.media?.kind === "image" ? (
-        <Link href={href} {...linkProps(href)} aria-label={`Open ${project.title}`} className="block">
-          <ProjectMedia media={project.media} />
-        </Link>
-      ) : (
-        project.media && <ProjectMedia media={project.media} />
-      )}
-      <div className="mt-6">
-        <Title project={project} className="text-[22px]" />
-        <p className="mt-1.5 text-[16px] leading-relaxed text-fg-2">{project.description}</p>
-        <div className="mt-3">
-          <Meta project={project} stars={stars} />
+    <span className={frame}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={media.thumb ?? media.src} alt="" width={168} height={105} loading="lazy" className="size-full object-cover object-top" />
+    </span>
+  );
+}
+
+/**
+ * The one idea: each project reads like an entry on a home screen. Icon, name,
+ * what it is, where to get it. The full preview and story open underneath.
+ */
+export function ProjectShowcase({ project, stars }: { project: Project; stars?: Stars }) {
+  return (
+    <li className="group/item border-b border-line/[0.07] py-7">
+      <div className="flex items-start gap-4 sm:gap-5">
+        <ProjectIcon project={project} />
+        <div className="min-w-0 flex-1">
+          <Title project={project} className="text-[19px] font-medium" />
+          {project.kind && <p className="mt-0.5 text-[13px] text-fg-3">{project.kind}</p>}
+          <p className="mt-2 text-[15px] leading-relaxed text-fg-2">
+            {project.short ?? project.description}
+          </p>
+          <div className="mt-3">
+            <Meta project={project} stars={stars} />
+          </div>
+        </div>
+        <div className="hidden shrink-0 sm:block">
+          {project.slug ? (
+            <Link href={`/projects/${project.slug}`} aria-label={`More about ${project.title}`} className="block">
+              <Thumb project={project} />
+            </Link>
+          ) : (
+            <Thumb project={project} />
+          )}
         </div>
       </div>
-    </article>
+      {project.slug && (
+        <Link
+          href={`/projects/${project.slug}`}
+          className="ml-16 mt-1 inline-flex min-h-11 items-center text-[13px] text-tint sm:ml-[76px]"
+        >
+          More about it →<span className="sr-only"> ({project.title})</span>
+        </Link>
+      )}
+      {project.media && !project.slug && (
+        <details className="group/more mt-1">
+          <summary
+           
+            className="ml-16 inline-flex min-h-11 cursor-pointer list-none items-center text-[13px] text-tint sm:ml-[76px] [&::-webkit-details-marker]:hidden"
+          >
+            <span className="group-open/more:hidden">Preview</span>
+            <span className="hidden group-open/more:inline">Close preview</span>
+            <span className="sr-only"> of {project.title}</span>
+          </summary>
+          <div className="pt-2 animate-in fade-in slide-in-from-top-1 duration-300">
+            {project.short && (
+              <p className="mb-5 text-[16px] leading-relaxed text-fg-2">{project.description}</p>
+            )}
+            <ProjectMedia media={project.media} />
+          </div>
+        </details>
+      )}
+    </li>
   );
 }
 

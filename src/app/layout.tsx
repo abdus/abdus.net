@@ -4,7 +4,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { createAvatar } from "@dicebear/core";
 import { adventurerNeutral } from "@dicebear/collection";
 import { HOME_OG_IMAGE_URL, SITE } from "@/lib/constants";
-import { Dock } from "@/components/dock";
+import { Nav } from "@/components/nav";
 import { themeScript } from "@/lib/theme";
 import Footer from "@/components/footer";
 
@@ -64,11 +64,11 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <Nav />
         <div id="content" className="flex grow flex-col">
           {children}
         </div>
         <Footer />
-        <Dock />
       </body>
     </html>
   );

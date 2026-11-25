@@ -11,7 +11,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="mt-40 pb-36 text-center">
+    <footer className="mt-32 pb-16 text-center">
       <div className="mx-auto max-w-[42rem] px-6">
         <div className="mx-auto mb-12 h-px w-10 bg-line/15" aria-hidden />
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[13px] text-fg-2">

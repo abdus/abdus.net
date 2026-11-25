@@ -16,7 +16,7 @@ export function PostHeader({ title, date, minutes, kind }: Props) {
   ].filter(Boolean);
 
   return (
-    <Container className="pb-12 pt-20 sm:pb-16 sm:pt-28">
+    <Container className="pb-12 pt-14 sm:pb-16 sm:pt-20">
       <header className="animate-in fade-in slide-in-from-bottom-1 duration-700">
         {meta.length > 0 && (
           <p className="eyebrow mb-4 flex flex-wrap items-center gap-x-2">

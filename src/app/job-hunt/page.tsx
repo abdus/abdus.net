@@ -29,7 +29,7 @@ export default function JobHunt() {
   return (
     <div>
       <Container>
-        <header className="pb-16 pt-20 sm:pt-28">
+        <header className="pb-16 pt-14 sm:pt-20">
           <p className="eyebrow mb-6">FE / BE / Full stack</p>
           <h1 className="display text-[40px] leading-[1.08] sm:text-[52px]">
             Software Engineer

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { applyTheme, type ThemePreference } from "@/lib/theme";
 
 const links = [
-  { href: "/", label: "Home", match: (p: string) => p === "/" },
   { href: "/posts", label: "Writing", match: (p: string) => /^\/(posts|notes|tags)/.test(p) },
   { href: "/projects", label: "Projects", match: (p: string) => p.startsWith("/projects") },
   { href: "/about", label: "About", match: (p: string) => /^\/(about|testimonials)/.test(p) },
@@ -21,11 +20,11 @@ const LABEL: Record<ThemePreference, string> = {
 };
 
 /**
- * The site's one piece of chrome: a glass dock that floats at the bottom.
- * Holds navigation and the theme switch; on articles its edge fills with
- * reading progress.
+ * One plain line of text at the top of the column, and it scrolls away with the
+ * page. No bar, no glass, no pill: where you are is simply the darker word.
+ * On articles a hairline along the top edge shows reading progress.
  */
-export function Dock() {
+export function Nav() {
   const pathname = usePathname() || "/";
   const isArticle = /^\/(posts|notes)\/.+/.test(pathname);
   const [theme, setTheme] = useState<ThemePreference>("system");
@@ -76,53 +75,54 @@ export function Dock() {
   };
 
   return (
-    <nav
-      aria-label="Primary"
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]"
-    >
-      <div
-        className={cn(
-          "pointer-events-auto relative flex items-center gap-0.5 overflow-hidden rounded-full p-1",
-          "bg-glass/70 backdrop-blur-2xl backdrop-saturate-[1.8]",
-          "shadow-[0_0_0_0.5px_rgb(var(--line)/0.12),0_8px_32px_-8px_rgb(0_0_0/0.25),0_2px_6px_-2px_rgb(0_0_0/0.08)]"
-        )}
-      >
-        {links.map(({ href, label, match }) => {
-          const active = match(pathname);
-          return (
-            <Link
-              key={href}
-              href={href}
-              aria-current={active ? "page" : undefined}
-              className={cn(
-                "rounded-full px-3.5 py-2 text-[13px] font-medium tracking-[-0.01em] transition-colors duration-300 sm:px-4",
-                active ? "bg-fg text-bg" : "text-fg-2 hover:text-fg"
-              )}
+    <>
+      <nav aria-label="Primary" className="mx-auto w-full max-w-[42rem] px-6 pt-4 sm:pt-6">
+        <div className="flex items-center justify-between text-[14px] sm:text-[15px]">
+          <Link
+            href="/"
+            aria-label="Abdus, home"
+            aria-current={pathname === "/" ? "page" : undefined}
+            className="flex min-h-11 items-center font-medium text-fg"
+          >
+            Abdus
+          </Link>
+
+          <div className="flex items-center gap-3.5 sm:gap-7">
+            {links.map(({ href, label, match }) => {
+              const active = match(pathname);
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "flex min-h-11 items-center transition-colors",
+                    active ? "text-fg" : "text-fg-2 hover:text-fg"
+                  )}
+                >
+                  {label}
+                </Link>
+              );
+            })}
+            <button
+              type="button"
+              onClick={cycleTheme}
+              aria-label={`${LABEL[theme]}. Change theme`}
+              title={LABEL[theme]}
+              className="flex h-11 w-8 items-center justify-end text-fg-2 transition-colors hover:text-fg sm:w-6"
             >
-              {label}
-            </Link>
-          );
-        })}
-
-        <span className="mx-1 h-4 w-px bg-line/15" aria-hidden />
-
-        <button
-          type="button"
-          onClick={cycleTheme}
-          aria-label={`${LABEL[theme]}. Change theme`}
-          title={LABEL[theme]}
-          className="grid size-9 place-items-center rounded-full text-fg-2 transition-colors hover:text-fg"
-        >
-          <ThemeGlyph theme={theme} />
-        </button>
-
-        {isArticle && (
-          <div className="absolute inset-x-4 bottom-0 h-[2px] overflow-hidden rounded-full" aria-hidden>
-            <div ref={progress} className="h-full origin-left scale-x-0 bg-tint" />
+              <ThemeGlyph theme={theme} />
+            </button>
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      </nav>
+
+      {isArticle && (
+        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-[2px]" aria-hidden>
+          <div ref={progress} className="h-full origin-left scale-x-0 bg-tint" />
+        </div>
+      )}
+    </>
   );
 }
 

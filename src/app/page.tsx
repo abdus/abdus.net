@@ -30,7 +30,7 @@ export default function Home() {
     <main>
       <Container>
         {/* A hello, in my own words. */}
-        <section className="pb-20 pt-16 sm:pb-24 sm:pt-28">
+        <section className="pb-20 pt-12 sm:pb-24 sm:pt-20">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/me.webp"
